@@ -28,6 +28,49 @@
             color: var(--titans-white);
         }
 
+        /* Navigation */
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
+        }
+
         .hero {
             background: linear-gradient(180deg, var(--titans-navy) 0%, rgba(12,35,64,0.9) 100%),
                         url('https://static.clubs.nfl.com/image/upload/titans/xgiujoq5b38hdqt6ofp8.jpg');
@@ -376,6 +419,16 @@
     </style>
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Titans_2025_Roster.html" class="nav-link">2025 Roster</a>
+            <a href="titans-cheerleaders-2025.html" class="nav-link active">Cheerleaders</a>
+            <a href="team-history.html" class="nav-link">Team History</a>
+            <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+        </div>
+    </nav>
+
     <header class="hero">
         <div class="hero-content">
             <div class="sword-icon">⚔️</div>

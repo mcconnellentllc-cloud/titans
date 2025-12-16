@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennessee Titans Bible - Kyle's Personal Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--titans-navy);
+            color: var(--titans-white);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            flex-shrink: 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
+        }
+
+        .page-header {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--titans-red);
+            flex-shrink: 0;
+        }
+
+        .page-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--titans-silver);
+            font-size: 0.95rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 24px;
+            background: var(--titans-blue);
+            color: var(--titans-navy);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--titans-red);
+            color: var(--titans-white);
+        }
+
+        .pdf-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .pdf-embed {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+
+        .mobile-fallback {
+            display: none;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .mobile-fallback p {
+            color: var(--titans-silver);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .nav-link {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .page-header h1 {
+                font-size: 1.4rem;
+            }
+
+            /* Show fallback on mobile where PDF embed often doesn't work well */
+            .pdf-embed {
+                display: none;
+            }
+
+            .mobile-fallback {
+                display: block;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(75, 146, 219, 0.2);
+            color: var(--titans-silver);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Titans_2025_Roster.html" class="nav-link">2025 Roster</a>
+            <a href="titans-cheerleaders-2025.html" class="nav-link">Cheerleaders</a>
+            <a href="team-history.html" class="nav-link">Team History</a>
+            <a href="titans-bible-viewer.html" class="nav-link active">The Bible</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Tennessee Titans Bible</h1>
+        <p>Kyle's Complete Fan Reference Guide</p>
+        <a href="Tennessee_Titans_Bible.pdf" class="download-btn" download>Download PDF</a>
+    </div>
+
+    <div class="pdf-container">
+        <iframe class="pdf-embed" src="Tennessee_Titans_Bible.pdf" type="application/pdf"></iframe>
+
+        <div class="mobile-fallback">
+            <p>For the best viewing experience on mobile devices, please download the PDF directly.</p>
+            <a href="Tennessee_Titans_Bible.pdf" class="download-btn" download>Download PDF</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
+    </footer>
+</body>
+</html>

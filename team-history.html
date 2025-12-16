@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team History - Tennessee Titans Bible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--titans-navy);
+            min-height: 100vh;
+            color: var(--titans-white);
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1a2e 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
+        .hero-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            color: var(--titans-silver);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .highlights-section {
+            background: rgba(0,0,0,0.3);
+            padding: 50px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 35px;
+            color: var(--titans-blue);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlight-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none;
+            color: var(--titans-white);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--titans-red);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .play-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--titans-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .play-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--titans-white);
+            margin-left: 3px;
+        }
+
+        .highlight-info h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .highlight-info p {
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+        }
+
+        .history-section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--titans-blue), var(--titans-red), var(--titans-blue));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--titans-navy);
+            border: 3px solid var(--titans-blue);
+            border-radius: 50%;
+        }
+
+        .timeline-item.major::before {
+            border-color: var(--titans-red);
+            background: var(--titans-red);
+        }
+
+        .timeline-year {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item.major .timeline-year {
+            color: var(--titans-red);
+        }
+
+        .timeline-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-content {
+            color: var(--titans-silver);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .timeline-content p {
+            margin-bottom: 12px;
+        }
+
+        .legends-section {
+            background: rgba(0,0,0,0.3);
+            padding: 60px 20px;
+        }
+
+        .legends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .legend-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .legend-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--titans-blue);
+            margin-bottom: 5px;
+        }
+
+        .legend-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .legend-position {
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+        }
+
+        .legend-years {
+            font-size: 0.8rem;
+            color: var(--titans-red);
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(75, 146, 219, 0.2);
+            color: var(--titans-silver);
+            font-size: 0.8rem;
+        }
+
+        footer .titan-up {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-section {
+                padding: 40px 15px;
+            }
+
+            .highlights-section,
+            .history-section,
+            .legends-section {
+                padding: 40px 15px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                left: -23px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Titans_2025_Roster.html" class="nav-link">2025 Roster</a>
+            <a href="titans-cheerleaders-2025.html" class="nav-link">Cheerleaders</a>
+            <a href="team-history.html" class="nav-link active">Team History</a>
+            <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h2>Team History</h2>
+        <p>From the Houston Oilers to the Tennessee Titans - explore over six decades of football history, legendary players, and unforgettable moments.</p>
+    </section>
+
+    <section class="highlights-section">
+        <h2 class="section-title">Classic Highlights</h2>
+        <div class="highlights-grid">
+            <a href="https://www.youtube.com/watch?v=FCJFmL4oxPE" target="_blank" rel="noopener" class="highlight-card">
+                <div class="play-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <div class="highlight-info">
+                    <h3>Music City Miracle</h3>
+                    <p>January 8, 2000 - The lateral heard around the world</p>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=7vMM3LJjLgE" target="_blank" rel="noopener" class="highlight-card">
+                <div class="play-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <div class="highlight-info">
+                    <h3>Super Bowl XXXIV</h3>
+                    <p>The Titans' historic run to the big game</p>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=dOhIMh6DIPI" target="_blank" rel="noopener" class="highlight-card">
+                <div class="play-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <div class="highlight-info">
+                    <h3>Eddie George Career Highlights</h3>
+                    <p>The legendary running back's greatest moments</p>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=_MXmM-l-Iuo" target="_blank" rel="noopener" class="highlight-card">
+                <div class="play-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <div class="highlight-info">
+                    <h3>Steve McNair Tribute</h3>
+                    <p>Remembering Air McNair's incredible career</p>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=Pfz4JViRkoA" target="_blank" rel="noopener" class="highlight-card">
+                <div class="play-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <div class="highlight-info">
+                    <h3>Derrick Henry 99-Yard TD</h3>
+                    <p>The longest run in franchise history</p>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=fGUHiIF4xCY" target="_blank" rel="noopener" class="highlight-card">
+                <div class="play-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <div class="highlight-info">
+                    <h3>2019 Playoff Run</h3>
+                    <p>Stunning victories over Patriots and Ravens</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="history-section">
+        <h2 class="section-title">Franchise Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item major">
+                <div class="timeline-year">1960</div>
+                <h3 class="timeline-title">The Houston Oilers Are Born</h3>
+                <div class="timeline-content">
+                    <p>The franchise began as the Houston Oilers, one of the original eight teams in the American Football League (AFL). Owner Bud Adams built a team that would become a charter member of the new league.</p>
+                    <p>The Oilers won the first two AFL Championships in 1960 and 1961, establishing themselves as an early dynasty in professional football.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1960-1961</div>
+                <h3 class="timeline-title">Back-to-Back AFL Champions</h3>
+                <div class="timeline-content">
+                    <p>Led by quarterback George Blanda, the Oilers captured consecutive AFL titles. Blanda's versatility as both quarterback and kicker made him one of the most valuable players in the league.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1978-1980</div>
+                <h3 class="timeline-title">The Luv Ya Blue Era</h3>
+                <div class="timeline-content">
+                    <p>Coach Bum Phillips led the Oilers to three consecutive playoff appearances. The team featured Earl Campbell, who won three consecutive NFL rushing titles and the 1979 MVP award. The "Luv Ya Blue" rallying cry united Houston fans in unprecedented ways.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1987-1993</div>
+                <h3 class="timeline-title">The Run-and-Shoot Era</h3>
+                <div class="timeline-content">
+                    <p>The Oilers adopted the innovative Run-and-Shoot offense under coach Jerry Glanville and later Jack Pardee. Warren Moon emerged as one of the NFL's premier quarterbacks, throwing for over 4,000 yards in four consecutive seasons.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item major">
+                <div class="timeline-year">1997</div>
+                <h3 class="timeline-title">The Move to Tennessee</h3>
+                <div class="timeline-content">
+                    <p>After years of stadium disputes in Houston, owner Bud Adams relocated the franchise to Tennessee. The team played as the Tennessee Oilers for two seasons while their permanent stadium was being constructed.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item major">
+                <div class="timeline-year">1999</div>
+                <h3 class="timeline-title">The Tennessee Titans Are Born</h3>
+                <div class="timeline-content">
+                    <p>The franchise officially became the Tennessee Titans, debuting in their new stadium (now Nissan Stadium) in Nashville. The new identity represented Greek mythology's Titans - powerful beings that ruled before the Olympian gods.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item major">
+                <div class="timeline-year">January 8, 2000</div>
+                <h3 class="timeline-title">The Music City Miracle</h3>
+                <div class="timeline-content">
+                    <p>In one of the most dramatic plays in NFL history, Frank Wycheck threw a lateral to Kevin Dyson, who raced 75 yards for a touchdown with just 3 seconds remaining to defeat the Buffalo Bills 22-16 in the AFC Wild Card game.</p>
+                    <p>The play, officially called "Home Run Throwback," remains one of the most replayed moments in football history and cemented the Titans' place in NFL lore.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item major">
+                <div class="timeline-year">January 30, 2000</div>
+                <h3 class="timeline-title">Super Bowl XXXIV - One Yard Short</h3>
+                <div class="timeline-content">
+                    <p>The Titans faced the St. Louis Rams in Super Bowl XXXIV in Atlanta. In a thrilling finale, the Titans drove down the field in the final minutes, trailing 23-16.</p>
+                    <p>On the final play, Steve McNair connected with Kevin Dyson at the goal line, but Mike Jones made the tackle at the one-yard line as time expired. The Rams won 23-16, leaving the Titans heartbreakingly close to a championship.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2003</div>
+                <h3 class="timeline-title">McNair Wins Co-MVP</h3>
+                <div class="timeline-content">
+                    <p>Steve McNair shared the NFL MVP award with Peyton Manning, becoming the first Titan to win the honor. McNair played through numerous injuries to lead the team to a 12-4 record and the AFC Championship game.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2008</div>
+                <h3 class="timeline-title">13-3 Season</h3>
+                <div class="timeline-content">
+                    <p>Under coach Jeff Fisher, the Titans posted a 13-3 record and earned the #1 seed in the AFC. Running back Chris Johnson and quarterback Kerry Collins led a balanced offense that dominated opponents throughout the regular season.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2009</div>
+                <h3 class="timeline-title">CJ2K</h3>
+                <div class="timeline-content">
+                    <p>Chris Johnson rushed for 2,006 yards, becoming only the sixth player in NFL history to break the 2,000-yard barrier. His incredible speed earned him the nickname "CJ2K" and made him one of the most exciting players in the league.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item major">
+                <div class="timeline-year">2019-2020</div>
+                <h3 class="timeline-title">Derrick Henry's Dominance</h3>
+                <div class="timeline-content">
+                    <p>Running back Derrick Henry emerged as the most dominant force in football. In the 2019 playoffs, Henry rushed for 195 yards against the New England Patriots and 195 yards against the Baltimore Ravens, leading upset victories over both teams.</p>
+                    <p>Henry won back-to-back rushing titles in 2019 and 2020, including a 2,027-yard season that marked only the eighth 2,000-yard rushing season in NFL history.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2021</div>
+                <h3 class="timeline-title">#1 Seed in the AFC</h3>
+                <div class="timeline-content">
+                    <p>Despite losing Derrick Henry to injury midseason, the Titans secured the #1 seed in the AFC with a 12-5 record. The team showed remarkable resilience, using a league-high 91 players due to injuries throughout the season.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Present</div>
+                <h3 class="timeline-title">Building for the Future</h3>
+                <div class="timeline-content">
+                    <p>The Tennessee Titans continue to build toward their ultimate goal - bringing a Super Bowl championship to Nashville. With a passionate fanbase and a proud history, the franchise looks toward a bright future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="legends-section">
+        <h2 class="section-title">Franchise Legends</h2>
+        <div class="legends-grid">
+            <div class="legend-card">
+                <div class="legend-number">#9</div>
+                <div class="legend-name">Steve McNair</div>
+                <div class="legend-position">Quarterback</div>
+                <div class="legend-years">1995-2005</div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-number">#27</div>
+                <div class="legend-name">Eddie George</div>
+                <div class="legend-position">Running Back</div>
+                <div class="legend-years">1996-2003</div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-number">#22</div>
+                <div class="legend-name">Derrick Henry</div>
+                <div class="legend-position">Running Back</div>
+                <div class="legend-years">2016-2023</div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-number">#34</div>
+                <div class="legend-name">Earl Campbell</div>
+                <div class="legend-position">Running Back</div>
+                <div class="legend-years">1978-1984</div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-number">#1</div>
+                <div class="legend-name">Warren Moon</div>
+                <div class="legend-position">Quarterback</div>
+                <div class="legend-years">1984-1993</div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-number">#28</div>
+                <div class="legend-name">Chris Johnson</div>
+                <div class="legend-position">Running Back</div>
+                <div class="legend-years">2008-2013</div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-number">#99</div>
+                <div class="legend-name">Jurrell Casey</div>
+                <div class="legend-position">Defensive Tackle</div>
+                <div class="legend-years">2011-2019</div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-number">#59</div>
+                <div class="legend-name">Wesley Woodyard</div>
+                <div class="legend-position">Linebacker</div>
+                <div class="legend-years">2014-2020</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="titan-up">Titan Up</p>
+        <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
+    </footer>
+</body>
+</html>
