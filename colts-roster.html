@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indianapolis Colts 2024 Roster - Tennessee Titans Bible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colts-blue: #002C5F;
+      --colts-white: #FFFFFF;
+      --colts-silver: #A2AAAD;
+      --titans-silver: #A2AAAD;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--colts-blue) 0%, #001530 50%, var(--colts-blue) 100%);
+      min-height: 100vh;
+      color: var(--colts-white);
+    }
+
+    .main-nav {
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(0, 44, 95, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--titans-silver);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--colts-white); background: rgba(0, 44, 95, 0.3); }
+    .nav-link.active { color: var(--colts-blue); background: rgba(162, 170, 173, 0.3); }
+
+    .team-header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(180deg, rgba(0, 44, 95, 0.4) 0%, transparent 100%);
+      border-bottom: 3px solid var(--colts-silver);
+    }
+
+    .team-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .team-record {
+      font-size: 1.2rem;
+      color: var(--colts-silver);
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .team-info {
+      color: var(--titans-silver);
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--colts-silver);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover { color: var(--colts-white); }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--colts-silver);
+      color: var(--colts-white);
+    }
+
+    .section-title:first-of-type { margin-top: 0; }
+
+    .player-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .player-card {
+      background: linear-gradient(145deg, rgba(0, 44, 95, 0.8) 0%, rgba(0, 21, 48, 0.9) 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(162, 170, 173, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .player-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 44, 95, 0.4);
+      border-color: var(--colts-silver);
+    }
+
+    .player-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: top;
+      background: linear-gradient(180deg, rgba(0, 44, 95, 0.3), rgba(0, 21, 48, 0.6));
+    }
+
+    .player-info {
+      padding: 15px;
+    }
+
+    .player-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--colts-white);
+      margin-bottom: 5px;
+    }
+
+    .player-position {
+      font-size: 0.85rem;
+      color: var(--colts-silver);
+      margin-bottom: 10px;
+    }
+
+    .player-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .stat {
+      background: rgba(162, 170, 173, 0.15);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .stat-label { color: var(--colts-silver); }
+    .stat-value { color: var(--colts-white); font-weight: 600; margin-left: 4px; }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      background: rgba(0,0,0,0.4);
+      border-top: 1px solid rgba(0, 44, 95, 0.3);
+      color: var(--titans-silver);
+      font-size: 0.8rem;
+    }
+
+    footer .titan-up {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--colts-silver);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-link { font-size: 0.8rem; padding: 6px 12px; }
+      .player-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Titans_2025_Roster.html" class="nav-link">Titans Roster</a>
+      <a href="nfl.html" class="nav-link active">NFL</a>
+      <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+    </div>
+  </nav>
+
+  <header class="team-header">
+    <h1>Indianapolis Colts</h1>
+    <p class="team-record">2024 Record: 6-8 (3rd in AFC South)</p>
+    <p class="team-info">Lucas Oil Stadium - Indianapolis, IN</p>
+  </header>
+
+  <main class="container">
+    <a href="nfl.html" class="back-link">&larr; Back to NFL</a>
+
+    <h2 class="section-title">Offense</h2>
+    <div class="player-grid">
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4429084.png&w=350&h=254" alt="Anthony Richardson" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Anthony Richardson</h3>
+          <p class="player-position">#5 | Quarterback</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">1,814</span></span>
+            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">8</span></span>
+            <span class="stat"><span class="stat-label">INT:</span><span class="stat-value">12</span></span>
+            <span class="stat"><span class="stat-label">RTG:</span><span class="stat-value">62.3</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4242335.png&w=350&h=254" alt="Jonathan Taylor" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Jonathan Taylor</h3>
+          <p class="player-position">#28 | Running Back</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">CAR:</span><span class="stat-value">247</span></span>
+            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">1,356</span></span>
+            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">16</span></span>
+            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">5.5</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4035687.png&w=350&h=254" alt="Michael Pittman Jr." class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Michael Pittman Jr.</h3>
+          <p class="player-position">#11 | Wide Receiver</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">REC:</span><span class="stat-value">72</span></span>
+            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">725</span></span>
+            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">7</span></span>
+            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">10.1</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4361411.png&w=350&h=254" alt="Josh Downs" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Josh Downs</h3>
+          <p class="player-position">#1 | Wide Receiver</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">REC:</span><span class="stat-value">65</span></span>
+            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">642</span></span>
+            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">3</span></span>
+            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">9.9</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3129308.png&w=350&h=254" alt="Quenton Nelson" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Quenton Nelson</h3>
+          <p class="player-position">#56 | Guard</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">PRO BOWLS:</span><span class="stat-value">7</span></span>
+            <span class="stat"><span class="stat-label">ALL-PRO:</span><span class="stat-value">3</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4036378.png&w=350&h=254" alt="Bernhard Raimann" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Bernhard Raimann</h3>
+          <p class="player-position">#79 | Offensive Tackle</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">STARTS:</span><span class="stat-value">14</span></span>
+            <span class="stat"><span class="stat-label">POS:</span><span class="stat-value">LT</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Defense</h2>
+    <div class="player-grid">
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2971282.png&w=350&h=254" alt="DeForest Buckner" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">DeForest Buckner</h3>
+          <p class="player-position">#99 | Defensive Tackle</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">26</span></span>
+            <span class="stat"><span class="stat-label">SACK:</span><span class="stat-value">4.0</span></span>
+            <span class="stat"><span class="stat-label">TFL:</span><span class="stat-value">6</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426473.png&w=350&h=254" alt="Laiatu Latu" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Laiatu Latu</h3>
+          <p class="player-position">#97 | Defensive End</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">19</span></span>
+            <span class="stat"><span class="stat-label">SACK:</span><span class="stat-value">5.5</span></span>
+            <span class="stat"><span class="stat-label">INT:</span><span class="stat-value">3</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3124005.png&w=350&h=254" alt="Zaire Franklin" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Zaire Franklin</h3>
+          <p class="player-position">#44 | Linebacker</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">93</span></span>
+            <span class="stat"><span class="stat-label">TOTAL:</span><span class="stat-value">173</span></span>
+            <span class="stat"><span class="stat-label">SACK:</span><span class="stat-value">3.5</span></span>
+            <span class="stat"><span class="stat-label">FF:</span><span class="stat-value">5</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4035661.png&w=350&h=254" alt="Julian Blackmon" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Julian Blackmon</h3>
+          <p class="player-position">#32 | Safety</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">62</span></span>
+            <span class="stat"><span class="stat-label">TOTAL:</span><span class="stat-value">86</span></span>
+            <span class="stat"><span class="stat-label">INT:</span><span class="stat-value">3</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3052177.png&w=350&h=254" alt="Kenny Moore II" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Kenny Moore II</h3>
+          <p class="player-position">#23 | Cornerback</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">58</span></span>
+            <span class="stat"><span class="stat-label">PD:</span><span class="stat-value">9</span></span>
+            <span class="stat"><span class="stat-label">INT:</span><span class="stat-value">2</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3121427.png&w=350&h=254" alt="Grover Stewart" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Grover Stewart</h3>
+          <p class="player-position">#90 | Defensive Tackle</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">32</span></span>
+            <span class="stat"><span class="stat-label">TFL:</span><span class="stat-value">4</span></span>
+            <span class="stat"><span class="stat-label">SACK:</span><span class="stat-value">1.0</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Special Teams</h2>
+    <div class="player-grid">
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/15168.png&w=350&h=254" alt="Matt Gay" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Matt Gay</h3>
+          <p class="player-position">#7 | Kicker</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">FG%:</span><span class="stat-value">87.5%</span></span>
+            <span class="stat"><span class="stat-label">FGM:</span><span class="stat-value">28</span></span>
+            <span class="stat"><span class="stat-label">XP%:</span><span class="stat-value">97.1%</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3051876.png&w=350&h=254" alt="Rigoberto Sanchez" class="player-photo">
+        <div class="player-info">
+          <h3 class="player-name">Rigoberto Sanchez</h3>
+          <p class="player-position">#8 | Punter</p>
+          <div class="player-stats">
+            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">45.2</span></span>
+            <span class="stat"><span class="stat-label">IN20:</span><span class="stat-value">18</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="titan-up">Know Your Enemy</p>
+    <p>Kyle's Personal Titans Fan Site - Not affiliated with the Indianapolis Colts or NFL.</p>
+  </footer>
+</body>
+</html>

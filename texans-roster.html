@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Houston Texans 2025 Roster - Tennessee Titans Bible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --texans-navy: #03202F;
+      --texans-red: #A71930;
+      --texans-white: #FFFFFF;
+      --titans-silver: #A2AAAD;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--texans-navy) 0%, #051525 50%, var(--texans-navy) 100%);
+      min-height: 100vh;
+      color: var(--texans-white);
+    }
+
+    .main-nav {
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(167, 25, 48, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--titans-silver);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--texans-white); background: rgba(167, 25, 48, 0.2); }
+    .nav-link.active { color: var(--texans-red); background: rgba(167, 25, 48, 0.15); }
+
+    .team-header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(180deg, rgba(167,25,48,0.3) 0%, transparent 100%);
+      border-bottom: 3px solid var(--texans-red);
+    }
+
+    .team-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .team-record {
+      font-size: 1.2rem;
+      color: var(--texans-red);
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .team-info {
+      color: var(--titans-silver);
+      margin-top: 5px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--texans-red);
+      margin: 30px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--texans-red);
+    }
+
+    .player-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .player-card {
+      background: linear-gradient(145deg, rgba(3, 32, 47, 0.9) 0%, rgba(5, 21, 37, 0.95) 100%);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(167, 25, 48, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .player-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      border-color: var(--texans-red);
+    }
+
+    .player-number {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(167, 25, 48, 0.3);
+    }
+
+    .player-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: rgba(167, 25, 48, 0.2);
+      margin-bottom: 15px;
+    }
+
+    .player-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--texans-white);
+    }
+
+    .player-position {
+      color: var(--texans-red);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .player-details {
+      color: var(--titans-silver);
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    .player-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .stat-badge {
+      background: rgba(167, 25, 48, 0.2);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: var(--texans-white);
+    }
+
+    .highlight-badge {
+      background: var(--texans-red);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--texans-red);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      background: rgba(0,0,0,0.4);
+      border-top: 1px solid rgba(167, 25, 48, 0.2);
+      color: var(--titans-silver);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .player-grid { grid-template-columns: 1fr; }
+      .nav-link { font-size: 0.8rem; padding: 6px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Titans_2025_Roster.html" class="nav-link">Titans Roster</a>
+      <a href="nfl.html" class="nav-link active">NFL</a>
+      <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+    </div>
+  </nav>
+
+  <header class="team-header">
+    <h1>Houston Texans</h1>
+    <p class="team-record">2025 Record: 9-6 (1st AFC South)</p>
+    <p class="team-info">NRG Stadium - Houston, TX</p>
+  </header>
+
+  <main class="container">
+    <a href="nfl.html" class="back-link">&larr; Back to NFL</a>
+
+    <h2 class="section-title">Offense</h2>
+    <div class="player-grid">
+      <div class="player-card">
+        <span class="player-number">#7</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432577.png" class="player-photo" alt="C.J. Stroud">
+        <h3 class="player-name">C.J. Stroud</h3>
+        <p class="player-position">Quarterback</p>
+        <p class="player-details">6-3, 218 lbs | Ohio State | 2nd Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">2,441 Pass Yds</span>
+          <span class="stat-badge">15 TDs</span>
+          <span class="stat-badge">93.2 Rating</span>
+        </div>
+        <span class="highlight-badge">2023 OROY</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#28</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116385.png" class="player-photo" alt="Joe Mixon">
+        <h3 class="player-name">Joe Mixon</h3>
+        <p class="player-position">Running Back</p>
+        <p class="player-details">6-1, 220 lbs | Oklahoma | 8th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">1,016 Rush Yds</span>
+          <span class="stat-badge">11 TDs</span>
+          <span class="stat-badge">4.1 Avg</span>
+        </div>
+        <span class="highlight-badge">Pro Bowl</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#12</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4258173.png" class="player-photo" alt="Nico Collins">
+        <h3 class="player-name">Nico Collins</h3>
+        <p class="player-position">Wide Receiver</p>
+        <p class="player-details">6-4, 222 lbs | Michigan | 4th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">968 Rec Yds</span>
+          <span class="stat-badge">7 TDs</span>
+          <span class="stat-badge">$75M Extension</span>
+        </div>
+        <span class="highlight-badge">Pro Bowl</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#3</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4366031.png" class="player-photo" alt="Tank Dell">
+        <h3 class="player-name">Tank Dell</h3>
+        <p class="player-position">Wide Receiver</p>
+        <p class="player-details">5-10, 165 lbs | Houston | 2nd Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">667 Rec Yds</span>
+          <span class="stat-badge">6 TDs</span>
+          <span class="stat-badge">Speed Threat</span>
+        </div>
+        <span class="highlight-badge">Knee Injury (IR)</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#10</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4241985.png" class="player-photo" alt="Nick Chubb">
+        <h3 class="player-name">Nick Chubb</h3>
+        <p class="player-position">Running Back</p>
+        <p class="player-details">5-11, 227 lbs | Georgia | 8th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">Former Pro Bowler</span>
+          <span class="stat-badge">Veteran RB</span>
+        </div>
+        <span class="highlight-badge">4x Pro Bowl</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#85</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4242335.png" class="player-photo" alt="Dalton Schultz">
+        <h3 class="player-name">Dalton Schultz</h3>
+        <p class="player-position">Tight End</p>
+        <p class="player-details">6-5, 244 lbs | Stanford | 7th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">Reliable Target</span>
+          <span class="stat-badge">Red Zone Threat</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Defense</h2>
+    <div class="player-grid">
+      <div class="player-card">
+        <span class="player-number">#51</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685724.png" class="player-photo" alt="Will Anderson Jr.">
+        <h3 class="player-name">Will Anderson Jr.</h3>
+        <p class="player-position">Defensive End</p>
+        <p class="player-details">6-4, 243 lbs | Alabama | 2nd Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">11 Sacks</span>
+          <span class="stat-badge">Team Leader</span>
+          <span class="stat-badge">3rd Pick 2023</span>
+        </div>
+        <span class="highlight-badge">2023 DROY</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#55</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2976560.png" class="player-photo" alt="Danielle Hunter">
+        <h3 class="player-name">Danielle Hunter</h3>
+        <p class="player-position">Defensive End</p>
+        <p class="player-details">6-5, 263 lbs | LSU | 10th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">8.5 Sacks</span>
+          <span class="stat-badge">$35M Extension</span>
+        </div>
+        <span class="highlight-badge">4x Pro Bowl</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#24</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426434.png" class="player-photo" alt="Derek Stingley Jr.">
+        <h3 class="player-name">Derek Stingley Jr.</h3>
+        <p class="player-position">Cornerback</p>
+        <p class="player-details">6-1, 195 lbs | LSU | 3rd Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">6 INTs</span>
+          <span class="stat-badge">Shutdown Corner</span>
+        </div>
+        <span class="highlight-badge">Pro Bowl</span>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#23</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3128429.png" class="player-photo" alt="Eric Murray">
+        <h3 class="player-name">Eric Murray</h3>
+        <p class="player-position">Safety</p>
+        <p class="player-details">5-11, 199 lbs | Minnesota | 9th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">Veteran Leader</span>
+          <span class="stat-badge">DB Depth</span>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#41</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4360238.png" class="player-photo" alt="Azeez Al-Shaair">
+        <h3 class="player-name">Azeez Al-Shaair</h3>
+        <p class="player-position">Linebacker</p>
+        <p class="player-details">6-2, 228 lbs | Florida Atlantic | 6th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">100+ Tackles</span>
+          <span class="stat-badge">$51M Contract</span>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <span class="player-number">#4</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4046700.png" class="player-photo" alt="Jimmie Ward">
+        <h3 class="player-name">Jimmie Ward</h3>
+        <p class="player-position">Safety</p>
+        <p class="player-details">5-11, 195 lbs | Northern Illinois | 11th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">2x SB Champ</span>
+          <span class="stat-badge">Team Captain</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Special Teams</h2>
+    <div class="player-grid">
+      <div class="player-card">
+        <span class="player-number">#2</span>
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4046692.png" class="player-photo" alt="Ka'imi Fairbairn">
+        <h3 class="player-name">Ka'imi Fairbairn</h3>
+        <p class="player-position">Kicker</p>
+        <p class="player-details">6-0, 183 lbs | UCLA | 8th Year</p>
+        <div class="player-stats">
+          <span class="stat-badge">90%+ FG</span>
+          <span class="stat-badge">Franchise K</span>
+        </div>
+        <span class="highlight-badge">Pro Bowl</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Kyle's Personal Titans Fan Site - Know Your Enemy</p>
+    <p style="margin-top: 5px;">Data sourced from ESPN. Not affiliated with the Houston Texans or NFL.</p>
+  </footer>
+</body>
+</html>
