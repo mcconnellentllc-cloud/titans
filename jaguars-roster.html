@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jacksonville Jaguars 2024 Roster - Tennessee Titans Bible</title>
+  <title>Jacksonville Jaguars 2025 Roster - Tennessee Titans Bible</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -120,16 +120,17 @@
 
     .player-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
     }
 
     .player-card {
       background: linear-gradient(145deg, rgba(0, 103, 120, 0.8) 0%, rgba(16, 24, 32, 0.9) 100%);
       border-radius: 12px;
-      overflow: hidden;
+      padding: 20px;
       border: 1px solid rgba(215, 162, 42, 0.2);
       transition: all 0.3s ease;
+      position: relative;
     }
 
     .player-card:hover {
@@ -138,16 +139,23 @@
       border-color: var(--jaguars-gold);
     }
 
-    .player-photo {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      object-position: top;
-      background: linear-gradient(180deg, rgba(0, 103, 120, 0.3), rgba(16, 24, 32, 0.6));
+    .player-number {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(215, 162, 42, 0.3);
     }
 
-    .player-info {
-      padding: 15px;
+    .player-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: rgba(215, 162, 42, 0.2);
+      margin-bottom: 15px;
     }
 
     .player-name {
@@ -156,12 +164,17 @@
       font-weight: 700;
       text-transform: uppercase;
       color: var(--jaguars-white);
-      margin-bottom: 5px;
     }
 
     .player-position {
       font-size: 0.85rem;
       color: var(--jaguars-gold);
+      margin-bottom: 5px;
+    }
+
+    .player-details {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
       margin-bottom: 10px;
     }
 
@@ -169,17 +182,111 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 10px;
     }
 
-    .stat {
+    .stat-badge {
       background: rgba(215, 162, 42, 0.15);
       padding: 5px 10px;
       border-radius: 4px;
       font-size: 0.75rem;
     }
 
-    .stat-label { color: var(--titans-silver); }
-    .stat-value { color: var(--jaguars-white); font-weight: 600; margin-left: 4px; }
+    .highlight-badge {
+      background: var(--jaguars-gold);
+      color: var(--jaguars-black);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    /* Comparison Bars */
+    .comparison-section {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(215, 162, 42, 0.2);
+    }
+
+    .comparison-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--jaguars-gold);
+      margin-bottom: 10px;
+    }
+
+    .comparison-stat {
+      margin-bottom: 12px;
+    }
+
+    .comparison-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .comparison-label {
+      font-size: 0.7rem;
+      color: var(--titans-silver);
+      text-transform: uppercase;
+    }
+
+    .comparison-value {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .comparison-value.above-avg { color: #4ade80; }
+    .comparison-value.below-avg { color: #f87171; }
+
+    .comparison-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .comparison-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comparison-row-label {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.5);
+      width: 55px;
+      text-align: right;
+    }
+
+    .comparison-bar-bg {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .comparison-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    .comparison-bar.player { background: var(--jaguars-teal); }
+    .comparison-bar.division { background: var(--jaguars-gold); }
+    .comparison-bar.league { background: rgba(255,255,255,0.4); }
+
+    .comparison-bar-value {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.6);
+      width: 35px;
+    }
 
     footer {
       text-align: center;
@@ -218,7 +325,7 @@
 
   <header class="team-header">
     <h1>Jacksonville Jaguars</h1>
-    <p class="team-record">2024 Record: 3-11 (4th in AFC South)</p>
+    <p class="team-record">2025 Record: 10-4 (1st in AFC South)</p>
     <p class="team-info">EverBank Stadium - Jacksonville, FL</p>
   </header>
 
@@ -226,204 +333,194 @@
     <a href="nfl.html" class="back-link">&larr; Back to NFL</a>
 
     <h2 class="section-title">Offense</h2>
-    <div class="player-grid">
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4360310.png&w=350&h=254" alt="Trevor Lawrence" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Trevor Lawrence</h3>
-          <p class="player-position">#16 | Quarterback</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">2,045</span></span>
-            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">11</span></span>
-            <span class="stat"><span class="stat-label">INT:</span><span class="stat-value">7</span></span>
-            <span class="stat"><span class="stat-label">RTG:</span><span class="stat-value">81.9</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4239996.png&w=350&h=254" alt="Travis Etienne Jr." class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Travis Etienne Jr.</h3>
-          <p class="player-position">#1 | Running Back</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">CAR:</span><span class="stat-value">170</span></span>
-            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">640</span></span>
-            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">5</span></span>
-            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">3.8</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4429013.png&w=350&h=254" alt="Tank Bigsby" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Tank Bigsby</h3>
-          <p class="player-position">#4 | Running Back</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">CAR:</span><span class="stat-value">155</span></span>
-            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">766</span></span>
-            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">7</span></span>
-            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">4.9</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432773.png&w=350&h=254" alt="Brian Thomas Jr." class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Brian Thomas Jr.</h3>
-          <p class="player-position">#7 | Wide Receiver</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">REC:</span><span class="stat-value">87</span></span>
-            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">1,282</span></span>
-            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">10</span></span>
-            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">14.7</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4259545.png&w=350&h=254" alt="Evan Engram" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Evan Engram</h3>
-          <p class="player-position">#17 | Tight End</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">REC:</span><span class="stat-value">52</span></span>
-            <span class="stat"><span class="stat-label">YDS:</span><span class="stat-value">449</span></span>
-            <span class="stat"><span class="stat-label">TD:</span><span class="stat-value">2</span></span>
-            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">8.6</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3054850.png&w=350&h=254" alt="Cam Robinson" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Cam Robinson</h3>
-          <p class="player-position">#74 | Offensive Tackle</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">STARTS:</span><span class="stat-value">13</span></span>
-            <span class="stat"><span class="stat-label">POS:</span><span class="stat-value">LT</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="player-grid" id="offenseGrid"></div>
 
     <h2 class="section-title">Defense</h2>
-    <div class="player-grid">
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3915239.png&w=350&h=254" alt="Josh Hines-Allen" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Josh Hines-Allen</h3>
-          <p class="player-position">#41 | Defensive End</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">38</span></span>
-            <span class="stat"><span class="stat-label">SACK:</span><span class="stat-value">7.5</span></span>
-            <span class="stat"><span class="stat-label">TFL:</span><span class="stat-value">12</span></span>
-            <span class="stat"><span class="stat-label">FF:</span><span class="stat-value">3</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426349.png&w=350&h=254" alt="Travon Walker" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Travon Walker</h3>
-          <p class="player-position">#44 | Defensive End</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">42</span></span>
-            <span class="stat"><span class="stat-label">SACK:</span><span class="stat-value">4.0</span></span>
-            <span class="stat"><span class="stat-label">TFL:</span><span class="stat-value">8</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116365.png&w=350&h=254" alt="Foyesade Oluokun" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Foyesade Oluokun</h3>
-          <p class="player-position">#23 | Linebacker</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">91</span></span>
-            <span class="stat"><span class="stat-label">TOTAL:</span><span class="stat-value">144</span></span>
-            <span class="stat"><span class="stat-label">TFL:</span><span class="stat-value">10</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116406.png&w=350&h=254" alt="Tyson Campbell" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Tyson Campbell</h3>
-          <p class="player-position">#32 | Cornerback</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">48</span></span>
-            <span class="stat"><span class="stat-label">PD:</span><span class="stat-value">11</span></span>
-            <span class="stat"><span class="stat-label">INT:</span><span class="stat-value">1</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3052896.png&w=350&h=254" alt="Andre Cisco" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Andre Cisco</h3>
-          <p class="player-position">#5 | Safety</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">62</span></span>
-            <span class="stat"><span class="stat-label">TOTAL:</span><span class="stat-value">98</span></span>
-            <span class="stat"><span class="stat-label">INT:</span><span class="stat-value">2</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4035479.png&w=350&h=254" alt="Devin Lloyd" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Devin Lloyd</h3>
-          <p class="player-position">#33 | Linebacker</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">SOLO:</span><span class="stat-value">58</span></span>
-            <span class="stat"><span class="stat-label">TOTAL:</span><span class="stat-value">95</span></span>
-            <span class="stat"><span class="stat-label">PD:</span><span class="stat-value">4</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="player-grid" id="defenseGrid"></div>
 
     <h2 class="section-title">Special Teams</h2>
-    <div class="player-grid">
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3124084.png&w=350&h=254" alt="Cam Little" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Cam Little</h3>
-          <p class="player-position">#39 | Kicker</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">FG%:</span><span class="stat-value">85.2%</span></span>
-            <span class="stat"><span class="stat-label">FGM:</span><span class="stat-value">23</span></span>
-            <span class="stat"><span class="stat-label">XP%:</span><span class="stat-value">100%</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3045147.png&w=350&h=254" alt="Logan Cooke" class="player-photo">
-        <div class="player-info">
-          <h3 class="player-name">Logan Cooke</h3>
-          <p class="player-position">#9 | Punter</p>
-          <div class="player-stats">
-            <span class="stat"><span class="stat-label">AVG:</span><span class="stat-value">47.8</span></span>
-            <span class="stat"><span class="stat-label">IN20:</span><span class="stat-value">24</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="player-grid" id="specialGrid"></div>
   </main>
 
   <footer>
     <p class="titan-up">Know Your Enemy</p>
     <p>Kyle's Personal Titans Fan Site - Not affiliated with the Jacksonville Jaguars or NFL.</p>
   </footer>
+
+  <script>
+    // Player data
+    const players = [
+      // OFFENSE
+      { name: "Trevor Lawrence", number: 16, position: "QB", group: "offense", details: "6-6, 220 lbs | Clemson | 4th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4360310.png", highlight: "$275M Contract", stats: { PassYds: 2045, TD: 11, INT: 7, Rating: 81.9 } },
+      { name: "Travis Etienne Jr.", number: 1, position: "RB", group: "offense", details: "5-10, 215 lbs | Clemson | 4th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4239996.png", highlight: "Dual Threat", stats: { RushYds: 640, TD: 5, Avg: 3.8, Carries: 170 } },
+      { name: "Tank Bigsby", number: 4, position: "RB", group: "offense", details: "6-0, 210 lbs | Auburn | 2nd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4429013.png", highlight: "Power Back", stats: { RushYds: 766, TD: 7, Avg: 4.9, Carries: 155 } },
+      { name: "Brian Thomas Jr.", number: 7, position: "WR", group: "offense", details: "6-3, 209 lbs | LSU | Rookie", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432773.png", highlight: "1st Rd Pick", stats: { RecYds: 1282, Rec: 87, TD: 10, Targets: 124 } },
+      { name: "Evan Engram", number: 17, position: "TE", group: "offense", details: "6-3, 240 lbs | Ole Miss | 8th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3051392.png", highlight: "Pro Bowl TE", stats: { RecYds: 449, Rec: 52, TD: 2, Targets: 72 } },
+      { name: "Cam Robinson", number: 74, position: "OT", group: "offense", details: "6-6, 322 lbs | Alabama | 8th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3054850.png", highlight: "Starting LT", stats: { Starts: 13 } },
+
+      // DEFENSE
+      { name: "Josh Hines-Allen", number: 41, position: "OLB", group: "defense", details: "6-5, 260 lbs | Kentucky | 6th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3915239.png", highlight: "Pass Rusher", stats: { Tackles: 56, Sacks: 7.5, TFL: 12, FF: 3 } },
+      { name: "Travon Walker", number: 44, position: "OLB", group: "defense", details: "6-5, 272 lbs | Georgia | 3rd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426349.png", highlight: "#1 Pick 2022", stats: { Tackles: 58, Sacks: 4.0, TFL: 8, FF: 1 } },
+      { name: "Foyesade Oluokun", number: 23, position: "ILB", group: "defense", details: "6-2, 232 lbs | Yale | 7th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116365.png", highlight: "Tackle Machine", stats: { Tackles: 144, Sacks: 1.5, INT: 2, TFL: 10 } },
+      { name: "Tyson Campbell", number: 32, position: "CB", group: "defense", details: "6-1, 193 lbs | Georgia | 4th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4361307.png", highlight: "Shutdown CB", stats: { Tackles: 62, INT: 1, PD: 11 } },
+      { name: "Andre Cisco", number: 5, position: "S", group: "defense", details: "6-0, 207 lbs | Syracuse | 4th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4241478.png", highlight: "Ball Hawk", stats: { Tackles: 98, INT: 2, PD: 7 } },
+      { name: "Devin Lloyd", number: 33, position: "ILB", group: "defense", details: "6-3, 237 lbs | Utah | 3rd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4035479.png", highlight: "1st Rd Pick", stats: { Tackles: 95, Sacks: 1.0, INT: 1, TFL: 6 } },
+
+      // SPECIAL TEAMS
+      { name: "Cam Little", number: 39, position: "K", group: "special", details: "6-0, 190 lbs | Arkansas | 2nd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4569173.png", highlight: "Reliable K", stats: { FGMade: 23, FGAtt: 27, "FG%": 85.2 } },
+      { name: "Logan Cooke", number: 9, position: "P", group: "special", details: "6-5, 230 lbs | Mississippi State | 7th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3045147.png", highlight: "Pro Bowl P", stats: { Avg: 47.8, In20: 24 } }
+    ];
+
+    // League and Division Averages
+    const positionAverages = {
+      QB: {
+        league: { PassYds: 2850, TD: 18, INT: 9, Rating: 88.5 },
+        division: { PassYds: 2350, TD: 14, INT: 7, Rating: 84.2 },
+        compareStats: ['PassYds', 'TD', 'Rating']
+      },
+      RB: {
+        league: { RushYds: 680, TD: 5, Avg: 4.3, Carries: 165 },
+        division: { RushYds: 620, TD: 4, Avg: 4.1, Carries: 155 },
+        compareStats: ['RushYds', 'TD', 'Avg']
+      },
+      WR: {
+        league: { RecYds: 520, Rec: 42, TD: 3, Targets: 68 },
+        division: { RecYds: 480, Rec: 38, TD: 3, Targets: 62 },
+        compareStats: ['RecYds', 'Rec', 'TD']
+      },
+      TE: {
+        league: { RecYds: 340, Rec: 30, TD: 2, Targets: 45 },
+        division: { RecYds: 310, Rec: 27, TD: 2, Targets: 40 },
+        compareStats: ['RecYds', 'Rec', 'TD']
+      },
+      OT: {
+        league: { Starts: 12 },
+        division: { Starts: 11 },
+        compareStats: ['Starts']
+      },
+      OLB: {
+        league: { Tackles: 42, Sacks: 5.5, TFL: 8, FF: 1 },
+        division: { Tackles: 38, Sacks: 4.8, TFL: 7, FF: 0.8 },
+        compareStats: ['Tackles', 'Sacks', 'TFL']
+      },
+      ILB: {
+        league: { Tackles: 82, Sacks: 1.5, INT: 1, TFL: 5 },
+        division: { Tackles: 76, Sacks: 1.2, INT: 0.8, TFL: 4 },
+        compareStats: ['Tackles', 'Sacks', 'INT']
+      },
+      CB: {
+        league: { Tackles: 45, INT: 2, PD: 9 },
+        division: { Tackles: 42, INT: 1.5, PD: 8 },
+        compareStats: ['Tackles', 'INT', 'PD']
+      },
+      S: {
+        league: { Tackles: 62, INT: 1.5, PD: 5 },
+        division: { Tackles: 58, INT: 1.2, PD: 4.5 },
+        compareStats: ['Tackles', 'INT', 'PD']
+      },
+      K: {
+        league: { "FG%": 85.0, FGMade: 24, FGAtt: 28 },
+        division: { "FG%": 83.5, FGMade: 22, FGAtt: 27 },
+        compareStats: ['FGMade', 'FG%']
+      },
+      P: {
+        league: { Avg: 46.8, In20: 20 },
+        division: { Avg: 45.5, In20: 18 },
+        compareStats: ['Avg', 'In20']
+      }
+    };
+
+    const statLabels = {
+      PassYds: 'Pass Yards', TD: 'Touchdowns', INT: 'Interceptions', Rating: 'Passer Rating',
+      RushYds: 'Rush Yards', Avg: 'Yards/Carry', Carries: 'Carries', Rec: 'Receptions',
+      RecYds: 'Rec Yards', Targets: 'Targets', Tackles: 'Tackles', Sacks: 'Sacks',
+      TFL: 'Tackles for Loss', FF: 'Forced Fumbles', PD: 'Pass Deflections',
+      FGMade: 'FG Made', FGAtt: 'FG Attempts', "FG%": 'FG %', In20: 'Inside 20', Starts: 'Starts'
+    };
+
+    function generateComparison(player) {
+      const pos = player.position;
+      const avgData = positionAverages[pos];
+      if (!avgData) return '';
+
+      let html = '<div class="comparison-section"><div class="comparison-title">vs League Avg</div>';
+      const statsToCompare = avgData.compareStats || [];
+
+      statsToCompare.forEach(stat => {
+        const playerVal = player.stats[stat];
+        const divVal = avgData.division[stat];
+        const leagueVal = avgData.league[stat];
+        if (playerVal === undefined) return;
+
+        const maxVal = Math.max(playerVal, divVal, leagueVal) * 1.1;
+        const playerPct = (playerVal / maxVal) * 100;
+        const divPct = (divVal / maxVal) * 100;
+        const leaguePct = (leagueVal / maxVal) * 100;
+
+        const vsLeague = playerVal >= leagueVal ? 'above-avg' : 'below-avg';
+        const diff = ((playerVal - leagueVal) / leagueVal * 100).toFixed(0);
+        const diffText = playerVal >= leagueVal ? `+${diff}%` : `${diff}%`;
+
+        html += `
+          <div class="comparison-stat">
+            <div class="comparison-header">
+              <span class="comparison-label">${statLabels[stat] || stat}</span>
+              <span class="comparison-value ${vsLeague}">${playerVal} <small style="font-size:10px;opacity:0.7">(${diffText} vs NFL)</small></span>
+            </div>
+            <div class="comparison-bars">
+              <div class="comparison-row">
+                <span class="comparison-row-label">Player</span>
+                <div class="comparison-bar-bg"><div class="comparison-bar player" style="width: ${playerPct}%"></div></div>
+                <span class="comparison-bar-value">${playerVal}</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-row-label">AFC South</span>
+                <div class="comparison-bar-bg"><div class="comparison-bar division" style="width: ${divPct}%"></div></div>
+                <span class="comparison-bar-value">${divVal}</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-row-label">NFL Avg</span>
+                <div class="comparison-bar-bg"><div class="comparison-bar league" style="width: ${leaguePct}%"></div></div>
+                <span class="comparison-bar-value">${leagueVal}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      return html + '</div>';
+    }
+
+    function renderPlayers() {
+      const groups = { offense: 'offenseGrid', defense: 'defenseGrid', special: 'specialGrid' };
+
+      Object.keys(groups).forEach(group => {
+        const grid = document.getElementById(groups[group]);
+        const groupPlayers = players.filter(p => p.group === group);
+
+        groupPlayers.forEach(player => {
+          const statBadges = Object.entries(player.stats).slice(0, 3).map(([key, val]) =>
+            `<span class="stat-badge">${val} ${statLabels[key] || key}</span>`
+          ).join('');
+
+          const card = document.createElement('div');
+          card.className = 'player-card';
+          card.innerHTML = `
+            <span class="player-number">#${player.number}</span>
+            <img src="${player.photo}" class="player-photo" alt="${player.name}" onerror="this.src='https://via.placeholder.com/80?text=${player.number}'">
+            <h3 class="player-name">${player.name}</h3>
+            <p class="player-position">${player.position}</p>
+            <p class="player-details">${player.details}</p>
+            <div class="player-stats">${statBadges}</div>
+            ${player.highlight ? `<span class="highlight-badge">${player.highlight}</span>` : ''}
+            ${generateComparison(player)}
+          `;
+          grid.appendChild(card);
+        });
+      });
+    }
+
+    renderPlayers();
+  </script>
 </body>
 </html>
