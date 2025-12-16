@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennessee Titans Bible - The Complete Super Fan Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--titans-navy) 0%, #1a3a5c 50%, var(--titans-navy) 100%);
+            min-height: 100vh;
+            color: var(--titans-white);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .titans-logo {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .flames-icon {
+            font-size: 80px;
+            color: var(--titans-blue);
+            text-shadow: 0 0 30px var(--titans-blue), 0 0 60px rgba(75, 146, 219, 0.5);
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(180deg, var(--titans-white) 0%, var(--titans-silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 500;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--titans-silver);
+            margin-top: 15px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--titans-red), var(--titans-blue));
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 300px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--titans-white);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--titans-blue), var(--titans-red));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(75, 146, 219, 0.2);
+            border-color: var(--titans-blue);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: var(--titans-silver);
+            line-height: 1.6;
+        }
+
+        .card.roster {
+            border-top: 4px solid var(--titans-blue);
+        }
+
+        .card.cheerleaders {
+            border-top: 4px solid var(--titans-red);
+        }
+
+        .card.download {
+            border-top: 4px solid var(--titans-silver);
+        }
+
+        .card.roster .card-icon { color: var(--titans-blue); }
+        .card.cheerleaders .card-icon { color: var(--titans-red); }
+        .card.download .card-icon { color: var(--titans-silver); }
+
+        .btn-accent {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, var(--titans-blue) 0%, #3a7bc8 100%);
+            border-radius: 25px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .btn-accent {
+            background: linear-gradient(135deg, var(--titans-red) 0%, #a00d24 100%);
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.3);
+            color: var(--titans-silver);
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        .sword-decoration {
+            position: fixed;
+            opacity: 0.03;
+            font-size: 400px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .sword-left {
+            left: -100px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+
+        .sword-right {
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%) rotate(15deg);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 15px 30px;
+            }
+
+            .cards-container {
+                padding: 20px 15px 60px;
+                gap: 20px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+                padding: 30px 25px;
+            }
+
+            .card-icon {
+                font-size: 50px;
+            }
+
+            .sword-decoration {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                letter-spacing: 1px;
+            }
+
+            .subtitle {
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sword-decoration sword-left">⚔</div>
+    <div class="sword-decoration sword-right">⚔</div>
+
+    <header class="hero">
+        <div class="logo-container">
+            <div class="flames-icon">🔥</div>
+        </div>
+        <h1>Tennessee Titans Bible</h1>
+        <p class="subtitle">The Complete Super Fan Guide</p>
+        <div class="divider"></div>
+        <p class="tagline">Kyle's Personal Tennessee Titans Fan Collection</p>
+    </header>
+
+    <main class="cards-container">
+        <a href="Titans_2025_Roster.html" class="card roster">
+            <span class="card-icon">🏈</span>
+            <h2 class="card-title">2025 Roster</h2>
+            <p class="card-description">Complete interactive roster with player stats, positions, and detailed bios for the 2025 season.</p>
+            <span class="btn-accent">View Roster</span>
+        </a>
+
+        <a href="titans-cheerleaders-2025.html" class="card cheerleaders">
+            <span class="card-icon">⭐</span>
+            <h2 class="card-title">Cheerleaders</h2>
+            <p class="card-description">Meet the Tennessee Titans Cheerleaders with searchable profiles and photos.</p>
+            <span class="btn-accent">View Team</span>
+        </a>
+
+        <a href="Tennessee_Titans_Bible.pdf" class="card download" download>
+            <span class="card-icon">📖</span>
+            <h2 class="card-title">Download the Bible</h2>
+            <p class="card-description">Get the complete Tennessee Titans Bible PDF - your ultimate fan guide to print or save.</p>
+            <span class="btn-accent">Download PDF</span>
+        </a>
+    </main>
+
+    <footer>
+        <p><strong>Titan Up!</strong></p>
+        <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
+    </footer>
+</body>
+</html>
