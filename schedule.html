@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025 Schedule - Tennessee Titans Bible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --titans-navy: #0C2340;
+      --titans-blue: #4B92DB;
+      --titans-red: #C8102E;
+      --titans-silver: #A2AAAD;
+      --titans-white: #FFFFFF;
+      --win-green: #22c55e;
+      --loss-red: #ef4444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--titans-navy) 0%, #061428 50%, var(--titans-navy) 100%);
+      min-height: 100vh;
+      color: var(--titans-white);
+    }
+
+    .main-nav {
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--titans-silver);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--titans-white); background: rgba(75, 146, 219, 0.2); }
+    .nav-link.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.15); }
+
+    .page-header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(180deg, rgba(75, 146, 219, 0.2) 0%, transparent 100%);
+      border-bottom: 3px solid var(--titans-blue);
+    }
+
+    .page-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .record-display {
+      font-size: 1.5rem;
+      color: var(--titans-blue);
+      margin-top: 10px;
+      font-weight: 600;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .record-details {
+      color: var(--titans-silver);
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .schedule-table th {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--titans-blue);
+      text-align: left;
+      padding: 15px 12px;
+      border-bottom: 2px solid var(--titans-blue);
+      background: rgba(0,0,0,0.3);
+    }
+
+    .schedule-table td {
+      padding: 15px 12px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.15);
+      vertical-align: middle;
+    }
+
+    .schedule-table tr:hover {
+      background: rgba(75, 146, 219, 0.1);
+    }
+
+    .schedule-table tr.bye-week {
+      background: rgba(162, 170, 173, 0.1);
+      font-style: italic;
+    }
+
+    .schedule-table tr.bye-week td {
+      color: var(--titans-silver);
+      text-align: center;
+    }
+
+    .week-num {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      color: var(--titans-silver);
+      font-size: 0.9rem;
+    }
+
+    .game-date {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .opponent {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .opponent-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.1);
+      object-fit: contain;
+    }
+
+    .opponent-name {
+      font-weight: 600;
+    }
+
+    .location {
+      font-size: 0.85rem;
+      color: var(--titans-silver);
+    }
+
+    .location-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-right: 8px;
+    }
+
+    .location-tag.home {
+      background: rgba(75, 146, 219, 0.3);
+      color: var(--titans-blue);
+    }
+
+    .location-tag.away {
+      background: rgba(162, 170, 173, 0.3);
+      color: var(--titans-silver);
+    }
+
+    .result {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .result-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .result-badge.win {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--win-green);
+    }
+
+    .result-badge.loss {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--loss-red);
+    }
+
+    .result-badge.upcoming {
+      background: rgba(162, 170, 173, 0.2);
+      color: var(--titans-silver);
+    }
+
+    .score {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .score.win { color: var(--win-green); }
+    .score.loss { color: var(--loss-red); }
+
+    .game-time {
+      font-size: 0.85rem;
+      color: var(--titans-silver);
+    }
+
+    .legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(75, 146, 219, 0.2);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--titans-silver);
+    }
+
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    .legend-color.win { background: var(--win-green); }
+    .legend-color.loss { background: var(--loss-red); }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      background: rgba(0,0,0,0.4);
+      border-top: 1px solid rgba(75, 146, 219, 0.2);
+      color: var(--titans-silver);
+      font-size: 0.8rem;
+    }
+
+    footer .titan-up {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--titans-blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-link { font-size: 0.8rem; padding: 6px 12px; }
+      .schedule-table th, .schedule-table td { padding: 10px 8px; font-size: 0.85rem; }
+      .opponent-logo { width: 24px; height: 24px; }
+      .location { font-size: 0.75rem; }
+      .hide-mobile { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Titans_2025_Roster.html" class="nav-link">Roster</a>
+      <a href="schedule.html" class="nav-link active">Schedule</a>
+      <a href="nfl.html" class="nav-link">NFL</a>
+      <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>2025 Season Schedule</h1>
+    <p class="record-display">2-12 (4th in AFC South)</p>
+    <p class="record-details">Home: 1-6 | Away: 1-6 | Division: 0-5</p>
+  </header>
+
+  <main class="container">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Date</th>
+          <th>Opponent</th>
+          <th>Location</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="week-num">1</span></td>
+          <td><span class="game-date">Sun, Sep 7</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Denver Broncos</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">Empower Field at Mile High</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">12-20</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">2</span></td>
+          <td><span class="game-date">Sun, Sep 14</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Los Angeles Rams</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">19-33</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">3</span></td>
+          <td><span class="game-date">Sun, Sep 21</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Indianapolis Colts</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">20-41</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">4</span></td>
+          <td><span class="game-date">Sun, Sep 28</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Houston Texans</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">NRG Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">0-26</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">5</span></td>
+          <td><span class="game-date">Sun, Oct 5</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Arizona Cardinals</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">State Farm Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge win">W</span>
+              <span class="score win">22-21</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">6</span></td>
+          <td><span class="game-date">Sun, Oct 12</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Las Vegas Raiders</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">Allegiant Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">10-20</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">7</span></td>
+          <td><span class="game-date">Sun, Oct 19</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">New England Patriots</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">13-31</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">8</span></td>
+          <td><span class="game-date">Sun, Oct 26</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Indianapolis Colts</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">Lucas Oil Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">14-38</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">9</span></td>
+          <td><span class="game-date">Sun, Nov 2</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Los Angeles Chargers</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">20-27</span>
+            </div>
+          </td>
+        </tr>
+        <tr class="bye-week">
+          <td><span class="week-num">10</span></td>
+          <td colspan="4">BYE WEEK</td>
+        </tr>
+        <tr>
+          <td><span class="week-num">11</span></td>
+          <td><span class="game-date">Sun, Nov 16</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Houston Texans</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">13-16</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">12</span></td>
+          <td><span class="game-date">Sun, Nov 23</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Seattle Seahawks</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">24-30</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">13</span></td>
+          <td><span class="game-date">Sun, Nov 30</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Jacksonville Jaguars</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">3-25</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">14</span></td>
+          <td><span class="game-date">Sun, Dec 7</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Cleveland Browns</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">Huntington Bank Field</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge win">W</span>
+              <span class="score win">31-29</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">15</span></td>
+          <td><span class="game-date">Sun, Dec 14</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">San Francisco 49ers</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">Levi's Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge loss">L</span>
+              <span class="score loss">24-37</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">16</span></td>
+          <td><span class="game-date">Sun, Dec 21</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Kansas City Chiefs</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge upcoming">Upcoming</span>
+              <span class="game-time">12:00 PM CT</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">17</span></td>
+          <td><span class="game-date">Sun, Dec 28</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">New Orleans Saints</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag home">Home</span>
+            <span class="location">Nissan Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge upcoming">Upcoming</span>
+              <span class="game-time">12:00 PM CT</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="week-num">18</span></td>
+          <td><span class="game-date">TBD</span></td>
+          <td>
+            <div class="opponent">
+              <span class="opponent-name">Jacksonville Jaguars</span>
+            </div>
+          </td>
+          <td>
+            <span class="location-tag away">Away</span>
+            <span class="location">EverBank Stadium</span>
+          </td>
+          <td>
+            <div class="result">
+              <span class="result-badge upcoming">Upcoming</span>
+              <span class="game-time">TBD</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="legend">
+      <div class="legend-item">
+        <span class="legend-color win"></span>
+        <span>Win</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-color loss"></span>
+        <span>Loss</span>
+      </div>
+      <div class="legend-item">
+        <span class="location-tag home" style="margin:0">Home</span>
+        <span>Nissan Stadium</span>
+      </div>
+      <div class="legend-item">
+        <span class="location-tag away" style="margin:0">Away</span>
+        <span>Road Game</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="titan-up">Titan Up!</p>
+    <p>Kyle's Personal Titans Fan Site - Data sourced from NFL.com and ESPN</p>
+  </footer>
+</body>
+</html>
