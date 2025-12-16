@@ -671,6 +671,132 @@
       .player-grid { grid-template-columns: 1fr; }
       .modal-header { flex-direction: column; text-align: center; padding: 20px; }
       .modal-number { display: none; }
+      .comparison-row { flex-direction: column; gap: 8px; }
+      .comparison-bars { width: 100%; }
+    }
+
+    /* Comparison Styles */
+    .comparison-section {
+      margin-top: 20px;
+    }
+
+    .comparison-section h4 {
+      color: var(--titans-blue);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .comparison-stat {
+      margin-bottom: 16px;
+    }
+
+    .comparison-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .comparison-label {
+      color: rgba(255,255,255,0.7);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .comparison-value {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .comparison-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .comparison-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comparison-row-label {
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      width: 50px;
+      text-transform: uppercase;
+    }
+
+    .comparison-bar-bg {
+      flex: 1;
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .comparison-bar {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .comparison-bar.player {
+      background: linear-gradient(90deg, var(--titans-blue), #6ab0ff);
+    }
+
+    .comparison-bar.division {
+      background: linear-gradient(90deg, #f39c12, #f1c40f);
+    }
+
+    .comparison-bar.league {
+      background: linear-gradient(90deg, #95a5a6, #bdc3c7);
+    }
+
+    .comparison-bar-value {
+      font-size: 10px;
+      color: rgba(255,255,255,0.6);
+      min-width: 40px;
+      text-align: right;
+    }
+
+    .comparison-legend {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .legend-color.player { background: var(--titans-blue); }
+    .legend-color.division { background: #f39c12; }
+    .legend-color.league { background: #95a5a6; }
+
+    .above-avg {
+      color: #2ecc71;
+    }
+
+    .below-avg {
+      color: #e74c3c;
     }
   </style>
 </head>
@@ -829,6 +955,15 @@
           <h4>2025 Statistics</h4>
           <div class="stats-grid" id="modalStats"></div>
         </div>
+        <div class="modal-section comparison-section">
+          <h4>vs Division & League Averages</h4>
+          <div class="comparison-legend">
+            <div class="legend-item"><div class="legend-color player"></div>Player</div>
+            <div class="legend-item"><div class="legend-color division"></div>AFC South Avg</div>
+            <div class="legend-item"><div class="legend-color league"></div>NFL Avg</div>
+          </div>
+          <div id="modalComparison"></div>
+        </div>
         <div class="modal-section">
           <h4>Biography</h4>
           <p class="bio-text" id="modalBio"></p>
@@ -881,6 +1016,162 @@ const coaches = [
   { name: "Tracy Rocker", title: "Defensive Line Coach", exp: "Former Auburn DL Coach", note: "Developing Simmons & Sweat", isHead: false },
   { name: "Frank Bush", title: "Linebackers Coach", exp: "Veteran NFL coach", note: "Guiding rookie Gray", isHead: false }
 ];
+
+// League and Division Averages by Position (2025 Season - Through Week 15)
+const positionAverages = {
+  QB: {
+    league: { PassYds: 2850, TD: 18, INT: 9, Rating: 88.5, RushYds: 145 },
+    division: { PassYds: 2350, TD: 14, INT: 7, Rating: 84.2, RushYds: 180 },
+    compareStats: ['PassYds', 'TD', 'Rating']
+  },
+  RB: {
+    league: { RushYds: 680, TD: 5, Avg: 4.3, Carries: 165, Rec: 28 },
+    division: { RushYds: 620, TD: 4, Avg: 4.1, Carries: 155, Rec: 24 },
+    compareStats: ['RushYds', 'TD', 'Avg']
+  },
+  WR: {
+    league: { RecYds: 520, Rec: 42, TD: 3, Targets: 68 },
+    division: { RecYds: 480, Rec: 38, TD: 3, Targets: 62 },
+    compareStats: ['RecYds', 'Rec', 'TD']
+  },
+  TE: {
+    league: { RecYds: 340, Rec: 30, TD: 2, Targets: 45 },
+    division: { RecYds: 310, Rec: 27, TD: 2, Targets: 40 },
+    compareStats: ['RecYds', 'Rec', 'TD']
+  },
+  OT: {
+    league: { Starts: 12, Position: "T" },
+    division: { Starts: 11, Position: "T" },
+    compareStats: ['Starts']
+  },
+  G: {
+    league: { Starts: 12, Position: "G" },
+    division: { Starts: 11, Position: "G" },
+    compareStats: ['Starts']
+  },
+  DT: {
+    league: { Tackles: 36, Sacks: 3.5, TFL: 6 },
+    division: { Tackles: 33, Sacks: 3.0, TFL: 5 },
+    compareStats: ['Tackles', 'Sacks', 'TFL']
+  },
+  NT: {
+    league: { Tackles: 32, Sacks: 1.5, TFL: 4 },
+    division: { Tackles: 30, Sacks: 1.2, TFL: 3.5 },
+    compareStats: ['Tackles', 'Sacks', 'TFL']
+  },
+  ILB: {
+    league: { Tackles: 82, Sacks: 1.5, INT: 1, TFL: 5 },
+    division: { Tackles: 76, Sacks: 1.2, INT: 0.8, TFL: 4 },
+    compareStats: ['Tackles', 'Sacks', 'INT']
+  },
+  OLB: {
+    league: { Tackles: 42, Sacks: 5.5, TFL: 8, FF: 1 },
+    division: { Tackles: 38, Sacks: 4.8, TFL: 7, FF: 0.8 },
+    compareStats: ['Tackles', 'Sacks', 'TFL']
+  },
+  CB: {
+    league: { Tackles: 45, INT: 2, PD: 9 },
+    division: { Tackles: 42, INT: 1.5, PD: 8 },
+    compareStats: ['Tackles', 'INT', 'PD']
+  },
+  S: {
+    league: { Tackles: 62, INT: 1.5, PD: 5 },
+    division: { Tackles: 58, INT: 1.2, PD: 4.5 },
+    compareStats: ['Tackles', 'INT', 'PD']
+  },
+  K: {
+    league: { "FG%": 85.0, FGMade: 24, FGAtt: 28 },
+    division: { "FG%": 83.5, FGMade: 22, FGAtt: 27 },
+    compareStats: ['FGMade', 'FG%']
+  },
+  P: {
+    league: { Avg: 46.8, In20: 20, Long: 62 },
+    division: { Avg: 45.5, In20: 18, Long: 60 },
+    compareStats: ['Avg', 'In20']
+  },
+  "WR/KR": {
+    league: { KRYds: 380, KRAvg: 22.5, PRYds: 75 },
+    division: { KRYds: 350, KRAvg: 21.8, PRYds: 65 },
+    compareStats: ['KRYds', 'KRAvg']
+  }
+};
+
+// Stat display names
+const statLabels = {
+  PassYds: 'Pass Yards', TD: 'Touchdowns', INT: 'Interceptions', Rating: 'Passer Rating',
+  RushYds: 'Rush Yards', Avg: 'Yards/Carry', Carries: 'Carries', Rec: 'Receptions',
+  RecYds: 'Rec Yards', Targets: 'Targets', Tackles: 'Tackles', Sacks: 'Sacks',
+  TFL: 'Tackles for Loss', FF: 'Forced Fumbles', PD: 'Pass Deflections',
+  FGMade: 'FG Made', FGAtt: 'FG Attempts', "FG%": 'FG %', In20: 'Inside 20',
+  Long: 'Long', Punts: 'Punts', KRYds: 'KR Yards', KRAvg: 'KR Avg', PRYds: 'PR Yards',
+  Starts: 'Starts', GP: 'Games Played'
+};
+
+// Generate comparison HTML
+function generateComparison(player) {
+  const pos = player.position;
+  const avgData = positionAverages[pos];
+
+  if (!avgData) return '<p style="color:rgba(255,255,255,0.5);font-size:12px;">No comparison data available for this position</p>';
+
+  let html = '';
+  const statsToCompare = avgData.compareStats || [];
+
+  statsToCompare.forEach(stat => {
+    const playerVal = player.stats[stat];
+    const divVal = avgData.division[stat];
+    const leagueVal = avgData.league[stat];
+
+    if (playerVal === undefined) return;
+
+    // Calculate max for bar scaling
+    const maxVal = Math.max(playerVal, divVal, leagueVal) * 1.1;
+
+    // Calculate percentages for bars
+    const playerPct = (playerVal / maxVal) * 100;
+    const divPct = (divVal / maxVal) * 100;
+    const leaguePct = (leagueVal / maxVal) * 100;
+
+    // Determine if above/below average
+    const vsLeague = playerVal >= leagueVal ? 'above-avg' : 'below-avg';
+    const diff = ((playerVal - leagueVal) / leagueVal * 100).toFixed(0);
+    const diffText = playerVal >= leagueVal ? `+${diff}%` : `${diff}%`;
+
+    html += `
+      <div class="comparison-stat">
+        <div class="comparison-header">
+          <span class="comparison-label">${statLabels[stat] || stat}</span>
+          <span class="comparison-value ${vsLeague}">${playerVal} <small style="font-size:10px;opacity:0.7">(${diffText} vs NFL)</small></span>
+        </div>
+        <div class="comparison-bars">
+          <div class="comparison-row">
+            <span class="comparison-row-label">Player</span>
+            <div class="comparison-bar-bg">
+              <div class="comparison-bar player" style="width: ${playerPct}%"></div>
+            </div>
+            <span class="comparison-bar-value">${playerVal}</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-row-label">AFC South</span>
+            <div class="comparison-bar-bg">
+              <div class="comparison-bar division" style="width: ${divPct}%"></div>
+            </div>
+            <span class="comparison-bar-value">${divVal}</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-row-label">NFL Avg</span>
+            <div class="comparison-bar-bg">
+              <div class="comparison-bar league" style="width: ${leaguePct}%"></div>
+            </div>
+            <span class="comparison-bar-value">${leagueVal}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  return html || '<p style="color:rgba(255,255,255,0.5);font-size:12px;">No comparable statistics available</p>';
+}
 
 // Render players
 function renderPlayers(filter = 'all', search = '') {
@@ -946,17 +1237,21 @@ function openModal(player) {
   document.getElementById('modalDetails').textContent = `${player.position} • ${player.height}, ${player.weight} lbs`;
   document.getElementById('modalCollege').textContent = `${player.college} • Age ${player.age} • ${player.experience}`;
   document.getElementById('modalBio').textContent = player.bio;
-  
+
   const statsGrid = document.getElementById('modalStats');
   statsGrid.innerHTML = Object.entries(player.stats).map(([key, val]) => `
     <div class="stat-box">
       <div class="stat-value">${val}</div>
-      <div class="stat-label">${key}</div>
+      <div class="stat-label">${statLabels[key] || key}</div>
     </div>
   `).join('');
-  
+
+  // Generate comparison section
+  const comparisonDiv = document.getElementById('modalComparison');
+  comparisonDiv.innerHTML = generateComparison(player);
+
   const highlightsDiv = document.getElementById('modalHighlights');
-  highlightsDiv.innerHTML = player.highlights.map(h => 
+  highlightsDiv.innerHTML = player.highlights.map(h =>
     `<span class="modal-highlight">${h}</span>`
   ).join('');
 }
