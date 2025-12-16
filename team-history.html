@@ -29,54 +29,47 @@
             color: var(--titans-white);
         }
 
-        header {
-            background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%);
-            padding: 20px;
-            border-bottom: 3px solid var(--titans-red);
+        /* Navigation */
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .header-content {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
+            gap: 10px;
             flex-wrap: wrap;
-            gap: 15px;
         }
 
-        .back-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .nav-link {
             color: var(--titans-silver);
             text-decoration: none;
             font-family: 'Oswald', sans-serif;
             font-size: 0.9rem;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
-        .back-link:hover {
-            color: var(--titans-blue);
-        }
-
-        .back-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        header h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+        .nav-link:hover {
             color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
         }
 
         .hero-section {
@@ -355,17 +348,15 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <a href="index.html" class="back-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                Back to Home
-            </a>
-            <h1>Tennessee Titans Bible</h1>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Titans_2025_Roster.html" class="nav-link">2025 Roster</a>
+            <a href="titans-cheerleaders-2025.html" class="nav-link">Cheerleaders</a>
+            <a href="team-history.html" class="nav-link active">Team History</a>
+            <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
         </div>
-    </header>
+    </nav>
 
     <section class="hero-section">
         <h2>Team History</h2>

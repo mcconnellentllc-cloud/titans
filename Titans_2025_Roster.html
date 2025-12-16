@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tennessee Titans 2025 Roster & Stats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --titans-navy: #0C2340;
+      --titans-blue: #4B92DB;
+      --titans-red: #C8102E;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Open Sans', -apple-system, sans-serif;
+      background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1525 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    /* Navigation */
+    .main-nav {
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #A2AAAD;
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(75, 146, 219, 0.2);
+    }
+
+    .nav-link.active {
+      color: var(--titans-blue);
+      background: rgba(75, 146, 219, 0.15);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1829 100%);
+      border-bottom: 3px solid var(--titans-red);
+      padding: 30px 20px;
+      text-align: center;
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .logo {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--titans-blue) 0%, #2a6eb8 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 900;
+      font-family: 'Oswald', sans-serif;
+      box-shadow: 0 0 30px rgba(75,146,219,0.5);
+    }
+    
+    h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, var(--titans-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      color: var(--titans-blue);
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .header-stats {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .header-stats strong {
+      color: var(--titans-red);
+    }
+    
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      flex-wrap: wrap;
+      background: rgba(0,0,0,0.3);
+    }
+    
+    .tab-btn {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--titans-blue) 0%, #2a6eb8 100%);
+    }
+    
+    .tab-btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .content {
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Search & Filter */
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .search-input {
+      padding: 12px 20px;
+      border-radius: 25px;
+      border: 2px solid rgba(75,146,219,0.3);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 14px;
+      width: 250px;
+      outline: none;
+    }
+    
+    .search-input:focus {
+      border-color: var(--titans-blue);
+    }
+    
+    .filter-btns {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .filter-btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    
+    .filter-btn.active {
+      background: var(--titans-red);
+    }
+    
+    /* Player Grid */
+    .player-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .player-card {
+      background: linear-gradient(145deg, var(--titans-navy) 0%, #1a3a5c 100%);
+      border-radius: 16px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .player-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--titans-blue);
+      box-shadow: 0 20px 40px rgba(75,146,219,0.3);
+    }
+    
+    .player-number-bg {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 48px;
+      font-weight: 900;
+      font-family: 'Oswald', sans-serif;
+      color: rgba(75,146,219,0.15);
+    }
+    
+    .player-card-content {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .player-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--titans-blue);
+      background: #fff;
+    }
+    
+    .player-info h3 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    .player-pos {
+      color: var(--titans-blue);
+      font-size: 14px;
+      font-weight: 600;
+      margin: 4px 0;
+    }
+    
+    .player-college {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+    }
+    
+    .player-highlights {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    
+    .highlight-tag {
+      background: linear-gradient(135deg, var(--titans-red) 0%, #e8304a 100%);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .modal-overlay.active {
+      display: flex;
+    }
+    
+    .modal {
+      background: linear-gradient(180deg, var(--titans-navy) 0%, #0a1829 100%);
+      border-radius: 24px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto;
+      border: 2px solid var(--titans-blue);
+      box-shadow: 0 0 60px rgba(75,146,219,0.4);
+    }
+    
+    .modal-header {
+      background: linear-gradient(135deg, var(--titans-red) 0%, #a00d23 100%);
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      position: relative;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.3);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    
+    .modal-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      background: #fff;
+    }
+    
+    .modal-header-info h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    
+    .modal-header-info p {
+      color: rgba(255,255,255,0.9);
+      margin-top: 8px;
+    }
+    
+    .modal-number {
+      position: absolute;
+      right: 30px;
+      top: 50px;
+      font-size: 48px;
+      font-weight: 900;
+      font-family: 'Oswald', sans-serif;
+      color: rgba(255,255,255,0.2);
+    }
+    
+    .modal-body {
+      padding: 25px;
+    }
+    
+    .modal-section {
+      margin-bottom: 25px;
+    }
+    
+    .modal-section h4 {
+      color: var(--titans-blue);
+      margin-bottom: 15px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 12px;
+    }
+    
+    .stat-box {
+      background: rgba(75,146,219,0.1);
+      padding: 12px 8px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(75,146,219,0.2);
+    }
+    
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    
+    .stat-label {
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    
+    .bio-text {
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    
+    .modal-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .modal-highlight {
+      background: linear-gradient(135deg, var(--titans-red) 0%, #e8304a 100%);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    /* Coaches Grid */
+    .coaches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    
+    .coach-card {
+      background: linear-gradient(145deg, var(--titans-navy) 0%, #1a3a5c 100%);
+      border-radius: 16px;
+      padding: 25px;
+      border: 2px solid transparent;
+    }
+    
+    .coach-card.head-coach {
+      border-color: var(--titans-red);
+    }
+    
+    .coach-tag {
+      background: var(--titans-red);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    
+    .coach-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    
+    .coach-title {
+      color: var(--titans-blue);
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    
+    .coach-exp {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    
+    .coach-note {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      font-style: italic;
+    }
+    
+    /* Stats Section */
+    .stats-overview {
+      background: linear-gradient(145deg, var(--titans-navy) 0%, #1a3a5c 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 25px;
+    }
+    
+    .stats-overview h3 {
+      color: var(--titans-blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .team-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+    
+    .team-stat {
+      background: rgba(0,0,0,0.3);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .team-stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      font-family: 'Oswald', sans-serif;
+    }
+    
+    .team-stat-value.red {
+      color: var(--titans-red);
+    }
+    
+    .team-stat-label {
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    
+    .leaders-section h3 {
+      color: var(--titans-blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .leaders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    
+    .leader-card {
+      background: linear-gradient(145deg, var(--titans-navy) 0%, #1a3a5c 100%);
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .leader-cat {
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    
+    .leader-name {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    
+    .leader-sub {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    
+    .leader-value {
+      color: var(--titans-blue);
+      font-size: 28px;
+      font-weight: 800;
+      font-family: 'Oswald', sans-serif;
+    }
+    
+    /* Records Section */
+    .records-section {
+      background: linear-gradient(145deg, var(--titans-navy) 0%, #1a3a5c 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 25px;
+    }
+    
+    .records-section h3 {
+      color: var(--titans-red);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .record-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .record-row:last-child {
+      border-bottom: none;
+    }
+    
+    .record-cat {
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    
+    .record-player {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    
+    .record-years {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    
+    .record-value {
+      color: var(--titans-blue);
+      font-size: 22px;
+      font-weight: 700;
+      font-family: 'Oswald', sans-serif;
+      text-align: right;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+    
+    .footer span {
+      color: var(--titans-blue);
+    }
+    
+    @media (max-width: 600px) {
+      h1 { font-size: 24px; }
+      .header-content { flex-direction: column; gap: 10px; }
+      .player-grid { grid-template-columns: 1fr; }
+      .modal-header { flex-direction: column; text-align: center; padding: 20px; }
+      .modal-number { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Titans_2025_Roster.html" class="nav-link active">2025 Roster</a>
+      <a href="titans-cheerleaders-2025.html" class="nav-link">Cheerleaders</a>
+      <a href="team-history.html" class="nav-link">Team History</a>
+      <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <div class="logo">T</div>
+      <h1>TENNESSEE TITANS</h1>
+    </div>
+    <p class="subtitle">2025 Season Roster & Statistics</p>
+    <div class="header-stats">
+      <span>Record: <strong>2-12</strong></span>
+      <span>PPG: <strong>15.0</strong></span>
+      <span>Division: <strong>4th AFC South</strong></span>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="roster">🏈 Roster</button>
+    <button class="tab-btn" data-tab="coaches">📋 Coaches</button>
+    <button class="tab-btn" data-tab="stats">📊 Team Stats</button>
+    <button class="tab-btn" data-tab="records">🏆 All-Time Records</button>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    
+    <!-- ROSTER TAB -->
+    <div id="roster" class="tab-content active">
+      <div class="controls">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search players...">
+        <div class="filter-btns">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="offense">Offense</button>
+          <button class="filter-btn" data-filter="defense">Defense</button>
+          <button class="filter-btn" data-filter="special">ST</button>
+        </div>
+      </div>
+      <div class="player-grid" id="playerGrid"></div>
+    </div>
+
+    <!-- COACHES TAB -->
+    <div id="coaches" class="tab-content">
+      <div class="coaches-grid" id="coachesGrid"></div>
+    </div>
+
+    <!-- STATS TAB -->
+    <div id="stats" class="tab-content">
+      <div class="stats-overview">
+        <h3>2025 Season Overview</h3>
+        <div class="team-stats-grid">
+          <div class="team-stat"><div class="team-stat-value red">2-12</div><div class="team-stat-label">Record</div></div>
+          <div class="team-stat"><div class="team-stat-value">210</div><div class="team-stat-label">Points For</div></div>
+          <div class="team-stat"><div class="team-stat-value">394</div><div class="team-stat-label">Points Against</div></div>
+          <div class="team-stat"><div class="team-stat-value">15.0</div><div class="team-stat-label">PPG</div></div>
+          <div class="team-stat"><div class="team-stat-value">3,371</div><div class="team-stat-label">Total Yards</div></div>
+          <div class="team-stat"><div class="team-stat-value">2,638</div><div class="team-stat-label">Pass Yards</div></div>
+          <div class="team-stat"><div class="team-stat-value">1,104</div><div class="team-stat-label">Rush Yards</div></div>
+          <div class="team-stat"><div class="team-stat-value">32</div><div class="team-stat-label">Sacks</div></div>
+        </div>
+      </div>
+      <div class="leaders-section">
+        <h3>2025 Team Statistical Leaders</h3>
+        <div class="leaders-grid">
+          <div class="leader-card">
+            <div><div class="leader-cat">Passing Yards</div><div class="leader-name">Cam Ward</div><div class="leader-sub">11 TD, 7 INT</div></div>
+            <div class="leader-value">2,638</div>
+          </div>
+          <div class="leader-card">
+            <div><div class="leader-cat">Rushing Yards</div><div class="leader-name">Tony Pollard</div><div class="leader-sub">4 TD, 4.2 avg</div></div>
+            <div class="leader-value">743</div>
+          </div>
+          <div class="leader-card">
+            <div><div class="leader-cat">Receiving Yards</div><div class="leader-name">Chig Okonkwo</div><div class="leader-sub">38 rec, 1 TD</div></div>
+            <div class="leader-value">426</div>
+          </div>
+          <div class="leader-card">
+            <div><div class="leader-cat">Sacks</div><div class="leader-name">Jeffery Simmons</div><div class="leader-sub">12 TFL, 1 FF</div></div>
+            <div class="leader-value">9.0</div>
+          </div>
+          <div class="leader-card">
+            <div><div class="leader-cat">Total Tackles</div><div class="leader-name">Cedric Gray</div><div class="leader-sub">Team leader</div></div>
+            <div class="leader-value">124</div>
+          </div>
+          <div class="leader-card">
+            <div><div class="leader-cat">Interceptions</div><div class="leader-name">Cody Barton</div><div class="leader-sub">5 PD</div></div>
+            <div class="leader-value">3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECORDS TAB -->
+    <div id="records" class="tab-content">
+      <div class="records-section">
+        <h3>🏆 Franchise Career Records (Oilers/Titans)</h3>
+        <div class="record-row"><div><div class="record-cat">Passing Yards</div><div class="record-player">Warren Moon</div><div class="record-years">1984-1993</div></div><div class="record-value">33,685 yds</div></div>
+        <div class="record-row"><div><div class="record-cat">Rushing Yards</div><div class="record-player">Eddie George</div><div class="record-years">1996-2003</div></div><div class="record-value">10,009 yds</div></div>
+        <div class="record-row"><div><div class="record-cat">Receiving Yards</div><div class="record-player">Ernest Givins</div><div class="record-years">1986-1994</div></div><div class="record-value">7,935 yds</div></div>
+        <div class="record-row"><div><div class="record-cat">Rushing TDs</div><div class="record-player">Earl Campbell</div><div class="record-years">1978-1984</div></div><div class="record-value">73 TDs</div></div>
+        <div class="record-row"><div><div class="record-cat">Passing TDs</div><div class="record-player">Warren Moon</div><div class="record-years">1984-1993</div></div><div class="record-value">196 TDs</div></div>
+        <div class="record-row"><div><div class="record-cat">Sacks</div><div class="record-player">Elvin Bethea</div><div class="record-years">1968-1983</div></div><div class="record-value">105 sacks</div></div>
+        <div class="record-row"><div><div class="record-cat">Games Played</div><div class="record-player">Bruce Matthews</div><div class="record-years">1983-2001</div></div><div class="record-value">296 games</div></div>
+        <div class="record-row"><div><div class="record-cat">Points Scored</div><div class="record-player">Al Del Greco</div><div class="record-years">1991-2000</div></div><div class="record-value">1,060 pts</div></div>
+      </div>
+      <div class="records-section">
+        <h3>📈 Single Season Records</h3>
+        <div class="record-row"><div><div class="record-cat">Rushing Yards</div><div class="record-player">Derrick Henry (2020)</div></div><div class="record-value">2,027 yds</div></div>
+        <div class="record-row"><div><div class="record-cat">Passing Yards</div><div class="record-player">Warren Moon (1991)</div></div><div class="record-value">4,690 yds</div></div>
+        <div class="record-row"><div><div class="record-cat">Receiving Yards</div><div class="record-player">Charley Hennigan (1961)</div></div><div class="record-value">1,746 yds</div></div>
+        <div class="record-row"><div><div class="record-cat">Rushing TDs</div><div class="record-player">Earl Campbell (1979)</div></div><div class="record-value">19 TDs</div></div>
+        <div class="record-row"><div><div class="record-cat">Passing TDs</div><div class="record-player">George Blanda (1961)</div></div><div class="record-value">36 TDs</div></div>
+        <div class="record-row"><div><div class="record-cat">Sacks</div><div class="record-player">Jevon Kearse (1999)</div></div><div class="record-value">14.5 sacks</div></div>
+        <div class="record-row"><div><div class="record-cat">Interceptions</div><div class="record-player">Fred Glick (1963)</div></div><div class="record-value">12 INTs</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Tennessee Titans Bible • 2025 Season Stats • Updated Week 15<br>
+    <span>Titan Up! ⚔️</span>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" id="modalClose">×</button>
+        <img class="modal-photo" id="modalPhoto" src="" alt="">
+        <div class="modal-header-info">
+          <div class="modal-number" id="modalNumber"></div>
+          <h2 id="modalName"></h2>
+          <p id="modalDetails"></p>
+          <p id="modalCollege" style="color:rgba(255,255,255,0.7);font-size:14px;margin-top:4px;"></p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h4>2025 Statistics</h4>
+          <div class="stats-grid" id="modalStats"></div>
+        </div>
+        <div class="modal-section">
+          <h4>Biography</h4>
+          <p class="bio-text" id="modalBio"></p>
+        </div>
+        <div class="modal-section">
+          <h4>Highlights</h4>
+          <div class="modal-highlights" id="modalHighlights"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+// Player Data
+const players = [
+  // OFFENSE
+  { name: "Cam Ward", number: 1, position: "QB", height: "6-2", weight: 219, age: 23, college: "Miami", experience: "Rookie", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4688380.png", stats: { GP: 14, PassYds: 2638, TD: 11, INT: 7, Rating: 74.9, RushYds: 127 }, bio: "First overall pick in 2025 NFL Draft. Davey O'Brien Award winner at Miami (2024). NCAA Division I all-time leader with 158 career TD passes. First zero-star recruit selected #1 overall in 21st century. Heisman finalist. Set Miami single-season records for passing yards (4,313), TDs (39), and completion percentage (67.2%).", highlights: ["#1 Overall Pick 2025", "Davey O'Brien Winner", "NCAA TD Pass Record: 158"] },
+  { name: "Tony Pollard", number: 20, position: "RB", height: "6-0", weight: 209, age: 28, college: "Memphis", experience: "6th Year", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3916148.png", stats: { GP: 13, Carries: 175, RushYds: 743, TD: 4, Avg: 4.2, Rec: 25 }, bio: "Pro Bowler (2022). Career-high 161 rushing yards vs Browns (Week 14, 2025). FBS record-holder with 7 career kickoff return TDs at Memphis. Family owns Pollard's Bar-B-Q restaurant in Memphis. 5,443 career rushing yards.", highlights: ["2022 Pro Bowl", "Career-High 161 Yds (2025)", "5,443 Career Rush Yards"] },
+  { name: "Tyjae Spears", number: 2, position: "RB", height: "5-10", weight: 201, age: 23, college: "Tulane", experience: "2nd Year", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426355.png", stats: { GP: 10, Carries: 42, RushYds: 177, TD: 0, Avg: 4.2, Rec: 18 }, bio: "3rd round pick in 2023. Electric change-of-pace back. Strong receiving threat out of backfield. Helped Tulane to back-to-back AAC Championships.", highlights: ["2023 3rd Round Pick", "AAC Champion at Tulane"] },
+  { name: "Calvin Ridley", number: 0, position: "WR", height: "6-1", weight: 190, age: 30, college: "Alabama", experience: "8th Year", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116406.png", stats: { GP: 7, Rec: 23, Targets: 39, RecYds: 303, TD: 0 }, bio: "Pro Bowler (2020). 1,374 receiving yards in breakout 2020 season with Falcons. National Champion at Alabama (2017). Team captain. Currently on IR.", highlights: ["2020 Pro Bowl", "1,374 Rec Yards (2020)", "National Champion"] },
+  { name: "Chig Okonkwo", number: 85, position: "TE", height: "6-3", weight: 238, age: 25, college: "Maryland", experience: "3rd Year", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4361418.png", stats: { GP: 13, Rec: 38, Targets: 56, RecYds: 426, TD: 1 }, bio: "Team's leading receiver in 2025. 70-yard TD catch at Houston in 2024. Third-year breakout. 4th round pick in 2022.", highlights: ["Team Receiving Leader 2025", "70-Yard TD (2024)", "4th Round Pick 2022"] },
+  { name: "Elic Ayomanor", number: 11, position: "WR", height: "6-2", weight: 208, age: 22, college: "Stanford", experience: "Rookie", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4700025.png", stats: { GP: 13, Rec: 32, Targets: 52, RecYds: 353, TD: 3 }, bio: "4th round pick in 2025. Stanford standout. Three TDs in first four games. Known for tough contested catches.", highlights: ["4th Round Pick 2025", "3 TDs in First 4 Games", "Stanford Standout"] },
+  { name: "Gunnar Helm", number: 81, position: "TE", height: "6-5", weight: 250, age: 23, college: "Texas", experience: "Rookie", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4708109.png", stats: { GP: 13, Rec: 27, Targets: 38, RecYds: 298, TD: 2 }, bio: "3rd round pick in 2025. 34-yard TD vs 49ers in Week 15. Athletic receiving tight end from Texas.", highlights: ["3rd Round Pick 2025", "34-Yd TD vs 49ers", "Texas Longhorn"] },
+  { name: "JC Latham", number: 55, position: "OT", height: "6-6", weight: 325, age: 22, college: "Alabama", experience: "2nd Year", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4710692.png", stats: { GP: 13, Starts: 13, Position: "RT" }, bio: "7th overall pick in 2024. National Champion at Alabama. Mauler in the run game. Protecting Cam Ward's blind side.", highlights: ["7th Overall Pick 2024", "National Champion", "13 Starts"] },
+  { name: "Peter Skoronski", number: 77, position: "G", height: "6-4", weight: 315, age: 23, college: "Northwestern", experience: "2nd Year", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426534.png", stats: { GP: 13, Starts: 13, Position: "LG" }, bio: "11th overall pick in 2023. Two-time All-American at Northwestern. Father played in NFL.", highlights: ["11th Overall Pick 2023", "Two-Time All-American", "NFL Bloodlines"] },
+  { name: "Kevin Zeitler", number: 71, position: "G", height: "6-4", weight: 315, age: 35, college: "Wisconsin", experience: "13th Year", group: "offense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/14975.png", stats: { GP: 13, Starts: 13, Position: "RG" }, bio: "Veteran anchor. Top 10 Pro Bowl voting for guards (2025). Former 1st round pick by Bengals (2012). Iron man - rarely misses games.", highlights: ["Top 10 Pro Bowl Voting", "13-Year Veteran", "Former 1st Round Pick"] },
+  
+  // DEFENSE
+  { name: "Jeffery Simmons", number: 98, position: "DT", height: "6-4", weight: 305, age: 27, college: "Mississippi State", experience: "6th Year", group: "defense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4035369.png", stats: { GP: 13, Tackles: 48, Sacks: 9, TFL: 12, FF: 1, TD: 1 }, bio: "THREE-TIME PRO BOWLER (2021, 2022, 2024). Two-time Second Team All-Pro. Franchise cornerstone. Led team with 9 sacks in 2025 - career high. Historic game vs 49ers: sack, forced fumble, AND TD catch (6th player ever). $94M extension in 2023.", highlights: ["3x Pro Bowler", "9 Sacks (Career High)", "Sack + FF + TD Catch vs SF"] },
+  { name: "T'Vondre Sweat", number: 93, position: "NT", height: "6-4", weight: 366, age: 24, college: "Texas", experience: "Rookie", group: "defense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4708113.png", stats: { GP: 12, Tackles: 32, Sacks: 1.5, TFL: 4 }, bio: "38th overall pick in 2025. Outland Trophy winner (2023). 366-pound space-eater. Heaviest player in NFL.", highlights: ["38th Overall Pick", "Outland Trophy Winner", "366 lbs"] },
+  { name: "Cedric Gray", number: 51, position: "ILB", height: "6-1", weight: 230, age: 23, college: "North Carolina", experience: "Rookie", group: "defense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432629.png", stats: { GP: 13, Tackles: 124, Sacks: 0.5, TFL: 5, FF: 1 }, bio: "3rd round pick in 2025. TEAM TACKLE LEADER with 124. Top 10 Pro Bowl voting for ILBs. Breakout rookie season.", highlights: ["124 Tackles - Team Leader", "Top 10 Pro Bowl Voting", "3rd Round Pick"] },
+  { name: "Amani Hooker", number: 37, position: "S", height: "5-11", weight: 210, age: 26, college: "Iowa", experience: "6th Year", group: "defense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4047423.png", stats: { GP: 11, Tackles: 69, INT: 0, PD: 4 }, bio: "Team captain. 4th round pick in 2019. Versatile safety. Defensive signal caller. Currently dealing with injury.", highlights: ["Team Captain", "69 Tackles", "Defensive Leader"] },
+  { name: "Cody Barton", number: 52, position: "ILB", height: "6-2", weight: 235, age: 28, college: "Utah", experience: "6th Year", group: "defense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3917966.png", stats: { GP: 13, Tackles: 67, Sacks: 0.5, INT: 3, PD: 5 }, bio: "Team captain. TEAM INTERCEPTION LEADER with 3 INTs. Former Seahawk. Coverage linebacker.", highlights: ["Team Captain", "3 INTs - Team Leader", "67 Tackles"] },
+  { name: "Arden Key", number: 49, position: "OLB", height: "6-5", weight: 240, age: 28, college: "LSU", experience: "7th Year", group: "defense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3895416.png", stats: { GP: 13, Tackles: 28, Sacks: 4.0, TFL: 7, FF: 1 }, bio: "Pass rush specialist. Former Raiders 3rd round pick. Resurgence in Tennessee. 4 sacks in 2025.", highlights: ["4.0 Sacks", "Pass Rush Specialist", "LSU Tiger"] },
+  { name: "L'Jarius Sneed", number: 38, position: "CB", height: "6-0", weight: 192, age: 28, college: "Louisiana Tech", experience: "5th Year", group: "defense", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4036217.png", stats: { GP: 6, Tackles: 24, INT: 0, PD: 3 }, bio: "Super Bowl Champion (LIV with Chiefs). Signed major free agent deal in 2024. Shutdown corner. Currently on IR.", highlights: ["Super Bowl Champion", "Shutdown Corner", "Major FA Signing"] },
+  
+  // SPECIAL TEAMS
+  { name: "Nick Folk", number: 6, position: "K", height: "6-1", weight: 222, age: 40, college: "Arizona", experience: "18th Year", group: "special", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/10607.png", stats: { GP: 13, FGMade: 23, FGAtt: 28, "FG%": "82.1%", XP: "15/15" }, bio: "18-year veteran. Ironman kicker. Former Jets, Cowboys, Bucs, Patriots. Over 1,500 career points.", highlights: ["18-Year Veteran", "23/28 FGs (2025)", "1,500+ Career Points"] },
+  { name: "Ryan Stonehouse", number: 4, position: "P", height: "6-1", weight: 195, age: 26, college: "Colorado State", experience: "3rd Year", group: "special", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4035543.png", stats: { GP: 13, Punts: 58, Avg: 45.6, In20: 22, Long: 64 }, bio: "Set NFL rookie punting record in 2022. Powerful leg. Undrafted gem.", highlights: ["NFL Rookie Record", "45.6 Avg", "22 Inside 20"] },
+  { name: "Chimere Dike", number: 15, position: "WR/KR", height: "6-1", weight: 210, age: 25, college: "Wisconsin", experience: "2nd Year", group: "special", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426499.png", stats: { GP: 13, KRYds: 412, KRAvg: 24.2, PRYds: 89, RecTD: 1 }, bio: "#2 in Pro Bowl voting for returners. Dynamic return specialist. Wisconsin product.", highlights: ["#2 Pro Bowl Voting KR", "24.2 KR Avg", "Wisconsin Badger"] }
+];
+
+const coaches = [
+  { name: "Mike McCoy", title: "Interim Head Coach", exp: "Former Chargers HC (2013-2016)", note: "Took over after Brian Callahan fired (1-5)", isHead: true },
+  { name: "Nick Holz", title: "Offensive Coordinator", exp: "First year as OC", note: "Developing Cam Ward", isHead: false },
+  { name: "Dennard Wilson", title: "Defensive Coordinator", exp: "Former Jets DB Coach", note: "First year with Titans", isHead: false },
+  { name: "John Fassel", title: "Special Teams Coordinator", exp: "Former Cowboys STC", note: "Known for developing Pro Bowlers", isHead: false },
+  { name: "Bo Hardegree", title: "Quarterbacks Coach", exp: "Former Dolphins QB Coach", note: "Working closely with Ward", isHead: false },
+  { name: "Bill Callahan", title: "Offensive Line Coach", exp: "46 years coaching experience", note: "Father of former HC Brian Callahan", isHead: false },
+  { name: "Tracy Rocker", title: "Defensive Line Coach", exp: "Former Auburn DL Coach", note: "Developing Simmons & Sweat", isHead: false },
+  { name: "Frank Bush", title: "Linebackers Coach", exp: "Veteran NFL coach", note: "Guiding rookie Gray", isHead: false }
+];
+
+// Render players
+function renderPlayers(filter = 'all', search = '') {
+  const grid = document.getElementById('playerGrid');
+  grid.innerHTML = '';
+  
+  let filtered = players;
+  if (filter !== 'all') filtered = players.filter(p => p.group === filter);
+  if (search) filtered = filtered.filter(p => 
+    p.name.toLowerCase().includes(search.toLowerCase()) || 
+    p.position.toLowerCase().includes(search.toLowerCase())
+  );
+  
+  filtered.forEach(player => {
+    const card = document.createElement('div');
+    card.className = 'player-card';
+    card.onclick = () => openModal(player);
+    
+    const highlights = player.highlights.slice(0, 2).map(h => 
+      `<span class="highlight-tag">${h}</span>`
+    ).join('');
+    
+    card.innerHTML = `
+      <div class="player-number-bg">#${player.number}</div>
+      <div class="player-card-content">
+        <img class="player-photo" src="${player.photo}" alt="${player.name}" onerror="this.src='https://via.placeholder.com/80?text=${player.number}'">
+        <div class="player-info">
+          <h3>${player.name}</h3>
+          <p class="player-pos">#${player.number} • ${player.position}</p>
+          <p class="player-college">${player.college} • ${player.experience}</p>
+        </div>
+      </div>
+      <div class="player-highlights">${highlights}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Render coaches
+function renderCoaches() {
+  const grid = document.getElementById('coachesGrid');
+  coaches.forEach(coach => {
+    const card = document.createElement('div');
+    card.className = 'coach-card' + (coach.isHead ? ' head-coach' : '');
+    card.innerHTML = `
+      ${coach.isHead ? '<span class="coach-tag">Interim</span>' : ''}
+      <h3>${coach.name}</h3>
+      <p class="coach-title">${coach.title}</p>
+      <p class="coach-exp">${coach.exp}</p>
+      <p class="coach-note">${coach.note}</p>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Modal functions
+function openModal(player) {
+  document.getElementById('modalOverlay').classList.add('active');
+  document.getElementById('modalPhoto').src = player.photo;
+  document.getElementById('modalPhoto').onerror = function() { this.src = 'https://via.placeholder.com/120?text=' + player.number; };
+  document.getElementById('modalNumber').textContent = '#' + player.number;
+  document.getElementById('modalName').textContent = player.name;
+  document.getElementById('modalDetails').textContent = `${player.position} • ${player.height}, ${player.weight} lbs`;
+  document.getElementById('modalCollege').textContent = `${player.college} • Age ${player.age} • ${player.experience}`;
+  document.getElementById('modalBio').textContent = player.bio;
+  
+  const statsGrid = document.getElementById('modalStats');
+  statsGrid.innerHTML = Object.entries(player.stats).map(([key, val]) => `
+    <div class="stat-box">
+      <div class="stat-value">${val}</div>
+      <div class="stat-label">${key}</div>
+    </div>
+  `).join('');
+  
+  const highlightsDiv = document.getElementById('modalHighlights');
+  highlightsDiv.innerHTML = player.highlights.map(h => 
+    `<span class="modal-highlight">${h}</span>`
+  ).join('');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPlayers(btn.dataset.filter, document.getElementById('searchInput').value);
+  });
+});
+
+// Search
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+  renderPlayers(activeFilter, e.target.value);
+});
+
+// Modal close
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+});
+
+// Initialize
+renderPlayers();
+renderCoaches();
+</script>
+
+</body>
+</html>
