@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFL - Tennessee Titans Bible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1a2e 50%, var(--titans-navy) 100%);
+            min-height: 100vh;
+            color: var(--titans-white);
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+            border-bottom: 3px solid var(--titans-red);
+        }
+
+        .page-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--titans-silver);
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* Playoff Bracket Section */
+        .bracket-section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--titans-blue);
+        }
+
+        .section-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-white);
+        }
+
+        .section-badge {
+            background: var(--titans-red);
+            color: var(--titans-white);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Bracket Container */
+        .bracket-container {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .bracket-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .bracket-title h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .bracket-title p {
+            color: var(--titans-silver);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Conference Standings */
+        .conference-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .conference-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .conference-header {
+            text-align: center;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--titans-blue);
+        }
+
+        .conference-header h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .afc .conference-header { border-color: #C8102E; }
+        .nfc .conference-header { border-color: #002244; }
+
+        .playoff-team {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .playoff-team:hover {
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .seed {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--titans-blue);
+            color: var(--titans-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 12px;
+        }
+
+        .seed.bye {
+            background: gold;
+            color: #333;
+        }
+
+        .team-info {
+            flex: 1;
+        }
+
+        .team-info .name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .team-info .division {
+            font-size: 0.75rem;
+            color: var(--titans-silver);
+        }
+
+        .team-record {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--titans-blue);
+        }
+
+        /* NFL News Section */
+        .news-section {
+            margin-bottom: 50px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--titans-blue);
+        }
+
+        .news-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .news-tag.breaking { background: var(--titans-red); }
+        .news-tag.trade { background: #D4AF37; color: #333; }
+        .news-tag.injury { background: #FF6B35; }
+        .news-tag.playoff { background: var(--titans-blue); color: var(--titans-navy); }
+
+        .news-card h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .news-card p {
+            font-size: 0.9rem;
+            color: var(--titans-silver);
+            line-height: 1.5;
+        }
+
+        .news-date {
+            font-size: 0.75rem;
+            color: var(--titans-silver);
+            margin-top: 12px;
+            opacity: 0.7;
+        }
+
+        /* Division Section */
+        .division-section {
+            margin-bottom: 50px;
+        }
+
+        .division-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--titans-blue);
+        }
+
+        .division-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-white);
+        }
+
+        .division-badge {
+            background: var(--titans-blue);
+            color: var(--titans-navy);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Team Cards Grid */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .team-card-header {
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .team-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-white);
+            margin-bottom: 5px;
+        }
+
+        .team-record-display {
+            font-size: 0.9rem;
+            color: var(--titans-silver);
+        }
+
+        .team-card-body {
+            padding: 0 20px 20px;
+        }
+
+        .team-stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+
+        .team-stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .team-stat-label {
+            color: var(--titans-silver);
+        }
+
+        .team-stat-value {
+            color: var(--titans-white);
+            font-weight: 600;
+        }
+
+        .team-card-footer {
+            background: rgba(0,0,0,0.3);
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .view-roster-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Team-specific colors */
+        .team-card.texans .team-logo { background: linear-gradient(135deg, #03202F, #A71930); }
+        .team-card.texans .view-roster-btn { background: #A71930; color: white; }
+        .team-card.texans:hover { border-color: #A71930; }
+        .team-card.texans .view-roster-btn:hover { background: #03202F; }
+
+        .team-card.colts .team-logo { background: linear-gradient(135deg, #002C5F, #A2AAAD); }
+        .team-card.colts .view-roster-btn { background: #002C5F; color: white; }
+        .team-card.colts:hover { border-color: #002C5F; }
+        .team-card.colts .view-roster-btn:hover { background: #A2AAAD; color: #002C5F; }
+
+        .team-card.jaguars .team-logo { background: linear-gradient(135deg, #006778, #D7A22A); }
+        .team-card.jaguars .view-roster-btn { background: #006778; color: white; }
+        .team-card.jaguars:hover { border-color: #D7A22A; }
+        .team-card.jaguars .view-roster-btn:hover { background: #D7A22A; color: #006778; }
+
+        .team-card.titans .team-logo { background: linear-gradient(135deg, #0C2340, #4B92DB); }
+        .team-card.titans .view-roster-btn { background: var(--titans-blue); color: var(--titans-navy); }
+        .team-card.titans:hover { border-color: var(--titans-blue); }
+
+        /* Coming Soon */
+        .coming-soon {
+            text-align: center;
+            padding: 40px;
+            color: var(--titans-silver);
+        }
+
+        .coming-soon h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--titans-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(75, 146, 219, 0.2);
+            color: var(--titans-silver);
+            font-size: 0.8rem;
+        }
+
+        footer .titan-up {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-link {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .conference-row {
+                grid-template-columns: 1fr;
+            }
+
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Titans_2025_Roster.html" class="nav-link">2025 Roster</a>
+            <a href="titans-cheerleaders-2025.html" class="nav-link">Cheerleaders</a>
+            <a href="team-history.html" class="nav-link">History</a>
+            <a href="titans-salary-cap.html" class="nav-link">Salary Cap</a>
+            <a href="titans-betting-odds.html" class="nav-link">Betting Odds</a>
+            <a href="nfl.html" class="nav-link active">NFL</a>
+            <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>NFL</h1>
+        <p>2024-25 Season Standings & Playoff Picture</p>
+    </header>
+
+    <main class="container">
+        <!-- Playoff Bracket Section -->
+        <section class="bracket-section">
+            <div class="section-header">
+                <h2>Playoff Bracket</h2>
+                <span class="section-badge">Week 15</span>
+            </div>
+
+            <div class="bracket-container">
+                <div class="bracket-title">
+                    <h3>Super Bowl LIX Contenders</h3>
+                    <p>Current Playoff Seeds Based on Week 15 Standings</p>
+                </div>
+
+                <div class="conference-row">
+                    <!-- AFC -->
+                    <div class="conference-box afc">
+                        <div class="conference-header">
+                            <h4>AFC Playoff Picture</h4>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed bye">1</span>
+                            <div class="team-info">
+                                <div class="name">Kansas City Chiefs</div>
+                                <div class="division">AFC West</div>
+                            </div>
+                            <span class="team-record">13-1</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">2</span>
+                            <div class="team-info">
+                                <div class="name">Buffalo Bills</div>
+                                <div class="division">AFC East</div>
+                            </div>
+                            <span class="team-record">11-3</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">3</span>
+                            <div class="team-info">
+                                <div class="name">Pittsburgh Steelers</div>
+                                <div class="division">AFC North</div>
+                            </div>
+                            <span class="team-record">10-4</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">4</span>
+                            <div class="team-info">
+                                <div class="name">Houston Texans</div>
+                                <div class="division">AFC South</div>
+                            </div>
+                            <span class="team-record">9-5</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">5</span>
+                            <div class="team-info">
+                                <div class="name">Baltimore Ravens</div>
+                                <div class="division">AFC North</div>
+                            </div>
+                            <span class="team-record">9-5</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">6</span>
+                            <div class="team-info">
+                                <div class="name">Los Angeles Chargers</div>
+                                <div class="division">AFC West</div>
+                            </div>
+                            <span class="team-record">8-6</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">7</span>
+                            <div class="team-info">
+                                <div class="name">Denver Broncos</div>
+                                <div class="division">AFC West</div>
+                            </div>
+                            <span class="team-record">9-5</span>
+                        </div>
+                    </div>
+
+                    <!-- NFC -->
+                    <div class="conference-box nfc">
+                        <div class="conference-header">
+                            <h4>NFC Playoff Picture</h4>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed bye">1</span>
+                            <div class="team-info">
+                                <div class="name">Detroit Lions</div>
+                                <div class="division">NFC North</div>
+                            </div>
+                            <span class="team-record">12-2</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">2</span>
+                            <div class="team-info">
+                                <div class="name">Philadelphia Eagles</div>
+                                <div class="division">NFC East</div>
+                            </div>
+                            <span class="team-record">12-2</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">3</span>
+                            <div class="team-info">
+                                <div class="name">Seattle Seahawks</div>
+                                <div class="division">NFC West</div>
+                            </div>
+                            <span class="team-record">8-6</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">4</span>
+                            <div class="team-info">
+                                <div class="name">Tampa Bay Buccaneers</div>
+                                <div class="division">NFC South</div>
+                            </div>
+                            <span class="team-record">8-6</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">5</span>
+                            <div class="team-info">
+                                <div class="name">Minnesota Vikings</div>
+                                <div class="division">NFC North</div>
+                            </div>
+                            <span class="team-record">12-2</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">6</span>
+                            <div class="team-info">
+                                <div class="name">Green Bay Packers</div>
+                                <div class="division">NFC North</div>
+                            </div>
+                            <span class="team-record">10-4</span>
+                        </div>
+                        <div class="playoff-team">
+                            <span class="seed">7</span>
+                            <div class="team-info">
+                                <div class="name">Washington Commanders</div>
+                                <div class="division">NFC East</div>
+                            </div>
+                            <span class="team-record">9-5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NFL News Section -->
+        <section class="news-section">
+            <div class="section-header">
+                <h2>NFL News</h2>
+                <span class="section-badge">Latest</span>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-card">
+                    <span class="news-tag playoff">Playoff Race</span>
+                    <h4>Chiefs Clinch AFC West, #1 Seed Within Reach</h4>
+                    <p>Kansas City has clinched the AFC West for the 9th consecutive year. With a 13-1 record, they're positioned to secure home field advantage throughout the AFC playoffs.</p>
+                    <div class="news-date">December 16, 2024</div>
+                </div>
+                <div class="news-card">
+                    <span class="news-tag breaking">Breaking</span>
+                    <h4>Lions, Eagles, Vikings Battle for NFC's Top Seed</h4>
+                    <p>Three NFC teams sit at 12-2, creating a historic three-way race for the conference's #1 seed and crucial first-round bye heading into the final weeks.</p>
+                    <div class="news-date">December 16, 2024</div>
+                </div>
+                <div class="news-card">
+                    <span class="news-tag injury">Injury News</span>
+                    <h4>Key Players Return for Playoff Push</h4>
+                    <p>Several teams are getting healthier at the right time, with star players returning from injuries as the playoff picture crystallizes.</p>
+                    <div class="news-date">December 15, 2024</div>
+                </div>
+                <div class="news-card">
+                    <span class="news-tag trade">Draft Watch</span>
+                    <h4>Titans in Position for Top Pick</h4>
+                    <p>With a 3-11 record, Tennessee is positioned to land a top-3 pick in the 2025 NFL Draft. Potential targets include top quarterback prospects.</p>
+                    <div class="news-date">December 15, 2024</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AFC South -->
+        <section class="division-section">
+            <div class="division-header">
+                <h2>AFC South</h2>
+                <span class="division-badge">Titans Division</span>
+            </div>
+
+            <div class="teams-grid">
+                <!-- Titans (for reference) -->
+                <div class="team-card titans">
+                    <div class="team-card-header">
+                        <div class="team-logo">TEN</div>
+                        <h3 class="team-name">Tennessee Titans</h3>
+                        <p class="team-record-display">3-11 (4th in AFC South)</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">QB</span>
+                            <span class="team-stat-value">Will Levis</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Top Rusher</span>
+                            <span class="team-stat-value">Tony Pollard</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Points/Game</span>
+                            <span class="team-stat-value">17.5</span>
+                        </div>
+                    </div>
+                    <div class="team-card-footer">
+                        <a href="Titans_2025_Roster.html" class="view-roster-btn">View Roster</a>
+                    </div>
+                </div>
+
+                <!-- Houston Texans -->
+                <div class="team-card texans">
+                    <div class="team-card-header">
+                        <div class="team-logo">HOU</div>
+                        <h3 class="team-name">Houston Texans</h3>
+                        <p class="team-record-display">9-5 (1st in AFC South)</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">QB</span>
+                            <span class="team-stat-value">C.J. Stroud</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Top Rusher</span>
+                            <span class="team-stat-value">Joe Mixon</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Points/Game</span>
+                            <span class="team-stat-value">24.1</span>
+                        </div>
+                    </div>
+                    <div class="team-card-footer">
+                        <a href="texans-roster.html" class="view-roster-btn">View Roster</a>
+                    </div>
+                </div>
+
+                <!-- Indianapolis Colts -->
+                <div class="team-card colts">
+                    <div class="team-card-header">
+                        <div class="team-logo">IND</div>
+                        <h3 class="team-name">Indianapolis Colts</h3>
+                        <p class="team-record-display">6-8 (3rd in AFC South)</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">QB</span>
+                            <span class="team-stat-value">Anthony Richardson</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Top Rusher</span>
+                            <span class="team-stat-value">Jonathan Taylor</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Points/Game</span>
+                            <span class="team-stat-value">22.1</span>
+                        </div>
+                    </div>
+                    <div class="team-card-footer">
+                        <a href="colts-roster.html" class="view-roster-btn">View Roster</a>
+                    </div>
+                </div>
+
+                <!-- Jacksonville Jaguars -->
+                <div class="team-card jaguars">
+                    <div class="team-card-header">
+                        <div class="team-logo">JAX</div>
+                        <h3 class="team-name">Jacksonville Jaguars</h3>
+                        <p class="team-record-display">3-11 (4th in AFC South)</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">QB</span>
+                            <span class="team-stat-value">Trevor Lawrence</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Top Rusher</span>
+                            <span class="team-stat-value">Tank Bigsby</span>
+                        </div>
+                        <div class="team-stat-row">
+                            <span class="team-stat-label">Points/Game</span>
+                            <span class="team-stat-value">17.6</span>
+                        </div>
+                    </div>
+                    <div class="team-card-footer">
+                        <a href="jaguars-roster.html" class="view-roster-btn">View Roster</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coming Soon -->
+        <section class="division-section">
+            <div class="division-header">
+                <h2>More Divisions Coming Soon</h2>
+            </div>
+            <div class="coming-soon">
+                <h3>AFC North, AFC East, AFC West</h3>
+                <p>NFC North, NFC East, NFC South, NFC West</p>
+                <p style="margin-top: 15px; font-size: 0.9rem;">Check back as we add more teams over time!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="titan-up">Titan Up</p>
+        <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
+    </footer>
+</body>
+</html>
