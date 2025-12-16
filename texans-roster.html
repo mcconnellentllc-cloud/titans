@@ -104,7 +104,7 @@
 
     .player-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
     }
 
@@ -188,6 +188,90 @@
       margin-top: 10px;
     }
 
+    /* Comparison Bars */
+    .comparison-section {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(167, 25, 48, 0.2);
+    }
+
+    .comparison-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--texans-red);
+      margin-bottom: 10px;
+    }
+
+    .comparison-stat {
+      margin-bottom: 12px;
+    }
+
+    .comparison-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .comparison-label {
+      font-size: 0.7rem;
+      color: var(--titans-silver);
+      text-transform: uppercase;
+    }
+
+    .comparison-value {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .comparison-value.above-avg { color: #4ade80; }
+    .comparison-value.below-avg { color: #f87171; }
+
+    .comparison-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .comparison-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comparison-row-label {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.5);
+      width: 55px;
+      text-align: right;
+    }
+
+    .comparison-bar-bg {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .comparison-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    .comparison-bar.player { background: var(--texans-red); }
+    .comparison-bar.division { background: #facc15; }
+    .comparison-bar.league { background: rgba(255,255,255,0.4); }
+
+    .comparison-bar-value {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.6);
+      width: 35px;
+    }
+
     .back-link {
       display: inline-block;
       margin-bottom: 20px;
@@ -228,7 +312,7 @@
 
   <header class="team-header">
     <h1>Houston Texans</h1>
-    <p class="team-record">2025 Record: 9-6 (1st AFC South)</p>
+    <p class="team-record">2025 Record: 9-5 (2nd AFC South)</p>
     <p class="team-info">NRG Stadium - Houston, TX</p>
   </header>
 
@@ -236,188 +320,181 @@
     <a href="nfl.html" class="back-link">&larr; Back to NFL</a>
 
     <h2 class="section-title">Offense</h2>
-    <div class="player-grid">
-      <div class="player-card">
-        <span class="player-number">#7</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432577.png" class="player-photo" alt="C.J. Stroud">
-        <h3 class="player-name">C.J. Stroud</h3>
-        <p class="player-position">Quarterback</p>
-        <p class="player-details">6-3, 218 lbs | Ohio State | 2nd Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">2,441 Pass Yds</span>
-          <span class="stat-badge">15 TDs</span>
-          <span class="stat-badge">93.2 Rating</span>
-        </div>
-        <span class="highlight-badge">2023 OROY</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#28</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116385.png" class="player-photo" alt="Joe Mixon">
-        <h3 class="player-name">Joe Mixon</h3>
-        <p class="player-position">Running Back</p>
-        <p class="player-details">6-1, 220 lbs | Oklahoma | 8th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">1,016 Rush Yds</span>
-          <span class="stat-badge">11 TDs</span>
-          <span class="stat-badge">4.1 Avg</span>
-        </div>
-        <span class="highlight-badge">Pro Bowl</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#12</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4258173.png" class="player-photo" alt="Nico Collins">
-        <h3 class="player-name">Nico Collins</h3>
-        <p class="player-position">Wide Receiver</p>
-        <p class="player-details">6-4, 222 lbs | Michigan | 4th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">968 Rec Yds</span>
-          <span class="stat-badge">7 TDs</span>
-          <span class="stat-badge">$75M Extension</span>
-        </div>
-        <span class="highlight-badge">Pro Bowl</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#3</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4366031.png" class="player-photo" alt="Tank Dell">
-        <h3 class="player-name">Tank Dell</h3>
-        <p class="player-position">Wide Receiver</p>
-        <p class="player-details">5-10, 165 lbs | Houston | 2nd Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">667 Rec Yds</span>
-          <span class="stat-badge">6 TDs</span>
-          <span class="stat-badge">Speed Threat</span>
-        </div>
-        <span class="highlight-badge">Knee Injury (IR)</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#10</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4241985.png" class="player-photo" alt="Nick Chubb">
-        <h3 class="player-name">Nick Chubb</h3>
-        <p class="player-position">Running Back</p>
-        <p class="player-details">5-11, 227 lbs | Georgia | 8th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">Former Pro Bowler</span>
-          <span class="stat-badge">Veteran RB</span>
-        </div>
-        <span class="highlight-badge">4x Pro Bowl</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#85</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4242335.png" class="player-photo" alt="Dalton Schultz">
-        <h3 class="player-name">Dalton Schultz</h3>
-        <p class="player-position">Tight End</p>
-        <p class="player-details">6-5, 244 lbs | Stanford | 7th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">Reliable Target</span>
-          <span class="stat-badge">Red Zone Threat</span>
-        </div>
-      </div>
-    </div>
+    <div class="player-grid" id="offenseGrid"></div>
 
     <h2 class="section-title">Defense</h2>
-    <div class="player-grid">
-      <div class="player-card">
-        <span class="player-number">#51</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685724.png" class="player-photo" alt="Will Anderson Jr.">
-        <h3 class="player-name">Will Anderson Jr.</h3>
-        <p class="player-position">Defensive End</p>
-        <p class="player-details">6-4, 243 lbs | Alabama | 2nd Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">11 Sacks</span>
-          <span class="stat-badge">Team Leader</span>
-          <span class="stat-badge">3rd Pick 2023</span>
-        </div>
-        <span class="highlight-badge">2023 DROY</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#55</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2976560.png" class="player-photo" alt="Danielle Hunter">
-        <h3 class="player-name">Danielle Hunter</h3>
-        <p class="player-position">Defensive End</p>
-        <p class="player-details">6-5, 263 lbs | LSU | 10th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">8.5 Sacks</span>
-          <span class="stat-badge">$35M Extension</span>
-        </div>
-        <span class="highlight-badge">4x Pro Bowl</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#24</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426434.png" class="player-photo" alt="Derek Stingley Jr.">
-        <h3 class="player-name">Derek Stingley Jr.</h3>
-        <p class="player-position">Cornerback</p>
-        <p class="player-details">6-1, 195 lbs | LSU | 3rd Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">6 INTs</span>
-          <span class="stat-badge">Shutdown Corner</span>
-        </div>
-        <span class="highlight-badge">Pro Bowl</span>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#23</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3128429.png" class="player-photo" alt="Eric Murray">
-        <h3 class="player-name">Eric Murray</h3>
-        <p class="player-position">Safety</p>
-        <p class="player-details">5-11, 199 lbs | Minnesota | 9th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">Veteran Leader</span>
-          <span class="stat-badge">DB Depth</span>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#41</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4360238.png" class="player-photo" alt="Azeez Al-Shaair">
-        <h3 class="player-name">Azeez Al-Shaair</h3>
-        <p class="player-position">Linebacker</p>
-        <p class="player-details">6-2, 228 lbs | Florida Atlantic | 6th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">100+ Tackles</span>
-          <span class="stat-badge">$51M Contract</span>
-        </div>
-      </div>
-
-      <div class="player-card">
-        <span class="player-number">#4</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4046700.png" class="player-photo" alt="Jimmie Ward">
-        <h3 class="player-name">Jimmie Ward</h3>
-        <p class="player-position">Safety</p>
-        <p class="player-details">5-11, 195 lbs | Northern Illinois | 11th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">2x SB Champ</span>
-          <span class="stat-badge">Team Captain</span>
-        </div>
-      </div>
-    </div>
+    <div class="player-grid" id="defenseGrid"></div>
 
     <h2 class="section-title">Special Teams</h2>
-    <div class="player-grid">
-      <div class="player-card">
-        <span class="player-number">#2</span>
-        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4046692.png" class="player-photo" alt="Ka'imi Fairbairn">
-        <h3 class="player-name">Ka'imi Fairbairn</h3>
-        <p class="player-position">Kicker</p>
-        <p class="player-details">6-0, 183 lbs | UCLA | 8th Year</p>
-        <div class="player-stats">
-          <span class="stat-badge">90%+ FG</span>
-          <span class="stat-badge">Franchise K</span>
-        </div>
-        <span class="highlight-badge">Pro Bowl</span>
-      </div>
-    </div>
+    <div class="player-grid" id="specialGrid"></div>
   </main>
 
   <footer>
     <p>Kyle's Personal Titans Fan Site - Know Your Enemy</p>
     <p style="margin-top: 5px;">Data sourced from ESPN. Not affiliated with the Houston Texans or NFL.</p>
   </footer>
+
+  <script>
+    // Player data
+    const players = [
+      // OFFENSE
+      { name: "C.J. Stroud", number: 7, position: "QB", group: "offense", details: "6-3, 218 lbs | Ohio State | 2nd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432577.png", highlight: "2023 OROY", stats: { PassYds: 2441, TD: 15, INT: 10, Rating: 93.2 } },
+      { name: "Joe Mixon", number: 28, position: "RB", group: "offense", details: "6-1, 220 lbs | Oklahoma | 8th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116385.png", highlight: "Pro Bowl", stats: { RushYds: 1016, TD: 11, Avg: 4.1, Carries: 248 } },
+      { name: "Nico Collins", number: 12, position: "WR", group: "offense", details: "6-4, 222 lbs | Michigan | 4th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4258173.png", highlight: "Pro Bowl", stats: { RecYds: 968, Rec: 62, TD: 7, Targets: 95 } },
+      { name: "Tank Dell", number: 3, position: "WR", group: "offense", details: "5-10, 165 lbs | Houston | 2nd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4366031.png", highlight: "Knee Injury (IR)", stats: { RecYds: 667, Rec: 51, TD: 6, Targets: 72 } },
+      { name: "Dalton Schultz", number: 85, position: "TE", group: "offense", details: "6-5, 244 lbs | Stanford | 7th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3121410.png", highlight: "Red Zone Target", stats: { RecYds: 412, Rec: 42, TD: 4, Targets: 58 } },
+
+      // DEFENSE
+      { name: "Will Anderson Jr.", number: 51, position: "OLB", group: "defense", details: "6-4, 243 lbs | Alabama | 2nd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685724.png", highlight: "2023 DROY", stats: { Tackles: 52, Sacks: 11, TFL: 15, FF: 3 } },
+      { name: "Danielle Hunter", number: 55, position: "OLB", group: "defense", details: "6-5, 263 lbs | LSU | 10th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2976560.png", highlight: "4x Pro Bowl", stats: { Tackles: 38, Sacks: 8.5, TFL: 12, FF: 2 } },
+      { name: "Derek Stingley Jr.", number: 24, position: "CB", group: "defense", details: "6-1, 195 lbs | LSU | 3rd Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4426434.png", highlight: "Pro Bowl", stats: { Tackles: 42, INT: 6, PD: 14 } },
+      { name: "Azeez Al-Shaair", number: 41, position: "ILB", group: "defense", details: "6-2, 228 lbs | Florida Atlantic | 6th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4360238.png", highlight: "$51M Contract", stats: { Tackles: 108, Sacks: 2.5, INT: 1, TFL: 8 } },
+      { name: "Jimmie Ward", number: 4, position: "S", group: "defense", details: "5-11, 195 lbs | Northern Illinois | 11th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4046700.png", highlight: "2x SB Champ", stats: { Tackles: 58, INT: 2, PD: 6 } },
+
+      // SPECIAL TEAMS
+      { name: "Ka'imi Fairbairn", number: 2, position: "K", group: "special", details: "6-0, 183 lbs | UCLA | 8th Year", photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4046692.png", highlight: "Pro Bowl", stats: { FGMade: 26, FGAtt: 29, "FG%": 89.7 } }
+    ];
+
+    // League and Division Averages
+    const positionAverages = {
+      QB: {
+        league: { PassYds: 2850, TD: 18, INT: 9, Rating: 88.5 },
+        division: { PassYds: 2350, TD: 14, INT: 7, Rating: 84.2 },
+        compareStats: ['PassYds', 'TD', 'Rating']
+      },
+      RB: {
+        league: { RushYds: 680, TD: 5, Avg: 4.3, Carries: 165 },
+        division: { RushYds: 620, TD: 4, Avg: 4.1, Carries: 155 },
+        compareStats: ['RushYds', 'TD', 'Avg']
+      },
+      WR: {
+        league: { RecYds: 520, Rec: 42, TD: 3, Targets: 68 },
+        division: { RecYds: 480, Rec: 38, TD: 3, Targets: 62 },
+        compareStats: ['RecYds', 'Rec', 'TD']
+      },
+      TE: {
+        league: { RecYds: 340, Rec: 30, TD: 2, Targets: 45 },
+        division: { RecYds: 310, Rec: 27, TD: 2, Targets: 40 },
+        compareStats: ['RecYds', 'Rec', 'TD']
+      },
+      OLB: {
+        league: { Tackles: 42, Sacks: 5.5, TFL: 8, FF: 1 },
+        division: { Tackles: 38, Sacks: 4.8, TFL: 7, FF: 0.8 },
+        compareStats: ['Tackles', 'Sacks', 'TFL']
+      },
+      ILB: {
+        league: { Tackles: 82, Sacks: 1.5, INT: 1, TFL: 5 },
+        division: { Tackles: 76, Sacks: 1.2, INT: 0.8, TFL: 4 },
+        compareStats: ['Tackles', 'Sacks', 'INT']
+      },
+      CB: {
+        league: { Tackles: 45, INT: 2, PD: 9 },
+        division: { Tackles: 42, INT: 1.5, PD: 8 },
+        compareStats: ['Tackles', 'INT', 'PD']
+      },
+      S: {
+        league: { Tackles: 62, INT: 1.5, PD: 5 },
+        division: { Tackles: 58, INT: 1.2, PD: 4.5 },
+        compareStats: ['Tackles', 'INT', 'PD']
+      },
+      K: {
+        league: { "FG%": 85.0, FGMade: 24, FGAtt: 28 },
+        division: { "FG%": 83.5, FGMade: 22, FGAtt: 27 },
+        compareStats: ['FGMade', 'FG%']
+      }
+    };
+
+    const statLabels = {
+      PassYds: 'Pass Yards', TD: 'Touchdowns', INT: 'Interceptions', Rating: 'Passer Rating',
+      RushYds: 'Rush Yards', Avg: 'Yards/Carry', Carries: 'Carries', Rec: 'Receptions',
+      RecYds: 'Rec Yards', Targets: 'Targets', Tackles: 'Tackles', Sacks: 'Sacks',
+      TFL: 'Tackles for Loss', FF: 'Forced Fumbles', PD: 'Pass Deflections',
+      FGMade: 'FG Made', FGAtt: 'FG Attempts', "FG%": 'FG %'
+    };
+
+    function generateComparison(player) {
+      const pos = player.position;
+      const avgData = positionAverages[pos];
+      if (!avgData) return '';
+
+      let html = '<div class="comparison-section"><div class="comparison-title">vs League Avg</div>';
+      const statsToCompare = avgData.compareStats || [];
+
+      statsToCompare.forEach(stat => {
+        const playerVal = player.stats[stat];
+        const divVal = avgData.division[stat];
+        const leagueVal = avgData.league[stat];
+        if (playerVal === undefined) return;
+
+        const maxVal = Math.max(playerVal, divVal, leagueVal) * 1.1;
+        const playerPct = (playerVal / maxVal) * 100;
+        const divPct = (divVal / maxVal) * 100;
+        const leaguePct = (leagueVal / maxVal) * 100;
+
+        const vsLeague = playerVal >= leagueVal ? 'above-avg' : 'below-avg';
+        const diff = ((playerVal - leagueVal) / leagueVal * 100).toFixed(0);
+        const diffText = playerVal >= leagueVal ? `+${diff}%` : `${diff}%`;
+
+        html += `
+          <div class="comparison-stat">
+            <div class="comparison-header">
+              <span class="comparison-label">${statLabels[stat] || stat}</span>
+              <span class="comparison-value ${vsLeague}">${playerVal} <small style="font-size:10px;opacity:0.7">(${diffText} vs NFL)</small></span>
+            </div>
+            <div class="comparison-bars">
+              <div class="comparison-row">
+                <span class="comparison-row-label">Player</span>
+                <div class="comparison-bar-bg"><div class="comparison-bar player" style="width: ${playerPct}%"></div></div>
+                <span class="comparison-bar-value">${playerVal}</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-row-label">AFC South</span>
+                <div class="comparison-bar-bg"><div class="comparison-bar division" style="width: ${divPct}%"></div></div>
+                <span class="comparison-bar-value">${divVal}</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-row-label">NFL Avg</span>
+                <div class="comparison-bar-bg"><div class="comparison-bar league" style="width: ${leaguePct}%"></div></div>
+                <span class="comparison-bar-value">${leagueVal}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      return html + '</div>';
+    }
+
+    function renderPlayers() {
+      const groups = { offense: 'offenseGrid', defense: 'defenseGrid', special: 'specialGrid' };
+
+      Object.keys(groups).forEach(group => {
+        const grid = document.getElementById(groups[group]);
+        const groupPlayers = players.filter(p => p.group === group);
+
+        groupPlayers.forEach(player => {
+          const statBadges = Object.entries(player.stats).slice(0, 3).map(([key, val]) =>
+            `<span class="stat-badge">${val} ${statLabels[key] || key}</span>`
+          ).join('');
+
+          const card = document.createElement('div');
+          card.className = 'player-card';
+          card.innerHTML = `
+            <span class="player-number">#${player.number}</span>
+            <img src="${player.photo}" class="player-photo" alt="${player.name}" onerror="this.src='https://via.placeholder.com/80?text=${player.number}'">
+            <h3 class="player-name">${player.name}</h3>
+            <p class="player-position">${player.position}</p>
+            <p class="player-details">${player.details}</p>
+            <div class="player-stats">${statBadges}</div>
+            ${player.highlight ? `<span class="highlight-badge">${player.highlight}</span>` : ''}
+            ${generateComparison(player)}
+          `;
+          grid.appendChild(card);
+        });
+      });
+    }
+
+    renderPlayers();
+  </script>
 </body>
 </html>

@@ -139,6 +139,7 @@
             border-radius: 12px;
             padding: 30px;
             border: 1px solid rgba(255,255,255,0.1);
+            overflow-x: auto;
         }
 
         .bracket-title {
@@ -158,6 +159,149 @@
             color: var(--titans-silver);
             font-size: 0.9rem;
             margin-top: 5px;
+        }
+
+        /* Visual Bracket */
+        .bracket-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .bracket-conference {
+            margin-bottom: 20px;
+        }
+
+        .bracket-conf-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .bracket-conf-label.afc { background: #C8102E; }
+        .bracket-conf-label.nfc { background: #002244; }
+
+        .bracket-rounds {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bracket-round {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bracket-round-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-silver);
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .bracket-matchup {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px;
+            min-width: 180px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .bracket-team {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .bracket-team:last-child { margin-bottom: 0; }
+
+        .bracket-team.bye {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px dashed rgba(255, 215, 0, 0.3);
+        }
+
+        .bracket-team.winner {
+            background: rgba(75, 146, 219, 0.2);
+            border-left: 3px solid var(--titans-blue);
+        }
+
+        .bracket-seed {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--titans-blue);
+            color: var(--titans-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .bracket-seed.bye-seed { background: gold; color: #333; }
+
+        .bracket-team-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .bracket-record {
+            font-size: 0.75rem;
+            color: var(--titans-silver);
+            margin-left: 8px;
+        }
+
+        .vs-label {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--titans-silver);
+            margin: 2px 0;
+        }
+
+        .bracket-connector {
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--titans-silver);
+            font-size: 1.5rem;
+        }
+
+        .super-bowl-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(200, 16, 46, 0.2));
+            border: 2px solid gold;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            min-width: 200px;
+        }
+
+        .super-bowl-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: gold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         /* Conference Standings */
@@ -531,7 +675,7 @@
 
     <header class="page-header">
         <h1>NFL</h1>
-        <p>2024-25 Season Standings & Playoff Picture</p>
+        <p>2025-26 Season Standings & Playoff Picture</p>
     </header>
 
     <main class="container">
@@ -544,134 +688,243 @@
 
             <div class="bracket-container">
                 <div class="bracket-title">
-                    <h3>Super Bowl LIX Contenders</h3>
-                    <p>Current Playoff Seeds Based on Week 15 Standings</p>
+                    <h3>Super Bowl LX Bracket</h3>
+                    <p>Projected Wild Card Matchups Based on Week 15 Standings</p>
                 </div>
 
-                <div class="conference-row">
-                    <!-- AFC -->
-                    <div class="conference-box afc">
-                        <div class="conference-header">
-                            <h4>AFC Playoff Picture</h4>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed bye">1</span>
-                            <div class="team-info">
-                                <div class="name">Kansas City Chiefs</div>
-                                <div class="division">AFC West</div>
+                <!-- AFC Bracket -->
+                <div class="bracket-conference">
+                    <div class="bracket-conf-label afc">AFC Playoff Bracket</div>
+                    <div class="bracket-rounds">
+                        <!-- Wild Card Round -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">Wild Card</div>
+
+                            <!-- #1 Bye -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team bye">
+                                    <span class="bracket-seed bye-seed">1</span>
+                                    <span class="bracket-team-name">Broncos</span>
+                                    <span class="bracket-record">12-2</span>
+                                </div>
+                                <div class="vs-label">BYE WEEK</div>
                             </div>
-                            <span class="team-record">13-1</span>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed">2</span>
-                            <div class="team-info">
-                                <div class="name">Buffalo Bills</div>
-                                <div class="division">AFC East</div>
+
+                            <!-- #2 vs #7 -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">2</span>
+                                    <span class="bracket-team-name">Patriots</span>
+                                    <span class="bracket-record">11-3</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">7</span>
+                                    <span class="bracket-team-name">Texans</span>
+                                    <span class="bracket-record">9-5</span>
+                                </div>
                             </div>
-                            <span class="team-record">11-3</span>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed">3</span>
-                            <div class="team-info">
-                                <div class="name">Pittsburgh Steelers</div>
-                                <div class="division">AFC North</div>
+
+                            <!-- #3 vs #6 -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">3</span>
+                                    <span class="bracket-team-name">Jaguars</span>
+                                    <span class="bracket-record">10-4</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">6</span>
+                                    <span class="bracket-team-name">Bills</span>
+                                    <span class="bracket-record">10-4</span>
+                                </div>
                             </div>
-                            <span class="team-record">10-4</span>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed">4</span>
-                            <div class="team-info">
-                                <div class="name">Houston Texans</div>
-                                <div class="division">AFC South</div>
+
+                            <!-- #4 vs #5 -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">4</span>
+                                    <span class="bracket-team-name">Steelers</span>
+                                    <span class="bracket-record">7-6</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">5</span>
+                                    <span class="bracket-team-name">Chargers</span>
+                                    <span class="bracket-record">10-4</span>
+                                </div>
                             </div>
-                            <span class="team-record">9-5</span>
                         </div>
-                        <div class="playoff-team">
-                            <span class="seed">5</span>
-                            <div class="team-info">
-                                <div class="name">Baltimore Ravens</div>
-                                <div class="division">AFC North</div>
+
+                        <div class="bracket-connector">→</div>
+
+                        <!-- Divisional Round -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">Divisional</div>
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed bye-seed">1</span>
+                                    <span class="bracket-team-name">Broncos</span>
+                                    <span class="bracket-record">12-2</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">Lowest Seed</span>
+                                </div>
                             </div>
-                            <span class="team-record">9-5</span>
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">WC Winner</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">WC Winner</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="playoff-team">
-                            <span class="seed">6</span>
-                            <div class="team-info">
-                                <div class="name">Los Angeles Chargers</div>
-                                <div class="division">AFC West</div>
+
+                        <div class="bracket-connector">→</div>
+
+                        <!-- Conference Championship -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">AFC Championship</div>
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">TBD</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">TBD</span>
+                                </div>
                             </div>
-                            <span class="team-record">8-6</span>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed">7</span>
-                            <div class="team-info">
-                                <div class="name">Denver Broncos</div>
-                                <div class="division">AFC West</div>
-                            </div>
-                            <span class="team-record">9-5</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- NFC -->
-                    <div class="conference-box nfc">
-                        <div class="conference-header">
-                            <h4>NFC Playoff Picture</h4>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed bye">1</span>
-                            <div class="team-info">
-                                <div class="name">Detroit Lions</div>
-                                <div class="division">NFC North</div>
+                <!-- NFC Bracket -->
+                <div class="bracket-conference">
+                    <div class="bracket-conf-label nfc">NFC Playoff Bracket</div>
+                    <div class="bracket-rounds">
+                        <!-- Wild Card Round -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">Wild Card</div>
+
+                            <!-- #1 Bye -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team bye">
+                                    <span class="bracket-seed bye-seed">1</span>
+                                    <span class="bracket-team-name">Rams</span>
+                                    <span class="bracket-record">11-3</span>
+                                </div>
+                                <div class="vs-label">BYE WEEK</div>
                             </div>
-                            <span class="team-record">12-2</span>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed">2</span>
-                            <div class="team-info">
-                                <div class="name">Philadelphia Eagles</div>
-                                <div class="division">NFC East</div>
+
+                            <!-- #2 vs #7 -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">2</span>
+                                    <span class="bracket-team-name">Bears</span>
+                                    <span class="bracket-record">10-4</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">7</span>
+                                    <span class="bracket-team-name">Packers</span>
+                                    <span class="bracket-record">9-4-1</span>
+                                </div>
                             </div>
-                            <span class="team-record">12-2</span>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed">3</span>
-                            <div class="team-info">
-                                <div class="name">Seattle Seahawks</div>
-                                <div class="division">NFC West</div>
+
+                            <!-- #3 vs #6 -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">3</span>
+                                    <span class="bracket-team-name">Eagles</span>
+                                    <span class="bracket-record">9-5</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">6</span>
+                                    <span class="bracket-team-name">49ers</span>
+                                    <span class="bracket-record">10-4</span>
+                                </div>
                             </div>
-                            <span class="team-record">8-6</span>
-                        </div>
-                        <div class="playoff-team">
-                            <span class="seed">4</span>
-                            <div class="team-info">
-                                <div class="name">Tampa Bay Buccaneers</div>
-                                <div class="division">NFC South</div>
+
+                            <!-- #4 vs #5 -->
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">4</span>
+                                    <span class="bracket-team-name">Buccaneers</span>
+                                    <span class="bracket-record">7-7</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-seed">5</span>
+                                    <span class="bracket-team-name">Seahawks</span>
+                                    <span class="bracket-record">11-3</span>
+                                </div>
                             </div>
-                            <span class="team-record">8-6</span>
                         </div>
-                        <div class="playoff-team">
-                            <span class="seed">5</span>
-                            <div class="team-info">
-                                <div class="name">Minnesota Vikings</div>
-                                <div class="division">NFC North</div>
+
+                        <div class="bracket-connector">→</div>
+
+                        <!-- Divisional Round -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">Divisional</div>
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed bye-seed">1</span>
+                                    <span class="bracket-team-name">Rams</span>
+                                    <span class="bracket-record">11-3</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">Lowest Seed</span>
+                                </div>
                             </div>
-                            <span class="team-record">12-2</span>
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">WC Winner</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">WC Winner</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="playoff-team">
-                            <span class="seed">6</span>
-                            <div class="team-info">
-                                <div class="name">Green Bay Packers</div>
-                                <div class="division">NFC North</div>
+
+                        <div class="bracket-connector">→</div>
+
+                        <!-- Conference Championship -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">NFC Championship</div>
+                            <div class="bracket-matchup">
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">TBD</span>
+                                </div>
+                                <div class="vs-label">vs</div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name">TBD</span>
+                                </div>
                             </div>
-                            <span class="team-record">10-4</span>
                         </div>
-                        <div class="playoff-team">
-                            <span class="seed">7</span>
-                            <div class="team-info">
-                                <div class="name">Washington Commanders</div>
-                                <div class="division">NFC East</div>
+                    </div>
+                </div>
+
+                <!-- Super Bowl -->
+                <div style="text-align: center; margin-top: 30px;">
+                    <div class="super-bowl-box">
+                        <div class="super-bowl-label">Super Bowl LX</div>
+                        <div class="bracket-matchup" style="border: none; background: none;">
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">AFC Champion</span>
                             </div>
-                            <span class="team-record">9-5</span>
+                            <div class="vs-label" style="color: gold;">VS</div>
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">NFC Champion</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--titans-silver); margin-top: 10px;">
+                            February 9, 2026 • New Orleans, LA
                         </div>
                     </div>
                 </div>
@@ -687,28 +940,28 @@
 
             <div class="news-grid">
                 <div class="news-card">
-                    <span class="news-tag playoff">Playoff Race</span>
-                    <h4>Chiefs Clinch AFC West, #1 Seed Within Reach</h4>
-                    <p>Kansas City has clinched the AFC West for the 9th consecutive year. With a 13-1 record, they're positioned to secure home field advantage throughout the AFC playoffs.</p>
-                    <div class="news-date">December 16, 2024</div>
-                </div>
-                <div class="news-card">
                     <span class="news-tag breaking">Breaking</span>
-                    <h4>Lions, Eagles, Vikings Battle for NFC's Top Seed</h4>
-                    <p>Three NFC teams sit at 12-2, creating a historic three-way race for the conference's #1 seed and crucial first-round bye heading into the final weeks.</p>
-                    <div class="news-date">December 16, 2024</div>
+                    <h4>Chiefs Eliminated, Mahomes Tears ACL</h4>
+                    <p>The defending champions' dynasty has come to a shocking end. Kansas City (6-8) is officially eliminated from playoff contention, and Patrick Mahomes suffered a torn ACL in Week 15's loss to the Chargers.</p>
+                    <div class="news-date">December 16, 2025</div>
                 </div>
                 <div class="news-card">
-                    <span class="news-tag injury">Injury News</span>
-                    <h4>Key Players Return for Playoff Push</h4>
-                    <p>Several teams are getting healthier at the right time, with star players returning from injuries as the playoff picture crystallizes.</p>
-                    <div class="news-date">December 15, 2024</div>
+                    <span class="news-tag playoff">Playoff Race</span>
+                    <h4>Broncos, Rams Clinch Playoff Berths</h4>
+                    <p>Denver (12-2) and Los Angeles (11-3) became the first two teams to clinch postseason spots, with both in position for the #1 seed in their respective conferences.</p>
+                    <div class="news-date">December 16, 2025</div>
+                </div>
+                <div class="news-card">
+                    <span class="news-tag playoff">AFC South</span>
+                    <h4>Jaguars Lead Division, Texans Surging</h4>
+                    <p>Jacksonville (10-4) holds a one-game lead over Houston (9-5) in the AFC South. The Jags have won five straight, while CJ Stroud and the Texans continue their playoff push.</p>
+                    <div class="news-date">December 15, 2025</div>
                 </div>
                 <div class="news-card">
                     <span class="news-tag trade">Draft Watch</span>
                     <h4>Titans in Position for Top Pick</h4>
-                    <p>With a 3-11 record, Tennessee is positioned to land a top-3 pick in the 2025 NFL Draft. Potential targets include top quarterback prospects.</p>
-                    <div class="news-date">December 15, 2024</div>
+                    <p>With a 2-11 record, Tennessee is positioned to land a top-3 pick in the 2026 NFL Draft. The Titans have been eliminated from playoff contention.</p>
+                    <div class="news-date">December 15, 2025</div>
                 </div>
             </div>
         </section>
@@ -721,29 +974,29 @@
             </div>
 
             <div class="teams-grid">
-                <!-- Titans (for reference) -->
-                <div class="team-card titans">
+                <!-- Jacksonville Jaguars -->
+                <div class="team-card jaguars">
                     <div class="team-card-header">
-                        <div class="team-logo">TEN</div>
-                        <h3 class="team-name">Tennessee Titans</h3>
-                        <p class="team-record-display">3-11 (4th in AFC South)</p>
+                        <div class="team-logo">JAX</div>
+                        <h3 class="team-name">Jacksonville Jaguars</h3>
+                        <p class="team-record-display">10-4 (1st in AFC South)</p>
                     </div>
                     <div class="team-card-body">
                         <div class="team-stat-row">
                             <span class="team-stat-label">QB</span>
-                            <span class="team-stat-value">Will Levis</span>
+                            <span class="team-stat-value">Trevor Lawrence</span>
                         </div>
                         <div class="team-stat-row">
                             <span class="team-stat-label">Top Rusher</span>
-                            <span class="team-stat-value">Tony Pollard</span>
+                            <span class="team-stat-value">Travis Etienne Jr.</span>
                         </div>
                         <div class="team-stat-row">
                             <span class="team-stat-label">Points/Game</span>
-                            <span class="team-stat-value">17.5</span>
+                            <span class="team-stat-value">24.8</span>
                         </div>
                     </div>
                     <div class="team-card-footer">
-                        <a href="Titans_2025_Roster.html" class="view-roster-btn">View Roster</a>
+                        <a href="jaguars-roster.html" class="view-roster-btn">View Roster</a>
                     </div>
                 </div>
 
@@ -752,7 +1005,7 @@
                     <div class="team-card-header">
                         <div class="team-logo">HOU</div>
                         <h3 class="team-name">Houston Texans</h3>
-                        <p class="team-record-display">9-5 (1st in AFC South)</p>
+                        <p class="team-record-display">9-5 (2nd in AFC South)</p>
                     </div>
                     <div class="team-card-body">
                         <div class="team-stat-row">
@@ -765,7 +1018,7 @@
                         </div>
                         <div class="team-stat-row">
                             <span class="team-stat-label">Points/Game</span>
-                            <span class="team-stat-value">24.1</span>
+                            <span class="team-stat-value">26.2</span>
                         </div>
                     </div>
                     <div class="team-card-footer">
@@ -778,7 +1031,7 @@
                     <div class="team-card-header">
                         <div class="team-logo">IND</div>
                         <h3 class="team-name">Indianapolis Colts</h3>
-                        <p class="team-record-display">6-8 (3rd in AFC South)</p>
+                        <p class="team-record-display">8-6 (3rd in AFC South)</p>
                     </div>
                     <div class="team-card-body">
                         <div class="team-stat-row">
@@ -799,29 +1052,29 @@
                     </div>
                 </div>
 
-                <!-- Jacksonville Jaguars -->
-                <div class="team-card jaguars">
+                <!-- Titans (for reference) -->
+                <div class="team-card titans">
                     <div class="team-card-header">
-                        <div class="team-logo">JAX</div>
-                        <h3 class="team-name">Jacksonville Jaguars</h3>
-                        <p class="team-record-display">3-11 (4th in AFC South)</p>
+                        <div class="team-logo">TEN</div>
+                        <h3 class="team-name">Tennessee Titans</h3>
+                        <p class="team-record-display">2-11 (4th in AFC South)</p>
                     </div>
                     <div class="team-card-body">
                         <div class="team-stat-row">
                             <span class="team-stat-label">QB</span>
-                            <span class="team-stat-value">Trevor Lawrence</span>
+                            <span class="team-stat-value">Will Levis</span>
                         </div>
                         <div class="team-stat-row">
                             <span class="team-stat-label">Top Rusher</span>
-                            <span class="team-stat-value">Tank Bigsby</span>
+                            <span class="team-stat-value">Tony Pollard</span>
                         </div>
                         <div class="team-stat-row">
                             <span class="team-stat-label">Points/Game</span>
-                            <span class="team-stat-value">17.6</span>
+                            <span class="team-stat-value">15.2</span>
                         </div>
                     </div>
                     <div class="team-card-footer">
-                        <a href="jaguars-roster.html" class="view-roster-btn">View Roster</a>
+                        <a href="Titans_2025_Roster.html" class="view-roster-btn">View Roster</a>
                     </div>
                 </div>
             </div>
