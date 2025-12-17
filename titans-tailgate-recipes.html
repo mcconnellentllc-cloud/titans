@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailgate Recipes - Tennessee Titans Bible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1a2e 50%, var(--titans-navy) 100%);
+            min-height: 100vh;
+            color: var(--titans-white);
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+            border-bottom: 3px solid var(--titans-red);
+        }
+
+        .page-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--titans-silver);
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--titans-white);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--titans-red);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--titans-blue);
+        }
+
+        /* Recipe Grid */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .recipe-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(75, 146, 219, 0.2);
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--titans-blue);
+        }
+
+        .recipe-content {
+            padding: 25px;
+        }
+
+        .recipe-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-white);
+            margin-bottom: 10px;
+        }
+
+        .recipe-tagline {
+            color: var(--titans-blue);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: var(--titans-silver);
+        }
+
+        .meta-item svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--titans-blue);
+        }
+
+        .recipe-section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-blue);
+            margin-bottom: 10px;
+        }
+
+        .ingredients-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .ingredients-list li {
+            padding: 5px 0;
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+            border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+        }
+
+        .ingredients-list li:before {
+            content: "•";
+            color: var(--titans-red);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .instructions {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--titans-silver);
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        /* Drink Cards - Smaller */
+        .drink-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .drink-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .drink-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .drink-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--titans-red);
+        }
+
+        .drink-content {
+            padding: 20px;
+        }
+
+        .drink-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-white);
+            margin-bottom: 8px;
+        }
+
+        .drink-tagline {
+            color: var(--titans-blue);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .drink-ingredients {
+            font-size: 0.8rem;
+            color: var(--titans-silver);
+            line-height: 1.6;
+        }
+
+        .drink-ingredients strong {
+            color: var(--titans-white);
+        }
+
+        /* Side dishes - Compact grid */
+        .sides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .side-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 10px;
+            display: flex;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .side-card:hover {
+            transform: translateX(5px);
+        }
+
+        .side-image {
+            width: 120px;
+            min-height: 150px;
+            object-fit: cover;
+            border-right: 2px solid var(--titans-blue);
+        }
+
+        .side-content {
+            padding: 15px;
+            flex: 1;
+        }
+
+        .side-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--titans-white);
+            margin-bottom: 8px;
+        }
+
+        .side-description {
+            font-size: 0.8rem;
+            color: var(--titans-silver);
+            line-height: 1.5;
+        }
+
+        .side-tip {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--titans-blue);
+            font-style: italic;
+        }
+
+        /* Pro Tips Section */
+        .tips-section {
+            background: linear-gradient(145deg, rgba(200, 16, 46, 0.1) 0%, rgba(12, 35, 64, 0.9) 100%);
+            border: 1px solid rgba(200, 16, 46, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tips-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-red);
+            margin-bottom: 20px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .tip-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--titans-blue);
+            line-height: 1;
+        }
+
+        .tip-text {
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(75, 146, 219, 0.2);
+            color: var(--titans-silver);
+            font-size: 0.8rem;
+        }
+
+        footer .titan-up {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-link {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .side-card {
+                flex-direction: column;
+            }
+
+            .side-image {
+                width: 100%;
+                height: 150px;
+                border-right: none;
+                border-bottom: 2px solid var(--titans-blue);
+            }
+
+            .drink-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Titans_2025_Roster.html" class="nav-link">2025 Roster</a>
+            <a href="schedule.html" class="nav-link">Schedule</a>
+            <a href="titans-cheerleaders-2025.html" class="nav-link">Cheerleaders</a>
+            <a href="team-history.html" class="nav-link">History</a>
+            <a href="titans-salary-cap.html" class="nav-link">Salary Cap</a>
+            <a href="titans-betting-odds.html" class="nav-link">Betting Odds</a>
+            <a href="titans-tailgate-recipes.html" class="nav-link active">Recipes</a>
+            <a href="nfl.html" class="nav-link">NFL</a>
+            <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Titans Tailgate Recipes</h1>
+        <p>Nashville-Style Food & Drink for Game Day</p>
+    </header>
+
+    <main class="container">
+
+        <!-- MAIN DISHES -->
+        <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+            Main Dishes
+        </h2>
+
+        <div class="recipe-grid">
+            <!-- Nashville Hot Chicken -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&h=400&fit=crop" alt="Nashville Hot Chicken" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Nashville Hot Chicken</h3>
+                    <p class="recipe-tagline">The iconic Music City classic - bring the heat!</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            45 min
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Serves 4
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>4 chicken thighs & 4 drumsticks</li>
+                        <li>2 cups buttermilk</li>
+                        <li>2 cups flour</li>
+                        <li>1 tbsp cayenne pepper</li>
+                        <li>1 tbsp brown sugar</li>
+                        <li>1 tsp paprika, garlic powder, salt</li>
+                        <li>1/2 cup lard or bacon fat (for paste)</li>
+                        <li>3 tbsp cayenne (for hot paste)</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Marinate chicken in buttermilk overnight in fridge.</li>
+                            <li>Mix flour with 1 tbsp cayenne, paprika, garlic, salt.</li>
+                            <li>Dredge chicken in flour mixture, shake off excess.</li>
+                            <li>Fry at 325°F for 15-18 minutes until golden and 165°F internal.</li>
+                            <li>Make hot paste: melt lard, add 3 tbsp cayenne, brown sugar, paprika.</li>
+                            <li>Brush hot paste generously over fried chicken.</li>
+                            <li>Serve on white bread with pickles. Titan Up!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tennessee Smoked Brisket -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&h=400&fit=crop" alt="Smoked Brisket" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Tennessee Smoked Brisket</h3>
+                    <p class="recipe-tagline">Low and slow - worth every minute of the wait</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            10-12 hrs
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Serves 12
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>12-14 lb whole packer brisket</li>
+                        <li>1/4 cup coarse black pepper</li>
+                        <li>1/4 cup coarse kosher salt</li>
+                        <li>2 tbsp garlic powder</li>
+                        <li>1 tbsp onion powder</li>
+                        <li>Hickory or oak wood chunks</li>
+                        <li>Apple cider vinegar spray</li>
+                        <li>Butcher paper for wrapping</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Trim brisket, leaving 1/4" fat cap.</li>
+                            <li>Apply rub generously, let sit 1 hour.</li>
+                            <li>Smoke at 225-250°F fat side up.</li>
+                            <li>Spritz with apple cider every hour after bark forms.</li>
+                            <li>Wrap in butcher paper at 165°F internal (the stall).</li>
+                            <li>Continue until 203°F and probe tender.</li>
+                            <li>Rest 1-2 hours before slicing against the grain.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pulled Pork -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1623653387945-2fd25214f8fc?w=600&h=400&fit=crop" alt="Pulled Pork" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Tennessee Pulled Pork</h3>
+                    <p class="recipe-tagline">Smoky, tender, and perfect for sandwiches</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            8-10 hrs
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Serves 10
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>8-10 lb bone-in pork shoulder (Boston butt)</li>
+                        <li>1/4 cup brown sugar</li>
+                        <li>2 tbsp paprika</li>
+                        <li>2 tbsp chili powder</li>
+                        <li>1 tbsp each: garlic, onion, cumin</li>
+                        <li>1 tbsp salt, 1 tsp black pepper</li>
+                        <li>1 cup apple cider vinegar</li>
+                        <li>Your favorite BBQ sauce</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Mix all dry spices for the rub.</li>
+                            <li>Score fat cap, apply mustard as binder, then rub.</li>
+                            <li>Smoke at 225°F using apple or cherry wood.</li>
+                            <li>Spritz with apple cider vinegar hourly.</li>
+                            <li>Wrap in foil at 165°F with splash of apple juice.</li>
+                            <li>Cook until 205°F and bone pulls clean.</li>
+                            <li>Rest 30 min, then pull and mix with juices.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDES -->
+        <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>
+            Southern Sides
+        </h2>
+
+        <div class="sides-grid">
+            <!-- Mac & Cheese -->
+            <div class="side-card">
+                <img src="https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=300&h=300&fit=crop" alt="Mac and Cheese" class="side-image">
+                <div class="side-content">
+                    <h3 class="side-title">Southern Mac & Cheese</h3>
+                    <p class="side-description">Creamy, cheesy, and baked until golden with a crispy top. Use sharp cheddar, Velveeta for creaminess, and a touch of cream cheese.</p>
+                    <p class="side-tip">Pro tip: Add a layer of breadcrumbs mixed with melted butter on top before baking.</p>
+                </div>
+            </div>
+
+            <!-- Collard Greens -->
+            <div class="side-card">
+                <img src="https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?w=300&h=300&fit=crop" alt="Collard Greens" class="side-image">
+                <div class="side-content">
+                    <h3 class="side-title">Collard Greens</h3>
+                    <p class="side-description">Slow-simmered with smoked ham hocks, onion, garlic, and a splash of apple cider vinegar. Season with red pepper flakes.</p>
+                    <p class="side-tip">Pro tip: Cook low for 2-3 hours until silky tender. Save the pot liquor!</p>
+                </div>
+            </div>
+
+            <!-- Baked Beans -->
+            <div class="side-card">
+                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=300&h=300&fit=crop" alt="Baked Beans" class="side-image">
+                <div class="side-content">
+                    <h3 class="side-title">BBQ Baked Beans</h3>
+                    <p class="side-description">Sweet and smoky with bacon, brown sugar, molasses, and your favorite BBQ sauce. Bake until thick and bubbly.</p>
+                    <p class="side-tip">Pro tip: Add chopped burnt ends or pulled pork for extra meat!</p>
+                </div>
+            </div>
+
+            <!-- Coleslaw -->
+            <div class="side-card">
+                <img src="https://images.unsplash.com/photo-1625938145744-e380515399bf?w=300&h=300&fit=crop" alt="Coleslaw" class="side-image">
+                <div class="side-content">
+                    <h3 class="side-title">Creamy Coleslaw</h3>
+                    <p class="side-description">Crisp cabbage and carrots in a tangy mayo-based dressing with apple cider vinegar, sugar, and celery seed.</p>
+                    <p class="side-tip">Pro tip: Make it a few hours ahead so flavors meld together.</p>
+                </div>
+            </div>
+
+            <!-- Cornbread -->
+            <div class="side-card">
+                <img src="https://images.unsplash.com/photo-1597226051400-de4d56c02ea1?w=300&h=300&fit=crop" alt="Cornbread" class="side-image">
+                <div class="side-content">
+                    <h3 class="side-title">Cast Iron Cornbread</h3>
+                    <p class="side-description">Golden, slightly sweet cornbread baked in a screaming hot cast iron skillet with bacon drippings for crispy edges.</p>
+                    <p class="side-tip">Pro tip: Preheat the skillet with butter/bacon fat before adding batter.</p>
+                </div>
+            </div>
+
+            <!-- Fried Okra -->
+            <div class="side-card">
+                <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=300&h=300&fit=crop" alt="Fried Okra" class="side-image">
+                <div class="side-content">
+                    <h3 class="side-title">Crispy Fried Okra</h3>
+                    <p class="side-description">Fresh okra sliced, dredged in seasoned cornmeal, and fried until golden and crunchy. Serve with ranch or comeback sauce.</p>
+                    <p class="side-tip">Pro tip: Soak okra in buttermilk before breading for extra tender results.</p>
+                </div>
+            </div>
+
+            <!-- Potato Salad -->
+            <div class="side-card">
+                <img src="https://images.unsplash.com/photo-1598971639058-a4c3d1b89c91?w=300&h=300&fit=crop" alt="Potato Salad" class="side-image">
+                <div class="side-content">
+                    <h3 class="side-title">Southern Potato Salad</h3>
+                    <p class="side-description">Creamy with hard-boiled eggs, sweet pickle relish, celery, mustard, and mayo. Some families add a secret ingredient!</p>
+                    <p class="side-tip">Pro tip: Season potatoes with salt while still warm so they absorb flavor.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESSERTS -->
+        <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24"><path d="M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.31-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.38.57 1.08 0 1.96-.88 1.96-1.96V12C21 10.34 19.66 9 18 9z"/></svg>
+            Desserts
+        </h2>
+
+        <div class="recipe-grid">
+            <!-- Banana Pudding -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&h=400&fit=crop" alt="Banana Pudding" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Southern Banana Pudding</h3>
+                    <p class="recipe-tagline">Creamy, dreamy layers of pure comfort</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            30 min + chill
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Serves 10
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>2 boxes vanilla wafers (Nilla)</li>
+                        <li>6 ripe bananas, sliced</li>
+                        <li>2 cups whole milk</li>
+                        <li>1 can sweetened condensed milk</li>
+                        <li>1 box instant vanilla pudding</li>
+                        <li>8 oz cream cheese, softened</li>
+                        <li>12 oz Cool Whip, thawed</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Beat cream cheese until smooth.</li>
+                            <li>Add condensed milk, mix well.</li>
+                            <li>Add milk and pudding mix, beat until thick.</li>
+                            <li>Fold in Cool Whip gently.</li>
+                            <li>Layer: wafers, bananas, pudding. Repeat 3x.</li>
+                            <li>Top with wafers and refrigerate 4+ hours.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pecan Pie -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=600&h=400&fit=crop" alt="Pecan Pie" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Tennessee Pecan Pie</h3>
+                    <p class="recipe-tagline">Rich, gooey, and loaded with pecans</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            1 hr
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Serves 8
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>1 unbaked 9" pie crust</li>
+                        <li>1 cup light corn syrup</li>
+                        <li>1 cup packed brown sugar</li>
+                        <li>1/3 cup melted butter</li>
+                        <li>3 eggs, beaten</li>
+                        <li>1 tsp vanilla extract</li>
+                        <li>2 cups pecan halves</li>
+                        <li>Pinch of salt</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Preheat oven to 350°F.</li>
+                            <li>Whisk corn syrup, brown sugar, butter, eggs, vanilla, salt.</li>
+                            <li>Arrange pecans in pie crust.</li>
+                            <li>Pour filling over pecans.</li>
+                            <li>Bake 50-55 minutes until set (slight jiggle in center).</li>
+                            <li>Cool completely before slicing.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peach Cobbler -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=600&h=400&fit=crop" alt="Peach Cobbler" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Southern Peach Cobbler</h3>
+                    <p class="recipe-tagline">Warm, sweet peaches with buttery biscuit topping</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            50 min
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Serves 8
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>2 lbs fresh peaches (or 2 cans, drained)</li>
+                        <li>1 cup sugar (divided)</li>
+                        <li>1 cup flour</li>
+                        <li>1 cup milk</li>
+                        <li>1 stick butter, melted</li>
+                        <li>1 tbsp baking powder</li>
+                        <li>1 tsp cinnamon</li>
+                        <li>Vanilla ice cream for serving</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Preheat oven to 350°F.</li>
+                            <li>Pour melted butter in 9x13 baking dish.</li>
+                            <li>Mix flour, 1/2 cup sugar, baking powder, milk into batter.</li>
+                            <li>Pour batter over butter (don't stir!).</li>
+                            <li>Toss peaches with remaining sugar and cinnamon.</li>
+                            <li>Spoon peaches over batter (still don't stir!).</li>
+                            <li>Bake 45-50 min until golden. Serve warm with ice cream.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chess Pie -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1562007908-17c67e878c88?w=600&h=400&fit=crop" alt="Chess Pie" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Tennessee Chess Pie</h3>
+                    <p class="recipe-tagline">A Southern classic - simple but irresistible</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            55 min
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Serves 8
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>1 unbaked 9" pie crust</li>
+                        <li>1.5 cups sugar</li>
+                        <li>1/2 cup butter, melted</li>
+                        <li>3 eggs</li>
+                        <li>1 tbsp cornmeal</li>
+                        <li>1 tbsp white vinegar</li>
+                        <li>1 tsp vanilla</li>
+                        <li>Pinch of salt</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Preheat oven to 325°F.</li>
+                            <li>Whisk sugar and melted butter.</li>
+                            <li>Beat in eggs one at a time.</li>
+                            <li>Add cornmeal, vinegar, vanilla, salt.</li>
+                            <li>Pour into pie crust.</li>
+                            <li>Bake 50-55 minutes until set with slight wobble.</li>
+                            <li>Cool completely - filling will set as it cools.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goo Goo Cluster Brownies -->
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=400&fit=crop" alt="Goo Goo Brownies" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Goo Goo Cluster Brownies</h3>
+                    <p class="recipe-tagline">Inspired by Nashville's famous candy since 1912</p>
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            45 min
+                        </span>
+                        <span class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                            Makes 16
+                        </span>
+                    </div>
+                    <h4 class="recipe-section-title">Ingredients</h4>
+                    <ul class="ingredients-list">
+                        <li>1 box brownie mix + ingredients</li>
+                        <li>1 cup marshmallow fluff</li>
+                        <li>1 cup caramel sauce</li>
+                        <li>1 cup roasted peanuts, chopped</li>
+                        <li>1 cup milk chocolate chips</li>
+                        <li>2 tbsp butter</li>
+                    </ul>
+                    <h4 class="recipe-section-title">Instructions</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>Bake brownies per package in 9x13 pan. Cool 10 min.</li>
+                            <li>Spread marshmallow fluff over warm brownies.</li>
+                            <li>Drizzle caramel sauce over fluff.</li>
+                            <li>Sprinkle with chopped peanuts.</li>
+                            <li>Melt chocolate chips with butter, drizzle on top.</li>
+                            <li>Refrigerate 1 hour before cutting.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DRINKS -->
+        <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24"><path d="M3 14c0 1.3.84 2.4 2 2.82V20H3v2h6v-2H7v-3.18C8.16 16.4 9 15.3 9 14V6H3v8zm2-6h2v3H5V8zm15.64 1L19 7h-1V4h-4v3h-1l-1.64 2-.36 3v9h2v-3h4v3h2v-9l-.36-3zM16 4h2v1h-2V4zM15 9h4l.36 3H14.64l.36-3zm-.5 6h5v1h-5v-1z"/></svg>
+            Game Day Drinks
+        </h2>
+
+        <div class="drink-grid">
+            <!-- Sweet Tea -->
+            <div class="drink-card">
+                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop" alt="Sweet Tea" class="drink-image">
+                <div class="drink-content">
+                    <h3 class="drink-title">Southern Sweet Tea</h3>
+                    <p class="drink-tagline">The house wine of the South</p>
+                    <p class="drink-ingredients">
+                        <strong>Mix:</strong> 4 family-size tea bags, 1 cup sugar, 1 gallon water. Brew tea in 4 cups boiling water 5 min. Add sugar while hot, stir until dissolved. Add remaining cold water. Serve over ice with lemon.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Lynchburg Lemonade -->
+            <div class="drink-card">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&h=300&fit=crop" alt="Lynchburg Lemonade" class="drink-image">
+                <div class="drink-content">
+                    <h3 class="drink-title">Lynchburg Lemonade</h3>
+                    <p class="drink-tagline">Jack Daniel's signature cocktail</p>
+                    <p class="drink-ingredients">
+                        <strong>Mix:</strong> 1.5 oz Jack Daniel's, 1 oz triple sec, 1 oz fresh lemon juice, top with lemon-lime soda. Serve over ice in a tall glass with lemon wheel garnish.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tennessee Whiskey Lemonade -->
+            <div class="drink-card">
+                <img src="https://images.unsplash.com/photo-1560508179-b2c9a3f8e92b?w=400&h=300&fit=crop" alt="Whiskey Lemonade" class="drink-image">
+                <div class="drink-content">
+                    <h3 class="drink-title">Tennessee Whiskey Sour</h3>
+                    <p class="drink-tagline">Smooth Tennessee whiskey meets citrus</p>
+                    <p class="drink-ingredients">
+                        <strong>Mix:</strong> 2 oz Tennessee whiskey, 1 oz fresh lemon juice, 3/4 oz simple syrup, dash of bitters. Shake with ice, strain into rocks glass. Garnish with cherry and orange.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Titans Blue Margarita -->
+            <div class="drink-card">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop" alt="Blue Margarita" class="drink-image">
+                <div class="drink-content">
+                    <h3 class="drink-title">Titans Blue Margarita</h3>
+                    <p class="drink-tagline">Team colors in a glass - Titan Up!</p>
+                    <p class="drink-ingredients">
+                        <strong>Mix:</strong> 2 oz tequila, 1 oz blue curaçao, 1 oz fresh lime juice, 1/2 oz agave. Shake with ice, strain into salt-rimmed glass. Perfect for game day!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bushwacker -->
+            <div class="drink-card">
+                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&h=300&fit=crop" alt="Bushwacker" class="drink-image">
+                <div class="drink-content">
+                    <h3 class="drink-title">Nashville Bushwacker</h3>
+                    <p class="drink-tagline">Frozen boozy milkshake - Broadway favorite</p>
+                    <p class="drink-ingredients">
+                        <strong>Blend:</strong> 1 oz each: Kahlua, dark rum, amaretto, dark crème de cacao. Add 2 oz cream of coconut, 2 oz half & half, 1 cup ice. Blend until smooth. Top with whipped cream.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bourbon Slush -->
+            <div class="drink-card">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=300&fit=crop" alt="Bourbon Slush" class="drink-image">
+                <div class="drink-content">
+                    <h3 class="drink-title">Bourbon Slush</h3>
+                    <p class="drink-tagline">Make-ahead frozen punch perfection</p>
+                    <p class="drink-ingredients">
+                        <strong>Mix & Freeze:</strong> 2 cups bourbon, 1 can frozen lemonade, 1 can frozen OJ, 6 cups water, 1 cup sugar, 2 tea bags steeped. Freeze overnight. Scrape into glasses, top with lemon-lime soda.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Arnold Palmer -->
+            <div class="drink-card">
+                <img src="https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9e?w=400&h=300&fit=crop" alt="Arnold Palmer" class="drink-image">
+                <div class="drink-content">
+                    <h3 class="drink-title">Spiked Arnold Palmer</h3>
+                    <p class="drink-tagline">The classic combo with a Tennessee twist</p>
+                    <p class="drink-ingredients">
+                        <strong>Mix:</strong> 2 oz sweet tea vodka (or regular vodka), 4 oz fresh lemonade, 4 oz unsweetened iced tea. Stir over ice in tall glass. Garnish with lemon wedge and mint sprig.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pro Tips -->
+        <div class="tips-section">
+            <h3>Tailgate Pro Tips</h3>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <span class="tip-number">1</span>
+                    <p class="tip-text"><strong>Prep ahead:</strong> Make rubs, marinades, and side dishes the night before. Morning-of is for cooking meat!</p>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-number">2</span>
+                    <p class="tip-text"><strong>Temperature matters:</strong> Invest in a good meat thermometer. Brisket at 203°F, chicken at 165°F, pork at 205°F.</p>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-number">3</span>
+                    <p class="tip-text"><strong>Rest your meat:</strong> Let brisket and pork rest wrapped for at least 30 minutes. The juices redistribute!</p>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-number">4</span>
+                    <p class="tip-text"><strong>Keep it hot:</strong> Use insulated coolers with towels to keep smoked meats warm for hours.</p>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-number">5</span>
+                    <p class="tip-text"><strong>Batch your drinks:</strong> Make a big batch of cocktails in a dispenser so you can enjoy the game!</p>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-number">6</span>
+                    <p class="tip-text"><strong>Don't forget the basics:</strong> Napkins, wet wipes, trash bags, and hand sanitizer are tailgate essentials.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p class="titan-up">Titan Up</p>
+        <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
+    </footer>
+</body>
+</html>
