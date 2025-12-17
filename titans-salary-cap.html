@@ -316,6 +316,253 @@
             text-decoration: underline;
         }
 
+        /* Dead Money Ledger Styles */
+        .ledger-subtitle {
+            color: var(--titans-silver);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            margin-top: -15px;
+        }
+
+        .ledger-container {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+
+        .ledger-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ledger-table th {
+            background: rgba(0,0,0,0.4);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-blue);
+            padding: 12px 10px;
+            text-align: left;
+        }
+
+        .ledger-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+        }
+
+        .ledger-table tr:hover:not(.year-header) {
+            background: rgba(75, 146, 219, 0.1);
+        }
+
+        .ledger-table .year-header {
+            background: rgba(200, 16, 46, 0.2);
+        }
+
+        .ledger-table .year-header td {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--titans-white);
+            padding: 12px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ledger-table .player-name {
+            font-weight: 600;
+            color: var(--titans-white);
+        }
+
+        .ledger-table .dead-money {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            color: var(--titans-red);
+        }
+
+        .ledger-table .cap-saved {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            color: #4CAF50;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.cut {
+            background: rgba(200, 16, 46, 0.3);
+            color: #ff6b6b;
+        }
+
+        .badge.trade {
+            background: rgba(75, 146, 219, 0.3);
+            color: var(--titans-blue);
+        }
+
+        .badge.fa {
+            background: rgba(76, 175, 80, 0.3);
+            color: #81c784;
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-year {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .timeline-header {
+            background: rgba(0,0,0,0.4);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--titans-blue);
+        }
+
+        .year-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--titans-white);
+        }
+
+        .cap-relief {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4CAF50;
+        }
+
+        .timeline-contracts {
+            padding: 15px 20px;
+        }
+
+        .contract-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+        }
+
+        .contract-item:last-child {
+            border-bottom: none;
+        }
+
+        .contract-item.highlight {
+            background: rgba(76, 175, 80, 0.1);
+            margin: 0 -20px;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .contract-player {
+            font-weight: 600;
+            color: var(--titans-white);
+            font-size: 0.9rem;
+        }
+
+        .contract-amount {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            color: var(--titans-blue);
+            font-size: 0.9rem;
+        }
+
+        .contract-note {
+            color: var(--titans-silver);
+            font-size: 0.8rem;
+            text-align: right;
+        }
+
+        /* Summary Box */
+        .ledger-summary {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.3);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .ledger-summary h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-silver);
+            margin-bottom: 8px;
+        }
+
+        .summary-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--titans-white);
+        }
+
+        .summary-value.negative {
+            color: var(--titans-red);
+        }
+
+        .summary-value.positive {
+            color: #4CAF50;
+        }
+
+        .summary-note {
+            text-align: center;
+            color: var(--titans-silver);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
         footer {
             text-align: center;
             padding: 25px 20px;
@@ -358,6 +605,45 @@
             .cap-card-value {
                 font-size: 1.5rem;
             }
+
+            /* Ledger responsive */
+            .ledger-table {
+                font-size: 0.75rem;
+            }
+
+            .ledger-table th,
+            .ledger-table td {
+                padding: 8px 5px;
+            }
+
+            .ledger-table th:nth-child(5),
+            .ledger-table td:nth-child(5) {
+                display: none;
+            }
+
+            .ledger-table th:nth-child(6),
+            .ledger-table td:nth-child(6) {
+                display: none;
+            }
+
+            .contract-item {
+                grid-template-columns: 1fr auto;
+            }
+
+            .contract-note {
+                grid-column: 1 / -1;
+                text-align: left;
+                font-size: 0.7rem;
+                padding-top: 5px;
+            }
+
+            .summary-value {
+                font-size: 1.2rem;
+            }
+
+            .timeline-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -378,7 +664,7 @@
 
     <header class="page-header">
         <h1>Titans Salary Cap</h1>
-        <p>2025 Cap Space, Player Salaries & Draft Picks</p>
+        <p>2025 Cap Space, Dead Money Ledger & Contract Timeline</p>
     </header>
 
     <main class="container">
@@ -589,6 +875,275 @@
                     <span>Linebacker</span>
                 </div>
             </div>
+        </div>
+
+        <!-- Dead Money Ledger -->
+        <h2 class="section-title">Dead Money Ledger (2020-2025)</h2>
+        <p class="ledger-subtitle">Trades, Cuts & Restructures That Created Dead Cap</p>
+
+        <div class="ledger-container">
+            <table class="ledger-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Player</th>
+                        <th>Transaction</th>
+                        <th>Dead Cap</th>
+                        <th>Cap Saved</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 2025 Transactions -->
+                    <tr class="year-header">
+                        <td colspan="6">2025 Season</td>
+                    </tr>
+                    <tr>
+                        <td>Mar 2025</td>
+                        <td class="player-name">Harold Landry III</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$13.1M</td>
+                        <td class="cap-saved">$10.95M</td>
+                        <td>Signed with Patriots (Vrabel reunion)</td>
+                    </tr>
+                    <tr>
+                        <td>Jul 2025</td>
+                        <td class="player-name">Treylon Burks</td>
+                        <td><span class="badge cut">Waived</span></td>
+                        <td class="dead-money">$4.5M</td>
+                        <td class="cap-saved">$0</td>
+                        <td>Injuries: torn ACL, broken collarbone</td>
+                    </tr>
+
+                    <!-- 2024 Transactions -->
+                    <tr class="year-header">
+                        <td colspan="6">2024 Season</td>
+                    </tr>
+                    <tr>
+                        <td>Mar 2024</td>
+                        <td class="player-name">Ryan Tannehill</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$7.8M</td>
+                        <td class="cap-saved">$29.5M</td>
+                        <td>Post June 1 designation; later re-signed for $2M</td>
+                    </tr>
+                    <tr>
+                        <td>Mar 2024</td>
+                        <td class="player-name">Derrick Henry</td>
+                        <td><span class="badge fa">Free Agent</span></td>
+                        <td class="dead-money">$0</td>
+                        <td class="cap-saved">$16.4M</td>
+                        <td>Signed with Ravens; contract expired</td>
+                    </tr>
+                    <tr>
+                        <td>Mar 2024</td>
+                        <td class="player-name">Andre Dillard</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$4.6M</td>
+                        <td class="cap-saved">$6.4M</td>
+                        <td>Post June 1 cut; allowed most sacks on team</td>
+                    </tr>
+
+                    <!-- 2023 Transactions (Carthon Rebuild) -->
+                    <tr class="year-header">
+                        <td colspan="6">2023 Season (GM Ran Carthon's Roster Overhaul)</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 2023</td>
+                        <td class="player-name">Kevin Byard</td>
+                        <td><span class="badge trade">Traded</span></td>
+                        <td class="dead-money">$9.6M</td>
+                        <td class="cap-saved">$8.4M</td>
+                        <td>To Eagles for 2 picks + Terrell Edmunds</td>
+                    </tr>
+                    <tr>
+                        <td>Mar 2023</td>
+                        <td class="player-name">Bud Dupree</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$10.8M</td>
+                        <td class="cap-saved">$9.35M</td>
+                        <td>5yr/$82.5M deal; only 7 sacks in 2 seasons</td>
+                    </tr>
+                    <tr>
+                        <td>Feb 2023</td>
+                        <td class="player-name">Taylor Lewan</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$0</td>
+                        <td class="cap-saved">$14.8M</td>
+                        <td>Failed physical (torn ACL); no dead cap</td>
+                    </tr>
+                    <tr>
+                        <td>Feb 2023</td>
+                        <td class="player-name">Robert Woods</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$5.7M</td>
+                        <td class="cap-saved">$8.5M</td>
+                        <td>Only 25 catches in 2022 season</td>
+                    </tr>
+                    <tr>
+                        <td>Feb 2023</td>
+                        <td class="player-name">Zach Cunningham</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$4.2M</td>
+                        <td class="cap-saved">$5.0M</td>
+                        <td>Cut in Carthon cleanup</td>
+                    </tr>
+                    <tr>
+                        <td>Feb 2023</td>
+                        <td class="player-name">Ben Jones</td>
+                        <td><span class="badge cut">Released</span></td>
+                        <td class="dead-money">$2.3M</td>
+                        <td class="cap-saved">$6.0M</td>
+                        <td>Veteran center; cap casualty</td>
+                    </tr>
+
+                    <!-- 2022 Transactions -->
+                    <tr class="year-header">
+                        <td colspan="6">2022 Season</td>
+                    </tr>
+                    <tr>
+                        <td>Apr 2022</td>
+                        <td class="player-name">A.J. Brown</td>
+                        <td><span class="badge trade">Traded</span></td>
+                        <td class="dead-money">$2.5M</td>
+                        <td class="cap-saved">N/A</td>
+                        <td>To Eagles for #18 + #101 picks (Burks, McCreary)</td>
+                    </tr>
+
+                    <!-- 2021 Transactions -->
+                    <tr class="year-header">
+                        <td colspan="6">2021 Season</td>
+                    </tr>
+                    <tr>
+                        <td>Mar 2021</td>
+                        <td class="player-name">Isaiah Wilson</td>
+                        <td><span class="badge trade">Traded</span></td>
+                        <td class="dead-money">$5.4M</td>
+                        <td class="cap-saved">$2.2M</td>
+                        <td>2020 1st Rd bust; traded to Dolphins for 7th</td>
+                    </tr>
+                    <tr>
+                        <td>Jun 2021</td>
+                        <td class="player-name">Julio Jones</td>
+                        <td><span class="badge trade">Acquired</span></td>
+                        <td class="dead-money">$0</td>
+                        <td class="cap-saved">N/A</td>
+                        <td>Acquired from Falcons for 2nd + 4th</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Contract Expiration Timeline -->
+        <h2 class="section-title">When Cap Space Frees Up</h2>
+        <p class="ledger-subtitle">Major Contract Expirations & Future Cap Relief</p>
+
+        <div class="timeline-container">
+            <div class="timeline-year">
+                <div class="timeline-header">
+                    <span class="year-label">2026</span>
+                    <span class="cap-relief">~$45M Potential Relief</span>
+                </div>
+                <div class="timeline-contracts">
+                    <div class="contract-item">
+                        <span class="contract-player">Tony Pollard</span>
+                        <span class="contract-amount">$7M freed</span>
+                        <span class="contract-note">Final year of 3yr/$21.75M</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-player">Arden Key</span>
+                        <span class="contract-amount">$5M freed</span>
+                        <span class="contract-note">1-year deal expires</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-player">Amani Hooker</span>
+                        <span class="contract-amount">UFA</span>
+                        <span class="contract-note">Re-sign priority</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-player">Remaining Dead Cap</span>
+                        <span class="contract-amount">-$8M</span>
+                        <span class="contract-note">Landry, Burks dead money clears</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-year">
+                <div class="timeline-header">
+                    <span class="year-label">2027</span>
+                    <span class="cap-relief">~$60M Potential Relief</span>
+                </div>
+                <div class="timeline-contracts">
+                    <div class="contract-item">
+                        <span class="contract-player">Calvin Ridley</span>
+                        <span class="contract-amount">$23M freed</span>
+                        <span class="contract-note">Can cut post June 1 for savings</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-player">L'Jarius Sneed</span>
+                        <span class="contract-amount">$19.1M freed</span>
+                        <span class="contract-note">4yr/$76.4M deal year 3</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-player">Dead Cap Cleared</span>
+                        <span class="contract-amount">+$15M</span>
+                        <span class="contract-note">Most restructure penalties expire</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-year">
+                <div class="timeline-header">
+                    <span class="year-label">2028</span>
+                    <span class="cap-relief">Clean Slate Year</span>
+                </div>
+                <div class="timeline-contracts">
+                    <div class="contract-item">
+                        <span class="contract-player">Dan Moore Jr.</span>
+                        <span class="contract-amount">$20.5M</span>
+                        <span class="contract-note">4yr/$82M final year</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-player">Jeffery Simmons</span>
+                        <span class="contract-amount">$17.5M</span>
+                        <span class="contract-note">Extension kicks in</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-player">Cam Ward</span>
+                        <span class="contract-amount">5th Year Option</span>
+                        <span class="contract-note">Decision on extension</span>
+                    </div>
+                    <div class="contract-item highlight">
+                        <span class="contract-player">Dead Money</span>
+                        <span class="contract-amount">~$0</span>
+                        <span class="contract-note">All historical dead cap cleared</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Box -->
+        <div class="ledger-summary">
+            <h3>Dead Money Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span class="summary-label">Total Dead Cap (2025)</span>
+                    <span class="summary-value negative">$57.9M</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">From Jon Robinson Era Deals</span>
+                    <span class="summary-value">~$42M</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Clears by End of 2026</span>
+                    <span class="summary-value positive">~$35M</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Fully Clean Cap</span>
+                    <span class="summary-value">2028</span>
+                </div>
+            </div>
+            <p class="summary-note">The Titans inherited significant dead money from the Jon Robinson era (2016-2022). GM Ran Carthon has been systematically clearing bad contracts. By 2028, the team will have a clean cap slate with only their chosen commitments.</p>
         </div>
 
         <div class="data-note">
