@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M77 AG Equipment For Sale | Farm & Heavy Equipment Marketplace</title>
+    <meta name="description" content="Quality used farm and heavy equipment for sale. Browse tractors, implements, and machinery with transparent pricing and easy bidding.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --m77-green: #2D5016;
+            --m77-green-light: #4A7C23;
+            --m77-gold: #D4A84B;
+            --m77-brown: #5C4033;
+            --m77-cream: #F5F0E6;
+            --m77-dark: #1A1A1A;
+            --m77-gray: #6B7280;
+            --m77-white: #FFFFFF;
+            --success-green: #22c55e;
+            --bid-orange: #EA580C;
+            --urgent-red: #DC2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--m77-dark) 0%, #2a2a2a 50%, var(--m77-dark) 100%);
+            min-height: 100vh;
+            color: var(--m77-white);
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(0,0,0,0.8);
+            padding: 15px 20px;
+            border-bottom: 3px solid var(--m77-green);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--m77-gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--m77-cream);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--m77-white);
+            background: rgba(45, 80, 22, 0.5);
+        }
+
+        .nav-link.active {
+            color: var(--m77-gold);
+            background: rgba(45, 80, 22, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, rgba(45, 80, 22, 0.3) 0%, transparent 100%);
+            border-bottom: 3px solid var(--m77-green);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--m77-green);
+            color: var(--m77-gold);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            color: var(--m77-white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            font-family: 'Open Sans', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--m77-cream);
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--m77-gold);
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--m77-cream);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: rgba(45, 80, 22, 0.2);
+            padding: 40px 20px;
+            border-bottom: 1px solid rgba(212, 168, 75, 0.3);
+        }
+
+        .how-it-works h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--m77-gold);
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--m77-green);
+            color: var(--m77-gold);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--m77-white);
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--m77-cream);
+            line-height: 1.5;
+        }
+
+        /* Filters */
+        .filters-section {
+            padding: 25px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filters-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 20px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(212, 168, 75, 0.3);
+            border-radius: 6px;
+            color: var(--m77-white);
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--m77-gray);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--m77-gold);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: transparent;
+            border: 2px solid rgba(212, 168, 75, 0.3);
+            border-radius: 6px;
+            color: var(--m77-cream);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--m77-gold);
+            background: rgba(45, 80, 22, 0.3);
+        }
+
+        .filter-btn.active {
+            background: var(--m77-green);
+            border-color: var(--m77-green);
+            color: var(--m77-gold);
+        }
+
+        /* Equipment Grid */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px 20px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Equipment Card */
+        .equipment-card {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+            border: 1px solid rgba(212, 168, 75, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border-color: var(--m77-gold);
+        }
+
+        .equipment-card.featured {
+            border: 2px solid var(--m77-gold);
+        }
+
+        .equipment-card.featured::before {
+            content: 'FEATURED';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--m77-gold);
+            color: var(--m77-dark);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            z-index: 10;
+        }
+
+        .card-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: var(--m77-dark);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .equipment-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-badges {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+
+        .badge-category {
+            background: var(--m77-green);
+            color: var(--m77-cream);
+        }
+
+        .badge-condition {
+            background: var(--success-green);
+            color: var(--m77-white);
+        }
+
+        .badge-ending {
+            background: var(--urgent-red);
+            color: var(--m77-white);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .photo-count {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: var(--m77-white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            color: var(--m77-white);
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--m77-gray);
+            margin-bottom: 15px;
+        }
+
+        .card-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            color: var(--m77-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: var(--m77-cream);
+        }
+
+        .card-pricing {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .price-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--m77-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .current-bid {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--m77-gold);
+        }
+
+        .market-value {
+            font-size: 0.85rem;
+            color: var(--m77-gray);
+        }
+
+        .market-value span {
+            color: var(--success-green);
+        }
+
+        .bid-count {
+            text-align: right;
+        }
+
+        .bid-count-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bid-orange);
+        }
+
+        .bid-count-label {
+            font-size: 0.75rem;
+            color: var(--m77-gray);
+            text-transform: uppercase;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-bid {
+            flex: 1;
+            padding: 12px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--m77-green);
+            border: none;
+            border-radius: 6px;
+            color: var(--m77-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-bid:hover {
+            background: var(--m77-green-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-details {
+            padding: 12px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: transparent;
+            border: 2px solid var(--m77-gold);
+            border-radius: 6px;
+            color: var(--m77-gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-details:hover {
+            background: var(--m77-gold);
+            color: var(--m77-dark);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #1e1e1e 0%, #151515 100%);
+            border: 2px solid var(--m77-gold);
+            border-radius: 16px;
+            max-width: 1000px;
+            width: 100%;
+            margin: 40px 0;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border: 2px solid var(--m77-gold);
+            border-radius: 50%;
+            color: var(--m77-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--m77-gold);
+            color: var(--m77-dark);
+        }
+
+        .modal-gallery {
+            position: relative;
+            height: 400px;
+            background: var(--m77-dark);
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
+        }
+
+        .gallery-main {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.7);
+            border: 2px solid var(--m77-gold);
+            border-radius: 50%;
+            color: var(--m77-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-nav:hover {
+            background: var(--m77-gold);
+            color: var(--m77-dark);
+        }
+
+        .gallery-prev { left: 15px; }
+        .gallery-next { right: 15px; }
+
+        .gallery-thumbnails {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .gallery-thumb {
+            width: 60px;
+            height: 45px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-thumb.active,
+        .gallery-thumb:hover {
+            border-color: var(--m77-gold);
+            opacity: 1;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 168, 75, 0.3);
+        }
+
+        .modal-title-section {
+            flex: 1;
+        }
+
+        .modal-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--m77-white);
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-size: 1.1rem;
+            color: var(--m77-gray);
+        }
+
+        .modal-price-section {
+            text-align: right;
+        }
+
+        .modal-current-bid {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--m77-gold);
+        }
+
+        .modal-market-value {
+            font-size: 0.9rem;
+            color: var(--m77-gray);
+        }
+
+        .modal-market-value span {
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        /* Share Link Section */
+        .share-section {
+            background: rgba(45, 80, 22, 0.2);
+            border: 1px solid rgba(212, 168, 75, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        .share-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--m77-gold);
+            margin-bottom: 10px;
+        }
+
+        .share-link-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .share-link-input {
+            flex: 1;
+            padding: 10px 15px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 168, 75, 0.3);
+            border-radius: 4px;
+            color: var(--m77-cream);
+            font-size: 0.9rem;
+        }
+
+        .btn-copy {
+            padding: 10px 20px;
+            background: var(--m77-green);
+            border: none;
+            border-radius: 4px;
+            color: var(--m77-white);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-copy:hover {
+            background: var(--m77-green-light);
+        }
+
+        .btn-copy.copied {
+            background: var(--success-green);
+        }
+
+        /* Content Sections */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-section {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 168, 75, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--m77-gold);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 168, 75, 0.3);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .spec-row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-row-label {
+            font-size: 0.75rem;
+            color: var(--m77-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-row-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            color: var(--m77-cream);
+        }
+
+        .backstory-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--m77-cream);
+        }
+
+        /* Market Research Section */
+        .market-research {
+            background: rgba(45, 80, 22, 0.2);
+            border: 2px solid rgba(45, 80, 22, 0.5);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .market-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--success-green);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .market-summary {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--m77-cream);
+            margin-bottom: 20px;
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .market-stat {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .market-stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--m77-gold);
+        }
+
+        .market-stat-label {
+            font-size: 0.8rem;
+            color: var(--m77-gray);
+            text-transform: uppercase;
+        }
+
+        /* Advertising Recommendations */
+        .ad-recommendations {
+            background: rgba(234, 88, 12, 0.1);
+            border: 1px solid rgba(234, 88, 12, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .ad-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--bid-orange);
+            margin-bottom: 15px;
+        }
+
+        .ad-platforms {
+            display: grid;
+            gap: 12px;
+        }
+
+        .ad-platform {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            padding: 12px 15px;
+            border-radius: 6px;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: var(--m77-white);
+        }
+
+        .platform-reach {
+            font-size: 0.85rem;
+            color: var(--m77-gray);
+        }
+
+        .platform-score {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .score-bar {
+            width: 80px;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: var(--success-green);
+            border-radius: 4px;
+        }
+
+        .score-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: var(--success-green);
+        }
+
+        /* Bid Form */
+        .bid-form-section {
+            background: linear-gradient(145deg, rgba(45, 80, 22, 0.3) 0%, rgba(45, 80, 22, 0.1) 100%);
+            border: 2px solid var(--m77-green);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .bid-form-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--m77-gold);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .bid-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--m77-cream);
+            margin-bottom: 8px;
+        }
+
+        .form-label.required::after {
+            content: ' *';
+            color: var(--urgent-red);
+        }
+
+        .form-input {
+            padding: 12px 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.4);
+            border: 2px solid rgba(212, 168, 75, 0.3);
+            border-radius: 6px;
+            color: var(--m77-white);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--m77-gold);
+            background: rgba(0,0,0,0.5);
+        }
+
+        .form-input::placeholder {
+            color: var(--m77-gray);
+        }
+
+        .bid-amount-wrapper {
+            position: relative;
+        }
+
+        .bid-currency {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            color: var(--m77-gold);
+        }
+
+        .bid-amount-input {
+            padding-left: 35px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .min-bid-note {
+            font-size: 0.8rem;
+            color: var(--m77-gray);
+            margin-top: 5px;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn-submit-bid {
+            padding: 15px 40px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--m77-green) 0%, var(--m77-green-light) 100%);
+            border: none;
+            border-radius: 8px;
+            color: var(--m77-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit-bid:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.5);
+        }
+
+        /* Payment Info */
+        .payment-section {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 168, 75, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .payment-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--m77-gold);
+            margin-bottom: 15px;
+        }
+
+        .payment-options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .payment-option {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(45, 80, 22, 0.2);
+            border-radius: 6px;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--m77-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--m77-gold);
+            font-weight: 700;
+        }
+
+        .payment-details h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--m77-white);
+            margin-bottom: 5px;
+        }
+
+        .payment-details p {
+            font-size: 0.9rem;
+            color: var(--m77-cream);
+            line-height: 1.5;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--m77-gray);
+        }
+
+        .empty-state h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--m77-cream);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.6);
+            border-top: 3px solid var(--m77-green);
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--m77-gold);
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--m77-cream);
+            margin-bottom: 20px;
+        }
+
+        .footer-contact {
+            font-size: 0.85rem;
+            color: var(--m77-gray);
+        }
+
+        .footer-contact a {
+            color: var(--m77-gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 15px 30px;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .equipment-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .modal-gallery {
+                height: 280px;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .modal-price-section {
+                text-align: left;
+            }
+
+            .nav-container {
+                justify-content: center;
+            }
+
+            .nav-brand {
+                width: 100%;
+                text-align: center;
+            }
+
+            .gallery-thumbnails {
+                display: none;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid var(--success-green);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-message h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--success-green);
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            color: var(--m77-cream);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">M77 AG</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Titans Home</a>
+                <a href="equipment-forsale.html" class="nav-link active">Equipment For Sale</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <span class="hero-badge">Quality Used Equipment</span>
+        <h1>M77 AG Equipment Marketplace</h1>
+        <p class="tagline">Farm and heavy equipment for sale with transparent pricing, detailed histories, and easy bidding. Each piece includes market research and fair value assessment.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value" id="totalListings">0</div>
+                <div class="hero-stat-label">Active Listings</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value" id="totalBids">0</div>
+                <div class="hero-stat-label">Total Bids</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value" id="avgSavings">0%</div>
+                <div class="hero-stat-label">Avg Below Market</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-title">Browse Equipment</div>
+                <div class="step-desc">View detailed photos, specs, history, and fair market value for each piece.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">Place Your Bid</div>
+                <div class="step-desc">Submit your contact info and bid amount. We'll review and respond within 24 hours.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">Secure Payment</div>
+                <div class="step-desc">Pay via ACH transfer or check. Payment must clear before pickup.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-title">Pickup / Delivery</div>
+                <div class="step-desc">Arrange pickup at our location or we can help coordinate delivery.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="filters-section">
+        <div class="filters-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search equipment by name, type, or brand...">
+            <button class="filter-btn active" data-filter="all">All Equipment</button>
+            <button class="filter-btn" data-filter="tractor">Tractors</button>
+            <button class="filter-btn" data-filter="implement">Implements</button>
+            <button class="filter-btn" data-filter="trailer">Trailers</button>
+            <button class="filter-btn" data-filter="attachment">Attachments</button>
+        </div>
+    </section>
+
+    <main class="equipment-grid" id="equipmentGrid">
+        <!-- Equipment cards will be rendered here by JavaScript -->
+    </main>
+
+    <div class="empty-state" id="emptyState" style="display: none;">
+        <h3>No Equipment Listed Yet</h3>
+        <p>Check back soon for new listings, or contact us about equipment you're looking for.</p>
+    </div>
+
+    <!-- Equipment Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+
+            <div class="modal-gallery">
+                <img class="gallery-main" id="galleryMain" src="" alt="Equipment Photo">
+                <button class="gallery-nav gallery-prev" onclick="prevImage()">&#8249;</button>
+                <button class="gallery-nav gallery-next" onclick="nextImage()">&#8250;</button>
+                <div class="gallery-thumbnails" id="galleryThumbnails"></div>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="modal-title-section">
+                        <h2 class="modal-title" id="modalTitle"></h2>
+                        <p class="modal-subtitle" id="modalSubtitle"></p>
+                    </div>
+                    <div class="modal-price-section">
+                        <div class="modal-current-bid" id="modalCurrentBid"></div>
+                        <div class="modal-market-value" id="modalMarketValue"></div>
+                    </div>
+                </div>
+
+                <!-- Shareable Link -->
+                <div class="share-section">
+                    <div class="share-label">Share This Listing</div>
+                    <div class="share-link-container">
+                        <input type="text" class="share-link-input" id="shareLink" readonly>
+                        <button class="btn-copy" id="copyBtn" onclick="copyShareLink()">Copy Link</button>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-section">
+                        <h3 class="section-title">Specifications</h3>
+                        <div class="specs-grid" id="modalSpecs"></div>
+                    </div>
+                    <div class="content-section">
+                        <h3 class="section-title">Equipment History</h3>
+                        <p class="backstory-text" id="modalBackstory"></p>
+                    </div>
+                </div>
+
+                <!-- Market Research -->
+                <div class="market-research">
+                    <h3 class="market-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        Market Value Assessment
+                    </h3>
+                    <p class="market-summary" id="modalMarketSummary"></p>
+                    <div class="market-stats" id="modalMarketStats"></div>
+                </div>
+
+                <!-- Advertising Recommendations -->
+                <div class="ad-recommendations">
+                    <h3 class="ad-title">Recommended Advertising Channels</h3>
+                    <div class="ad-platforms" id="modalAdPlatforms"></div>
+                </div>
+
+                <!-- Bid Form -->
+                <div class="bid-form-section">
+                    <h3 class="bid-form-title">Submit Your Bid</h3>
+                    <form class="bid-form" id="bidForm" onsubmit="submitBid(event)">
+                        <input type="hidden" id="equipmentId" value="">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label required">Full Name</label>
+                                <input type="text" class="form-input" id="bidderName" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">Phone Number</label>
+                                <input type="tel" class="form-input" id="bidderPhone" placeholder="(555) 123-4567" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label required">Email Address</label>
+                                <input type="email" class="form-input" id="bidderEmail" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company (Optional)</label>
+                                <input type="text" class="form-input" id="bidderCompany" placeholder="Smith Farms LLC">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label required">Your Bid Amount</label>
+                                <div class="bid-amount-wrapper">
+                                    <span class="bid-currency">$</span>
+                                    <input type="number" class="form-input bid-amount-input" id="bidAmount" placeholder="0" required>
+                                </div>
+                                <span class="min-bid-note" id="minBidNote">Minimum bid: $0</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Preferred Payment Method</label>
+                                <select class="form-input" id="paymentMethod">
+                                    <option value="ach">ACH Bank Transfer</option>
+                                    <option value="check">Check (must clear before pickup)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Questions or Comments</label>
+                            <textarea class="form-input form-textarea" id="bidComments" placeholder="Any questions about the equipment, pickup arrangements, etc."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit-bid">Submit Bid</button>
+                    </form>
+
+                    <div class="success-message" id="successMessage">
+                        <h3>Bid Submitted Successfully!</h3>
+                        <p>We've received your bid and will contact you within 24 hours. Thank you for your interest!</p>
+                    </div>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="payment-section">
+                    <h3 class="payment-title">Payment Options</h3>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <div class="payment-icon">ACH</div>
+                            <div class="payment-details">
+                                <h4>ACH Bank Transfer</h4>
+                                <p>Secure electronic transfer directly from your bank account. Funds typically clear within 2-3 business days. We'll provide routing details after bid acceptance.</p>
+                            </div>
+                        </div>
+                        <div class="payment-option">
+                            <div class="payment-icon">CHK</div>
+                            <div class="payment-details">
+                                <h4>Personal or Business Check</h4>
+                                <p>Mail check to our office. Equipment pickup available after check clears (typically 5-7 business days). We'll provide mailing address after bid acceptance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">M77 AG Equipment</div>
+        <p class="footer-tagline">Quality Used Farm & Heavy Equipment</p>
+        <p class="footer-contact">
+            Questions? Contact us at <a href="mailto:equipment@m77ag.com">equipment@m77ag.com</a>
+        </p>
+    </footer>
+
+    <script>
+        // Equipment Data - Add your listings here
+        // Each piece has a unique ID that creates a shareable URL
+        const equipment = [
+            // EXAMPLE LISTING - Replace with real equipment
+            /*
+            {
+                id: 'jd-5055e-2018',
+                title: 'John Deere 5055E',
+                subtitle: '2018 | 55 HP | 4WD Utility Tractor',
+                category: 'tractor',
+                featured: true,
+                condition: 'Excellent',
+                endingSoon: false,
+                photos: [
+                    'https://example.com/photo1.jpg',
+                    'https://example.com/photo2.jpg',
+                    'https://example.com/photo3.jpg'
+                ],
+                specs: {
+                    'Year': '2018',
+                    'Make': 'John Deere',
+                    'Model': '5055E',
+                    'Hours': '847',
+                    'Horsepower': '55 HP',
+                    'Drive': '4WD MFWD',
+                    'Transmission': '9F/3R SyncShuttle',
+                    'Loader': 'H240 w/ 66" Bucket'
+                },
+                currentBid: 28500,
+                marketValue: 34000,
+                minBid: 25000,
+                bidCount: 3,
+                backstory: `This 5055E was purchased new in 2018 and has been used exclusively for light-duty farm work including hay operations and pasture maintenance. Always stored inside, serviced regularly by the local John Deere dealer. The loader was added in 2019 and has minimal wear. This tractor runs and operates like new - the current owner is downsizing their operation and this tractor simply doesn't get enough use to justify keeping it.`,
+                marketResearch: {
+                    summary: `Based on analysis of 47 comparable 5055E tractors sold in the past 6 months on BigIron, TractorHouse, and Facebook Marketplace, this unit is priced 16% below market average. Low hours (847) compared to the average of 1,240 hours for similar vintage units adds significant value. The included H240 loader typically adds $4,000-$6,000 to resale value.`,
+                    stats: [
+                        { label: 'Avg Market Price', value: '$34,000' },
+                        { label: 'Price Range', value: '$28K - $42K' },
+                        { label: 'Avg Hours', value: '1,240' },
+                        { label: 'Days to Sell', value: '23 avg' }
+                    ]
+                },
+                advertising: [
+                    { platform: 'Facebook - Farm Equipment Groups', reach: '45K+ members', score: 95 },
+                    { platform: 'TractorHouse.com', reach: '2.1M monthly visitors', score: 90 },
+                    { platform: 'Craigslist - Farm & Garden', reach: 'Local buyers', score: 75 },
+                    { platform: 'BigIron Auctions', reach: 'Nationwide bidders', score: 85 }
+                ]
+            }
+            */
+        ];
+
+        // State
+        let currentEquipment = null;
+        let currentImageIndex = 0;
+        let activeFilter = 'all';
+        let searchTerm = '';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderEquipment();
+            updateStats();
+            setupFilters();
+            setupSearch();
+            checkUrlForEquipment();
+        });
+
+        // Check URL for direct equipment link
+        function checkUrlForEquipment() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const equipmentId = urlParams.get('item');
+            if (equipmentId) {
+                const item = equipment.find(e => e.id === equipmentId);
+                if (item) {
+                    openModal(item);
+                }
+            }
+        }
+
+        // Update hero stats
+        function updateStats() {
+            document.getElementById('totalListings').textContent = equipment.length;
+
+            const totalBids = equipment.reduce((sum, item) => sum + (item.bidCount || 0), 0);
+            document.getElementById('totalBids').textContent = totalBids;
+
+            if (equipment.length > 0) {
+                const avgSavings = equipment.reduce((sum, item) => {
+                    const savings = ((item.marketValue - item.currentBid) / item.marketValue) * 100;
+                    return sum + savings;
+                }, 0) / equipment.length;
+                document.getElementById('avgSavings').textContent = Math.round(avgSavings) + '%';
+            }
+        }
+
+        // Setup filters
+        function setupFilters() {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    activeFilter = this.dataset.filter;
+                    renderEquipment();
+                });
+            });
+        }
+
+        // Setup search
+        function setupSearch() {
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                searchTerm = e.target.value.toLowerCase();
+                renderEquipment();
+            });
+        }
+
+        // Filter equipment
+        function filterEquipment() {
+            return equipment.filter(item => {
+                const matchesFilter = activeFilter === 'all' || item.category === activeFilter;
+                const matchesSearch = !searchTerm ||
+                    item.title.toLowerCase().includes(searchTerm) ||
+                    item.subtitle.toLowerCase().includes(searchTerm) ||
+                    item.category.toLowerCase().includes(searchTerm);
+                return matchesFilter && matchesSearch;
+            });
+        }
+
+        // Render equipment grid
+        function renderEquipment() {
+            const grid = document.getElementById('equipmentGrid');
+            const emptyState = document.getElementById('emptyState');
+            const filtered = filterEquipment();
+
+            if (filtered.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            emptyState.style.display = 'none';
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="equipment-card ${item.featured ? 'featured' : ''}" onclick="openModal(equipment.find(e => e.id === '${item.id}'))">
+                    <div class="card-image-container">
+                        <img class="card-image" src="${item.photos[0] || 'https://via.placeholder.com/400x250?text=Photo+Coming+Soon'}" alt="${item.title}">
+                        <div class="card-badges">
+                            <span class="badge badge-category">${item.category}</span>
+                            ${item.condition ? `<span class="badge badge-condition">${item.condition}</span>` : ''}
+                            ${item.endingSoon ? '<span class="badge badge-ending">Ending Soon</span>' : ''}
+                        </div>
+                        <div class="photo-count">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                            ${item.photos.length}
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-subtitle">${item.subtitle}</p>
+                        <div class="card-specs">
+                            ${Object.entries(item.specs).slice(0, 4).map(([key, value]) => `
+                                <div class="spec-item">
+                                    <span class="spec-label">${key}</span>
+                                    <span class="spec-value">${value}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="card-pricing">
+                            <div class="price-section">
+                                <span class="price-label">Current Bid</span>
+                                <span class="current-bid">$${item.currentBid.toLocaleString()}</span>
+                                <span class="market-value">Market: $${item.marketValue.toLocaleString()} <span>(${Math.round(((item.marketValue - item.currentBid) / item.marketValue) * 100)}% below)</span></span>
+                            </div>
+                            <div class="bid-count">
+                                <div class="bid-count-value">${item.bidCount}</div>
+                                <div class="bid-count-label">Bids</div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-bid">Place Bid</button>
+                            <button class="btn-details">Details</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Open modal
+        function openModal(item) {
+            currentEquipment = item;
+            currentImageIndex = 0;
+
+            // Update URL without reload
+            const newUrl = window.location.pathname + '?item=' + item.id;
+            history.pushState({ equipmentId: item.id }, '', newUrl);
+
+            // Populate modal
+            document.getElementById('modalTitle').textContent = item.title;
+            document.getElementById('modalSubtitle').textContent = item.subtitle;
+            document.getElementById('modalCurrentBid').textContent = '$' + item.currentBid.toLocaleString();
+
+            const savingsPercent = Math.round(((item.marketValue - item.currentBid) / item.marketValue) * 100);
+            document.getElementById('modalMarketValue').innerHTML = `Market Value: $${item.marketValue.toLocaleString()} <span>(${savingsPercent}% savings)</span>`;
+
+            // Share link
+            document.getElementById('shareLink').value = window.location.origin + window.location.pathname + '?item=' + item.id;
+
+            // Gallery
+            updateGallery();
+
+            // Specs
+            document.getElementById('modalSpecs').innerHTML = Object.entries(item.specs).map(([key, value]) => `
+                <div class="spec-row">
+                    <span class="spec-row-label">${key}</span>
+                    <span class="spec-row-value">${value}</span>
+                </div>
+            `).join('');
+
+            // Backstory
+            document.getElementById('modalBackstory').textContent = item.backstory;
+
+            // Market Research
+            document.getElementById('modalMarketSummary').textContent = item.marketResearch.summary;
+            document.getElementById('modalMarketStats').innerHTML = item.marketResearch.stats.map(stat => `
+                <div class="market-stat">
+                    <div class="market-stat-value">${stat.value}</div>
+                    <div class="market-stat-label">${stat.label}</div>
+                </div>
+            `).join('');
+
+            // Advertising
+            document.getElementById('modalAdPlatforms').innerHTML = item.advertising.map(ad => `
+                <div class="ad-platform">
+                    <div>
+                        <div class="platform-name">${ad.platform}</div>
+                        <div class="platform-reach">${ad.reach}</div>
+                    </div>
+                    <div class="platform-score">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: ${ad.score}%"></div>
+                        </div>
+                        <span class="score-value">${ad.score}%</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Bid form
+            document.getElementById('equipmentId').value = item.id;
+            document.getElementById('minBidNote').textContent = `Minimum bid: $${item.minBid.toLocaleString()}`;
+            document.getElementById('bidAmount').min = item.minBid;
+            document.getElementById('bidAmount').placeholder = item.minBid.toLocaleString();
+
+            // Reset form
+            document.getElementById('bidForm').reset();
+            document.getElementById('successMessage').classList.remove('show');
+
+            // Show modal
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Update gallery
+        function updateGallery() {
+            const mainImg = document.getElementById('galleryMain');
+            mainImg.src = currentEquipment.photos[currentImageIndex] || 'https://via.placeholder.com/800x500?text=Photo+Coming+Soon';
+
+            const thumbs = document.getElementById('galleryThumbnails');
+            thumbs.innerHTML = currentEquipment.photos.map((photo, idx) => `
+                <img class="gallery-thumb ${idx === currentImageIndex ? 'active' : ''}"
+                     src="${photo}"
+                     alt="Thumbnail ${idx + 1}"
+                     onclick="setImage(${idx})">
+            `).join('');
+        }
+
+        function setImage(idx) {
+            currentImageIndex = idx;
+            updateGallery();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentEquipment.photos.length) % currentEquipment.photos.length;
+            updateGallery();
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentEquipment.photos.length;
+            updateGallery();
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Reset URL
+            history.pushState({}, '', window.location.pathname);
+        }
+
+        // Copy share link
+        function copyShareLink() {
+            const linkInput = document.getElementById('shareLink');
+            linkInput.select();
+            document.execCommand('copy');
+
+            const btn = document.getElementById('copyBtn');
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+
+            setTimeout(() => {
+                btn.textContent = 'Copy Link';
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Submit bid
+        function submitBid(event) {
+            event.preventDefault();
+
+            const formData = {
+                equipmentId: document.getElementById('equipmentId').value,
+                equipmentTitle: currentEquipment.title,
+                name: document.getElementById('bidderName').value,
+                phone: document.getElementById('bidderPhone').value,
+                email: document.getElementById('bidderEmail').value,
+                company: document.getElementById('bidderCompany').value,
+                bidAmount: document.getElementById('bidAmount').value,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                comments: document.getElementById('bidComments').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Validate minimum bid
+            if (parseInt(formData.bidAmount) < currentEquipment.minBid) {
+                alert(`Minimum bid is $${currentEquipment.minBid.toLocaleString()}`);
+                return;
+            }
+
+            // In a real implementation, you would send this to a server
+            // For now, we'll show the success message and log to console
+            console.log('Bid Submitted:', formData);
+
+            // Create mailto link as fallback
+            const subject = encodeURIComponent(`Bid on ${formData.equipmentTitle}`);
+            const body = encodeURIComponent(`
+Equipment: ${formData.equipmentTitle}
+Bid Amount: $${parseInt(formData.bidAmount).toLocaleString()}
+Payment Method: ${formData.paymentMethod === 'ach' ? 'ACH Bank Transfer' : 'Check'}
+
+Bidder Information:
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Company: ${formData.company || 'N/A'}
+
+Comments:
+${formData.comments || 'None'}
+
+Submitted: ${new Date().toLocaleString()}
+            `);
+
+            // Show success and offer email option
+            document.getElementById('successMessage').innerHTML = `
+                <h3>Bid Submitted Successfully!</h3>
+                <p>We've recorded your bid of <strong>$${parseInt(formData.bidAmount).toLocaleString()}</strong>.</p>
+                <p style="margin-top: 15px;">
+                    <a href="mailto:equipment@m77ag.com?subject=${subject}&body=${body}"
+                       style="color: var(--m77-gold); text-decoration: underline;">
+                       Click here to also send via email
+                    </a>
+                </p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">We'll contact you within 24 hours. Thank you!</p>
+            `;
+            document.getElementById('successMessage').classList.add('show');
+
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Close modal on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
