@@ -1303,7 +1303,7 @@
             </div>
             <div class="hero-stat">
                 <div class="hero-stat-value" id="totalBids">0</div>
-                <div class="hero-stat-label">Total Bids</div>
+                <div class="hero-stat-label">Total Offers</div>
             </div>
             <div class="hero-stat">
                 <div class="hero-stat-value" id="avgSavings">0%</div>
@@ -1420,11 +1420,25 @@
                     <div class="ad-platforms" id="modalAdPlatforms"></div>
                 </div>
 
-                <!-- Bid Form -->
+                <!-- Purchase Options -->
                 <div class="bid-form-section">
-                    <h3 class="bid-form-title">Submit Your Bid</h3>
-                    <form class="bid-form" id="bidForm" onsubmit="submitBid(event)">
+                    <h3 class="bid-form-title">Purchase Options</h3>
+
+                    <!-- Buy Now Option -->
+                    <div class="buy-now-section" style="background: rgba(34, 197, 94, 0.1); border: 2px solid var(--success-green); border-radius: 8px; padding: 20px; margin-bottom: 25px; text-align: center;">
+                        <h4 style="font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: var(--success-green); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Ready to Buy?</h4>
+                        <p style="color: var(--m77-cream); margin-bottom: 15px;">Skip the wait - purchase immediately at the listed price</p>
+                        <button type="button" id="buyNowBtn" class="btn-submit-bid" style="background: var(--success-green); width: auto; padding: 15px 50px;" onclick="showBuyNowForm()">Buy Now - $34,500</button>
+                    </div>
+
+                    <div style="text-align: center; margin: 20px 0; color: var(--m77-gray); font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px;">— OR —</div>
+
+                    <!-- Make Offer Form -->
+                    <h4 style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: var(--m77-gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Make an Offer</h4>
+                    <form class="bid-form" id="bidForm" onsubmit="submitOffer(event)">
                         <input type="hidden" id="equipmentId" value="">
+                        <input type="hidden" id="buyNowPrice" value="">
+                        <input type="hidden" id="offerType" value="offer">
 
                         <div class="form-row">
                             <div class="form-group">
@@ -1450,12 +1464,12 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label required">Your Bid Amount</label>
+                                <label class="form-label required">Your Offer Amount</label>
                                 <div class="bid-amount-wrapper">
                                     <span class="bid-currency">$</span>
                                     <input type="number" class="form-input bid-amount-input" id="bidAmount" placeholder="0" required>
                                 </div>
-                                <span class="min-bid-note" id="minBidNote">Minimum bid: $0</span>
+                                <span class="min-bid-note" id="minBidNote">Minimum offer: $0</span>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Preferred Payment Method</label>
@@ -1471,12 +1485,12 @@
                             <textarea class="form-input form-textarea" id="bidComments" placeholder="Any questions about the equipment, pickup arrangements, etc."></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit-bid">Submit Bid</button>
+                        <button type="submit" class="btn-submit-bid" style="background: var(--m77-green);">Submit Offer</button>
                     </form>
 
                     <div class="success-message" id="successMessage">
-                        <h3>Bid Submitted Successfully!</h3>
-                        <p>We've received your bid and will contact you within 24 hours. Thank you for your interest!</p>
+                        <h3>Submission Received!</h3>
+                        <p>We'll contact you within 24 hours. Thank you for your interest!</p>
                     </div>
                 </div>
 
@@ -1516,53 +1530,53 @@
         // Equipment Data - Add your listings here
         // Each piece has a unique ID that creates a shareable URL
         const equipment = [
-            // EXAMPLE LISTING - Replace with real equipment
-            /*
             {
-                id: 'jd-5055e-2018',
-                title: 'John Deere 5055E',
-                subtitle: '2018 | 55 HP | 4WD Utility Tractor',
-                category: 'tractor',
+                id: 'farm-king-2450-2021',
+                title: 'Farm King 2450',
+                subtitle: '2021 | 14-Bale Capacity | Double Row Round Bale Carrier',
+                category: 'trailer',
                 featured: true,
-                condition: 'Excellent',
+                condition: 'Good',
                 endingSoon: false,
                 photos: [
-                    'https://example.com/photo1.jpg',
-                    'https://example.com/photo2.jpg',
-                    'https://example.com/photo3.jpg'
+                    'images/equipment/farm-king-2450/photo1.jpg',
+                    'images/equipment/farm-king-2450/photo2.jpg',
+                    'images/equipment/farm-king-2450/photo3.jpg',
+                    'images/equipment/farm-king-2450/photo4.jpg',
+                    'images/equipment/farm-king-2450/photo5.jpg'
                 ],
                 specs: {
-                    'Year': '2018',
-                    'Make': 'John Deere',
-                    'Model': '5055E',
-                    'Hours': '847',
-                    'Horsepower': '55 HP',
-                    'Drive': '4WD MFWD',
-                    'Transmission': '9F/3R SyncShuttle',
-                    'Loader': 'H240 w/ 66" Bucket'
+                    'Year': '~2021',
+                    'Make': 'Farm King',
+                    'Model': '2450',
+                    'Capacity': '14 × 5\' or 16 × 4\' bales',
+                    'Deck Length': '37 ft',
+                    'HP Required': '100 HP',
+                    'Axles': 'Walking Tandem',
+                    'Features': 'Hydraulic Arms & Pusher'
                 },
-                currentBid: 28500,
-                marketValue: 34000,
-                minBid: 25000,
-                bidCount: 3,
-                backstory: `This 5055E was purchased new in 2018 and has been used exclusively for light-duty farm work including hay operations and pasture maintenance. Always stored inside, serviced regularly by the local John Deere dealer. The loader was added in 2019 and has minimal wear. This tractor runs and operates like new - the current owner is downsizing their operation and this tractor simply doesn't get enough use to justify keeping it.`,
+                buyNowPrice: 34500,
+                marketValue: 49000,
+                minOffer: 20000,
+                offerCount: 0,
+                backstory: `This Farm King 2450 was purchased 4 years ago when our hay operation was running at full capacity. It's been an absolute workhorse - the double-row design and hydraulic pickup arms make loading bales incredibly efficient. Works exceptionally well when coupled to an IVT transmission for smooth, clutch-free operation between bales. We've since scaled back our haying operation and can now handle the workload with loaders and trailers, so this premium bale carrier is looking for a new home where it can be put to good use. Everything functions as it should - hydraulic arms, chain-driven pusher, lights, and brakes all in working order.`,
                 marketResearch: {
-                    summary: `Based on analysis of 47 comparable 5055E tractors sold in the past 6 months on BigIron, TractorHouse, and Facebook Marketplace, this unit is priced 16% below market average. Low hours (847) compared to the average of 1,240 hours for similar vintage units adds significant value. The included H240 loader typically adds $4,000-$6,000 to resale value.`,
+                    summary: `New Farm King 2450s retail for approximately $49,000. Based on analysis of comparable double-row hydraulic bale carriers on BigIron, TractorHouse, and AuctionTime, 4-year-old units in good working condition typically sell in the $26,000-$38,000 range. This unit is priced at $34,500 Buy Now - representing a 30% savings versus new while still having plenty of service life remaining. The Farm King brand commands premium resale value due to their reputation for heavy-duty construction and reliability.`,
                     stats: [
-                        { label: 'Avg Market Price', value: '$34,000' },
-                        { label: 'Price Range', value: '$28K - $42K' },
-                        { label: 'Avg Hours', value: '1,240' },
-                        { label: 'Days to Sell', value: '23 avg' }
+                        { label: 'New MSRP', value: '$49,000' },
+                        { label: 'Used Range', value: '$26K-$38K' },
+                        { label: 'Savings vs New', value: '30%' },
+                        { label: 'Bale Capacity', value: '14-16' }
                     ]
                 },
                 advertising: [
-                    { platform: 'Facebook - Farm Equipment Groups', reach: '45K+ members', score: 95 },
-                    { platform: 'TractorHouse.com', reach: '2.1M monthly visitors', score: 90 },
-                    { platform: 'Craigslist - Farm & Garden', reach: 'Local buyers', score: 75 },
-                    { platform: 'BigIron Auctions', reach: 'Nationwide bidders', score: 85 }
+                    { platform: 'Facebook - Hay & Cattle Groups', reach: '85K+ members', score: 95 },
+                    { platform: 'Facebook - Farm Equipment Buy/Sell', reach: '120K+ members', score: 92 },
+                    { platform: 'TractorHouse.com', reach: '2.1M monthly visitors', score: 88 },
+                    { platform: 'BigIron Auctions', reach: 'Nationwide bidders', score: 85 },
+                    { platform: 'Craigslist - Farm & Garden', reach: 'Local buyers', score: 70 }
                 ]
             }
-            */
         ];
 
         // State
@@ -1596,12 +1610,13 @@
         function updateStats() {
             document.getElementById('totalListings').textContent = equipment.length;
 
-            const totalBids = equipment.reduce((sum, item) => sum + (item.bidCount || 0), 0);
-            document.getElementById('totalBids').textContent = totalBids;
+            const totalOffers = equipment.reduce((sum, item) => sum + (item.offerCount || 0), 0);
+            document.getElementById('totalBids').textContent = totalOffers;
 
             if (equipment.length > 0) {
                 const avgSavings = equipment.reduce((sum, item) => {
-                    const savings = ((item.marketValue - item.currentBid) / item.marketValue) * 100;
+                    const price = item.buyNowPrice || item.currentBid;
+                    const savings = ((item.marketValue - price) / item.marketValue) * 100;
                     return sum + savings;
                 }, 0) / equipment.length;
                 document.getElementById('avgSavings').textContent = Math.round(avgSavings) + '%';
@@ -1686,17 +1701,17 @@
                         </div>
                         <div class="card-pricing">
                             <div class="price-section">
-                                <span class="price-label">Current Bid</span>
-                                <span class="current-bid">$${item.currentBid.toLocaleString()}</span>
-                                <span class="market-value">Market: $${item.marketValue.toLocaleString()} <span>(${Math.round(((item.marketValue - item.currentBid) / item.marketValue) * 100)}% below)</span></span>
+                                <span class="price-label">Buy Now Price</span>
+                                <span class="current-bid">$${(item.buyNowPrice || item.currentBid).toLocaleString()}</span>
+                                <span class="market-value">New: $${item.marketValue.toLocaleString()} <span>(${Math.round(((item.marketValue - (item.buyNowPrice || item.currentBid)) / item.marketValue) * 100)}% savings)</span></span>
                             </div>
                             <div class="bid-count">
-                                <div class="bid-count-value">${item.bidCount}</div>
-                                <div class="bid-count-label">Bids</div>
+                                <div class="bid-count-value">${item.offerCount || 0}</div>
+                                <div class="bid-count-label">Offers</div>
                             </div>
                         </div>
                         <div class="card-actions">
-                            <button class="btn-bid">Place Bid</button>
+                            <button class="btn-bid">Buy Now</button>
                             <button class="btn-details">Details</button>
                         </div>
                     </div>
@@ -1716,10 +1731,11 @@
             // Populate modal
             document.getElementById('modalTitle').textContent = item.title;
             document.getElementById('modalSubtitle').textContent = item.subtitle;
-            document.getElementById('modalCurrentBid').textContent = '$' + item.currentBid.toLocaleString();
+            const price = item.buyNowPrice || item.currentBid;
+            document.getElementById('modalCurrentBid').textContent = '$' + price.toLocaleString();
 
-            const savingsPercent = Math.round(((item.marketValue - item.currentBid) / item.marketValue) * 100);
-            document.getElementById('modalMarketValue').innerHTML = `Market Value: $${item.marketValue.toLocaleString()} <span>(${savingsPercent}% savings)</span>`;
+            const savingsPercent = Math.round(((item.marketValue - price) / item.marketValue) * 100);
+            document.getElementById('modalMarketValue').innerHTML = `New MSRP: $${item.marketValue.toLocaleString()} <span>(${savingsPercent}% savings)</span>`;
 
             // Share link
             document.getElementById('shareLink').value = window.location.origin + window.location.pathname + '?item=' + item.id;
@@ -1763,11 +1779,16 @@
                 </div>
             `).join('');
 
-            // Bid form
+            // Offer form
             document.getElementById('equipmentId').value = item.id;
-            document.getElementById('minBidNote').textContent = `Minimum bid: $${item.minBid.toLocaleString()}`;
-            document.getElementById('bidAmount').min = item.minBid;
-            document.getElementById('bidAmount').placeholder = item.minBid.toLocaleString();
+            const minOffer = item.minOffer || item.minBid || 0;
+            document.getElementById('minBidNote').textContent = `Minimum offer: $${minOffer.toLocaleString()}`;
+            document.getElementById('bidAmount').min = minOffer;
+            document.getElementById('bidAmount').placeholder = minOffer.toLocaleString();
+
+            // Update Buy Now button price
+            document.getElementById('buyNowBtn').textContent = `Buy Now - $${price.toLocaleString()}`;
+            document.getElementById('buyNowPrice').value = price;
 
             // Reset form
             document.getElementById('bidForm').reset();
@@ -1832,41 +1853,62 @@
             }, 2000);
         }
 
-        // Submit bid
-        function submitBid(event) {
+        // Show Buy Now form (pre-fills offer amount at buy now price)
+        function showBuyNowForm() {
+            const price = document.getElementById('buyNowPrice').value;
+            document.getElementById('bidAmount').value = price;
+            document.getElementById('offerType').value = 'buy_now';
+            document.getElementById('bidderName').focus();
+            document.getElementById('bidderName').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Submit offer (both Buy Now and Make Offer)
+        function submitOffer(event) {
             event.preventDefault();
 
+            const offerType = document.getElementById('offerType').value;
             const formData = {
+                id: 'eq-' + Date.now(),
                 equipmentId: document.getElementById('equipmentId').value,
                 equipmentTitle: currentEquipment.title,
+                type: offerType,
                 name: document.getElementById('bidderName').value,
                 phone: document.getElementById('bidderPhone').value,
                 email: document.getElementById('bidderEmail').value,
                 company: document.getElementById('bidderCompany').value,
-                bidAmount: document.getElementById('bidAmount').value,
+                amount: parseInt(document.getElementById('bidAmount').value),
                 paymentMethod: document.getElementById('paymentMethod').value,
                 comments: document.getElementById('bidComments').value,
+                status: 'pending',
                 timestamp: new Date().toISOString()
             };
 
-            // Validate minimum bid
-            if (parseInt(formData.bidAmount) < currentEquipment.minBid) {
-                alert(`Minimum bid is $${currentEquipment.minBid.toLocaleString()}`);
+            // Validate minimum offer
+            const minOffer = currentEquipment.minOffer || currentEquipment.minBid || 0;
+            if (formData.amount < minOffer) {
+                alert(`Minimum offer is $${minOffer.toLocaleString()}`);
                 return;
             }
 
-            // In a real implementation, you would send this to a server
-            // For now, we'll show the success message and log to console
-            console.log('Bid Submitted:', formData);
+            // Save to localStorage for admin page
+            const offers = JSON.parse(localStorage.getItem('equipmentOffers') || '[]');
+            offers.push(formData);
+            localStorage.setItem('equipmentOffers', JSON.stringify(offers));
+
+            console.log('Offer Submitted:', formData);
 
             // Create mailto link as fallback
-            const subject = encodeURIComponent(`Bid on ${formData.equipmentTitle}`);
+            const typeLabel = offerType === 'buy_now' ? 'BUY NOW' : 'OFFER';
+            const subject = encodeURIComponent(`[${typeLabel}] ${formData.equipmentTitle}`);
             const body = encodeURIComponent(`
+${typeLabel} REQUEST
+
 Equipment: ${formData.equipmentTitle}
-Bid Amount: $${parseInt(formData.bidAmount).toLocaleString()}
+Amount: $${formData.amount.toLocaleString()}
+Type: ${offerType === 'buy_now' ? 'Buy Now (Full Price)' : 'Offer (Negotiable)'}
 Payment Method: ${formData.paymentMethod === 'ach' ? 'ACH Bank Transfer' : 'Check'}
 
-Bidder Information:
+Buyer Information:
 Name: ${formData.name}
 Phone: ${formData.phone}
 Email: ${formData.email}
@@ -1878,10 +1920,11 @@ ${formData.comments || 'None'}
 Submitted: ${new Date().toLocaleString()}
             `);
 
-            // Show success and offer email option
+            // Show success message
+            const successTitle = offerType === 'buy_now' ? 'Buy Now Request Submitted!' : 'Offer Submitted!';
             document.getElementById('successMessage').innerHTML = `
-                <h3>Bid Submitted Successfully!</h3>
-                <p>We've recorded your bid of <strong>$${parseInt(formData.bidAmount).toLocaleString()}</strong>.</p>
+                <h3>${successTitle}</h3>
+                <p>Amount: <strong>$${formData.amount.toLocaleString()}</strong></p>
                 <p style="margin-top: 15px;">
                     <a href="mailto:equipment@m77ag.com?subject=${subject}&body=${body}"
                        style="color: var(--m77-gold); text-decoration: underline;">
@@ -1891,6 +1934,9 @@ Submitted: ${new Date().toLocaleString()}
                 <p style="margin-top: 10px; font-size: 0.9rem;">We'll contact you within 24 hours. Thank you!</p>
             `;
             document.getElementById('successMessage').classList.add('show');
+
+            // Reset offer type
+            document.getElementById('offerType').value = 'offer';
 
             // Scroll to success message
             document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
