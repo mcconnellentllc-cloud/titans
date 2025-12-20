@@ -1433,60 +1433,46 @@
 
                     <div style="text-align: center; margin: 20px 0; color: var(--m77-gray); font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px;">— OR —</div>
 
-                    <!-- Make Offer Form -->
-                    <h4 style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: var(--m77-gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Make an Offer</h4>
-                    <form class="bid-form" id="bidForm" onsubmit="submitOffer(event)">
-                        <input type="hidden" id="equipmentId" value="">
-                        <input type="hidden" id="buyNowPrice" value="">
-                        <input type="hidden" id="offerType" value="offer">
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label required">Full Name</label>
-                                <input type="text" class="form-input" id="bidderName" placeholder="John Smith" required>
+                    <!-- Negotiation Chatbot -->
+                    <div class="chatbot-section" style="background: rgba(0,0,0,0.3); border: 2px solid var(--m77-gold); border-radius: 12px; overflow: hidden;">
+                        <div class="chatbot-header" style="background: var(--m77-green); padding: 15px 20px; display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; background: var(--m77-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 1.2rem;">🤖</span>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label required">Phone Number</label>
-                                <input type="tel" class="form-input" id="bidderPhone" placeholder="(555) 123-4567" required>
+                            <div>
+                                <h4 style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: var(--m77-white); margin: 0; text-transform: uppercase; letter-spacing: 1px;">M77 Negotiation Bot</h4>
+                                <span style="font-size: 0.8rem; color: var(--m77-cream);">Online - Ready to negotiate</span>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label required">Email Address</label>
-                                <input type="email" class="form-input" id="bidderEmail" placeholder="john@example.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Company (Optional)</label>
-                                <input type="text" class="form-input" id="bidderCompany" placeholder="Smith Farms LLC">
-                            </div>
+                        <div class="chatbot-messages" id="chatMessages" style="height: 300px; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px;">
+                            <!-- Messages will appear here -->
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label required">Your Offer Amount</label>
-                                <div class="bid-amount-wrapper">
-                                    <span class="bid-currency">$</span>
-                                    <input type="number" class="form-input bid-amount-input" id="bidAmount" placeholder="0" required>
+                        <div class="chatbot-input" style="padding: 15px 20px; background: rgba(0,0,0,0.4); border-top: 1px solid rgba(212, 168, 75, 0.3);">
+                            <div id="chatInputArea">
+                                <p style="color: var(--m77-cream); margin-bottom: 10px; font-size: 0.9rem;">Enter your contact info to start negotiating:</p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                                    <input type="text" id="chatName" class="form-input" placeholder="Your Name" style="padding: 10px;">
+                                    <input type="tel" id="chatPhone" class="form-input" placeholder="Phone Number" style="padding: 10px;">
                                 </div>
-                                <span class="min-bid-note" id="minBidNote">Minimum offer: $0</span>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                                    <input type="email" id="chatEmail" class="form-input" placeholder="Email Address" style="padding: 10px;">
+                                    <input type="text" id="chatCompany" class="form-input" placeholder="Company (Optional)" style="padding: 10px;">
+                                </div>
+                                <button type="button" class="btn-submit-bid" style="width: 100%; background: var(--m77-green);" onclick="startNegotiation()">Start Negotiating</button>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Preferred Payment Method</label>
-                                <select class="form-input" id="paymentMethod">
-                                    <option value="ach">ACH Bank Transfer</option>
-                                    <option value="check">Check (must clear before pickup)</option>
-                                </select>
+                            <div id="offerInputArea" style="display: none;">
+                                <div style="display: flex; gap: 10px;">
+                                    <div style="flex: 1; position: relative;">
+                                        <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--m77-gold); font-family: 'Oswald', sans-serif; font-size: 1.2rem;">$</span>
+                                        <input type="number" id="chatOfferAmount" class="form-input" placeholder="Enter your offer" style="padding: 12px 12px 12px 30px; font-family: 'Oswald', sans-serif; font-size: 1.1rem;">
+                                    </div>
+                                    <button type="button" class="btn-submit-bid" style="background: var(--m77-gold); color: var(--m77-dark); padding: 12px 25px;" onclick="submitChatOffer()">Submit Offer</button>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Questions or Comments</label>
-                            <textarea class="form-input form-textarea" id="bidComments" placeholder="Any questions about the equipment, pickup arrangements, etc."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit-bid" style="background: var(--m77-green);">Submit Offer</button>
-                    </form>
+                    </div>
 
                     <div class="success-message" id="successMessage">
                         <h3>Submission Received!</h3>
@@ -1779,19 +1765,12 @@
                 </div>
             `).join('');
 
-            // Offer form
-            document.getElementById('equipmentId').value = item.id;
-            const minOffer = item.minOffer || item.minBid || 0;
-            document.getElementById('minBidNote').textContent = `Minimum offer: $${minOffer.toLocaleString()}`;
-            document.getElementById('bidAmount').min = minOffer;
-            document.getElementById('bidAmount').placeholder = minOffer.toLocaleString();
-
             // Update Buy Now button price
             document.getElementById('buyNowBtn').textContent = `Buy Now - $${price.toLocaleString()}`;
             document.getElementById('buyNowPrice').value = price;
 
-            // Reset form
-            document.getElementById('bidForm').reset();
+            // Reset chatbot for fresh negotiation
+            resetChatbot();
             document.getElementById('successMessage').classList.remove('show');
 
             // Show modal
@@ -1853,94 +1832,311 @@
             }, 2000);
         }
 
-        // Show Buy Now form (pre-fills offer amount at buy now price)
+        // Show Buy Now form - scrolls to chatbot and pre-starts with buy now
         function showBuyNowForm() {
-            const price = document.getElementById('buyNowPrice').value;
-            document.getElementById('bidAmount').value = price;
-            document.getElementById('offerType').value = 'buy_now';
-            document.getElementById('bidderName').focus();
-            document.getElementById('bidderName').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const chatSection = document.querySelector('.chatbot-section');
+            chatSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // If already in negotiation, submit buy now price
+            if (chatUserInfo) {
+                const price = currentEquipment.buyNowPrice || 34500;
+                addUserMessage(`I'd like to Buy Now at $${price.toLocaleString()}`);
+                setTimeout(() => {
+                    processWinningOffer(price, 'buy_now');
+                }, 800);
+            }
         }
 
-        // Submit offer (both Buy Now and Make Offer)
-        function submitOffer(event) {
-            event.preventDefault();
+        // ============================================
+        // NEGOTIATION CHATBOT
+        // ============================================
 
-            const offerType = document.getElementById('offerType').value;
-            const formData = {
-                id: 'eq-' + Date.now(),
-                equipmentId: document.getElementById('equipmentId').value,
-                equipmentTitle: currentEquipment.title,
-                type: offerType,
-                name: document.getElementById('bidderName').value,
-                phone: document.getElementById('bidderPhone').value,
-                email: document.getElementById('bidderEmail').value,
-                company: document.getElementById('bidderCompany').value,
-                amount: parseInt(document.getElementById('bidAmount').value),
-                paymentMethod: document.getElementById('paymentMethod').value,
-                comments: document.getElementById('bidComments').value,
-                status: 'pending',
-                timestamp: new Date().toISOString()
-            };
+        let chatUserInfo = null;
+        let offerHistory = [];
+        const WINNING_PRICE = 32700; // Minimum acceptable offer
+        const BUY_NOW_PRICE = 34500;
 
-            // Validate minimum offer
-            const minOffer = currentEquipment.minOffer || currentEquipment.minBid || 0;
-            if (formData.amount < minOffer) {
-                alert(`Minimum offer is $${minOffer.toLocaleString()}`);
+        // Polite decline messages based on offer amount
+        const declineMessages = {
+            veryLow: [
+                "I appreciate the offer, but that's quite a bit below what we can accept for this unit. The Farm King 2450 is a premium double-row carrier - could you come up closer to our asking price?",
+                "Thanks for your interest! Unfortunately, that offer is too low for a hydraulic bale carrier of this caliber. New ones go for $49K - we need to be closer to market value.",
+                "I understand everyone wants a good deal, but at that price we'd be giving it away. This unit has a lot of life left in it. Can you come up significantly?"
+            ],
+            low: [
+                "We're getting closer, but I still can't accept that offer. This Farm King has been well-maintained and the hydraulic system alone is worth more than some offers we've seen.",
+                "I appreciate you working with me on this. That's still a bit below where we need to be. The walking tandem axles and dual-arm pickup add real value here.",
+                "Good offer, but not quite there yet. Keep in mind this handles 14 five-foot bales - it's a serious piece of equipment. Can you come up a bit more?"
+            ],
+            close: [
+                "Now we're talking! You're getting close. I think we can make a deal if you can come up just a little more.",
+                "That's a reasonable offer and I can tell you're serious. We're not far apart - let's see if we can meet in the middle.",
+                "I like where this is heading. You're in the ballpark. One more bump and I think we can shake hands on this."
+            ],
+            veryClose: [
+                "You're very close to a deal here. Just a small increase and this bale carrier is yours.",
+                "We're almost there! I can feel it. Just a touch more and I'll accept.",
+                "So close! Come up just a bit and we'll get the paperwork started."
+            ]
+        };
+
+        function addBotMessage(text, isTyping = true) {
+            const container = document.getElementById('chatMessages');
+
+            if (isTyping) {
+                // Add typing indicator
+                const typing = document.createElement('div');
+                typing.className = 'chat-typing';
+                typing.id = 'typingIndicator';
+                typing.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 32px; height: 32px; background: var(--m77-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">🤖</div>
+                        <div style="background: rgba(45, 80, 22, 0.4); padding: 10px 15px; border-radius: 12px; border-top-left-radius: 4px;">
+                            <span style="display: inline-flex; gap: 4px;">
+                                <span style="animation: bounce 1s infinite;">.</span>
+                                <span style="animation: bounce 1s infinite 0.2s;">.</span>
+                                <span style="animation: bounce 1s infinite 0.4s;">.</span>
+                            </span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(typing);
+                container.scrollTop = container.scrollHeight;
+
+                setTimeout(() => {
+                    typing.remove();
+                    appendBotMessage(text);
+                }, 1000 + Math.random() * 500);
+            } else {
+                appendBotMessage(text);
+            }
+        }
+
+        function appendBotMessage(text) {
+            const container = document.getElementById('chatMessages');
+            const msg = document.createElement('div');
+            msg.className = 'chat-message bot';
+            msg.innerHTML = `
+                <div style="display: flex; align-items: flex-start; gap: 10px; max-width: 85%;">
+                    <div style="width: 32px; height: 32px; background: var(--m77-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0;">🤖</div>
+                    <div style="background: rgba(45, 80, 22, 0.4); padding: 12px 16px; border-radius: 12px; border-top-left-radius: 4px; color: var(--m77-cream); line-height: 1.5;">
+                        ${text}
+                    </div>
+                </div>
+            `;
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function addUserMessage(text) {
+            const container = document.getElementById('chatMessages');
+            const msg = document.createElement('div');
+            msg.className = 'chat-message user';
+            msg.innerHTML = `
+                <div style="display: flex; justify-content: flex-end;">
+                    <div style="background: var(--m77-gold); color: var(--m77-dark); padding: 12px 16px; border-radius: 12px; border-top-right-radius: 4px; max-width: 85%; font-weight: 500;">
+                        ${text}
+                    </div>
+                </div>
+            `;
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function startNegotiation() {
+            const name = document.getElementById('chatName').value.trim();
+            const phone = document.getElementById('chatPhone').value.trim();
+            const email = document.getElementById('chatEmail').value.trim();
+            const company = document.getElementById('chatCompany').value.trim();
+
+            if (!name || !phone || !email) {
+                alert('Please fill in your name, phone, and email to start negotiating.');
                 return;
             }
 
-            // Save to localStorage for admin page
+            chatUserInfo = { name, phone, email, company };
+
+            // Hide contact form, show offer input
+            document.getElementById('chatInputArea').style.display = 'none';
+            document.getElementById('offerInputArea').style.display = 'block';
+
+            // Clear any existing messages
+            document.getElementById('chatMessages').innerHTML = '';
+
+            // Welcome message
+            addBotMessage(`Hey ${name.split(' ')[0]}! Thanks for your interest in the Farm King 2450. This is a solid piece of equipment - we used it for 4 seasons and it never let us down. The Buy Now price is <strong>$${BUY_NOW_PRICE.toLocaleString()}</strong>, but I'm open to hearing offers. What did you have in mind?`, false);
+
+            // Focus on offer input
+            setTimeout(() => {
+                document.getElementById('chatOfferAmount').focus();
+            }, 100);
+        }
+
+        function submitChatOffer() {
+            const input = document.getElementById('chatOfferAmount');
+            const amount = parseInt(input.value);
+
+            if (!amount || amount < 1000) {
+                alert('Please enter a valid offer amount.');
+                return;
+            }
+
+            input.value = '';
+            offerHistory.push(amount);
+
+            addUserMessage(`My offer: <strong>$${amount.toLocaleString()}</strong>`);
+
+            setTimeout(() => {
+                processOffer(amount);
+            }, 500);
+        }
+
+        function processOffer(amount) {
+            // Check if offer meets or exceeds winning price
+            if (amount >= WINNING_PRICE) {
+                processWinningOffer(amount, 'offer');
+                return;
+            }
+
+            // Determine response based on how close they are
+            const percentOfTarget = (amount / WINNING_PRICE) * 100;
+            let responseCategory;
+            let response;
+
+            if (percentOfTarget < 60) {
+                responseCategory = 'veryLow';
+            } else if (percentOfTarget < 75) {
+                responseCategory = 'low';
+            } else if (percentOfTarget < 90) {
+                responseCategory = 'close';
+            } else {
+                responseCategory = 'veryClose';
+            }
+
+            // Pick a random response from the category
+            const responses = declineMessages[responseCategory];
+            response = responses[Math.floor(Math.random() * responses.length)];
+
+            // Add hint about how close they are
+            if (percentOfTarget >= 85) {
+                response += ` <em style="color: var(--success-green);">(You're within striking distance!)</em>`;
+            } else if (percentOfTarget >= 70) {
+                response += ` <em style="color: var(--m77-gold);">(Getting warmer...)</em>`;
+            }
+
+            addBotMessage(response);
+        }
+
+        function processWinningOffer(amount, type) {
+            const isAboveBuyNow = amount >= BUY_NOW_PRICE;
+
+            let winMessage;
+            if (isAboveBuyNow || type === 'buy_now') {
+                winMessage = `<strong style="color: var(--success-green); font-size: 1.1rem;">DEAL! 🎉</strong><br><br>
+                    Congratulations ${chatUserInfo.name.split(' ')[0]}! You've got yourself a Farm King 2450 for <strong>$${amount.toLocaleString()}</strong>!<br><br>
+                    I'll be in touch within 24 hours to arrange payment and pickup details. You're going to love this bale carrier - it's been a great piece of equipment for us.<br><br>
+                    <em>Check your email at ${chatUserInfo.email} for next steps.</em>`;
+            } else {
+                winMessage = `<strong style="color: var(--success-green); font-size: 1.1rem;">YOU'VE GOT A DEAL! 🤝</strong><br><br>
+                    Alright ${chatUserInfo.name.split(' ')[0]}, you drove a hard bargain but I can make <strong>$${amount.toLocaleString()}</strong> work.<br><br>
+                    This Farm King 2450 is yours! I'll reach out within 24 hours to coordinate payment (ACH or check) and pickup arrangements.<br><br>
+                    <em>Expect a call at ${chatUserInfo.phone} or email at ${chatUserInfo.email}.</em>`;
+            }
+
+            addBotMessage(winMessage);
+
+            // Disable further offers
+            document.getElementById('offerInputArea').innerHTML = `
+                <div style="text-align: center; padding: 15px; background: rgba(34, 197, 94, 0.2); border-radius: 8px; border: 1px solid var(--success-green);">
+                    <strong style="color: var(--success-green);">✓ Offer Accepted - $${amount.toLocaleString()}</strong>
+                </div>
+            `;
+
+            // Save to localStorage for admin
+            const formData = {
+                id: 'eq-' + Date.now(),
+                equipmentId: currentEquipment.id,
+                equipmentTitle: currentEquipment.title,
+                type: type,
+                name: chatUserInfo.name,
+                phone: chatUserInfo.phone,
+                email: chatUserInfo.email,
+                company: chatUserInfo.company || '',
+                amount: amount,
+                paymentMethod: 'pending',
+                comments: `Negotiated via chatbot. Offer history: ${offerHistory.map(o => '$' + o.toLocaleString()).join(' → ')}`,
+                status: 'accepted',
+                timestamp: new Date().toISOString()
+            };
+
             const offers = JSON.parse(localStorage.getItem('equipmentOffers') || '[]');
             offers.push(formData);
             localStorage.setItem('equipmentOffers', JSON.stringify(offers));
 
-            console.log('Offer Submitted:', formData);
-
-            // Create mailto link as fallback
-            const typeLabel = offerType === 'buy_now' ? 'BUY NOW' : 'OFFER';
-            const subject = encodeURIComponent(`[${typeLabel}] ${formData.equipmentTitle}`);
+            // Also create mailto link
+            const subject = encodeURIComponent(`[ACCEPTED] ${formData.equipmentTitle} - $${amount.toLocaleString()}`);
             const body = encodeURIComponent(`
-${typeLabel} REQUEST
+ACCEPTED OFFER via Negotiation Bot
 
 Equipment: ${formData.equipmentTitle}
-Amount: $${formData.amount.toLocaleString()}
-Type: ${offerType === 'buy_now' ? 'Buy Now (Full Price)' : 'Offer (Negotiable)'}
-Payment Method: ${formData.paymentMethod === 'ach' ? 'ACH Bank Transfer' : 'Check'}
+Accepted Amount: $${amount.toLocaleString()}
+Type: ${type === 'buy_now' ? 'Buy Now' : 'Negotiated Offer'}
 
 Buyer Information:
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Company: ${formData.company || 'N/A'}
+Name: ${chatUserInfo.name}
+Phone: ${chatUserInfo.phone}
+Email: ${chatUserInfo.email}
+Company: ${chatUserInfo.company || 'N/A'}
 
-Comments:
-${formData.comments || 'None'}
+Negotiation History: ${offerHistory.map(o => '$' + o.toLocaleString()).join(' → ')}
 
 Submitted: ${new Date().toLocaleString()}
             `);
 
-            // Show success message
-            const successTitle = offerType === 'buy_now' ? 'Buy Now Request Submitted!' : 'Offer Submitted!';
-            document.getElementById('successMessage').innerHTML = `
-                <h3>${successTitle}</h3>
-                <p>Amount: <strong>$${formData.amount.toLocaleString()}</strong></p>
-                <p style="margin-top: 15px;">
-                    <a href="mailto:equipment@m77ag.com?subject=${subject}&body=${body}"
-                       style="color: var(--m77-gold); text-decoration: underline;">
-                       Click here to also send via email
-                    </a>
-                </p>
-                <p style="margin-top: 10px; font-size: 0.9rem;">We'll contact you within 24 hours. Thank you!</p>
-            `;
-            document.getElementById('successMessage').classList.add('show');
-
-            // Reset offer type
-            document.getElementById('offerType').value = 'offer';
-
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Auto-open email
+            setTimeout(() => {
+                window.open(`mailto:equipment@m77ag.com?subject=${subject}&body=${body}`, '_blank');
+            }, 2000);
         }
+
+        // Reset chatbot when modal opens
+        function resetChatbot() {
+            chatUserInfo = null;
+            offerHistory = [];
+            document.getElementById('chatMessages').innerHTML = '';
+            document.getElementById('chatInputArea').style.display = 'block';
+            document.getElementById('offerInputArea').style.display = 'none';
+            document.getElementById('offerInputArea').innerHTML = `
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1; position: relative;">
+                        <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--m77-gold); font-family: 'Oswald', sans-serif; font-size: 1.2rem;">$</span>
+                        <input type="number" id="chatOfferAmount" class="form-input" placeholder="Enter your offer" style="padding: 12px 12px 12px 30px; font-family: 'Oswald', sans-serif; font-size: 1.1rem;">
+                    </div>
+                    <button type="button" class="btn-submit-bid" style="background: var(--m77-gold); color: var(--m77-dark); padding: 12px 25px;" onclick="submitChatOffer()">Submit Offer</button>
+                </div>
+            `;
+            document.getElementById('chatName').value = '';
+            document.getElementById('chatPhone').value = '';
+            document.getElementById('chatEmail').value = '';
+            document.getElementById('chatCompany').value = '';
+        }
+
+        // Handle Enter key in offer input
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.activeElement.id === 'chatOfferAmount') {
+                submitChatOffer();
+            }
+        });
+
+        // Add CSS animation for typing dots
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 60%, 100% { transform: translateY(0); }
+                30% { transform: translateY(-4px); }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Close modal on escape key
         document.addEventListener('keydown', function(e) {
