@@ -393,19 +393,6 @@
             50% { opacity: 0.7; }
         }
 
-        .photo-count {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
-            color: var(--m77-white);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
 
         .card-content {
             padding: 20px;
@@ -683,6 +670,59 @@
         .gallery-thumb:hover {
             border-color: var(--m77-gold);
             opacity: 1;
+        }
+
+        .gallery-video {
+            background: #000;
+        }
+
+        .thumb-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .video-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .video-indicator::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 8px solid var(--m77-gold);
+            margin-left: 2px;
+        }
+
+        .media-count {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .media-badge {
+            background: rgba(0,0,0,0.7);
+            color: var(--m77-white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .modal-body {
@@ -1365,8 +1405,12 @@
 
             <div class="modal-gallery">
                 <img class="gallery-main" id="galleryMain" src="" alt="Equipment Photo">
-                <button class="gallery-nav gallery-prev" onclick="prevImage()">&#8249;</button>
-                <button class="gallery-nav gallery-next" onclick="nextImage()">&#8250;</button>
+                <video class="gallery-main gallery-video" id="galleryVideo" controls style="display: none;">
+                    <source id="videoSource" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button class="gallery-nav gallery-prev" onclick="prevMedia()">&#8249;</button>
+                <button class="gallery-nav gallery-next" onclick="nextMedia()">&#8250;</button>
                 <div class="gallery-thumbnails" id="galleryThumbnails"></div>
             </div>
 
@@ -1524,12 +1568,23 @@
                 featured: true,
                 condition: 'Good',
                 endingSoon: false,
+                // Media array supports both images and videos
+                // To add a video: { type: 'video', url: '/equipment/farm-king-2450/video.mp4', thumbnail: '/equipment/farm-king-2450/video-thumb.jpg' }
+                media: [
+                    { type: 'image', url: '/equipment/farm-king-2450/photo1.jpg' },
+                    { type: 'image', url: '/equipment/farm-king-2450/photo2.jpg' },
+                    { type: 'image', url: '/equipment/farm-king-2450/photo3.jpg' },
+                    { type: 'image', url: '/equipment/farm-king-2450/photo4.jpg' },
+                    { type: 'image', url: '/equipment/farm-king-2450/photo5.jpg' }
+                    // Add videos by inserting: { type: 'video', url: '/equipment/farm-king-2450/demo.mp4', thumbnail: '/equipment/farm-king-2450/demo-thumb.jpg' }
+                ],
+                // Legacy photos array for backwards compatibility
                 photos: [
-                    'images/equipment/farm-king-2450/photo1.jpg',
-                    'images/equipment/farm-king-2450/photo2.jpg',
-                    'images/equipment/farm-king-2450/photo3.jpg',
-                    'images/equipment/farm-king-2450/photo4.jpg',
-                    'images/equipment/farm-king-2450/photo5.jpg'
+                    '/equipment/farm-king-2450/photo1.jpg',
+                    '/equipment/farm-king-2450/photo2.jpg',
+                    '/equipment/farm-king-2450/photo3.jpg',
+                    '/equipment/farm-king-2450/photo4.jpg',
+                    '/equipment/farm-king-2450/photo5.jpg'
                 ],
                 specs: {
                     'Year': '~2021',
@@ -1665,13 +1720,20 @@
                             ${item.condition ? `<span class="badge badge-condition">${item.condition}</span>` : ''}
                             ${item.endingSoon ? '<span class="badge badge-ending">Ending Soon</span>' : ''}
                         </div>
-                        <div class="photo-count">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                                <circle cx="8.5" cy="8.5" r="1.5"/>
-                                <polyline points="21 15 16 10 5 21"/>
-                            </svg>
-                            ${item.photos.length}
+                        <div class="media-count">
+                            ${(() => {
+                                const media = item.media || item.photos.map(url => ({ type: 'image', url }));
+                                const photoCount = media.filter(m => m.type !== 'video').length;
+                                const videoCount = media.filter(m => m.type === 'video').length;
+                                let badges = '';
+                                if (photoCount > 0) {
+                                    badges += '<div class="media-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>' + photoCount + '</div>';
+                                }
+                                if (videoCount > 0) {
+                                    badges += '<div class="media-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>' + videoCount + '</div>';
+                                }
+                                return badges;
+                            })()}
                         </div>
                     </div>
                     <div class="card-content">
@@ -1778,37 +1840,108 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Update gallery
-        function updateGallery() {
-            const mainImg = document.getElementById('galleryMain');
-            mainImg.src = currentEquipment.photos[currentImageIndex] || 'https://via.placeholder.com/800x500?text=Photo+Coming+Soon';
-
-            const thumbs = document.getElementById('galleryThumbnails');
-            thumbs.innerHTML = currentEquipment.photos.map((photo, idx) => `
-                <img class="gallery-thumb ${idx === currentImageIndex ? 'active' : ''}"
-                     src="${photo}"
-                     alt="Thumbnail ${idx + 1}"
-                     onclick="setImage(${idx})">
-            `).join('');
+        // Get media items (use new media array or fallback to photos)
+        function getMediaItems() {
+            if (currentEquipment.media && currentEquipment.media.length > 0) {
+                return currentEquipment.media;
+            }
+            // Fallback: convert photos array to media format
+            return (currentEquipment.photos || []).map(url => ({ type: 'image', url }));
         }
 
-        function setImage(idx) {
+        // Update gallery with video support
+        function updateGallery() {
+            const mediaItems = getMediaItems();
+            const currentMedia = mediaItems[currentImageIndex];
+
+            const mainImg = document.getElementById('galleryMain');
+            const mainVideo = document.getElementById('galleryVideo');
+            const videoSource = document.getElementById('videoSource');
+
+            if (!currentMedia) {
+                mainImg.src = 'https://via.placeholder.com/800x500?text=Photo+Coming+Soon';
+                mainImg.style.display = 'block';
+                mainVideo.style.display = 'none';
+                return;
+            }
+
+            if (currentMedia.type === 'video') {
+                // Show video, hide image
+                mainImg.style.display = 'none';
+                mainVideo.style.display = 'block';
+                videoSource.src = currentMedia.url;
+                mainVideo.load();
+            } else {
+                // Show image, hide video
+                mainImg.style.display = 'block';
+                mainVideo.style.display = 'none';
+                mainVideo.pause();
+                mainImg.src = currentMedia.url;
+            }
+
+            // Render thumbnails with video indicators
+            const thumbs = document.getElementById('galleryThumbnails');
+            thumbs.innerHTML = mediaItems.map((media, idx) => {
+                const thumbUrl = media.type === 'video'
+                    ? (media.thumbnail || media.url.replace('.mp4', '-thumb.jpg'))
+                    : media.url;
+                const isVideo = media.type === 'video';
+
+                return `
+                    <div class="thumb-container" onclick="setMedia(${idx})">
+                        <img class="gallery-thumb ${idx === currentImageIndex ? 'active' : ''}"
+                             src="${thumbUrl}"
+                             alt="${media.type === 'video' ? 'Video' : 'Photo'} ${idx + 1}"
+                             onerror="this.src='https://via.placeholder.com/60x45?text=${isVideo ? 'Video' : 'Photo'}'">
+                        ${isVideo ? '<div class="video-indicator"></div>' : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function setMedia(idx) {
+            // Pause current video if playing
+            const mainVideo = document.getElementById('galleryVideo');
+            if (mainVideo && !mainVideo.paused) {
+                mainVideo.pause();
+            }
             currentImageIndex = idx;
             updateGallery();
         }
 
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + currentEquipment.photos.length) % currentEquipment.photos.length;
+        function prevMedia() {
+            const mediaItems = getMediaItems();
+            const mainVideo = document.getElementById('galleryVideo');
+            if (mainVideo && !mainVideo.paused) {
+                mainVideo.pause();
+            }
+            currentImageIndex = (currentImageIndex - 1 + mediaItems.length) % mediaItems.length;
             updateGallery();
         }
 
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % currentEquipment.photos.length;
+        function nextMedia() {
+            const mediaItems = getMediaItems();
+            const mainVideo = document.getElementById('galleryVideo');
+            if (mainVideo && !mainVideo.paused) {
+                mainVideo.pause();
+            }
+            currentImageIndex = (currentImageIndex + 1) % mediaItems.length;
             updateGallery();
         }
+
+        // Legacy function aliases for backward compatibility
+        function setImage(idx) { setMedia(idx); }
+        function prevImage() { prevMedia(); }
+        function nextImage() { nextMedia(); }
 
         // Close modal
         function closeModal() {
+            // Pause video if playing
+            const mainVideo = document.getElementById('galleryVideo');
+            if (mainVideo && !mainVideo.paused) {
+                mainVideo.pause();
+            }
+
             document.getElementById('modalOverlay').classList.remove('active');
             document.body.style.overflow = '';
 
