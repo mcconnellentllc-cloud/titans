@@ -606,18 +606,85 @@
         .team-card.titans .view-roster-btn { background: var(--titans-blue); color: var(--titans-navy); }
         .team-card.titans:hover { border-color: var(--titans-blue); }
 
-        /* Coming Soon */
-        .coming-soon {
-            text-align: center;
-            padding: 40px;
-            color: var(--titans-silver);
+        /* Divisions Grid */
+        .divisions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        .coming-soon h3 {
+        .division-box {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .division-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             color: var(--titans-blue);
+            text-align: center;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid rgba(75, 146, 219, 0.3);
+        }
+
+        .division-teams {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .division-team {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .division-team:hover {
+            background: rgba(75, 146, 219, 0.15);
+        }
+
+        .division-team.titans-row {
+            background: rgba(75, 146, 219, 0.2);
+            border-left: 3px solid var(--titans-blue);
+        }
+
+        .standing-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--titans-blue);
+            color: var(--titans-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .team-name-div {
+            flex: 1;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .team-record-div {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--titans-silver);
         }
 
         footer {
@@ -1083,15 +1150,239 @@
             </div>
         </section>
 
-        <!-- Coming Soon -->
+        <!-- All Divisions by Conference -->
         <section class="division-section">
             <div class="division-header">
-                <h2>More Divisions Coming Soon</h2>
+                <h2>AFC Divisions</h2>
+                <span class="division-badge">American Football Conference</span>
             </div>
-            <div class="coming-soon">
-                <h3>AFC North, AFC East, AFC West</h3>
-                <p>NFC North, NFC East, NFC South, NFC West</p>
-                <p style="margin-top: 15px; font-size: 0.9rem;">Check back as we add more teams over time!</p>
+
+            <div class="divisions-grid">
+                <!-- AFC East -->
+                <div class="division-box">
+                    <div class="division-title">AFC East</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">New England Patriots</span>
+                            <span class="team-record-div">11-3</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Buffalo Bills</span>
+                            <span class="team-record-div">10-4</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">Miami Dolphins</span>
+                            <span class="team-record-div">6-8</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">New York Jets</span>
+                            <span class="team-record-div">4-10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AFC North -->
+                <div class="division-box">
+                    <div class="division-title">AFC North</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">Pittsburgh Steelers</span>
+                            <span class="team-record-div">7-6</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Baltimore Ravens</span>
+                            <span class="team-record-div">7-7</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">Cincinnati Bengals</span>
+                            <span class="team-record-div">6-8</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">Cleveland Browns</span>
+                            <span class="team-record-div">3-11</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AFC South -->
+                <div class="division-box">
+                    <div class="division-title">AFC South</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">Jacksonville Jaguars</span>
+                            <span class="team-record-div">10-4</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Houston Texans</span>
+                            <span class="team-record-div">9-5</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">Indianapolis Colts</span>
+                            <span class="team-record-div">8-6</span>
+                        </div>
+                        <div class="division-team titans-row">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">Tennessee Titans</span>
+                            <span class="team-record-div">2-11</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AFC West -->
+                <div class="division-box">
+                    <div class="division-title">AFC West</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">Denver Broncos</span>
+                            <span class="team-record-div">12-2</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Los Angeles Chargers</span>
+                            <span class="team-record-div">10-4</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">Kansas City Chiefs</span>
+                            <span class="team-record-div">6-8</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">Las Vegas Raiders</span>
+                            <span class="team-record-div">3-11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NFC Divisions -->
+        <section class="division-section">
+            <div class="division-header">
+                <h2>NFC Divisions</h2>
+                <span class="division-badge">National Football Conference</span>
+            </div>
+
+            <div class="divisions-grid">
+                <!-- NFC East -->
+                <div class="division-box">
+                    <div class="division-title">NFC East</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">Philadelphia Eagles</span>
+                            <span class="team-record-div">9-5</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Washington Commanders</span>
+                            <span class="team-record-div">8-6</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">Dallas Cowboys</span>
+                            <span class="team-record-div">5-9</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">New York Giants</span>
+                            <span class="team-record-div">3-11</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFC North -->
+                <div class="division-box">
+                    <div class="division-title">NFC North</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">Chicago Bears</span>
+                            <span class="team-record-div">10-4</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Green Bay Packers</span>
+                            <span class="team-record-div">9-4-1</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">Detroit Lions</span>
+                            <span class="team-record-div">8-6</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">Minnesota Vikings</span>
+                            <span class="team-record-div">6-8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFC South -->
+                <div class="division-box">
+                    <div class="division-title">NFC South</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">Tampa Bay Buccaneers</span>
+                            <span class="team-record-div">7-7</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Atlanta Falcons</span>
+                            <span class="team-record-div">6-8</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">New Orleans Saints</span>
+                            <span class="team-record-div">5-9</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">Carolina Panthers</span>
+                            <span class="team-record-div">4-10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFC West -->
+                <div class="division-box">
+                    <div class="division-title">NFC West</div>
+                    <div class="division-teams">
+                        <div class="division-team">
+                            <span class="standing-num">1</span>
+                            <span class="team-name-div">Los Angeles Rams</span>
+                            <span class="team-record-div">11-3</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">2</span>
+                            <span class="team-name-div">Seattle Seahawks</span>
+                            <span class="team-record-div">11-3</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">3</span>
+                            <span class="team-name-div">San Francisco 49ers</span>
+                            <span class="team-record-div">10-4</span>
+                        </div>
+                        <div class="division-team">
+                            <span class="standing-num">4</span>
+                            <span class="team-name-div">Arizona Cardinals</span>
+                            <span class="team-record-div">6-8</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
