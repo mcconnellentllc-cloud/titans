@@ -93,46 +93,6 @@
             font-size: 1rem;
         }
 
-        /* Refresh Button */
-        .refresh-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            margin-top: 15px;
-            background: linear-gradient(135deg, var(--titans-blue) 0%, #2a6eb8 100%);
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(75, 146, 219, 0.3);
-        }
-
-        .refresh-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(75, 146, 219, 0.5);
-        }
-
-        .refresh-btn:active {
-            transform: translateY(0);
-        }
-
-        .refresh-btn svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.5s ease;
-        }
-
-        .refresh-btn:hover svg {
-            transform: rotate(180deg);
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -786,15 +746,6 @@
     <header class="page-header">
         <h1>NFL</h1>
         <p>2025-26 Season Standings & Playoff Picture</p>
-        <button class="refresh-btn" onclick="location.reload()">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                <path d="M3 3v5h5"/>
-                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
-                <path d="M16 21h5v-5"/>
-            </svg>
-            Refresh Data
-        </button>
     </header>
 
     <main class="container">
