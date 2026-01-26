@@ -745,7 +745,7 @@
 
     <header class="page-header">
         <h1>NFL</h1>
-        <p>2025-26 Season • Conference Championships</p>
+        <p>2025-26 Season • Super Bowl LX</p>
     </header>
 
     <main class="container">
@@ -753,13 +753,13 @@
         <section class="bracket-section">
             <div class="section-header">
                 <h2>Playoff Bracket</h2>
-                <span class="section-badge">Championship Sunday</span>
+                <span class="section-badge">Super Bowl LX Set</span>
             </div>
 
             <div class="bracket-container">
                 <div class="bracket-title">
                     <h3>Super Bowl LX Bracket</h3>
-                    <p>2025-26 NFL Playoffs • Conference Championships: Jan 25</p>
+                    <p>2025-26 NFL Playoffs • Super Bowl: February 8, 2026</p>
                 </div>
 
                 <!-- AFC Bracket -->
@@ -864,18 +864,33 @@
                         <!-- Conference Championship -->
                         <div class="bracket-round">
                             <div class="bracket-round-label">AFC Championship</div>
-                            <div class="bracket-matchup" style="border: 2px solid var(--titans-red);">
-                                <div class="bracket-team">
+                            <div class="bracket-matchup" style="opacity: 0.8; border-left: 3px solid #22c55e;">
+                                <div class="bracket-team winner">
                                     <span class="bracket-seed">2</span>
                                     <span class="bracket-team-name">Patriots</span>
-                                    <span class="bracket-record">-5.5</span>
+                                    <span class="bracket-record" style="color: #22c55e;">10</span>
                                 </div>
-                                <div class="vs-label" style="color: var(--titans-red);">Jan 25 • 3PM</div>
+                                <div class="vs-label" style="color: #22c55e;">FINAL</div>
                                 <div class="bracket-team">
                                     <span class="bracket-seed bye-seed">1</span>
                                     <span class="bracket-team-name">Broncos</span>
-                                    <span class="bracket-record">+5.5</span>
+                                    <span class="bracket-record">7</span>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="bracket-connector">→</div>
+
+                        <!-- Super Bowl -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">Super Bowl LX</div>
+                            <div class="bracket-matchup" style="border: 2px solid gold; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.3));">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed" style="background: gold; color: #333;">2</span>
+                                    <span class="bracket-team-name" style="color: gold;">Patriots</span>
+                                    <span class="bracket-record">AFC</span>
+                                </div>
+                                <div class="vs-label" style="color: gold;">Feb 8 • Levi's Stadium</div>
                             </div>
                         </div>
                     </div>
@@ -983,18 +998,33 @@
                         <!-- Conference Championship -->
                         <div class="bracket-round">
                             <div class="bracket-round-label">NFC Championship</div>
-                            <div class="bracket-matchup" style="border: 2px solid var(--titans-red);">
+                            <div class="bracket-matchup" style="opacity: 0.8; border-left: 3px solid #22c55e;">
                                 <div class="bracket-team">
                                     <span class="bracket-seed">5</span>
                                     <span class="bracket-team-name">Rams</span>
-                                    <span class="bracket-record">+2.5</span>
+                                    <span class="bracket-record">27</span>
                                 </div>
-                                <div class="vs-label" style="color: var(--titans-red);">Jan 25 • 6:30PM</div>
-                                <div class="bracket-team">
+                                <div class="vs-label" style="color: #22c55e;">FINAL</div>
+                                <div class="bracket-team winner">
                                     <span class="bracket-seed bye-seed">1</span>
                                     <span class="bracket-team-name">Seahawks</span>
-                                    <span class="bracket-record">-2.5</span>
+                                    <span class="bracket-record" style="color: #22c55e;">31</span>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="bracket-connector">→</div>
+
+                        <!-- Super Bowl -->
+                        <div class="bracket-round">
+                            <div class="bracket-round-label">Super Bowl LX</div>
+                            <div class="bracket-matchup" style="border: 2px solid gold; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.3));">
+                                <div class="bracket-team">
+                                    <span class="bracket-seed" style="background: gold; color: #333;">1</span>
+                                    <span class="bracket-team-name" style="color: gold;">Seahawks</span>
+                                    <span class="bracket-record">NFC</span>
+                                </div>
+                                <div class="vs-label" style="color: gold;">Feb 8 • Levi's Stadium</div>
                             </div>
                         </div>
                     </div>
@@ -1002,138 +1032,121 @@
 
                 <!-- Super Bowl -->
                 <div style="text-align: center; margin-top: 30px;">
-                    <div class="super-bowl-box">
+                    <div class="super-bowl-box" style="border-color: gold; box-shadow: 0 0 20px rgba(255,215,0,0.3);">
                         <div class="super-bowl-label">Super Bowl LX</div>
                         <div class="bracket-matchup" style="border: none; background: none;">
                             <div class="bracket-team">
-                                <span class="bracket-team-name">AFC Champion</span>
+                                <span class="bracket-seed" style="background: #002244;">2</span>
+                                <span class="bracket-team-name" style="font-size: 1.1rem;">Patriots</span>
+                                <span class="bracket-record" style="color: gold;">AFC</span>
                             </div>
-                            <div class="vs-label" style="color: gold;">VS</div>
+                            <div class="vs-label" style="color: gold; font-size: 0.9rem; font-family: 'Oswald', sans-serif;">VS</div>
                             <div class="bracket-team">
-                                <span class="bracket-team-name">NFC Champion</span>
+                                <span class="bracket-seed" style="background: #002244;">1</span>
+                                <span class="bracket-team-name" style="font-size: 1.1rem;">Seahawks</span>
+                                <span class="bracket-record" style="color: gold;">NFC</span>
                             </div>
                         </div>
-                        <div style="font-size: 0.8rem; color: var(--titans-silver); margin-top: 10px;">
-                            February 9, 2026 • New Orleans, LA
+                        <div style="font-size: 0.85rem; color: gold; margin-top: 10px; font-family: 'Oswald', sans-serif;">
+                            February 8, 2026 • Levi's Stadium • Santa Clara, CA
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Conference Championship Betting Lines Section -->
+        <!-- Super Bowl LX Betting Section -->
         <section class="bracket-section">
             <div class="section-header">
-                <h2>Conference Championship Betting</h2>
-                <span class="section-badge">Championship Sunday</span>
+                <h2>Super Bowl LX Betting</h2>
+                <span class="section-badge" style="background: gold; color: #333;">February 8</span>
             </div>
 
-            <div class="bracket-container">
+            <div class="bracket-container" style="border: 2px solid gold;">
                 <div class="bracket-title">
-                    <h3>Championship Sunday</h3>
-                    <p>January 25, 2026 • Spreads, Moneylines & Totals</p>
+                    <h3 style="color: gold;">Super Bowl LX</h3>
+                    <p>February 8, 2026 • Levi's Stadium • Santa Clara, CA</p>
                 </div>
 
-                <!-- AFC Championship -->
-                <div style="margin-bottom: 30px;">
-                    <div class="bracket-conf-label afc" style="margin-bottom: 15px;">AFC Championship • 3:00 PM ET • CBS</div>
-
-                    <div class="bracket-matchup" style="min-width: 100%; border: 2px solid var(--titans-blue);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                            <div style="flex: 1; min-width: 200px;">
-                                <div class="bracket-team" style="margin-bottom: 5px;">
-                                    <span class="bracket-seed">2</span>
-                                    <span class="bracket-team-name">New England Patriots</span>
-                                    <span class="bracket-record">15-4</span>
-                                </div>
-                                <div style="text-align: center; font-size: 0.7rem; color: var(--titans-silver);">@</div>
-                                <div class="bracket-team">
-                                    <span class="bracket-seed bye-seed">1</span>
-                                    <span class="bracket-team-name">Denver Broncos</span>
-                                    <span class="bracket-record">15-4</span>
-                                </div>
+                <!-- Super Bowl Matchup -->
+                <div class="bracket-matchup" style="min-width: 100%; border: 2px solid gold; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.3));">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <div class="bracket-team" style="margin-bottom: 5px;">
+                                <span class="bracket-seed" style="background: #002244;">2</span>
+                                <span class="bracket-team-name" style="font-size: 1.1rem;">New England Patriots</span>
+                                <span class="bracket-record" style="color: gold;">AFC</span>
                             </div>
-                            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                                <div style="text-align: center;">
-                                    <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">SPREAD</div>
-                                    <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--titans-blue);">NE -5.5</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">MONEYLINE</div>
-                                    <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--titans-blue);">-270 / +220</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">O/U</div>
-                                    <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--titans-blue);">40.5</div>
-                                </div>
+                            <div style="text-align: center; font-size: 0.8rem; color: gold; font-family: 'Oswald', sans-serif;">VS</div>
+                            <div class="bracket-team">
+                                <span class="bracket-seed" style="background: #002244;">1</span>
+                                <span class="bracket-team-name" style="font-size: 1.1rem;">Seattle Seahawks</span>
+                                <span class="bracket-record" style="color: gold;">NFC</span>
                             </div>
                         </div>
-                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(75,146,219,0.3); font-size: 0.85rem; color: var(--titans-silver);">
-                            <strong style="color: var(--titans-red);">Key:</strong> Bo Nix (broken ankle) OUT for Broncos. Patriots road favorites with Drake Maye leading the way.
+                        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">SPREAD</div>
+                                <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: gold;">SEA -1.5</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">MONEYLINE</div>
+                                <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: gold;">-120 / +100</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">O/U</div>
+                                <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: gold;">44.5</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- NFC Championship -->
-                <div>
-                    <div class="bracket-conf-label nfc" style="margin-bottom: 15px;">NFC Championship • 6:30 PM ET • FOX</div>
-
-                    <div class="bracket-matchup" style="min-width: 100%; border: 2px solid var(--titans-blue);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                            <div style="flex: 1; min-width: 200px;">
-                                <div class="bracket-team" style="margin-bottom: 5px;">
-                                    <span class="bracket-seed">5</span>
-                                    <span class="bracket-team-name">Los Angeles Rams</span>
-                                    <span class="bracket-record">14-6</span>
-                                </div>
-                                <div style="text-align: center; font-size: 0.7rem; color: var(--titans-silver);">@</div>
-                                <div class="bracket-team">
-                                    <span class="bracket-seed bye-seed">1</span>
-                                    <span class="bracket-team-name">Seattle Seahawks</span>
-                                    <span class="bracket-record">15-4</span>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                                <div style="text-align: center;">
-                                    <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">SPREAD</div>
-                                    <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--titans-blue);">SEA -2.5</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">MONEYLINE</div>
-                                    <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--titans-blue);">-140 / +120</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 0.7rem; color: var(--titans-silver); margin-bottom: 3px;">O/U</div>
-                                    <div style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--titans-blue);">47.5</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(75,146,219,0.3); font-size: 0.85rem; color: var(--titans-silver);">
-                            <strong style="color: var(--titans-red);">Key:</strong> Seahawks crushed 49ers 41-6. Rams survived OT vs Bears. Matthew Stafford vs Geno Smith.
-                        </div>
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,215,0,0.3); font-size: 0.85rem; color: var(--titans-silver);">
+                        <strong style="color: gold;">Key:</strong> Seahawks slight favorites at home (neutral site). Drake Maye vs Geno Smith. First Patriots Super Bowl since Brady era.
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Super Bowl Odds -->
-                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <div style="text-align: center; margin-bottom: 15px; font-family: 'Oswald', sans-serif; color: gold; text-transform: uppercase; letter-spacing: 2px;">Super Bowl LX Odds</div>
-                    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                        <div style="text-align: center; padding: 15px 25px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-                            <div style="font-family: 'Oswald', sans-serif; color: var(--titans-silver); font-size: 0.8rem;">SEAHAWKS</div>
-                            <div style="font-family: 'Oswald', sans-serif; color: gold; font-size: 1.5rem;">+145</div>
+        <!-- Conference Championship Results Section -->
+        <section class="bracket-section">
+            <div class="section-header">
+                <h2>Conference Championship Results</h2>
+                <span class="section-badge" style="background: #22c55e;">Complete</span>
+            </div>
+
+            <div class="bracket-container" style="opacity: 0.85;">
+                <div class="bracket-title">
+                    <h3>Championship Sunday Complete</h3>
+                    <p>January 25, 2026 • Defensive Battles in the Snow</p>
+                </div>
+
+                <!-- Results Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                    <!-- Patriots 10, Broncos 7 -->
+                    <div class="bracket-matchup" style="border-left: 3px solid #22c55e;">
+                        <div style="font-size: 0.7rem; color: #22c55e; margin-bottom: 8px;">AFC CHAMPIONSHIP • FINAL</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="bracket-team-name" style="color: #22c55e;">Patriots</span>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: #22c55e;">10</span>
                         </div>
-                        <div style="text-align: center; padding: 15px 25px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-                            <div style="font-family: 'Oswald', sans-serif; color: var(--titans-silver); font-size: 0.8rem;">RAMS</div>
-                            <div style="font-family: 'Oswald', sans-serif; color: var(--titans-blue); font-size: 1.5rem;">+210</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="bracket-team-name">Broncos</span>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem;">7</span>
                         </div>
-                        <div style="text-align: center; padding: 15px 25px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-                            <div style="font-family: 'Oswald', sans-serif; color: var(--titans-silver); font-size: 0.8rem;">PATRIOTS</div>
-                            <div style="font-family: 'Oswald', sans-serif; color: var(--titans-blue); font-size: 1.5rem;">+270</div>
+                        <div style="font-size: 0.75rem; color: var(--titans-silver); margin-top: 8px;">Snowy conditions. Gonzalez INT seals it. Stidham struggles without Nix.</div>
+                    </div>
+
+                    <!-- Seahawks 31, Rams 27 -->
+                    <div class="bracket-matchup" style="border-left: 3px solid #22c55e;">
+                        <div style="font-size: 0.7rem; color: #22c55e; margin-bottom: 8px;">NFC CHAMPIONSHIP • FINAL</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="bracket-team-name" style="color: #22c55e;">Seahawks</span>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: #22c55e;">31</span>
                         </div>
-                        <div style="text-align: center; padding: 15px 25px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-                            <div style="font-family: 'Oswald', sans-serif; color: var(--titans-silver); font-size: 0.8rem;">BRONCOS</div>
-                            <div style="font-family: 'Oswald', sans-serif; color: var(--titans-silver); font-size: 1.5rem;">+650</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="bracket-team-name">Rams</span>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem;">27</span>
                         </div>
+                        <div style="font-size: 0.75rem; color: var(--titans-silver); margin-top: 8px;">Geno Smith 3 TDs. Walker 98 rush yards. Stafford late rally falls short.</div>
                     </div>
                 </div>
             </div>
@@ -1325,27 +1338,27 @@
             <div class="news-grid">
                 <div class="news-card">
                     <span class="news-tag breaking">Breaking</span>
-                    <h4>Bo Nix Out for AFC Championship with Broken Ankle</h4>
-                    <p>Broncos QB Bo Nix suffered a broken ankle in OT win over Bills. Jarrett Stidham will start vs Patriots. Denver now +5.5 underdogs at home.</p>
-                    <div class="news-date">January 18, 2026</div>
+                    <h4>Titans Hire Robert Saleh as Head Coach</h4>
+                    <p>Tennessee hires former Jets HC and 49ers DC Robert Saleh on a 5-year deal. Saleh will call defensive plays. Brian Daboll expected to join as offensive coordinator.</p>
+                    <div class="news-date">January 26, 2026</div>
                 </div>
                 <div class="news-card">
-                    <span class="news-tag playoff">NFC</span>
-                    <h4>Seahawks Demolish 49ers 41-6 in Divisional</h4>
-                    <p>Rashid Shaheed's 95-yard kick return TD set the tone. Kenneth Walker rushed for 116 yards and 3 TDs. Seattle hosts Rams for NFC Championship.</p>
-                    <div class="news-date">January 17, 2026</div>
+                    <span class="news-tag playoff" style="background: gold; color: #333;">Super Bowl</span>
+                    <h4>Super Bowl LX Set: Seahawks vs Patriots</h4>
+                    <p>Seattle defeats LA Rams 31-27 in NFC Championship. New England edges Denver 10-7 in snowy AFC Championship. Super Bowl LX set for February 8 at Levi's Stadium.</p>
+                    <div class="news-date">January 25, 2026</div>
                 </div>
                 <div class="news-card">
-                    <span class="news-tag playoff">AFC South</span>
-                    <h4>Texans' Season Ends with 4-INT Disaster</h4>
-                    <p>C.J. Stroud threw 4 interceptions as Patriots dominated 28-16. Houston's #1 defense couldn't overcome the turnovers. Patriots advance to face Broncos.</p>
-                    <div class="news-date">January 18, 2026</div>
+                    <span class="news-tag playoff">AFC</span>
+                    <h4>Patriots Win Defensive Battle in Denver Snow</h4>
+                    <p>New England defeats Broncos 10-7 in blizzard conditions. Marcus Gonzalez INT seals it. Jarrett Stidham couldn't overcome Bo Nix's absence. Patriots to Super Bowl.</p>
+                    <div class="news-date">January 25, 2026</div>
                 </div>
                 <div class="news-card">
                     <span class="news-tag trade">Draft Watch</span>
-                    <h4>Titans Lock in #2 Pick</h4>
-                    <p>With a 3-14 record, Tennessee secures the #2 overall pick in the 2026 NFL Draft. Focus shifts to adding defensive talent around rookie QB Cam Ward.</p>
-                    <div class="news-date">January 4, 2026</div>
+                    <h4>Titans Hold #2 Pick, Building Around Cam Ward</h4>
+                    <p>With Saleh hired, focus shifts to 2026 Draft. Tennessee holds #2 overall pick. Expected to target elite defensive talent to pair with rookie QB Cam Ward.</p>
+                    <div class="news-date">January 26, 2026</div>
                 </div>
             </div>
         </section>

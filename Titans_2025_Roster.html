@@ -830,7 +830,7 @@
       <span>Record: <strong>3-14</strong></span>
       <span>PPG: <strong>16.8</strong> (31st)</span>
       <span>Division: <strong>4th AFC South</strong></span>
-      <span>HC: <strong>Mike McCoy</strong> (Interim)</span>
+      <span>HC: <strong>Robert Saleh</strong></span>
     </div>
   </div>
 
@@ -880,7 +880,7 @@
           <div class="team-stat"><div class="team-stat-value">32</div><div class="team-stat-label">Sacks</div></div>
         </div>
         <p style="margin-top: 15px; color: rgba(255,255,255,0.5); font-size: 12px; text-align: center;">
-          <strong style="color: var(--titans-red);">Note:</strong> Head Coach Brian Callahan fired after Week 6 (1-5 record). Mike McCoy serving as Interim HC.
+          <strong style="color: var(--titans-blue);">New Era:</strong> Robert Saleh hired as Head Coach (5-year deal). Brian Daboll expected as Offensive Coordinator. Building around Cam Ward!
         </p>
       </div>
       <div class="leaders-section">
@@ -1246,12 +1246,12 @@ const players = [
 ];
 
 const coaches = [
-  { name: "Mike McCoy", title: "Interim Head Coach", exp: "Former Chargers HC (2013-2016)", note: "Took over after Brian Callahan fired (1-5)", isHead: true },
-  { name: "Nick Holz", title: "Offensive Coordinator", exp: "First year as OC", note: "Developing Cam Ward", isHead: false },
-  { name: "Dennard Wilson", title: "Defensive Coordinator", exp: "Former Jets DB Coach", note: "First year with Titans", isHead: false },
+  { name: "Robert Saleh", title: "Head Coach", exp: "Former Jets HC, 49ers DC", note: "5-year deal, will call defensive plays", isHead: true },
+  { name: "Brian Daboll", title: "Offensive Coordinator", exp: "Former Giants HC, Bills OC", note: "Expected to join Titans staff", isHead: false },
+  { name: "Dennard Wilson", title: "Defensive Coordinator", exp: "Former Jets DB Coach", note: "Retained from previous staff", isHead: false },
   { name: "John Fassel", title: "Special Teams Coordinator", exp: "Former Cowboys STC", note: "Known for developing Pro Bowlers", isHead: false },
   { name: "Bo Hardegree", title: "Quarterbacks Coach", exp: "Former Dolphins QB Coach", note: "Working closely with Ward", isHead: false },
-  { name: "Bill Callahan", title: "Offensive Line Coach", exp: "46 years coaching experience", note: "Father of former HC Brian Callahan", isHead: false },
+  { name: "Bill Callahan", title: "Offensive Line Coach", exp: "46 years coaching experience", note: "Elite OL developer", isHead: false },
   { name: "Tracy Rocker", title: "Defensive Line Coach", exp: "Former Auburn DL Coach", note: "Developing Simmons & Sweat", isHead: false },
   { name: "Frank Bush", title: "Linebackers Coach", exp: "Veteran NFL coach", note: "Guiding rookie Gray", isHead: false }
 ];
@@ -1456,7 +1456,7 @@ function renderCoaches() {
     const card = document.createElement('div');
     card.className = 'coach-card' + (coach.isHead ? ' head-coach' : '');
     card.innerHTML = `
-      ${coach.isHead ? '<span class="coach-tag">Interim</span>' : ''}
+      ${coach.isHead ? '<span class="coach-tag">NEW HC</span>' : ''}
       <h3>${coach.name}</h3>
       <p class="coach-title">${coach.title}</p>
       <p class="coach-exp">${coach.exp}</p>
