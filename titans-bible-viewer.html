@@ -22,34 +22,35 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
-        }
-
         body {
             font-family: 'Open Sans', sans-serif;
-            background: var(--titans-navy);
+            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1525 100%);
             color: var(--titans-white);
-            display: flex;
-            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Navigation */
         .main-nav {
             background: rgba(0,0,0,0.5);
             padding: 15px 20px;
             border-bottom: 1px solid rgba(75, 146, 219, 0.3);
-            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-link {
@@ -75,26 +76,42 @@
             background: rgba(75, 146, 219, 0.15);
         }
 
+        .titans-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
+        .titans-hamburger span { display: block; height: 3px; width: 100%; background: var(--titans-silver); border-radius: 2px; transition: all 0.3s ease; }
+        .titans-hamburger:hover span { background: #fff; }
+        .titans-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .titans-hamburger.active span:nth-child(2) { opacity: 0; }
+        .titans-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5, 10, 16, 0.98); backdrop-filter: blur(10px); z-index: 999; padding-top: 80px; flex-direction: column; align-items: center; gap: 5px; }
+        .titans-mobile-menu.active { display: flex; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: 40px; }
+        .titans-mobile-menu a { color: var(--titans-silver); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
+        .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.1); }
+        @media (max-width: 768px) { .nav-links { display: none; } .titans-hamburger { display: flex; } }
+
         .page-header {
             background: rgba(0,0,0,0.3);
-            padding: 20px;
+            padding: 60px 20px 40px;
             text-align: center;
             border-bottom: 3px solid var(--titans-red);
-            flex-shrink: 0;
         }
 
         .page-header h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
+            font-size: 3rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 10px;
+            background: linear-gradient(180deg, var(--titans-white) 0%, var(--titans-silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .page-header p {
             color: var(--titans-silver);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            margin-bottom: 15px;
         }
 
         .download-btn {
@@ -118,74 +135,226 @@
             color: var(--titans-white);
         }
 
-        .pdf-container {
-            flex: 1;
+        .toc-nav {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
+        .toc-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
-            min-height: 0;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
         }
 
-        .pdf-embed {
-            flex: 1;
-            width: 100%;
-            border: none;
-        }
-
-        .mobile-fallback {
-            display: none;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .mobile-fallback p {
+        .toc-link {
             color: var(--titans-silver);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 14px;
+            background: rgba(75, 146, 219, 0.1);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(75, 146, 219, 0.2);
         }
 
-        @media (max-width: 768px) {
-            .nav-link {
-                font-size: 0.8rem;
-                padding: 6px 12px;
-            }
+        .toc-link:hover {
+            background: rgba(75, 146, 219, 0.25);
+            color: var(--titans-white);
+            border-color: var(--titans-blue);
+        }
 
-            .page-header h1 {
-                font-size: 1.4rem;
-            }
+        .bible-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
 
-            /* Show fallback on mobile where PDF embed often doesn't work well */
-            .pdf-embed {
-                display: none;
-            }
+        .bible-section {
+            margin-bottom: 60px;
+            scroll-margin-top: 80px;
+        }
 
-            .mobile-fallback {
-                display: block;
-            }
+        .bible-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-blue);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--titans-red);
+        }
+
+        .bible-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-white);
+            margin: 30px 0 15px;
+        }
+
+        .bible-section h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-silver);
+            margin: 20px 0 10px;
+        }
+
+        .bible-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .bible-section ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .bible-section li {
+            padding: 8px 0 8px 20px;
+            position: relative;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .bible-section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            background: var(--titans-red);
+            border-radius: 50%;
+        }
+
+        .player-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-left: 3px solid var(--titans-blue);
+        }
+
+        .player-card strong {
+            color: var(--titans-blue);
+        }
+
+        .stat-highlight {
+            display: inline-block;
+            background: var(--titans-red);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .retired-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 6px;
+            border: 1px solid rgba(75, 146, 219, 0.3);
+        }
+
+        .retired-number .number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--titans-blue);
+            min-width: 45px;
+        }
+
+        .retired-numbers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .moment-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.6) 0%, rgba(26, 58, 92, 0.4) 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid rgba(75, 146, 219, 0.3);
+        }
+
+        .moment-card h3 {
+            color: var(--titans-red);
+            margin-top: 0;
+        }
+
+        .moment-card .meta {
+            font-size: 0.9rem;
+            color: var(--titans-silver);
+            margin-bottom: 15px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--titans-blue);
+            padding: 15px 20px;
+            border-left: 3px solid var(--titans-red);
+            background: rgba(0,0,0,0.2);
+            margin: 20px 0;
+        }
+
+        .color-swatch {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 5px 10px 5px 0;
+        }
+
+        .color-swatch .swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         footer {
             text-align: center;
-            padding: 15px 20px;
+            padding: 30px 20px;
             background: rgba(0,0,0,0.4);
             border-top: 1px solid rgba(75, 146, 219, 0.2);
             color: var(--titans-silver);
-            font-size: 0.75rem;
-            flex-shrink: 0;
+            font-size: 0.8rem;
         }
 
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
-        .titans-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
-        .titans-hamburger span { display: block; height: 3px; width: 100%; background: var(--titans-silver); border-radius: 2px; transition: all 0.3s ease; }
-        .titans-hamburger:hover span { background: #fff; }
-        .titans-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-        .titans-hamburger.active span:nth-child(2) { opacity: 0; }
-        .titans-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-        .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5, 10, 16, 0.98); backdrop-filter: blur(10px); z-index: 999; padding-top: 80px; flex-direction: column; align-items: center; gap: 5px; }
-        .titans-mobile-menu.active { display: flex; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: 40px; }
-        .titans-mobile-menu a { color: var(--titans-silver); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
-        .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.1); }
-        @media (max-width: 768px) { .nav-links { display: none; } .titans-hamburger { display: flex; } }
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .bible-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .toc-link {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -222,22 +391,350 @@
 
     <div class="page-header">
         <h1>Tennessee Titans Bible</h1>
-        <p>Kyle's Complete Fan Reference Guide</p>
-        <a href="Tennessee_Titans_Bible.pdf" class="download-btn" download>Download PDF</a>
+        <p>Kyle's Complete Fan Reference Guide &bull; From Houston Oilers to Tennessee Titans &bull; 1960-Present</p>
+        <a href="Tennessee_Titans_Bible.pdf" class="download-btn" download>Download PDF Version</a>
     </div>
 
-    <div class="pdf-container">
-        <iframe class="pdf-embed" src="Tennessee_Titans_Bible.pdf" type="application/pdf"></iframe>
-
-        <div class="mobile-fallback">
-            <p>For the best viewing experience on mobile devices, please download the PDF directly.</p>
-            <a href="Tennessee_Titans_Bible.pdf" class="download-btn" download>Download PDF</a>
+    <nav class="toc-nav">
+        <div class="toc-container">
+            <a href="#history" class="toc-link">History</a>
+            <a href="#identity" class="toc-link">Logo & Colors</a>
+            <a href="#ownership" class="toc-link">Ownership</a>
+            <a href="#stadium" class="toc-link">Stadium</a>
+            <a href="#legends" class="toc-link">Legends</a>
+            <a href="#moments" class="toc-link">Iconic Moments</a>
+            <a href="#roster" class="toc-link">2025 Roster</a>
+            <a href="#records" class="toc-link">Records</a>
+            <a href="#essentials" class="toc-link">Fan Essentials</a>
         </div>
-    </div>
+    </nav>
+
+    <main class="bible-content">
+
+        <section id="history" class="bible-section">
+            <h2>Franchise History</h2>
+
+            <h3>The Houston Oilers Era (1960-1996)</h3>
+            <p>The franchise was founded on August 3, 1959, when Houston oil tycoon K.S. 'Bud' Adams, Jr. announced Houston's entry into the American Football League. Adams chose the name 'Oilers' for sentimental and social reasons, honoring Houston's oil industry heritage.</p>
+            <p>The Houston Oilers were charter members of the AFL, beginning play in 1960. They immediately dominated the new league, winning back-to-back AFL Championships in 1960 and 1961 under coaches Lou Rymkus and Wally Lemm. The team appeared in the first three AFL Championship games.</p>
+            <p>Hall of Fame quarterback George Blanda led the early Oilers, along with stars like Billy Cannon (the team's first draft pick and Heisman Trophy winner), Charlie Hennigan, and Bob Talamini.</p>
+            <p>The franchise joined the NFL as part of the AFL-NFL merger in 1970, becoming part of the AFC Central Division. Throughout the 1970s and 1980s, the Oilers featured legendary players including Earl Campbell, the pile-driving running back from Texas who won the Heisman Trophy and was the 1978 NFL Offensive Rookie of the Year and MVP.</p>
+            <p>The 'Luv Ya Blue' era of the late 1970s under coach Bum Phillips brought the Oilers three consecutive playoff appearances (1978-1980). Warren Moon arrived in 1984 after starring in the CFL, and his spectacular play in the 'Run & Shoot' offense led to seven consecutive playoff appearances from 1987-1993.</p>
+            <p>The 1992-93 playoffs saw the infamous 'Comeback' game where the Oilers blew a 32-point third-quarter lead against the Buffalo Bills, losing 41-38 in overtime - still the largest blown lead in NFL playoff history.</p>
+
+            <h3>The Move to Tennessee (1997-1998)</h3>
+            <p>After disputes over stadium funding in Houston, Bud Adams announced in 1995 that the franchise would relocate to Tennessee. The team played as the 'Tennessee Oilers' for two transitional years - 1997 at Liberty Bowl Memorial Stadium in Memphis, and 1998 at Vanderbilt Stadium in Nashville.</p>
+            <p>During this period, the Oilers drafted quarterback Steve McNair (1995) and running back Eddie George (1996), who would become the cornerstones of the franchise's most successful era.</p>
+
+            <h3>The Tennessee Titans Era (1999-Present)</h3>
+            <p>On November 14, 1998, Bud Adams unveiled the new name: Tennessee Titans. The name references Nashville's nickname as the 'Athens of the South' for its classical architecture and educational institutions. The mythological Titans represented power, strength, and heroic qualities Adams sought for his team.</p>
+            <p>The 1999 season was magical. Under head coach Jeff Fisher, the Titans went 13-3 and made their historic run to Super Bowl XXXIV. That playoff journey included the legendary 'Music City Miracle' - a lateral play on a kickoff return that defeated the Buffalo Bills 22-16 in the Wild Card round.</p>
+            <p>The Super Bowl against the St. Louis Rams came down to the final play, when wide receiver Kevin Dyson was tackled one yard short of the goal line as time expired. The Titans lost 23-16, and the play became known as 'One Yard Short' or 'The Tackle.'</p>
+            <p>The Titans remained competitive through the early 2000s, winning division titles in 2000, 2002, and reaching the AFC Championship game multiple times. Under Mike Vrabel (2018-2023), the team won back-to-back AFC South titles in 2020 and 2021, with Derrick Henry becoming just the eighth player to rush for 2,000 yards in a season.</p>
+        </section>
+
+        <section id="identity" class="bible-section">
+            <h2>The Logo & Team Identity</h2>
+
+            <h3>Logo Symbolism</h3>
+            <p>The Tennessee Titans logo, introduced in 1999, is rich with symbolism connecting Greek mythology, Tennessee heritage, and football power:</p>
+            <ul>
+                <li><strong>The Flaming 'T':</strong> The central element represents the team name (Titans and Tennessee) designed to look like both a weapon and shield. The flame trailing behind symbolizes the mythological connection - in Greek mythology, the Titan Prometheus stole fire and gave it to humanity.</li>
+                <li><strong>The Three Stars:</strong> Directly borrowed from the Tennessee state flag, representing the three Grand Divisions of Tennessee - East, Middle, and West Tennessee. These stars appear on a dark blue circle.</li>
+                <li><strong>The White Circle:</strong> Represents the sun, symbolizing energy, power, and light. Combined with the flame, it creates a comet-like appearance suggesting speed and momentum.</li>
+                <li><strong>The Color Palette:</strong> Navy blue ('Titans Navy'), light blue ('Titans Blue'), red, silver, and white. These colors evolved from the Oilers' Columbia blue, scarlet, and white to create a fresh identity for Tennessee.</li>
+            </ul>
+            <p>The logo has remained unchanged since 1999, making it one of the more stable identities in the NFL.</p>
+
+            <h3>Team Colors</h3>
+            <div style="margin: 20px 0;">
+                <div class="color-swatch"><span class="swatch" style="background: #0C2340;"></span> <strong>Titans Navy #0C2340</strong> - Primary color representing strength and authority</div><br>
+                <div class="color-swatch"><span class="swatch" style="background: #4B92DB;"></span> <strong>Titans Blue #4B92DB</strong> - Secondary color adding distinction and energy</div><br>
+                <div class="color-swatch"><span class="swatch" style="background: #C8102E;"></span> <strong>Titans Red #C8102E</strong> - Accent color from the state flag</div><br>
+                <div class="color-swatch"><span class="swatch" style="background: #A2AAAD;"></span> <strong>Silver/White</strong> - Used for contrast and highlighting</div>
+            </div>
+
+            <h3>Mascot & Game Day Traditions</h3>
+            <ul>
+                <li><strong>T-Rac:</strong> The team mascot is a raccoon, honoring the state animal of Tennessee. T-Rac debuted in August 1999 and appears at every home game and community events.</li>
+                <li><strong>The 300 Chant:</strong> After every Titans first down at Nissan Stadium, fans perform the Spartan chant from the movie '300,' shouting 'OOH! OOH! OOH!' three times.</li>
+                <li><strong>The Pain Train:</strong> During the 4th quarter of home games, the stadium plays Terry Tate shouting 'The pain train's coming!' followed by Johnny Cash's 'Folsom Prison Blues.'</li>
+                <li><strong>Flameheads:</strong> Fan headwear resembling flames became popular during the Super Bowl run and remain a symbol of devoted Titans fandom.</li>
+            </ul>
+        </section>
+
+        <section id="ownership" class="bible-section">
+            <h2>Ownership</h2>
+
+            <h3>Amy Adams Strunk - Controlling Owner</h3>
+            <p><strong>Born:</strong> September 29, 1955 &bull; <strong>Education:</strong> University of Texas at Austin (History degree)</p>
+            <p><strong>Role:</strong> Controlling Owner and Co-Chairman of the Board of Directors since March 2015</p>
+            <p>Amy Adams Strunk is one of the daughters of franchise founder K.S. 'Bud' Adams, Jr. She inherited a stake in the team after her father's death in 2013. Initially, her sister Susie Adams Smith served as controlling owner, but in 2015, the family installed Strunk in that role.</p>
+            <p>Strunk owns 50% of the franchise through KSA Industries, with the remaining 50% owned by her nephews Kenneth Adams IV and Barclay Adams (sons of her late brother Kenneth Adams III).</p>
+
+            <h4>Key Achievements Under Her Leadership:</h4>
+            <ul>
+                <li>Transformed the franchise from a 3-win team in 2015 to multiple playoff appearances</li>
+                <li>Brought the 2019 NFL Draft to Nashville - the most successful draft in NFL history with 600,000 fans and $224 million economic impact</li>
+                <li>Appointed to NFL's Hall of Fame Committee and Pro Football Hall of Fame Board of Trustees</li>
+                <li>Named 2019 Tennessean of the Year by Tennessee Sports Hall of Fame</li>
+                <li>Led initiative for new $2.1 billion stadium opening in 2027</li>
+            </ul>
+            <p>Beyond the Titans, Strunk is president of Kenada Farms and Little River Oil and Gas Company. She has served as vice president of Bud Adams Ranches, Inc. An accomplished equestrian and fox hunter, she brings a management philosophy of 'hiring good people and letting them do their jobs.'</p>
+
+            <h3>K.S. 'Bud' Adams, Jr. - Founding Owner (1960-2013)</h3>
+            <p>Kenneth Stanley Adams, Jr. (January 3, 1923 - October 21, 2013) was a Houston oil tycoon who founded the franchise in 1959. He was one of the 'Foolish Club' - the original AFL owners who built the league into a force that eventually merged with the NFL.</p>
+            <p>Adams owned the franchise for over 50 years, remaining at the helm through the Houston Oilers era and overseeing the move to Tennessee. He was instrumental in building the Titans/Oilers Hall of Fame and Ring of Honor before his death at age 90.</p>
+        </section>
+
+        <section id="stadium" class="bible-section">
+            <h2>Nissan Stadium</h2>
+
+            <h3>Current Stadium (1999-2026)</h3>
+            <ul>
+                <li><strong>Location:</strong> 1 Titans Way, Nashville, Tennessee</li>
+                <li><strong>Opened:</strong> August 1999</li>
+                <li><strong>Capacity:</strong> 69,143 for football</li>
+                <li><strong>Surface:</strong> Natural grass</li>
+                <li><strong>Former Names:</strong> Adelphia Coliseum (1999-2002), The Coliseum (2002-2006), LP Field (2007-2015)</li>
+            </ul>
+            <p>Nissan Stadium sits on the east bank of the Cumberland River, directly across from downtown Nashville. The open-air stadium has hosted major events including the CMA Music Festival, Music City Bowl, and numerous concerts by artists like The Rolling Stones and George Strait.</p>
+            <p>The stadium features 176 luxury suites across three levels. The atmosphere on game day is electric, with views of the Nashville skyline and the pedestrian bridge connecting fans from downtown.</p>
+
+            <h3>New Nissan Stadium (Opening 2027)</h3>
+            <p>A state-of-the-art enclosed stadium is under construction adjacent to the current facility, scheduled to open in early 2027.</p>
+            <ul>
+                <li><strong>Cost:</strong> $2.1 billion (largest stadium subsidy in U.S. history with $1.26 billion public funding)</li>
+                <li><strong>Capacity:</strong> 60,000 seats (approximately 170 luxury suites)</li>
+                <li><strong>Features:</strong> Enclosed dome with circular ETFE translucent roof allowing natural light</li>
+                <li><strong>Design:</strong> Manica Architecture (designers of Allegiant Stadium, Wembley Stadium)</li>
+            </ul>
+
+            <h4>Key Design Elements:</h4>
+            <ul>
+                <li>21-foot tall wrap-around halo display connecting endzone video screens</li>
+                <li>Exterior terraces and porches with panoramic Nashville views</li>
+                <li>Seating designed to pull fans closer to the action</li>
+                <li>Environmentally sustainable materials throughout</li>
+                <li>Capable of hosting Super Bowls, Final Fours, CFP games, WrestleMania</li>
+                <li>12,000 sq ft community center for educational opportunities</li>
+            </ul>
+        </section>
+
+        <section id="legends" class="bible-section">
+            <h2>Legends & Hall of Fame</h2>
+
+            <h3>Pro Football Hall of Famers (17 members)</h3>
+            <div class="player-card"><strong>George Blanda (1981):</strong> QB/K, 1960-1966. Led Oilers to first two AFL Championships. Played 26 years in professional football.</div>
+            <div class="player-card"><strong>Ken Houston (1986):</strong> S, 1967-1972. One of the greatest safeties in NFL history, 12 Pro Bowls.</div>
+            <div class="player-card"><strong>Earl Campbell (1991):</strong> RB, 1978-1984. 'The Tyler Rose.' NFL MVP, 3x rushing champion, Heisman Trophy winner.</div>
+            <div class="player-card"><strong>Mike Munchak (2001):</strong> G, 1982-1993. 9x Pro Bowler, franchise's all-time iron man at 159 consecutive starts.</div>
+            <div class="player-card"><strong>Elvin Bethea (2003):</strong> DE, 1968-1983. Franchise all-time sack leader, 8x Pro Bowler.</div>
+            <div class="player-card"><strong>Warren Moon (2006):</strong> QB, 1984-1993. 9x Pro Bowler, franchise passing records, Run & Shoot legend.</div>
+            <div class="player-card"><strong>Bruce Matthews (2007):</strong> OL, 1983-2001. 14 consecutive Pro Bowls, played all five O-line positions, 296 games.</div>
+            <div class="player-card"><strong>Robert Brazile (2018):</strong> LB, 1975-1984. 'Dr. Doom.' 7x Pro Bowler, revolutionized outside linebacker position.</div>
+            <div class="player-card"><strong>Steve Hutchinson (2020):</strong> G, played with Titans 2012. 7x Pro Bowler.</div>
+            <div class="player-card"><strong>Kevin Mawae (2019):</strong> C, played with Titans 2006-2009. 8x Pro Bowler.</div>
+            <div class="player-card"><strong>Randy Moss (2018):</strong> WR, played with Titans 2010. 6x Pro Bowler.</div>
+
+            <h3>Ring of Honor Members (18 members)</h3>
+            <p>Established in 2008, the Ring of Honor at Nissan Stadium honors the greatest players and contributors in franchise history:</p>
+            <ul>
+                <li><strong>K.S. 'Bud' Adams, Jr.</strong> - Founding owner (1959-2013)</li>
+                <li><strong>Elvin Bethea</strong> - DE, 8x Pro Bowler</li>
+                <li><strong>George Blanda</strong> - QB/K, 2x AFL Champion</li>
+                <li><strong>Robert Brazile</strong> - LB, 'Dr. Doom'</li>
+                <li><strong>Earl Campbell</strong> - RB, 'The Tyler Rose'</li>
+                <li><strong>Jeff Fisher</strong> - Head Coach (1994-2010), Super Bowl appearance</li>
+                <li><strong>Eddie George</strong> - RB, Franchise rushing leader (10,009 yards)</li>
+                <li><strong>Mike Holovak</strong> - General Manager</li>
+                <li><strong>Ken Houston</strong> - S, Hall of Famer</li>
+                <li><strong>Billy 'White Shoes' Johnson</strong> - WR/KR, legendary return man</li>
+                <li><strong>Bruce Matthews</strong> - OL, 14x Pro Bowler</li>
+                <li><strong>Steve McNair</strong> - QB, Co-MVP (2003), Super Bowl quarterback</li>
+                <li><strong>Warren Moon</strong> - QB, 9x Pro Bowler</li>
+                <li><strong>Mike Munchak</strong> - G, 9x Pro Bowler</li>
+                <li><strong>Jim Norton</strong> - P, Original Oiler</li>
+                <li><strong>O.A. 'Bum' Phillips</strong> - Head Coach (1975-1980), 'Luv Ya Blue' era</li>
+            </ul>
+
+            <h3>Retired Numbers</h3>
+            <div class="retired-numbers-grid">
+                <div class="retired-number"><span class="number">#1</span> Warren Moon - QB (1984-1993)</div>
+                <div class="retired-number"><span class="number">#9</span> Steve McNair - QB (1995-2005)</div>
+                <div class="retired-number"><span class="number">#27</span> Eddie George - RB (1996-2003)</div>
+                <div class="retired-number"><span class="number">#34</span> Earl Campbell - RB (1978-1984)</div>
+                <div class="retired-number"><span class="number">#43</span> Jim Norton - P (1960-1968)</div>
+                <div class="retired-number"><span class="number">#63</span> Mike Munchak - G (1982-1993)</div>
+                <div class="retired-number"><span class="number">#65</span> Elvin Bethea - DE (1968-1983)</div>
+                <div class="retired-number"><span class="number">#74</span> Bruce Matthews - OL (1983-2001)</div>
+            </div>
+        </section>
+
+        <section id="moments" class="bible-section">
+            <h2>Iconic Moments</h2>
+
+            <div class="moment-card">
+                <h3>The Music City Miracle (January 8, 2000)</h3>
+                <p class="meta">AFC Wild Card Game vs. Buffalo Bills at Adelphia Coliseum &bull; Bills 16, Titans 15 with 16 seconds remaining</p>
+                <p><strong>The Play: 'Home Run Throwback'</strong></p>
+                <p>Steve Christie's 41-yard field goal had seemingly given Buffalo a 16-15 victory. With just 16 seconds left, the Titans called their emergency kickoff return play.</p>
+                <p>Fullback Lorenzo Neal fielded the squib kick and handed off to tight end Frank Wycheck. Wycheck threw a cross-field lateral to wide receiver Kevin Dyson, who had a wall of blockers. Dyson raced 75 yards down the sideline for the touchdown.</p>
+                <div class="quote">"There are no flags on the field! It's a miracle! Tennessee has pulled a miracle! A miracle for the Titans!" - Mike Keith</div>
+                <p>After an official review confirmed the lateral was legal, the Titans won 22-16 and went on their Super Bowl run.</p>
+            </div>
+
+            <div class="moment-card">
+                <h3>Super Bowl XXXIV - 'One Yard Short' (January 30, 2000)</h3>
+                <p class="meta">Super Bowl XXXIV at Georgia Dome, Atlanta &bull; Opponent: St. Louis Rams ('The Greatest Show on Turf') &bull; Final Score: Rams 23, Titans 16</p>
+                <p>The Titans fell behind 16-0 but staged a remarkable comeback to tie the game at 16-16 with 2:12 remaining. Kurt Warner then hit Isaac Bruce for a 73-yard touchdown to put the Rams ahead 23-16.</p>
+                <p>With 6 seconds left, the Titans had the ball at the St. Louis 10-yard line. Steve McNair hit Kevin Dyson on a slant route. Rams linebacker Mike Jones made the tackle at the 1-yard line as time expired.</p>
+                <p>The image of Dyson stretching the ball toward the goal line as he's tackled remains one of the most iconic photographs in NFL history. The play is forever known as <strong>'One Yard Short'</strong> or <strong>'The Tackle.'</strong></p>
+            </div>
+
+            <h3>Other Historic Moments</h3>
+            <ul>
+                <li><strong>1960-61 AFL Championships:</strong> Back-to-back titles in the franchise's first two years</li>
+                <li><strong>Earl Campbell's Rookie Year (1978):</strong> Rushing title, MVP, Rookie of the Year</li>
+                <li><strong>Derrick Henry's 2,000-Yard Season (2020):</strong> Second Titan/Oiler to achieve this, leading to MVP votes</li>
+                <li><strong>Chris Johnson's 2,006-Yard Season (2009):</strong> First Titan to rush for 2,000 yards</li>
+            </ul>
+        </section>
+
+        <section id="roster" class="bible-section">
+            <h2>2025 Roster & Season</h2>
+
+            <h3>Key Players - Offense</h3>
+            <div class="player-card"><strong>Cam Ward #1 - QB:</strong> 1st overall pick (2025). 6-2, 219 lbs. Miami. Set NCAA record with 158 career TD passes. 2024 Davey O'Brien Award winner.</div>
+            <div class="player-card"><strong>Tony Pollard #20 - RB:</strong> 7th year. Memphis. Lead back, came over from Dallas Cowboys.</div>
+            <div class="player-card"><strong>Calvin Ridley #0 - WR:</strong> 7th year (IR). Alabama. Elite deep threat, back-to-back 1,000-yard seasons.</div>
+            <div class="player-card"><strong>Chig Okonkwo #85 - TE:</strong> 4th year. Maryland. Athletic receiving threat.</div>
+            <div class="player-card"><strong>JC Latham #55 - OT:</strong> 2nd year. Alabama. 2024 1st round pick, starting right tackle.</div>
+            <div class="player-card"><strong>Peter Skoronski #77 - G:</strong> 3rd year. Northwestern. Versatile interior lineman.</div>
+            <div class="player-card"><strong>Lloyd Cushenberry III #79 - C:</strong> 6th year. LSU. Veteran center.</div>
+
+            <h3>Key Players - Defense</h3>
+            <div class="player-card"><strong>Jeffery Simmons #98 - DT:</strong> 7th year. Mississippi State. Pro Bowl defender, franchise cornerstone.</div>
+            <div class="player-card"><strong>T'Vondre Sweat #93 - NT:</strong> 2nd year. Texas. 2024 2nd round pick, massive interior presence at 366 lbs.</div>
+            <div class="player-card"><strong>Arden Key #49 - OLB:</strong> 8th year. LSU. Edge rusher.</div>
+            <div class="player-card"><strong>L'Jarius Sneed #38 - CB:</strong> 6th year (IR). Louisiana Tech. Elite corner signed in free agency.</div>
+            <div class="player-card"><strong>Amani Hooker #37 - S:</strong> 7th year. Iowa. Ballhawk safety, team leader.</div>
+
+            <h3>Special Teams</h3>
+            <div class="player-card"><strong>Joey Slye #6 - K:</strong> 7th year. Virginia Tech.</div>
+            <div class="player-card"><strong>Johnny Hekker #3 - P:</strong> 14th year. Oregon State. Multi-time Pro Bowler.</div>
+            <div class="player-card"><strong>Morgan Cox #46 - LS:</strong> 16th year. Tennessee.</div>
+
+            <h3>2025 Coaching Staff</h3>
+            <ul>
+                <li><strong>Interim Head Coach:</strong> Mike McCoy (former Chargers HC, appointed October 2025)</li>
+                <li><strong>Offensive Coordinator:</strong> Nick Holz</li>
+                <li><strong>Defensive Coordinator:</strong> Dennard Wilson</li>
+                <li><strong>Special Teams Coordinator:</strong> John Fassel</li>
+            </ul>
+            <p><em>Note: Brian Callahan was fired after a 1-5 start to the 2025 season. He finished with a 4-19 record over less than two seasons.</em></p>
+
+            <h3>2025 Season Summary</h3>
+            <p><span class="stat-highlight">Record: 2-11-0</span> (4th in AFC South)</p>
+            <p>Points For: 201 (15.5 per game) &bull; Points Against: 357 (27.5 per game)</p>
+            <p>The 2025 season is a rebuilding year focused on developing rookie quarterback Cam Ward, the #1 overall pick. Ward has shown flashes of his potential arm talent while learning to play at NFL speed.</p>
+            <p><strong>Cam Ward 2025 Stats:</strong> Approx. 2,600 passing yards, 11 TDs, 7 INTs through 14 games</p>
+        </section>
+
+        <section id="records" class="bible-section">
+            <h2>All-Time Franchise Records</h2>
+
+            <h3>Career Records</h3>
+            <ul>
+                <li><strong>Rushing Yards:</strong> Eddie George - 10,009 yards (1996-2003)</li>
+                <li><strong>Passing Yards:</strong> Warren Moon - 33,685 yards (1984-1993)</li>
+                <li><strong>Receptions:</strong> Ernest Givins - 542 (1986-1994)</li>
+                <li><strong>Receiving Yards:</strong> Derrick Mason - 6,114 yards</li>
+                <li><strong>Touchdowns:</strong> Eddie George - 74</li>
+                <li><strong>Games Played:</strong> Bruce Matthews - 296</li>
+            </ul>
+
+            <h3>Single Season Records</h3>
+            <ul>
+                <li><strong>Rushing Yards:</strong> Derrick Henry - <span class="stat-highlight">2,027 (2020)</span></li>
+                <li><strong>Passing Yards:</strong> Warren Moon - 4,689 (1991)</li>
+                <li><strong>Receiving Yards:</strong> Charley Hennigan - 1,746 (1961)</li>
+                <li><strong>Rushing TDs:</strong> Derrick Henry - 17 (2020)</li>
+                <li><strong>All-Purpose Yards:</strong> Derrick Mason - 2,690 (2000)</li>
+            </ul>
+
+            <h3>Franchise Achievements</h3>
+            <ul>
+                <li><strong>AFL Championships:</strong> 2 (1960, 1961)</li>
+                <li><strong>Super Bowl Appearances:</strong> 1 (Super Bowl XXXIV)</li>
+                <li><strong>AFC Championships:</strong> 1 (1999)</li>
+                <li><strong>Division Titles:</strong> 12 (including AFL East, AFC Central, AFC South)</li>
+                <li><strong>Playoff Appearances:</strong> 25+</li>
+                <li><strong>All-Time Record:</strong> 479-515-6 (entering 2025)</li>
+            </ul>
+        </section>
+
+        <section id="essentials" class="bible-section">
+            <h2>Super Fan Essentials</h2>
+
+            <h3>Must-Know Phrases</h3>
+            <ul>
+                <li><strong>'TITAN UP!'</strong> - The official battle cry and rallying call</li>
+                <li><strong>'Luv Ya Blue'</strong> - Historic Oilers slogan from the Bum Phillips era</li>
+                <li><strong>'Music City Miracle'</strong> - The famous lateral play vs. Buffalo</li>
+                <li><strong>'One Yard Short'</strong> - Super Bowl XXXIV's heartbreaking final play</li>
+                <li><strong>'The Tackle'</strong> - Mike Jones' Super Bowl-ending stop</li>
+                <li><strong>'Dr. Doom'</strong> - Robert Brazile's nickname</li>
+                <li><strong>'The Tyler Rose'</strong> - Earl Campbell's nickname</li>
+                <li><strong>'Air McNair'</strong> - Steve McNair's nickname</li>
+            </ul>
+
+            <h3>Key Rivalries</h3>
+            <ul>
+                <li><strong>Indianapolis Colts:</strong> AFC South rival. Historic battles since the AFC Central days. Colts lead series 39-22.</li>
+                <li><strong>Jacksonville Jaguars:</strong> AFC South rival since 1995. Titans lead 35-26. Heated rivalry in late 1990s/early 2000s.</li>
+                <li><strong>Houston Texans:</strong> AFC South rival. Extra significance given franchise history in Houston.</li>
+                <li><strong>Buffalo Bills:</strong> Historic AFL/AFC rivalry. Music City Miracle added playoff drama.</li>
+            </ul>
+
+            <h3>Important Dates</h3>
+            <ul>
+                <li><strong>August 3, 1959:</strong> Franchise announced as Houston Oilers</li>
+                <li><strong>1960-1961:</strong> Back-to-back AFL Championships</li>
+                <li><strong>1978:</strong> Earl Campbell drafted #1 overall</li>
+                <li><strong>1995:</strong> Steve McNair drafted 3rd overall</li>
+                <li><strong>1996:</strong> Eddie George drafted; move to Tennessee announced</li>
+                <li><strong>November 14, 1998:</strong> Tennessee Titans name unveiled</li>
+                <li><strong>January 8, 2000:</strong> Music City Miracle</li>
+                <li><strong>January 30, 2000:</strong> Super Bowl XXXIV</li>
+                <li><strong>2013:</strong> Bud Adams passes away</li>
+                <li><strong>2015:</strong> Amy Adams Strunk becomes controlling owner</li>
+                <li><strong>2020:</strong> Derrick Henry rushes for 2,027 yards</li>
+                <li><strong>2027:</strong> New Nissan Stadium scheduled to open</li>
+            </ul>
+
+            <h3>Ways to Follow the Team</h3>
+            <ul>
+                <li><strong>Official Website:</strong> tennesseetitans.com</li>
+                <li><strong>Radio:</strong> Titans Radio Network with 'Voice of the Titans' Mike Keith</li>
+                <li><strong>Social Media:</strong> @Titans on Twitter/X, Instagram, Facebook</li>
+                <li><strong>Podcast:</strong> 'The OTP' (Official Titans Podcast)</li>
+                <li><strong>Mobile App:</strong> Tennessee Titans Official App</li>
+            </ul>
+
+            <div class="quote" style="text-align: center; margin-top: 40px; font-size: 1.2rem;">
+                <strong>TITAN UP!</strong><br>
+                This is our town. Our time. Our team.
+            </div>
+        </section>
+
+    </main>
 
     <footer>
         <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
+        <p style="margin-top: 10px;">Last Updated: December 2025</p>
     </footer>
+
     <script>
         function toggleMobileMenu() {
             const hamburger = document.querySelector('.titans-hamburger');
@@ -246,6 +743,16 @@
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
+
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
