@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive - Tennessee Titans Bible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/titans-style.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--titans-navy-dark);
+            min-height: 100vh;
+            color: var(--titans-white);
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav {
+            background: rgba(0,0,0,0.8);
+            padding: 1rem;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, rgba(12,35,64,0.8) 0%, transparent 100%);
+            border-bottom: 3px solid var(--titans-silver);
+        }
+
+        .page-header h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 0 0 0.5rem;
+            color: var(--titans-silver);
+        }
+
+        .page-header p {
+            color: var(--titans-silver);
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .archive-section {
+            margin-bottom: 3rem;
+        }
+
+        .archive-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--titans-blue);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--titans-blue);
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .archive-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(26, 58, 92, 0.8) 100%);
+            border: 1px solid rgba(162, 170, 173, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--titans-white);
+            transition: all 0.3s ease;
+        }
+
+        .archive-card:hover {
+            border-color: var(--titans-silver);
+            transform: translateY(-3px);
+        }
+
+        .archive-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .archive-card p {
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+            margin: 0;
+        }
+
+        .archive-card .year-badge {
+            display: inline-block;
+            background: var(--titans-silver);
+            color: var(--titans-navy);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--titans-blue);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            color: var(--titans-white);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(75, 146, 219, 0.1);
+            color: var(--titans-silver);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../Titans_2026_Roster.html" class="nav-link">2026 Roster</a>
+            <a href="../team-history.html" class="nav-link">History</a>
+            <a href="../nfl.html" class="nav-link">NFL</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Archive</h1>
+        <p>Previous seasons and historical content</p>
+    </header>
+
+    <main class="container">
+        <section class="archive-section">
+            <h2>2025 Season</h2>
+            <div class="archive-grid">
+                <a href="Titans_2025_Roster.html" class="archive-card">
+                    <span class="year-badge">2025</span>
+                    <h3>2025 Roster</h3>
+                    <p>Will Levis era roster before the Cam Ward trade</p>
+                </a>
+                <a href="titans-cheerleaders-2025.html" class="archive-card">
+                    <span class="year-badge">2025</span>
+                    <h3>2025 Cheerleaders</h3>
+                    <p>Previous cheerleader squad</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="archive-section">
+            <h2>Historical Records</h2>
+            <div class="archive-grid">
+                <a href="../team-history.html" class="archive-card">
+                    <span class="year-badge">1960-Present</span>
+                    <h3>Franchise Timeline</h3>
+                    <p>Complete history from Houston Oilers to Tennessee Titans</p>
+                </a>
+                <a href="../titans-hype-videos.html" class="archive-card">
+                    <span class="year-badge">Classic</span>
+                    <h3>Classic Highlights</h3>
+                    <p>Music City Miracle, Super Bowl XXXIV, and more</p>
+                </a>
+            </div>
+        </section>
+
+        <a href="../team-history.html" class="back-link">← Back to History</a>
+    </main>
+
+    <footer>
+        <p>Tennessee Titans Bible - Kyle's Fan Collection</p>
+    </footer>
+</body>
+</html>
