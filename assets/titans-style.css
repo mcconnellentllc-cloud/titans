@@ -597,6 +597,86 @@
         );
 }
 
+/* ===== HAMBURGER MENU ===== */
+.titans-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.titans-hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--titans-silver);
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+}
+
+.titans-hamburger:hover span {
+    background: var(--titans-white);
+}
+
+.titans-hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.titans-hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.titans-hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile menu overlay */
+.titans-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(5, 10, 16, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    padding-top: 80px;
+    overflow-y: auto;
+}
+
+.titans-mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 100px;
+    gap: var(--space-xs);
+}
+
+.titans-mobile-menu a {
+    color: var(--titans-silver);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: var(--space-sm) var(--space-md);
+    transition: all var(--transition-fast);
+    border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+    width: 80%;
+    text-align: center;
+}
+
+.titans-mobile-menu a:hover,
+.titans-mobile-menu a.active {
+    color: var(--titans-blue);
+    background: rgba(75, 146, 219, 0.1);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .titans-hero-title {
@@ -604,7 +684,11 @@
     }
 
     .titans-nav-links {
-        display: none; /* Mobile menu needed */
+        display: none;
+    }
+
+    .titans-hamburger {
+        display: flex;
     }
 
     .titans-ticker {

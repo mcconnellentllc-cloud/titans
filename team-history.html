@@ -317,6 +317,88 @@
             margin-bottom: 8px;
         }
 
+        /* Nav Layout */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Hamburger Menu */
+        .titans-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .titans-hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--titans-silver);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .titans-hamburger:hover span { background: #fff; }
+
+        .titans-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .titans-hamburger.active span:nth-child(2) { opacity: 0; }
+        .titans-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .titans-mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 10, 16, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding-top: 80px;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .titans-mobile-menu.active { display: flex; }
+
+        .titans-mobile-menu a {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+
+        .titans-mobile-menu a:hover,
+        .titans-mobile-menu a.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.1);
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 justify-content: center;
@@ -344,26 +426,50 @@
             .timeline-item::before {
                 left: -23px;
             }
+
+            .nav-links { display: none; }
+            .titans-hamburger { display: flex; }
         }
     </style>
 </head>
 <body>
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="Titans_2026_Roster.html" class="nav-link">2026 Roster</a>
-            <a href="schedule.html" class="nav-link">Schedule</a>
-            <a href="titans-cheerleaders-2026.html" class="nav-link">Cheerleaders</a>
-            <a href="team-history.html" class="nav-link active">History</a>
-            <a href="titans-salary-cap.html" class="nav-link">Salary Cap</a>
-            <a href="titans-betting-odds.html" class="nav-link">Betting Odds</a>
-            <a href="titans-hype-videos.html" class="nav-link">Hype Videos</a>
-            <a href="titans-tailgate-recipes.html" class="nav-link">Recipes</a>
-            <a href="nfl.html" class="nav-link">NFL</a>
-            <a href="titans-remember-movie.html" class="nav-link">The Movie</a>
-      <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+            <a href="index.html" class="nav-logo-link">
+                <img src="assets/titans-sword-logo.svg" alt="Titans" style="width:40px;height:auto;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="Titans_2026_Roster.html" class="nav-link">Roster</a>
+                <a href="schedule.html" class="nav-link">Schedule</a>
+                <a href="titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
+                <a href="team-history.html" class="nav-link active">History</a>
+                <a href="titans-salary-cap.html" class="nav-link">Cap</a>
+                <a href="titans-betting-odds.html" class="nav-link">Odds</a>
+                <a href="titans-hype-videos.html" class="nav-link">Hype</a>
+                <a href="nfl.html" class="nav-link">NFL</a>
+                <a href="titans-bible-viewer.html" class="nav-link">Bible</a>
+            </div>
+            <div class="titans-hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <div class="titans-mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="Titans_2026_Roster.html">Roster</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
+        <a href="team-history.html" class="active">History</a>
+        <a href="titans-salary-cap.html">Salary Cap</a>
+        <a href="titans-betting-odds.html">Odds</a>
+        <a href="titans-hype-videos.html">Hype Videos</a>
+        <a href="nfl.html">NFL</a>
+        <a href="titans-bible-viewer.html">Bible</a>
+    </div>
 
     <section class="hero-section">
         <h2>Team History</h2>
@@ -646,5 +752,15 @@
         <p class="titan-up">Titan Up</p>
         <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.titans-hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+    </script>
 </body>
 </html>

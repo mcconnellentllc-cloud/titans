@@ -9,7 +9,30 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavScroll();
     initCountUpAnimations();
     initHeroEffects();
+    initMobileMenu();
 });
+
+/* ===== MOBILE HAMBURGER MENU ===== */
+function initMobileMenu() {
+    const hamburger = document.querySelector('.titans-hamburger');
+    const mobileMenu = document.querySelector('.titans-mobile-menu');
+
+    if (!hamburger || !mobileMenu) return;
+
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+}
 
 /* ===== SCROLL ANIMATIONS ===== */
 function initScrollAnimations() {
