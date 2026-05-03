@@ -6,7 +6,7 @@
     <title>Team History - Tennessee Titans Bible</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,wght@1,400&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --titans-navy: #0C2340;
@@ -72,28 +72,93 @@
             background: rgba(75, 146, 219, 0.15);
         }
 
-        .hero-section {
-            background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1a2e 100%);
-            padding: 60px 20px;
+        /* History Hero */
+        .history-hero {
+            position: relative;
+            padding: 120px 20px 50px;
             text-align: center;
-            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1a2e 100%);
+            overflow: hidden;
         }
 
-        .hero-section h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 700;
+        .history-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('assets/titans-sword-logo.svg') center 30% no-repeat;
+            background-size: 15%;
+            opacity: 0.03;
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: auto;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 0 20px rgba(200, 16, 46, 0.5));
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Anton', 'Oswald', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+            margin: 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, #A2AAAD 50%, #4B92DB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
         }
 
-        .hero-section p {
-            color: var(--titans-silver);
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.75rem, 2vw, 1.1rem);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--titans-blue);
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .hero-tagline {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
             font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.7;
+            color: var(--titans-silver);
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: var(--titans-red);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .hero-accent-line {
+            width: 100%;
+            height: 3px;
+            background: var(--titans-red);
+            margin-top: 30px;
         }
 
         .highlights-section {
@@ -405,8 +470,8 @@
                 text-align: center;
             }
 
-            .hero-section {
-                padding: 40px 15px;
+            .history-hero {
+                padding: 100px 15px 40px;
             }
 
             .highlights-section,
@@ -471,9 +536,18 @@
         <a href="titans-bible-viewer.html">Bible</a>
     </div>
 
-    <section class="hero-section">
-        <h2>Team History</h2>
-        <p>From the Houston Oilers to the Tennessee Titans - explore over six decades of football history, legendary players, and unforgettable moments.</p>
+    <section class="history-hero">
+        <img src="assets/titans-sword-logo.svg" alt="Titans" class="hero-logo">
+        <h1 class="hero-title">Team History</h1>
+        <p class="hero-subtitle">Houston 1960 · Tennessee 1999 · Nashville Forever</p>
+        <p class="hero-tagline">Six decades. Two cities. One franchise.</p>
+        <div class="hero-badges">
+            <span class="hero-badge">Est 1960</span>
+            <span class="hero-badge">Moved 1997</span>
+            <span class="hero-badge">Super Bowl XXXIV</span>
+            <span class="hero-badge">Ring of Honor 18 Members</span>
+        </div>
+        <div class="hero-accent-line"></div>
     </section>
 
     <section class="highlights-section">
