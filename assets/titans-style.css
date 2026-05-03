@@ -654,7 +654,11 @@
     align-items: center;
     justify-content: flex-start;
     padding-top: 100px;
+    padding-bottom: 40px;
     gap: var(--space-xs);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 .titans-mobile-menu a {
