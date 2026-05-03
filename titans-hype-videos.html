@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hype Videos - Tennessee Titans Bible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1a2e 50%, var(--titans-navy) 100%);
+            min-height: 100vh;
+            color: var(--titans-white);
+        }
+
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+            border-bottom: 3px solid var(--titans-red);
+        }
+
+        .page-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--titans-silver);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-white);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--titans-blue);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-badge {
+            background: var(--titans-red);
+            color: var(--titans-white);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .section-badge.new {
+            background: #22c55e;
+        }
+
+        .section-badge.classic {
+            background: gold;
+            color: #333;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .video-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border-color: var(--titans-blue);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            transition: background 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+            background: rgba(200, 16, 46, 0.5);
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background: var(--titans-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        .video-card:hover .play-btn {
+            transform: scale(1.1);
+            background: var(--titans-blue);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-date {
+            font-size: 0.75rem;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .video-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--titans-white);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .video-description {
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+            line-height: 1.5;
+        }
+
+        .video-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .playlist-banner {
+            background: linear-gradient(135deg, var(--titans-red) 0%, #8b0a1e 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .playlist-banner h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .playlist-banner p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+
+        .playlist-btn {
+            display: inline-block;
+            background: var(--titans-white);
+            color: var(--titans-red);
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .playlist-btn:hover {
+            background: var(--titans-navy);
+            color: var(--titans-white);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(75, 146, 219, 0.2);
+            color: var(--titans-silver);
+            font-size: 0.8rem;
+        }
+
+        footer .titan-up {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-link {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header {
+                padding: 35px 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Titans_2025_Roster.html" class="nav-link">2025 Roster</a>
+            <a href="schedule.html" class="nav-link">Schedule</a>
+            <a href="titans-cheerleaders-2025.html" class="nav-link">Cheerleaders</a>
+            <a href="team-history.html" class="nav-link">History</a>
+            <a href="titans-salary-cap.html" class="nav-link">Salary Cap</a>
+            <a href="titans-betting-odds.html" class="nav-link">Betting Odds</a>
+            <a href="titans-hype-videos.html" class="nav-link active">Hype Videos</a>
+            <a href="nfl.html" class="nav-link">NFL</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Titans Hype Videos</h1>
+        <p>Get pumped for game day with the best Tennessee Titans hype videos, highlights, and classic moments</p>
+    </header>
+
+    <main class="container">
+        <!-- Official Playlist Banner -->
+        <div class="playlist-banner">
+            <h3>Official Titans Hype Videos Playlist</h3>
+            <p>Subscribe to the official Tennessee Titans YouTube channel for all the latest content</p>
+            <a href="https://www.youtube.com/playlist?list=PLwsjHYRhoteV-YrNuG5tnSHDasu2m2J8L" target="_blank" class="playlist-btn">View Full Playlist</a>
+        </div>
+
+        <!-- 2026 Draft Videos -->
+        <h2 class="section-title">2026 NFL Draft <span class="section-badge new">New</span></h2>
+        <div class="videos-grid">
+            <a href="https://www.youtube.com/watch?v=GQSfw_sRzbo" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/GQSfw_sRzbo/maxresdefault.jpg" alt="Carnell Tate & Keldric Faulk First Day">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">April 2026</div>
+                        <h3 class="video-title">Inside Carnell Tate & Keldric Faulk's FIRST Day with the Titans</h3>
+                        <p class="video-description">Go behind the scenes as the Titans' top draft picks arrive in Nashville for their first day as pros.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=K0En7e8v9mA" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/K0En7e8v9mA/maxresdefault.jpg" alt="Carnell Tate Gets THE CALL">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">April 2026</div>
+                        <h3 class="video-title">Carnell Tate Gets THE CALL | 2026 NFL Draft</h3>
+                        <p class="video-description">Watch the emotional moment when Ohio State WR Carnell Tate receives the call from the Tennessee Titans.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=4VYjCXzf62s" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/4VYjCXzf62s/maxresdefault.jpg" alt="Titans Select Carnell Tate #4 Overall">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">April 2026</div>
+                        <h3 class="video-title">Picks 1-10: Titans Select Carnell Tate #4 Overall!</h3>
+                        <p class="video-description">The first 10 picks of the 2026 NFL Draft including Tennessee's selection of WR Carnell Tate.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=PV7Tr3zStsM" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/PV7Tr3zStsM/maxresdefault.jpg" alt="Steve Smith Sr. Breaks Down Carnell Tate">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">April 2026</div>
+                        <h3 class="video-title">Carnell Tate to the TITANS! Steve Smith Sr. Breaks Down the Pick</h3>
+                        <p class="video-description">NFL legend Steve Smith Sr. analyzes why Carnell Tate is the perfect fit for Tennessee's offense.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 2025 Season Hype -->
+        <h2 class="section-title">2025 Season Game Day Hype</h2>
+        <div class="videos-grid">
+            <a href="https://www.tennesseetitans.com/video/titans-at-bears-week-1-hype-video" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/titans/z5ixsdghx8jqmpwsipqf" alt="Titans at Bears Week 1">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">September 2025</div>
+                        <h3 class="video-title">Titans at Bears Week 1 | Hype Video</h3>
+                        <p class="video-description">Official game day hype video for the 2025 season opener against the Chicago Bears.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.tennesseetitans.com/video/titans-at-bills-week-7-hype-video" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/titans/v0sxqhozfqnqswm9ybtq" alt="Titans at Bills Week 7">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">October 2025</div>
+                        <h3 class="video-title">Titans at Bills Week 7 | Hype Video</h3>
+                        <p class="video-description">Get hyped for the AFC showdown in Buffalo.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.tennesseetitans.com/video/titans-at-lions-week-8-hype-video" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/titans/hqkxwfqpldqzpqctlfbf" alt="Titans at Lions Week 8">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">October 2025</div>
+                        <h3 class="video-title">Titans at Lions Week 8 | Hype Video</h3>
+                        <p class="video-description">Road trip to Detroit for a primetime matchup against the Lions.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.tennesseetitans.com/video/vikings-vs-titans-week-11-hype-video" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/titans/sqqgc0zdrxwppvdepvgp" alt="Vikings vs Titans Week 11">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">November 2025</div>
+                        <h3 class="video-title">Vikings vs. Titans Week 11 | Hype Video</h3>
+                        <p class="video-description">Home game hype as the Vikings come to Nissan Stadium.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.tennesseetitans.com/video/seahawks-vs-titans-week-12-hype-video" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/titans/rlqwdkjfwxiqkpfrx9dj" alt="Seahawks vs Titans Week 12">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">November 2025</div>
+                        <h3 class="video-title">Seahawks vs. Titans Week 12 | Hype Video</h3>
+                        <p class="video-description">Final season at Nissan Stadium matchup against Seattle.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=VVHP6jTi2eA" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/VVHP6jTi2eA/maxresdefault.jpg" alt="Titans at Dolphins Week 4">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">September 2024</div>
+                        <h3 class="video-title">Titans at Dolphins Week 4 | Hype Video</h3>
+                        <p class="video-description">Official hype video for the Monday Night Football matchup in Miami.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Player Highlights -->
+        <h2 class="section-title">Player Highlights & Compilations</h2>
+        <div class="videos-grid">
+            <a href="https://www.youtube.com/watch?v=2ASPFwXBtxo" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/2ASPFwXBtxo/maxresdefault.jpg" alt="Will Levis Best Plays 2023">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">2023 Season</div>
+                        <h3 class="video-title">Will Levis Best Plays of the 2023 Season</h3>
+                        <p class="video-description">Rookie QB Will Levis' top highlights from his breakout 2023 campaign.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=VcAcWHycdMY" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/VcAcWHycdMY/maxresdefault.jpg" alt="Derrick Henry Ultimate 2023 Highlights">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">2023 Season</div>
+                        <h3 class="video-title">Derrick Henry [King Henry] - Ultimate 2023 Titans Highlights</h3>
+                        <p class="video-description">The King's final season in two-tone blue. Every truck, stiff-arm, and touchdown.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=k2V_KOp6_Ew" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/k2V_KOp6_Ew/maxresdefault.jpg" alt="Derrick Henry Return of the King">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">2022 Season</div>
+                        <h3 class="video-title">Derrick Henry Highlights | Return of the King</h3>
+                        <p class="video-description">King Henry returns from injury to dominate the NFL once again.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=xe1dZIcUjF0" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/xe1dZIcUjF0/maxresdefault.jpg" alt="59 Minutes of Derrick Henry">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">Career Compilation</div>
+                        <h3 class="video-title">59 Minutes of Derrick Henry Highlights</h3>
+                        <p class="video-description">The ultimate Derrick Henry compilation. Nearly an hour of pure dominance.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Classic Titans Moments -->
+        <h2 class="section-title">Classic Titans Moments <span class="section-badge classic">Legendary</span></h2>
+        <div class="videos-grid">
+            <a href="https://www.youtube.com/watch?v=u4n-W68fc7A" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/u4n-W68fc7A/maxresdefault.jpg" alt="Music City Miracle Titans at 25">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">January 8, 2000</div>
+                        <h3 class="video-title">The Music City Miracle | Titans at 25</h3>
+                        <p class="video-description">Kevin Dyson looks back at the most iconic play in franchise history. #4 on NFL 100 Greatest.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=FCJFmL4oxPE" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/FCJFmL4oxPE/maxresdefault.jpg" alt="Music City Miracle HD">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">January 8, 2000</div>
+                        <h3 class="video-title">Music City Miracle HD</h3>
+                        <p class="video-description">Frank Wycheck to Kevin Dyson. The lateral heard around the world in high definition.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=eoE0VLUz00o" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/eoE0VLUz00o/maxresdefault.jpg" alt="Music City Miracle Full Game">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">1999 AFC Wild Card</div>
+                        <h3 class="video-title">"Music City Miracle" | Bills vs. Titans | NFL Full Game</h3>
+                        <p class="video-description">Watch the entire classic 1999 AFC Wild Card game. Titans 22, Bills 16.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=JCeC-ntu2co" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/JCeC-ntu2co/maxresdefault.jpg" alt="One Yard Short Deep Rewind">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">Super Bowl XXXIV</div>
+                        <h3 class="video-title">"One Yard Short" - Greatest Super Bowl Finishes | Deep Rewind</h3>
+                        <p class="video-description">SB Nation's deep dive into the heartbreaking final play of Super Bowl XXXIV.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=bflL0XATHAw" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/bflL0XATHAw/maxresdefault.jpg" alt="Super Bowl XXXIV Full Game">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">January 30, 2000</div>
+                        <h3 class="video-title">Super Bowl XXXIV: "One Yard Short" | Rams vs. Titans | NFL Full Game</h3>
+                        <p class="video-description">The complete Super Bowl XXXIV experience. Rams 23, Titans 16.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=REEkVs47k7o" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/REEkVs47k7o/maxresdefault.jpg" alt="Top 50 Sound FX One Yard Short">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">Super Bowl XXXIV</div>
+                        <h3 class="video-title">Top 50 Sound FX | #1: One Yard Short!</h3>
+                        <p class="video-description">The #1 sound in NFL history. Mike Keith's legendary call of the final play.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Fan-Made Classics -->
+        <h2 class="section-title">Fan-Made Hype Videos</h2>
+        <div class="videos-grid">
+            <a href="https://www.youtube.com/watch?v=aeSd573ubJM" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/aeSd573ubJM/maxresdefault.jpg" alt="Titans Hype 2017-18 Higher">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">2017-18 Season</div>
+                        <h3 class="video-title">Tennessee Titans Hype 2017-18 | "Higher" | HD</h3>
+                        <p class="video-description">Fan-made hype video featuring Marcus Mariota and the 2017 playoff team.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=CZn0SZt0KxY" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/CZn0SZt0KxY/maxresdefault.jpg" alt="Titans 2017-18 Hype Video">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">2017-18 Season</div>
+                        <h3 class="video-title">Tennessee Titans - 2017-18 Hype Video</h3>
+                        <p class="video-description">Get pumped for the playoff run that ended the drought.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=hxE_D4B6Bvg" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/hxE_D4B6Bvg/maxresdefault.jpg" alt="Tennessee Titans Hype 2017">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">2017 Season</div>
+                        <h3 class="video-title">Tennessee Titans Hype 2017 [HD]</h3>
+                        <p class="video-description">Classic fan-made hype video from the Mariota era.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=u7B3UFtwkc4" target="_blank" class="video-link">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/u7B3UFtwkc4/maxresdefault.jpg" alt="The Titans of Tennessee 2025">
+                        <div class="play-overlay">
+                            <div class="play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">2025 Class</div>
+                        <h3 class="video-title">The Titans of Tennessee | Class of 2025</h3>
+                        <p class="video-description">Introducing the newest Titans draft class and their journey to Nashville.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="titan-up">Titan Up!</div>
+        <p>Tennessee Titans Bible - Kyle's Fan Collection</p>
+        <p style="margin-top: 5px; font-size: 0.7rem;">Videos belong to their respective creators. Not affiliated with the Tennessee Titans or NFL.</p>
+    </footer>
+</body>
+</html>
