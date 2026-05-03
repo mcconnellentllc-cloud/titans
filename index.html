@@ -6,84 +6,382 @@
     <title>Tennessee Titans Bible - Kyle's Personal Collection</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/titans-style.css">
     <style>
-        :root {
-            --titans-navy: #0C2340;
-            --titans-blue: #4B92DB;
-            --titans-red: #C8102E;
-            --titans-silver: #A2AAAD;
-            --titans-white: #FFFFFF;
-        }
-
-        * {
+        /* Page-specific overrides */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1a2e 50%, var(--titans-navy) 100%);
+            background: var(--titans-navy-dark);
             min-height: 100vh;
-            color: var(--titans-white);
+            overflow-x: hidden;
         }
 
-        .hero {
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 50px 20px 30px;
-            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 100%);
-            border-bottom: 3px solid var(--titans-red);
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(5,10,16,0.4) 0%, rgba(12,35,64,0.7) 50%, rgba(5,10,16,0.95) 100%),
+                url('https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/titans/kj8ogcpfevvuv7y1c4zz') center center / cover no-repeat;
         }
 
-        .logo-container {
-            margin-bottom: 20px;
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('assets/titans-sword-logo.svg') center 40% no-repeat;
+            background-size: 25%;
+            opacity: 0.05;
+            animation: heroLogoPulse 8s ease-in-out infinite;
         }
 
-        .titan-sword {
-            width: 80px;
-            height: 80px;
+        @keyframes heroLogoPulse {
+            0%, 100% { opacity: 0.03; transform: scale(1); }
+            50% { opacity: 0.06; transform: scale(1.02); }
         }
 
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-            color: var(--titans-white);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .tagline {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            font-weight: 400;
-            color: var(--titans-silver);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            padding: 50px 20px 80px;
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
             max-width: 1200px;
+        }
+
+        .hero-logo {
+            width: clamp(120px, 20vw, 220px);
+            height: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 40px rgba(75, 146, 219, 0.6));
+            animation: logoEntrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        @keyframes logoEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .hero-logo:hover {
+            animation: glowPulse 2s infinite;
+        }
+
+        .hero-title {
+            font-family: 'Anton', 'Oswald', sans-serif;
+            font-size: clamp(5rem, 18vw, 14rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 0.85;
+            margin: 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, #A2AAAD 50%, #4B92DB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleSlide 1s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+            text-shadow: none;
+        }
+
+        @keyframes titleSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(80px);
+                letter-spacing: 0.2em;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                letter-spacing: 0.05em;
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.4rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--titans-blue);
+            margin-top: 0.5rem;
+            animation: subtitleFade 1s 0.6s ease both;
+        }
+
+        @keyframes subtitleFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-tagline {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--titans-silver);
+            margin-top: 1.5rem;
+            animation: subtitleFade 1s 0.8s ease both;
+        }
+
+        /* Flame Container */
+        .flame-container {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 400px;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .flame-glow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 200px;
+            background: radial-gradient(ellipse at bottom, rgba(200,16,46,0.4) 0%, rgba(255,170,0,0.2) 30%, transparent 70%);
+            filter: blur(30px);
+            animation: flameFlicker 2s infinite;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-indicator span {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--titans-silver);
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--titans-blue);
+            border-bottom: 2px solid var(--titans-blue);
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Live Ticker */
+        .ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, var(--titans-navy-dark) 0%, var(--titans-navy) 50%, var(--titans-navy-dark) 100%);
+            border-top: 3px solid var(--titans-red);
+            padding: 0.75rem 1rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .ticker-label {
+            background: var(--titans-red);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+
+        .ticker-value {
+            color: var(--titans-white);
+            font-weight: 600;
+        }
+
+        .ticker-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--titans-blue);
+            opacity: 0.5;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(5,10,16,0.95) 0%, rgba(5,10,16,0.8) 100%);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .main-nav.scrolled {
+            padding: 0.5rem 1.5rem;
+            background: rgba(5,10,16,0.98);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--titans-red);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 6rem 2rem 8rem;
+            background: var(--titans-navy-dark);
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, rgba(12,35,64,0.8) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Anton', 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--titans-white);
+            margin: 0;
+        }
+
+        .section-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--titans-blue);
+            margin-top: 0.5rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .card {
-            background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(10, 26, 46, 0.95) 100%);
-            border: 1px solid rgba(75, 146, 219, 0.2);
-            border-radius: 8px;
-            padding: 35px 25px;
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.95) 0%, rgba(26, 58, 92, 0.9) 100%);
+            border: 1px solid rgba(75, 146, 219, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
             text-align: center;
             text-decoration: none;
             color: var(--titans-white);
-            transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .card::before {
@@ -92,15 +390,28 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: var(--titans-blue);
+            height: 4px;
+            background: linear-gradient(90deg, var(--titans-blue), var(--titans-red));
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50px;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 40%, rgba(200, 16, 46, 0.08) 40%, rgba(200, 16, 46, 0.08) 60%, transparent 60%);
+            pointer-events: none;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transform: translateY(-8px);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(75, 146, 219, 0.15);
             border-color: var(--titans-blue);
         }
 
@@ -109,328 +420,353 @@
         }
 
         .card-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 20px;
-            display: block;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: rgba(75, 146, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(75, 146, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            background: rgba(200, 16, 46, 0.2);
+            border-color: var(--titans-red);
+            transform: scale(1.1);
+        }
+
+        .card-icon svg {
+            width: 35px;
+            height: 35px;
+            fill: var(--titans-blue);
+            transition: fill 0.3s ease;
+        }
+
+        .card:hover .card-icon svg {
+            fill: var(--titans-red);
         }
 
         .card-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            color: var(--titans-white);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
         }
 
         .card-description {
             font-size: 0.9rem;
             color: var(--titans-silver);
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
-        .card.roster { border-top: 3px solid var(--titans-blue); }
-        .card.cheerleaders { border-top: 3px solid var(--titans-red); }
-        .card.history { border-top: 3px solid var(--titans-silver); }
-        .card.download { border-top: 3px solid var(--titans-blue); }
-
-        .card.roster .card-icon svg { fill: var(--titans-blue); }
-        .card.cheerleaders .card-icon svg { fill: var(--titans-red); }
-        .card.history .card-icon svg { fill: var(--titans-silver); }
-        .card.download .card-icon svg { fill: var(--titans-blue); }
-
-        .btn-accent {
+        .card-btn {
             display: inline-block;
-            padding: 10px 24px;
-            background: var(--titans-navy);
+            padding: 0.75rem 1.5rem;
+            background: transparent;
             border: 2px solid var(--titans-blue);
             border-radius: 4px;
             font-family: 'Oswald', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.1em;
             color: var(--titans-white);
             transition: all 0.3s ease;
         }
 
-        .card:hover .btn-accent {
+        .card:hover .card-btn {
             background: var(--titans-blue);
             color: var(--titans-navy);
         }
 
-        footer {
-            text-align: center;
-            padding: 25px 20px;
-            background: rgba(0,0,0,0.4);
-            border-top: 1px solid rgba(75, 146, 219, 0.2);
-            color: var(--titans-silver);
-            font-size: 0.8rem;
-        }
-
-        footer .titan-up {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--titans-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        /* Navigation */
-        .main-nav {
-            background: rgba(0,0,0,0.5);
-            padding: 15px 20px;
-            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .nav-link {
-            color: var(--titans-silver);
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--titans-white);
-            background: rgba(75, 146, 219, 0.2);
-        }
-
-        .nav-link.active {
-            color: var(--titans-blue);
-            background: rgba(75, 146, 219, 0.15);
+        /* Featured Card */
+        .card.featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(12, 35, 64, 0.95) 0%, rgba(200, 16, 46, 0.2) 100%);
+            border-color: var(--titans-red);
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding: 35px 15px 25px;
+            .card.featured {
+                grid-column: span 1;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem 6rem;
+            background: var(--titans-navy-dark);
+            border-top: 1px solid rgba(75, 146, 219, 0.1);
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: auto;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .footer-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--titans-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-sub {
+            font-size: 0.8rem;
+            color: var(--titans-silver);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 90vh;
             }
 
-            .cards-container {
-                padding: 30px 15px 60px;
-                gap: 20px;
+            .nav-links {
+                display: none;
             }
 
-            .card {
-                padding: 30px 20px;
+            .ticker {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem;
             }
 
-            .nav-link {
-                font-size: 0.8rem;
-                padding: 6px 12px;
+            .ticker-divider {
+                display: none;
+            }
+
+            .scroll-indicator {
+                bottom: 80px;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="main-nav">
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
         <div class="nav-container">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="Titans_2026_Roster.html" class="nav-link">2026 Roster</a>
-            <a href="schedule.html" class="nav-link">Schedule</a>
-            <a href="titans-cheerleaders-2026.html" class="nav-link">Cheerleaders</a>
-            <a href="team-history.html" class="nav-link">History</a>
-            <a href="titans-salary-cap.html" class="nav-link">Salary Cap</a>
-            <a href="titans-betting-odds.html" class="nav-link">Betting Odds</a>
-            <a href="titans-hype-videos.html" class="nav-link">Hype Videos</a>
-            <a href="titans-tailgate-recipes.html" class="nav-link">Recipes</a>
-            <a href="nfl.html" class="nav-link">NFL</a>
-            <a href="titans-remember-movie.html" class="nav-link">The Movie</a>
-            <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+            <a href="index.html">
+                <img src="assets/titans-sword-logo.svg" alt="Titans" class="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="Titans_2026_Roster.html" class="nav-link">Roster</a>
+                <a href="schedule.html" class="nav-link">Schedule</a>
+                <a href="titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
+                <a href="team-history.html" class="nav-link">History</a>
+                <a href="titans-salary-cap.html" class="nav-link">Cap</a>
+                <a href="titans-betting-odds.html" class="nav-link">Odds</a>
+                <a href="titans-hype-videos.html" class="nav-link">Hype</a>
+                <a href="nfl.html" class="nav-link">NFL</a>
+                <a href="titans-bible-viewer.html" class="nav-link">Bible</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Rookie Minicamp Banner -->
-    <div style="background: linear-gradient(90deg, var(--titans-blue), #2a6eb8); padding: 12px 20px; text-align: center;">
-        <span style="font-family: 'Oswald', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">
-            <span style="background: var(--titans-white); color: var(--titans-blue); padding: 3px 8px; border-radius: 3px; margin-right: 10px; font-weight: 700;">MINICAMP</span>
-            11 UDFAs signed! OT Wagner, WR Montgomery, CB McMurray headline class. Draft: Tate #4, Hill Jr., Faulk. New uniforms unveiled.
-            <a href="nfl.html" style="color: gold; margin-left: 10px; text-decoration: underline;">Full Details</a>
-        </span>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="flame-container">
+            <div class="flame-glow"></div>
+        </div>
+
+        <div class="hero-content">
+            <img src="assets/titans-sword-logo.svg" alt="Tennessee Titans" class="hero-logo">
+            <h1 class="hero-title">TITAN UP</h1>
+            <p class="hero-subtitle">Tennessee Titans Bible</p>
+            <p class="hero-tagline">Kyle's Ultimate Fan Collection</p>
+        </div>
+
+        <a href="#content" class="scroll-indicator">
+            <span>Explore</span>
+            <div class="scroll-arrow"></div>
+        </a>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section" id="content">
+        <div class="section-header titans-animate-on-scroll">
+            <h2 class="section-title">Your Titans Hub</h2>
+            <p class="section-subtitle">Everything Two-Tone Blue</p>
+        </div>
+
+        <div class="cards-grid titans-stagger">
+            <a href="Titans_2026_Roster.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="25" cy="25" rx="20" ry="12" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 25 Q25 20 38 25" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <line x1="25" y1="13" x2="25" y2="37" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">2026 Roster</h3>
+                <p class="card-description">Complete roster with Cam Ward, Carnell Tate, and the new-look Titans squad.</p>
+                <span class="card-btn">View Roster</span>
+            </a>
+
+            <a href="schedule.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="12" width="34" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="8" y1="22" x2="42" y2="22" stroke="currentColor" stroke-width="2"/>
+                        <line x1="18" y1="12" x2="18" y2="6" stroke="currentColor" stroke-width="2"/>
+                        <line x1="32" y1="12" x2="32" y2="6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">2026 Schedule</h3>
+                <p class="card-description">Final season at Nissan Stadium. Every game, every opponent.</p>
+                <span class="card-btn">View Schedule</span>
+            </a>
+
+            <a href="titans-hype-videos.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="18,12 18,38 40,25" fill="currentColor"/>
+                        <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">Hype Videos</h3>
+                <p class="card-description">Get pumped with the best Titans hype videos and highlights.</p>
+                <span class="card-btn">Watch Now</span>
+            </a>
+
+            <a href="titans-cheerleaders-2026.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="25,5 29,18 43,18 32,27 36,42 25,33 14,42 18,27 7,18 21,18" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">Cheerleaders</h3>
+                <p class="card-description">Meet the 2026 Tennessee Titans Cheerleaders.</p>
+                <span class="card-btn">View Team</span>
+            </a>
+
+            <a href="team-history.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="30" height="36" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="16" y1="18" x2="34" y2="18" stroke="currentColor" stroke-width="2"/>
+                        <line x1="16" y1="26" x2="34" y2="26" stroke="currentColor" stroke-width="2"/>
+                        <line x1="16" y1="34" x2="28" y2="34" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">Team History</h3>
+                <p class="card-description">From Houston Oilers to Tennessee Titans. Every era, every legend.</p>
+                <span class="card-btn">Explore</span>
+            </a>
+
+            <a href="titans-salary-cap.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <text x="25" y="32" font-family="Arial" font-size="18" font-weight="bold" fill="currentColor" text-anchor="middle">$</text>
+                    </svg>
+                </div>
+                <h3 class="card-title">Salary Cap</h3>
+                <p class="card-description">Cap space, contracts, and financial breakdowns.</p>
+                <span class="card-btn">View Cap</span>
+            </a>
+
+            <a href="titans-betting-odds.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="8" width="34" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="18" cy="18" r="3" fill="currentColor"/>
+                        <circle cx="32" cy="32" r="3" fill="currentColor"/>
+                        <circle cx="25" cy="25" r="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">Betting Odds</h3>
+                <p class="card-description">Super Bowl odds, game lines, and futures.</p>
+                <span class="card-btn">View Odds</span>
+            </a>
+
+            <a href="nfl.html" class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="25" cy="25" rx="22" ry="14" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M10 25 Q25 18 40 25" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M10 25 Q25 32 40 25" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">NFL Hub</h3>
+                <p class="card-description">League news, standings, and playoff bracket.</p>
+                <span class="card-btn">View NFL</span>
+            </a>
+
+            <a href="titans-bible-viewer.html" class="card featured">
+                <div class="card-icon">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="6" width="34" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="8" y1="6" x2="8" y2="46" stroke="currentColor" stroke-width="4"/>
+                        <text x="25" y="30" font-family="Oswald" font-size="14" font-weight="bold" fill="currentColor" text-anchor="middle">T</text>
+                    </svg>
+                </div>
+                <h3 class="card-title">The Titans Bible</h3>
+                <p class="card-description">Kyle's complete fan reference guide. The ultimate Titans resource.</p>
+                <span class="card-btn">Read Now</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="assets/titans-sword-logo.svg" alt="Titans" class="footer-logo">
+        <p class="footer-text">Titan Up!</p>
+        <p class="footer-sub">Kyle's Personal Fan Site - Not affiliated with the Tennessee Titans or NFL</p>
+    </footer>
+
+    <!-- Live Ticker -->
+    <div class="ticker">
+        <div class="ticker-item">
+            <span class="ticker-label">2025</span>
+            <span class="ticker-value">3-14</span>
+        </div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item">
+            <span class="ticker-label">Draft</span>
+            <span class="ticker-value">Carnell Tate #4</span>
+        </div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item">
+            <span class="ticker-label">Coach</span>
+            <span class="ticker-value">Robert Saleh</span>
+        </div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item">
+            <span class="ticker-label">Stadium</span>
+            <span class="ticker-value">Final Season at Nissan</span>
+        </div>
     </div>
 
-    <header class="hero">
-        <div class="logo-container">
-            <svg class="titan-sword" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="swordGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#4B92DB"/>
-                        <stop offset="50%" style="stop-color:#FFFFFF"/>
-                        <stop offset="100%" style="stop-color:#4B92DB"/>
-                    </linearGradient>
-                </defs>
-                <!-- Sword blade -->
-                <path d="M50 5 L55 45 L50 50 L45 45 Z" fill="url(#swordGradient)" stroke="#A2AAAD" stroke-width="1"/>
-                <!-- Crossguard -->
-                <rect x="35" y="48" width="30" height="6" rx="2" fill="#C8102E"/>
-                <!-- Handle -->
-                <rect x="46" y="54" width="8" height="25" fill="#0C2340" stroke="#4B92DB" stroke-width="1"/>
-                <!-- Pommel -->
-                <circle cx="50" cy="85" r="8" fill="#C8102E" stroke="#A2AAAD" stroke-width="1"/>
-                <!-- T emblem on pommel -->
-                <text x="50" y="89" font-family="Oswald" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">T</text>
-            </svg>
-        </div>
-        <h1>Tennessee Titans Bible</h1>
-        <p class="tagline">Kyle's Personal Tennessee Titans Fan Collection</p>
-    </header>
+    <script src="assets/titans-scripts.js"></script>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelector('.scroll-indicator').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#content').scrollIntoView({ behavior: 'smooth' });
+        });
 
-    <main class="cards-container">
-        <a href="Titans_2026_Roster.html" class="card roster">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="25" cy="25" rx="22" ry="14" fill="currentColor" stroke="#A2AAAD" stroke-width="1"/>
-                    <path d="M10 25 Q25 20 40 25" stroke="#FFFFFF" stroke-width="2" fill="none"/>
-                    <line x1="25" y1="11" x2="25" y2="39" stroke="#FFFFFF" stroke-width="2"/>
-                </svg>
-            </div>
-            <h2 class="card-title">2026 Roster</h2>
-            <p class="card-description">Complete interactive roster with player stats, positions, and detailed bios for the 2026 season.</p>
-            <span class="btn-accent">View Roster</span>
-        </a>
-
-        <a href="schedule.html" class="card roster">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5" y="10" width="40" height="35" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <line x1="5" y1="20" x2="45" y2="20" stroke="currentColor" stroke-width="2"/>
-                    <line x1="15" y1="10" x2="15" y2="5" stroke="currentColor" stroke-width="2"/>
-                    <line x1="35" y1="10" x2="35" y2="5" stroke="currentColor" stroke-width="2"/>
-                    <rect x="10" y="25" width="8" height="6" fill="currentColor"/>
-                    <rect x="21" y="25" width="8" height="6" fill="currentColor"/>
-                    <rect x="32" y="25" width="8" height="6" fill="currentColor"/>
-                    <rect x="10" y="34" width="8" height="6" fill="currentColor"/>
-                    <rect x="21" y="34" width="8" height="6" fill="currentColor"/>
-                </svg>
-            </div>
-            <h2 class="card-title">2026 Schedule</h2>
-            <p class="card-description">2026 season schedule preview - opponents, dates, and the final season at Nissan Stadium.</p>
-            <span class="btn-accent">View Schedule</span>
-        </a>
-
-        <a href="titans-cheerleaders-2026.html" class="card cheerleaders">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="25,5 29,18 43,18 32,27 36,42 25,33 14,42 18,27 7,18 21,18" fill="currentColor" stroke="#A2AAAD" stroke-width="1"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Cheerleaders</h2>
-            <p class="card-description">Meet the Tennessee Titans Cheerleaders with searchable profiles and photos.</p>
-            <span class="btn-accent">View Team</span>
-        </a>
-
-        <a href="team-history.html" class="card history">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="8" y="5" width="34" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <line x1="14" y1="15" x2="36" y2="15" stroke="currentColor" stroke-width="2"/>
-                    <line x1="14" y1="23" x2="36" y2="23" stroke="currentColor" stroke-width="2"/>
-                    <line x1="14" y1="31" x2="28" y2="31" stroke="currentColor" stroke-width="2"/>
-                    <circle cx="25" cy="48" r="4" fill="currentColor"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Team History</h2>
-            <p class="card-description">Explore the complete history of the Tennessee Titans with highlights and memorable moments.</p>
-            <span class="btn-accent">Explore History</span>
-        </a>
-
-        <a href="titans-salary-cap.html" class="card roster">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <text x="25" y="32" font-family="Oswald" font-size="20" font-weight="bold" fill="currentColor" text-anchor="middle">$</text>
-                </svg>
-            </div>
-            <h2 class="card-title">Salary Cap</h2>
-            <p class="card-description">View 2026 cap space, player salaries, draft picks, and free agent signings.</p>
-            <span class="btn-accent">View Salaries</span>
-        </a>
-
-        <a href="titans-betting-odds.html" class="card cheerleaders">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="8" y="10" width="34" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <line x1="8" y1="20" x2="42" y2="20" stroke="currentColor" stroke-width="2"/>
-                    <line x1="8" y1="30" x2="42" y2="30" stroke="currentColor" stroke-width="2"/>
-                    <line x1="20" y1="10" x2="20" y2="40" stroke="currentColor" stroke-width="2"/>
-                    <line x1="30" y1="10" x2="30" y2="40" stroke="currentColor" stroke-width="2"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Betting Odds</h2>
-            <p class="card-description">Live Vegas betting odds sorted by payout - auto-updates on every page load.</p>
-            <span class="btn-accent">View Odds</span>
-        </a>
-
-        <a href="titans-tailgate-recipes.html" class="card history">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 14c0-1.1.9-2 2-2h30c1.1 0 2 .9 2 2v24c0 1.1-.9 2-2 2H10c-1.1 0-2-.9-2-2V14z" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <path d="M15 18c2.5 0 4 2 4 4s-1.5 4-4 4" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <circle cx="28" cy="22" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <line x1="33" y1="27" x2="38" y2="32" stroke="currentColor" stroke-width="2"/>
-                    <rect x="12" y="30" width="26" height="4" rx="1" fill="currentColor"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Tailgate Recipes</h2>
-            <p class="card-description">Nashville hot chicken, BBQ, sides, desserts & game day drinks.</p>
-            <span class="btn-accent">View Recipes</span>
-        </a>
-
-        <a href="titans-remember-movie.html" class="card">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="8" y="10" width="34" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <polygon points="20,16 20,30 32,23" fill="currentColor"/>
-                    <rect x="14" y="38" width="22" height="4" rx="1" fill="currentColor"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Remember the Titans</h2>
-            <p class="card-description">The 2000 Denzel Washington classic that captures the Titans spirit.</p>
-            <span class="btn-accent">Watch Now</span>
-        </a>
-
-        <a href="titans-bible-viewer.html" class="card download">
-            <div class="card-icon">
-                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 5 L35 5 L40 12 L40 45 L10 45 L10 5 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <polyline points="35,5 35,12 40,12" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <line x1="15" y1="18" x2="35" y2="18" stroke="currentColor" stroke-width="2"/>
-                    <line x1="15" y1="26" x2="35" y2="26" stroke="currentColor" stroke-width="2"/>
-                    <line x1="15" y1="34" x2="28" y2="34" stroke="currentColor" stroke-width="2"/>
-                </svg>
-            </div>
-            <h2 class="card-title">The Bible</h2>
-            <p class="card-description">Read the complete Tennessee Titans Bible - the ultimate fan reference guide.</p>
-            <span class="btn-accent">View Guide</span>
-        </a>
-    </main>
-
-    <footer>
-        <p class="titan-up">Titan Up</p>
-        <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
-    </footer>
+        // Nav scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>

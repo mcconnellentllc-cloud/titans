@@ -1,0 +1,635 @@
+/* ============================================
+   TENNESSEE TITANS BIBLE - MASTER STYLESHEET
+   Broadcast-quality fan site visual identity
+   ============================================ */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    /* Primary Colors */
+    --titans-navy: #0C2340;
+    --titans-blue: #4B92DB;
+    --titans-red: #C8102E;
+    --titans-silver: #A2AAAD;
+    --titans-white: #FFFFFF;
+
+    /* Extended Palette */
+    --titans-navy-dark: #050a10;
+    --titans-navy-light: #1a3a5c;
+    --titans-red-glow: #FF4444;
+    --titans-gold: #FFaa00;
+
+    /* Gradients */
+    --gradient-navy: linear-gradient(135deg, var(--titans-navy-dark) 0%, var(--titans-navy) 50%, var(--titans-navy-light) 100%);
+    --gradient-hero: linear-gradient(180deg, rgba(12,35,64,0.4) 0%, rgba(12,35,64,0.8) 60%, rgba(5,10,16,0.95) 100%);
+    --gradient-flame: linear-gradient(180deg, var(--titans-gold) 0%, var(--titans-red-glow) 50%, var(--titans-red) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(12, 35, 64, 0.95) 0%, rgba(26, 58, 92, 0.9) 100%);
+
+    /* Typography */
+    --font-display: 'Anton', 'Oswald', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 6rem;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes flameFlicker {
+    0%, 100% { opacity: 0.8; transform: scaleY(1); }
+    25% { opacity: 1; transform: scaleY(1.05); }
+    50% { opacity: 0.9; transform: scaleY(0.98); }
+    75% { opacity: 1; transform: scaleY(1.02); }
+}
+
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(200, 16, 46, 0.5)); }
+    50% { filter: drop-shadow(0 0 25px rgba(200, 16, 46, 0.8)); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ===== HERO SECTION ===== */
+.titans-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--titans-navy-dark);
+}
+
+.titans-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        url('assets/titans-sword-logo.svg') center center / 60% no-repeat,
+        var(--gradient-hero);
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.titans-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.titans-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero);
+}
+
+.titans-hero-content {
+    position: relative;
+    z-index: 10;
+    padding: var(--space-lg);
+    animation: fadeInUp 1s var(--transition-smooth);
+}
+
+.titans-hero-logo {
+    width: clamp(150px, 30vw, 300px);
+    height: auto;
+    margin-bottom: var(--space-md);
+    animation: fadeInScale 1.2s var(--transition-smooth);
+    filter: drop-shadow(0 0 30px rgba(75, 146, 219, 0.5));
+}
+
+.titans-hero-logo:hover {
+    animation: glowPulse 2s infinite;
+}
+
+.titans-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 0.9;
+    margin: 0;
+    background: linear-gradient(180deg, var(--titans-white) 0%, var(--titans-silver) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    animation: fadeInUp 1s 0.3s both;
+}
+
+.titans-hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3vw, 1.8rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--titans-blue);
+    margin-top: var(--space-sm);
+    animation: fadeInUp 1s 0.5s both;
+}
+
+/* Flame effect behind logo */
+.titans-flame-effect {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    background: url('assets/titans-flame.svg') center bottom no-repeat;
+    background-size: contain;
+    opacity: 0.6;
+    animation: flameFlicker 2s infinite;
+    z-index: -1;
+    filter: blur(2px);
+}
+
+/* ===== LIVE TICKER ===== */
+.titans-ticker {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, var(--titans-navy) 0%, var(--titans-navy-dark) 50%, var(--titans-navy) 100%);
+    border-top: 3px solid var(--titans-red);
+    padding: var(--space-xs) var(--space-sm);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.titans-ticker-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--titans-silver);
+}
+
+.titans-ticker-label {
+    background: var(--titans-red);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.titans-ticker-value {
+    color: var(--titans-white);
+    font-weight: 700;
+}
+
+/* ===== NAVIGATION ===== */
+.titans-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(5,10,16,0.95) 0%, rgba(12,35,64,0.9) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+    padding: var(--space-sm) var(--space-md);
+    z-index: 1000;
+    transition: all var(--transition-smooth);
+}
+
+.titans-nav.scrolled {
+    padding: var(--space-xs) var(--space-md);
+    background: rgba(5,10,16,0.98);
+}
+
+.titans-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titans-nav-logo {
+    width: 50px;
+    height: auto;
+    transition: transform var(--transition-smooth);
+}
+
+.titans-nav-logo:hover {
+    transform: scale(1.1);
+}
+
+.titans-nav-links {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.titans-nav-link {
+    color: var(--titans-silver);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-fast);
+}
+
+.titans-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--titans-red);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-smooth);
+}
+
+.titans-nav-link:hover {
+    color: var(--titans-white);
+    background: rgba(75, 146, 219, 0.1);
+}
+
+.titans-nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.titans-nav-link.active {
+    color: var(--titans-blue);
+    background: rgba(75, 146, 219, 0.15);
+}
+
+/* ===== CARDS ===== */
+.titans-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(75, 146, 219, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: all var(--transition-smooth);
+}
+
+.titans-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--titans-blue), var(--titans-red), var(--titans-blue));
+    transform: scaleX(0);
+    transition: transform var(--transition-smooth);
+}
+
+.titans-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(75, 146, 219, 0.1);
+    border-color: var(--titans-blue);
+}
+
+.titans-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Card with diagonal stripe accent */
+.titans-card-accent {
+    position: relative;
+    overflow: hidden;
+}
+
+.titans-card-accent::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(200, 16, 46, 0.1) 40%, rgba(200, 16, 46, 0.1) 60%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ===== STAT BLOCKS ===== */
+.titans-stat {
+    text-align: center;
+    padding: var(--space-md);
+}
+
+.titans-stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--titans-white);
+    line-height: 1;
+}
+
+.titans-stat-value.animate {
+    animation: countUp 0.8s var(--transition-smooth) both;
+}
+
+.titans-stat-label {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--titans-blue);
+    margin-top: var(--space-xs);
+}
+
+/* ===== SECTION DIVIDERS ===== */
+.titans-divider {
+    height: 60px;
+    background: url('assets/titans-flame.svg') center center repeat-x;
+    background-size: auto 100%;
+    opacity: 0.3;
+    margin: var(--space-lg) 0;
+}
+
+.titans-divider-line {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--titans-red), var(--titans-blue), var(--titans-red), transparent);
+    margin: var(--space-md) 0;
+}
+
+/* ===== WATERMARK BACKGROUND ===== */
+.titans-watermark {
+    position: relative;
+}
+
+.titans-watermark::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: url('assets/titans-sword-logo.svg') center center no-repeat;
+    background-size: contain;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===== BUTTONS ===== */
+.titans-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--titans-navy);
+    border: 2px solid var(--titans-blue);
+    border-radius: 6px;
+    color: var(--titans-white);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.titans-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(200, 16, 46, 0.3), transparent);
+    transition: left var(--transition-smooth);
+}
+
+.titans-btn:hover {
+    background: var(--titans-blue);
+    color: var(--titans-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(75, 146, 219, 0.3);
+}
+
+.titans-btn:hover::before {
+    left: 100%;
+}
+
+.titans-btn-primary {
+    background: var(--titans-red);
+    border-color: var(--titans-red);
+}
+
+.titans-btn-primary:hover {
+    background: var(--titans-red-glow);
+    border-color: var(--titans-red-glow);
+    color: var(--titans-white);
+}
+
+/* ===== PAGE HEADER ===== */
+.titans-page-header {
+    position: relative;
+    padding: calc(80px + var(--space-lg)) var(--space-md) var(--space-lg);
+    text-align: center;
+    background: var(--gradient-navy);
+    border-bottom: 4px solid var(--titans-red);
+    overflow: hidden;
+}
+
+.titans-page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('assets/titans-sword-logo.svg') center center no-repeat;
+    background-size: 40%;
+    opacity: 0.05;
+}
+
+.titans-page-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--titans-white);
+    margin: 0;
+    position: relative;
+    animation: fadeInUp 0.8s var(--transition-smooth);
+}
+
+.titans-page-header p {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--titans-blue);
+    margin-top: var(--space-xs);
+    position: relative;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.titans-animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s var(--transition-smooth);
+}
+
+.titans-animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered children animation */
+.titans-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s var(--transition-smooth);
+}
+
+.titans-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.titans-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.titans-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.titans-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+.titans-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+.titans-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+
+.titans-stagger.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== TEXTURE OVERLAYS ===== */
+.titans-turf-texture {
+    position: relative;
+}
+
+.titans-turf-texture::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0,0,0,0.03) 2px,
+            rgba(0,0,0,0.03) 4px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Diagonal stripes (jersey pattern) */
+.titans-stripes {
+    background:
+        repeating-linear-gradient(
+            135deg,
+            transparent,
+            transparent 10px,
+            rgba(200, 16, 46, 0.05) 10px,
+            rgba(200, 16, 46, 0.05) 20px
+        );
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .titans-hero-title {
+        font-size: clamp(2.5rem, 12vw, 5rem);
+    }
+
+    .titans-nav-links {
+        display: none; /* Mobile menu needed */
+    }
+
+    .titans-ticker {
+        flex-direction: column;
+        gap: var(--space-xs);
+        padding: var(--space-sm);
+    }
+
+    .titans-page-header {
+        padding: calc(60px + var(--space-md)) var(--space-sm) var(--space-md);
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.titans-text-gradient {
+    background: linear-gradient(135deg, var(--titans-white), var(--titans-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.titans-glow {
+    filter: drop-shadow(0 0 10px rgba(75, 146, 219, 0.5));
+}
+
+.titans-glow-red {
+    filter: drop-shadow(0 0 10px rgba(200, 16, 46, 0.5));
+}

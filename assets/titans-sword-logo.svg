@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="swordBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A2AAAD"/>
+      <stop offset="50%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#A2AAAD"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#C8102E"/>
+      <stop offset="50%" style="stop-color:#FF4444"/>
+      <stop offset="100%" style="stop-color:#FFaa00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Flame behind sword -->
+  <path d="M100 180 Q85 140 95 100 Q80 120 75 90 Q90 110 90 70 Q100 100 100 50 Q100 100 110 70 Q110 110 125 90 Q120 120 105 100 Q115 140 100 180"
+        fill="url(#flameGrad)" opacity="0.9" filter="url(#glow)"/>
+  <!-- Sword blade -->
+  <path d="M100 10 L115 90 L105 95 L100 180 L95 95 L85 90 Z"
+        fill="url(#swordBlade)" stroke="#4B92DB" stroke-width="1"/>
+  <!-- Crossguard -->
+  <rect x="70" y="88" width="60" height="12" rx="3" fill="#C8102E" stroke="#0C2340" stroke-width="1"/>
+  <!-- Handle -->
+  <rect x="94" y="100" width="12" height="50" fill="#0C2340" stroke="#4B92DB" stroke-width="1"/>
+  <!-- Pommel -->
+  <circle cx="100" cy="160" r="12" fill="#C8102E" stroke="#A2AAAD" stroke-width="2"/>
+  <!-- T on pommel -->
+  <text x="100" y="165" font-family="Oswald, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">T</text>
+</svg>
