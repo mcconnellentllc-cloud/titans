@@ -6,7 +6,7 @@
     <title>Team History - Tennessee Titans Bible</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,wght@1,400&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --titans-navy: #0C2340;
@@ -72,28 +72,93 @@
             background: rgba(75, 146, 219, 0.15);
         }
 
-        .hero-section {
-            background: linear-gradient(135deg, var(--titans-navy) 0%, #0a1a2e 100%);
-            padding: 60px 20px;
+        /* History Hero */
+        .history-hero {
+            position: relative;
+            padding: 120px 20px 50px;
             text-align: center;
-            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1a2e 100%);
+            overflow: hidden;
         }
 
-        .hero-section h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 700;
+        .history-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('assets/titans-sword-logo.svg') center 30% no-repeat;
+            background-size: 15%;
+            opacity: 0.03;
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: auto;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 0 20px rgba(200, 16, 46, 0.5));
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Anton', 'Oswald', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+            margin: 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, #A2AAAD 50%, #4B92DB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
         }
 
-        .hero-section p {
-            color: var(--titans-silver);
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.75rem, 2vw, 1.1rem);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--titans-blue);
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .hero-tagline {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
             font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.7;
+            color: var(--titans-silver);
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: var(--titans-red);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .hero-accent-line {
+            width: 100%;
+            height: 3px;
+            background: var(--titans-red);
+            margin-top: 30px;
         }
 
         .highlights-section {
@@ -317,14 +382,96 @@
             margin-bottom: 8px;
         }
 
+        /* Nav Layout */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Hamburger Menu */
+        .titans-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .titans-hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--titans-silver);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .titans-hamburger:hover span { background: #fff; }
+
+        .titans-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .titans-hamburger.active span:nth-child(2) { opacity: 0; }
+        .titans-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .titans-mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 10, 16, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding-top: 80px;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .titans-mobile-menu.active { display: flex; }
+
+        .titans-mobile-menu a {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+
+        .titans-mobile-menu a:hover,
+        .titans-mobile-menu a.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.1);
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 justify-content: center;
                 text-align: center;
             }
 
-            .hero-section {
-                padding: 40px 15px;
+            .history-hero {
+                padding: 100px 15px 40px;
             }
 
             .highlights-section,
@@ -344,30 +491,63 @@
             .timeline-item::before {
                 left: -23px;
             }
+
+            .nav-links { display: none; }
+            .titans-hamburger { display: flex; }
         }
     </style>
 </head>
 <body>
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="Titans_2026_Roster.html" class="nav-link">2026 Roster</a>
-            <a href="schedule.html" class="nav-link">Schedule</a>
-            <a href="titans-cheerleaders-2026.html" class="nav-link">Cheerleaders</a>
-            <a href="team-history.html" class="nav-link active">History</a>
-            <a href="titans-salary-cap.html" class="nav-link">Salary Cap</a>
-            <a href="titans-betting-odds.html" class="nav-link">Betting Odds</a>
-            <a href="titans-hype-videos.html" class="nav-link">Hype Videos</a>
-            <a href="titans-tailgate-recipes.html" class="nav-link">Recipes</a>
-            <a href="nfl.html" class="nav-link">NFL</a>
-            <a href="titans-remember-movie.html" class="nav-link">The Movie</a>
-      <a href="titans-bible-viewer.html" class="nav-link">The Bible</a>
+            <a href="index.html" class="nav-logo-link">
+                <img src="assets/titans-sword-logo.svg" alt="Titans" style="width:40px;height:auto;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="Titans_2026_Roster.html" class="nav-link">Roster</a>
+                <a href="schedule.html" class="nav-link">Schedule</a>
+                <a href="titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
+                <a href="team-history.html" class="nav-link active">History</a>
+                <a href="titans-salary-cap.html" class="nav-link">Cap</a>
+                <a href="titans-betting-odds.html" class="nav-link">Odds</a>
+                <a href="titans-hype-videos.html" class="nav-link">Hype</a>
+                <a href="nfl.html" class="nav-link">NFL</a>
+                <a href="titans-bible-viewer.html" class="nav-link">Bible</a>
+            </div>
+            <div class="titans-hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <section class="hero-section">
-        <h2>Team History</h2>
-        <p>From the Houston Oilers to the Tennessee Titans - explore over six decades of football history, legendary players, and unforgettable moments.</p>
+    <div class="titans-mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="Titans_2026_Roster.html">Roster</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
+        <a href="team-history.html" class="active">History</a>
+        <a href="titans-salary-cap.html">Salary Cap</a>
+        <a href="titans-betting-odds.html">Odds</a>
+        <a href="titans-hype-videos.html">Hype Videos</a>
+        <a href="nfl.html">NFL</a>
+        <a href="titans-bible-viewer.html">Bible</a>
+    </div>
+
+    <section class="history-hero">
+        <img src="assets/titans-sword-logo.svg" alt="Titans" class="hero-logo">
+        <h1 class="hero-title">Team History</h1>
+        <p class="hero-subtitle">Houston 1960 · Tennessee 1999 · Nashville Forever</p>
+        <p class="hero-tagline">Six decades. Two cities. One franchise.</p>
+        <div class="hero-badges">
+            <span class="hero-badge">Est 1960</span>
+            <span class="hero-badge">Moved 1997</span>
+            <span class="hero-badge">Super Bowl XXXIV</span>
+            <span class="hero-badge">Ring of Honor 18 Members</span>
+        </div>
+        <div class="hero-accent-line"></div>
     </section>
 
     <section class="highlights-section">
@@ -646,5 +826,15 @@
         <p class="titan-up">Titan Up</p>
         <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.titans-hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+    </script>
 </body>
 </html>
