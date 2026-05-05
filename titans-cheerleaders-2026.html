@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 Tennessee Titans Cheerleaders & Mascot</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>2026 Tennessee Titans Cheerleaders - The Sideline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,wght@1,400&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --titans-navy: #0C2340;
             --titans-blue: #4B92DB;
             --titans-red: #C8102E;
-            --titans-silver: #8A8D8F;
+            --titans-silver: #A2AAAD;
             --titans-white: #FFFFFF;
-            --card-bg: rgba(12, 35, 64, 0.95);
         }
 
         * {
@@ -22,8 +23,8 @@
         }
 
         body {
-            font-family: 'Roboto Condensed', sans-serif;
-            background: linear-gradient(135deg, #0C2340 0%, #1a3a5c 50%, #0C2340 100%);
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1525 100%);
             min-height: 100vh;
             color: var(--titans-white);
         }
@@ -33,8 +34,10 @@
             background: rgba(0,0,0,0.5);
             padding: 15px 20px;
             border-bottom: 1px solid rgba(75, 146, 219, 0.3);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
         }
 
@@ -42,10 +45,15 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-link {
@@ -71,280 +79,455 @@
             background: rgba(75, 146, 219, 0.15);
         }
 
+        .titans-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
+        .titans-hamburger span { display: block; height: 3px; width: 100%; background: var(--titans-silver); border-radius: 2px; transition: all 0.3s ease; }
+        .titans-hamburger:hover span { background: #fff; }
+        .titans-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .titans-hamburger.active span:nth-child(2) { opacity: 0; }
+        .titans-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5, 10, 16, 0.98); backdrop-filter: blur(10px); z-index: 999; padding-top: 80px; flex-direction: column; align-items: center; gap: 5px; }
+        .titans-mobile-menu.active { display: flex; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: 40px; }
+        .titans-mobile-menu a { color: var(--titans-silver); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
+        .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.1); }
+        @media (max-width: 768px) { .nav-links { display: none; } .titans-hamburger { display: flex; } }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(180deg, var(--titans-navy) 0%, rgba(12,35,64,0.9) 100%),
-                        url('https://static.clubs.nfl.com/image/upload/titans/xgiujoq5b38hdqt6ofp8.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 40px 20px;
+            padding: 140px 20px 60px;
             text-align: center;
-            border-bottom: 4px solid var(--titans-red);
+            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1525 100%);
             position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--titans-red);
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(200, 16, 46, 0.03) 10px,
-                rgba(200, 16, 46, 0.03) 20px
-            );
+            inset: 0;
+            background: url('assets/titans-sword-logo.svg') center center / 40% no-repeat;
+            opacity: 0.05;
+            z-index: 0;
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .sword-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
+        .hero-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(200, 16, 46, 0.6));
         }
 
-        h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            letter-spacing: 4px;
+        .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 12vw, 7rem);
             text-transform: uppercase;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 5px;
+            letter-spacing: 0.05em;
+            line-height: 0.95;
+            margin-bottom: 15px;
+            background: linear-gradient(180deg, var(--titans-white) 0%, var(--titans-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        h1 span {
-            color: var(--titans-red);
-        }
-
-        .subtitle {
+        .hero-subtitle {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            color: var(--titans-blue);
-            letter-spacing: 8px;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
             text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--titans-blue);
+            margin-bottom: 15px;
+        }
+
+        .hero-tagline {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--titans-silver);
+            margin-bottom: 25px;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
-        .search-container {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
+        .badge {
+            background: var(--titans-red);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        #searchInput {
+        /* Search Bar */
+        .search-section {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .search-input {
             width: 100%;
-            padding: 15px 20px 15px 50px;
-            font-size: 1.1rem;
-            font-family: 'Roboto Condensed', sans-serif;
-            border: 2px solid var(--titans-blue);
-            border-radius: 50px;
-            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            border: 2px solid rgba(75, 146, 219, 0.4);
+            border-radius: 8px;
+            background: rgba(12, 35, 64, 0.6);
             color: white;
             outline: none;
             transition: all 0.3s ease;
         }
 
-        #searchInput::placeholder {
-            color: rgba(255,255,255,0.6);
-        }
-
-        #searchInput:focus {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--titans-red);
-            box-shadow: 0 0 20px rgba(200, 16, 46, 0.3);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-            color: var(--titans-blue);
-        }
-
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            color: var(--titans-red);
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
+        .search-input::placeholder {
             color: var(--titans-silver);
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
+        .search-input:focus {
+            border-color: var(--titans-blue);
+            box-shadow: 0 0 20px rgba(75, 146, 219, 0.3);
+        }
+
+        /* Main Content */
         main {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px 60px;
         }
 
-        .section-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-            padding-left: 15px;
-            border-left: 4px solid var(--titans-red);
-        }
-
-        .mascot-section {
-            margin-bottom: 50px;
-        }
-
-        .mascot-card {
-            background: linear-gradient(135deg, var(--titans-red) 0%, #8B0000 100%);
-            border-radius: 20px;
-            padding: 30px;
+        /* Section Headers */
+        .section-header {
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: center;
-            box-shadow: 0 10px 40px rgba(200, 16, 46, 0.3);
-            animation: slideIn 0.6s ease-out;
-        }
-
-        .mascot-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid var(--titans-white);
-            object-fit: cover;
-            background: var(--titans-navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-        }
-
-        .mascot-info {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .mascot-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
+            align-items: baseline;
+            gap: 15px;
             margin-bottom: 10px;
         }
 
-        .mascot-title {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 15px;
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--titans-red);
+            letter-spacing: 1px;
         }
 
-        .mascot-facts {
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-white);
+        }
+
+        .section-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-silver);
+            margin-bottom: 30px;
+        }
+
+        /* Mascot Card */
+        .mascot-section {
+            margin-bottom: 60px;
+        }
+
+        .mascot-card {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.8) 0%, rgba(26, 58, 92, 0.6) 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(75, 146, 219, 0.3);
+        }
+
+        .mascot-image {
+            width: 100%;
+            height: 300px;
+            background: url('https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/mascot-trac.jpg') center / cover no-repeat;
+            background-color: var(--titans-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+        }
+
+        .mascot-info {
+            padding: 30px 30px 30px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mascot-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .mascot-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: var(--titans-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .mascot-pills {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        .mascot-fact {
-            background: rgba(255,255,255,0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        .mascot-fact strong {
-            color: var(--titans-blue);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: fadeIn 0.5s ease-out backwards;
+        .mascot-pill {
+            background: rgba(0,0,0,0.3);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
             border: 1px solid rgba(75, 146, 219, 0.2);
         }
 
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 50px rgba(200, 16, 46, 0.4);
+        .mascot-pill strong {
+            color: var(--titans-blue);
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Cheerleader Grid */
+        .cheer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .cheer-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        }
+        @media (min-width: 1024px) {
+            .cheer-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (min-width: 1400px) {
+            .cheer-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        .cheer-card {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cheer-card:hover {
+            transform: scale(1.03);
             border-color: var(--titans-red);
         }
 
-        .card-image {
+        .cheer-card img {
             width: 100%;
-            aspect-ratio: 3/4;
+            height: 100%;
             object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
         }
 
-        .card:hover .card-image {
-            transform: scale(1.05);
+        .cheer-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px 15px 15px;
+            background: linear-gradient(to top, rgba(12, 35, 64, 0.95) 0%, transparent 100%);
         }
 
-        .card-content {
-            padding: 20px;
-            text-align: center;
-            background: linear-gradient(180deg, transparent 0%, rgba(200,16,46,0.1) 100%);
+        .cheer-card-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .card-name {
+        .cheer-badge {
+            position: absolute;
+            top: 10px;
+            padding: 4px 10px;
+            border-radius: 4px;
             font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
+            font-size: 0.65rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cheer-badge.captain {
+            right: 10px;
+            background: var(--titans-red);
+        }
+
+        .cheer-badge.veteran {
+            left: 10px;
+            background: var(--titans-navy);
+            border: 1px solid var(--titans-blue);
+        }
+
+        .hidden { display: none !important; }
+
+        /* Blue Crew Section */
+        .drumline-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.6) 0%, rgba(26, 58, 92, 0.4) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
+        .drumline-content {
+            max-width: 700px;
+        }
+
+        .drumline-content p {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
+            margin-top: 15px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 10, 16, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.98) 0%, rgba(26, 58, 92, 0.95) 100%);
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(75, 146, 219, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--titans-red);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .modal-content {
+            padding: 25px;
+        }
+
+        .modal-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 5px;
         }
 
-        .card-role {
-            font-size: 0.85rem;
+        .modal-role {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
             color: var(--titans-blue);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
+        .modal-details {
+            display: grid;
+            gap: 12px;
+        }
+
+        .modal-detail {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-detail-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--titans-silver);
+            min-width: 100px;
+        }
+
+        .modal-detail-value {
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* No Results */
         .no-results {
             text-align: center;
             padding: 60px 20px;
             display: none;
         }
 
-        .no-results.show {
-            display: block;
-        }
+        .no-results.show { display: block; }
 
         .no-results h3 {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
             color: var(--titans-silver);
+            margin-bottom: 10px;
         }
 
+        /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -355,14 +538,18 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
             color: var(--titans-blue);
             text-decoration: none;
+            font-family: 'Oswald', sans-serif;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
@@ -375,61 +562,15 @@
             color: var(--titans-silver);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
-        .titans-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
-        .titans-hamburger span { display: block; height: 3px; width: 100%; background: var(--titans-silver); border-radius: 2px; transition: all 0.3s ease; }
-        .titans-hamburger:hover span { background: #fff; }
-        .titans-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-        .titans-hamburger.active span:nth-child(2) { opacity: 0; }
-        .titans-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-        .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5, 10, 16, 0.98); backdrop-filter: blur(10px); z-index: 999; padding-top: 80px; flex-direction: column; align-items: center; gap: 5px; }
-        .titans-mobile-menu.active { display: flex; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: 40px; }
-        .titans-mobile-menu a { color: var(--titans-silver); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
-        .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.1); }
-
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .titans-hamburger { display: flex; }
+            .hero { padding-top: 120px; }
             .mascot-card {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 text-align: center;
             }
-
-            .stats-bar {
-                gap: 20px;
-            }
-
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 15px;
-            }
+            .mascot-info { padding: 25px; }
+            .mascot-pills { justify-content: center; }
+            .modal-image { height: 280px; }
         }
     </style>
 </head>
@@ -467,277 +608,175 @@
 
     <header class="hero">
         <div class="hero-content">
-            <div class="sword-icon">⚔️</div>
-            <h1>Tennessee <span>Titans</span></h1>
-            <p class="subtitle">2026 Cheerleaders & Mascot</p>
-            
-            <div class="search-container">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="searchInput" placeholder="Search cheerleaders by name...">
-            </div>
-
-            <div class="stats-bar">
-                <div class="stat">
-                    <div class="stat-number">28</div>
-                    <div class="stat-label">Cheerleaders</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Mascot</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Pro Bowl Appearances</div>
-                </div>
+            <img src="assets/titans-sword-logo.svg" alt="Titans" class="hero-logo">
+            <h1 class="hero-title">The Sideline</h1>
+            <p class="hero-subtitle">2026 Titans Cheerleaders</p>
+            <p class="hero-tagline">Nashville's finest take the field.</p>
+            <div class="hero-badges">
+                <span class="badge">Squad 28 Members</span>
+                <span class="badge">Mascot T-Rac</span>
+                <span class="badge">Est 1999</span>
+                <span class="badge">Drumline Blue Crew</span>
             </div>
         </div>
     </header>
 
+    <div class="search-section">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search by name...">
+    </div>
+
     <main>
-        <section class="mascot-section">
-            <h2 class="section-title">Official Mascot</h2>
-            <div class="mascot-card" data-name="t-rac trac mascot raccoon">
-                <div class="mascot-image">🦝</div>
+        <!-- Mascot Section -->
+        <section class="mascot-section" id="mascotSection" data-name="t-rac trac mascot raccoon">
+            <div class="section-header">
+                <span class="section-number">00</span>
+                <h2 class="section-title">The Mascot</h2>
+            </div>
+            <p class="section-subtitle">Official Team Mascot</p>
+
+            <div class="mascot-card">
+                <div class="mascot-image"></div>
                 <div class="mascot-info">
                     <h3 class="mascot-name">T-Rac</h3>
-                    <p class="mascot-title">12-Time Pro Bowl NFL Mascot • Tennessee's Favorite Raccoon</p>
-                    <div class="mascot-facts">
-                        <div class="mascot-fact"><strong>Debut:</strong> 1999</div>
-                        <div class="mascot-fact"><strong>Species:</strong> Raccoon (TN State Animal)</div>
-                        <div class="mascot-fact"><strong>Birthplace:</strong> The Parthenon, Nashville</div>
-                        <div class="mascot-fact"><strong>Favorite Color:</strong> Titans Blue</div>
-                        <div class="mascot-fact"><strong>Known For:</strong> Zip-lining, Rappelling</div>
-                        <div class="mascot-fact"><strong>Social:</strong> @titans_trac</div>
+                    <p class="mascot-title">Official Mascot - 12-Time Pro Bowl Mascot</p>
+                    <div class="mascot-pills">
+                        <div class="mascot-pill"><strong>Debut</strong> 1999</div>
+                        <div class="mascot-pill"><strong>Species</strong> Raccoon (TN State Animal)</div>
+                        <div class="mascot-pill"><strong>Birthplace</strong> The Parthenon, Nashville</div>
+                        <div class="mascot-pill"><strong>Known For</strong> Zip-lining, Rappelling</div>
+                        <div class="mascot-pill"><strong>Social</strong> @titans_trac</div>
+                        <div class="mascot-pill"><strong>Pro Bowls</strong> 12</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2 class="section-title">2026 Cheerleader Roster</h2>
-            <div class="grid" id="cheerleaderGrid">
-                <div class="card" data-name="amy">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/l4fa1qcmon1uanoxl6uq.jpg" alt="Amy" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Amy</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
-                </div>
+        <!-- Cheerleaders Grid -->
+        <section class="squad-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">The Squad</h2>
+            </div>
+            <p class="section-subtitle">2026 Roster - 28 Members</p>
 
-                <div class="card" data-name="anna">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fa4o8bmohuyxcsjcnknj.jpg" alt="Anna" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Anna</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+            <div class="cheer-grid" id="cheerGrid">
+                <div class="cheer-card" data-name="amy" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/l4fa1qcmon1uanoxl6uq.jpg" alt="Amy">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Amy</span></div>
                 </div>
-
-                <div class="card" data-name="ashleigh">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lofjeirzeugyvjhdau66.jpg" alt="Ashleigh" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Ashleigh</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="anna" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fa4o8bmohuyxcsjcnknj.jpg" alt="Anna">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Anna</span></div>
                 </div>
-
-                <div class="card" data-name="brenan">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/tujrlnahlsubudtetqx5.jpg" alt="Brenan" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Brenan</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="ashleigh" data-years="4" onclick="openModal(this)">
+                    <span class="cheer-badge veteran">Yr 4</span>
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lofjeirzeugyvjhdau66.jpg" alt="Ashleigh">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Ashleigh</span></div>
                 </div>
-
-                <div class="card" data-name="daniel">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/wix9icawwgqbegvyzmhf.jpg" alt="Daniel" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Daniel</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="brenan" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/tujrlnahlsubudtetqx5.jpg" alt="Brenan">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Brenan</span></div>
                 </div>
-
-                <div class="card" data-name="emily">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lrvlfd9yu3iqxcoleyue.jpg" alt="Emily" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Emily</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="daniel" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/wix9icawwgqbegvyzmhf.jpg" alt="Daniel">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Daniel</span></div>
                 </div>
-
-                <div class="card" data-name="emma">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/blqhankbgkjdydilosi3.jpg" alt="Emma" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Emma</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="emily" data-captain="true" onclick="openModal(this)">
+                    <span class="cheer-badge captain">Captain</span>
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lrvlfd9yu3iqxcoleyue.jpg" alt="Emily">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Emily</span></div>
                 </div>
-
-                <div class="card" data-name="gabby">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/av8fddvqqgme5ae4pnjv.jpg" alt="Gabby" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Gabby</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="emma" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/blqhankbgkjdydilosi3.jpg" alt="Emma">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Emma</span></div>
                 </div>
-
-                <div class="card" data-name="gracie">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/eewxoqrgrms2cd9xmiwp.jpg" alt="Gracie" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Gracie</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="gabby" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/av8fddvqqgme5ae4pnjv.jpg" alt="Gabby">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Gabby</span></div>
                 </div>
-
-                <div class="card" data-name="hannah k">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fwnnesgf2x2ljr6f9yjw.jpg" alt="Hannah K" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Hannah K</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="gracie" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/eewxoqrgrms2cd9xmiwp.jpg" alt="Gracie">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Gracie</span></div>
                 </div>
-
-                <div class="card" data-name="hannah s">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/xgiujoq5b38hdqt6ofp8.jpg" alt="Hannah S" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Hannah S</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="hannah k" data-years="3" onclick="openModal(this)">
+                    <span class="cheer-badge veteran">Yr 3</span>
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fwnnesgf2x2ljr6f9yjw.jpg" alt="Hannah K">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Hannah K</span></div>
                 </div>
-
-                <div class="card" data-name="izzy">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/jv7foybuxp1w4aaxvyec.jpg" alt="Izzy" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Izzy</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="hannah s" data-captain="true" onclick="openModal(this)">
+                    <span class="cheer-badge captain">Captain</span>
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/xgiujoq5b38hdqt6ofp8.jpg" alt="Hannah S">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Hannah S</span></div>
                 </div>
-
-                <div class="card" data-name="johnna">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lo7hcjkfvulwsbidkctw.jpg" alt="Johnna" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Johnna</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="izzy" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/jv7foybuxp1w4aaxvyec.jpg" alt="Izzy">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Izzy</span></div>
                 </div>
-
-                <div class="card" data-name="kayley">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fegluibtmlm6z5orsgqc.jpg" alt="Kayley" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Kayley</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="johnna" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lo7hcjkfvulwsbidkctw.jpg" alt="Johnna">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Johnna</span></div>
                 </div>
-
-                <div class="card" data-name="kinley">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/b2wpdks2mnrdbpwvl1tw.jpg" alt="Kinley" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Kinley</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="kayley" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fegluibtmlm6z5orsgqc.jpg" alt="Kayley">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Kayley</span></div>
                 </div>
-
-                <div class="card" data-name="mark">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ytwct6auslgi3li9uf5p.jpg" alt="Mark" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Mark</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="kinley" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/b2wpdks2mnrdbpwvl1tw.jpg" alt="Kinley">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Kinley</span></div>
                 </div>
-
-                <div class="card" data-name="mckenna b">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lu2kk7njerwbr0batgmn.jpg" alt="McKenna B" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">McKenna B</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="mark" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ytwct6auslgi3li9uf5p.jpg" alt="Mark">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Mark</span></div>
                 </div>
-
-                <div class="card" data-name="mckenna m">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/evcqrnlhc8qzoa2sj0fu.jpg" alt="McKenna M" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">McKenna M</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="mckenna b" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lu2kk7njerwbr0batgmn.jpg" alt="McKenna B">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">McKenna B</span></div>
                 </div>
-
-                <div class="card" data-name="milton">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/wbi19qtipfftljecwo2y.jpg" alt="Milton" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Milton</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="mckenna m" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/evcqrnlhc8qzoa2sj0fu.jpg" alt="McKenna M">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">McKenna M</span></div>
                 </div>
-
-                <div class="card" data-name="natali">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/g1v50qacuabapan2tjdm.jpg" alt="Natali" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Natali</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="milton" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/wbi19qtipfftljecwo2y.jpg" alt="Milton">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Milton</span></div>
                 </div>
-
-                <div class="card" data-name="naudia">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/w6hlbw1pqfhek50z1sob.jpg" alt="Naudia" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Naudia</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="natali" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/g1v50qacuabapan2tjdm.jpg" alt="Natali">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Natali</span></div>
                 </div>
-
-                <div class="card" data-name="rhimya">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/vdajcrlzdypao429jq2f.jpg" alt="Rhimya" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Rhimya</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="naudia" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/w6hlbw1pqfhek50z1sob.jpg" alt="Naudia">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Naudia</span></div>
                 </div>
-
-                <div class="card" data-name="riley">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/unbzeoy80awo6uufl1ud.jpg" alt="Riley" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Riley</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="rhimya" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/vdajcrlzdypao429jq2f.jpg" alt="Rhimya">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Rhimya</span></div>
                 </div>
-
-                <div class="card" data-name="ryan">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/kckc9z1ltnz8j3k3apjn.jpg" alt="Ryan" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Ryan</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="riley" data-years="5" onclick="openModal(this)">
+                    <span class="cheer-badge veteran">Yr 5</span>
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/unbzeoy80awo6uufl1ud.jpg" alt="Riley">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Riley</span></div>
                 </div>
-
-                <div class="card" data-name="saydi">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/eu0xu6pvyo0w4netwddq.jpg" alt="Saydi" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Saydi</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="ryan" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/kckc9z1ltnz8j3k3apjn.jpg" alt="Ryan">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Ryan</span></div>
                 </div>
-
-                <div class="card" data-name="susanna">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ppxhz4g8jn1fzebs8shb.jpg" alt="Susanna" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Susanna</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="saydi" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/eu0xu6pvyo0w4netwddq.jpg" alt="Saydi">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Saydi</span></div>
                 </div>
-
-                <div class="card" data-name="sydnei">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fsyravpoicxbqnhkbpua.jpg" alt="Sydnei" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Sydnei</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="susanna" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ppxhz4g8jn1fzebs8shb.jpg" alt="Susanna">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Susanna</span></div>
                 </div>
-
-                <div class="card" data-name="taylor">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ubzjdeya61hqgud5ga9g.jpg" alt="Taylor" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-name">Taylor</h3>
-                        <p class="card-role">Cheerleader</p>
-                    </div>
+                <div class="cheer-card" data-name="sydnei" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fsyravpoicxbqnhkbpua.jpg" alt="Sydnei">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Sydnei</span></div>
+                </div>
+                <div class="cheer-card" data-name="taylor" data-captain="true" onclick="openModal(this)">
+                    <span class="cheer-badge captain">Captain</span>
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ubzjdeya61hqgud5ga9g.jpg" alt="Taylor">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Taylor</span></div>
                 </div>
             </div>
 
@@ -746,63 +785,52 @@
                 <p>Try a different search term</p>
             </div>
         </section>
+
+        <!-- Blue Crew Drumline -->
+        <section class="drumline-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Blue Crew</h2>
+            </div>
+            <p class="section-subtitle">The Official Titans Drumline</p>
+            <div class="drumline-content">
+                <p>The Blue Crew is the official drumline of the Tennessee Titans, bringing high-energy percussion performances to every home game at Nissan Stadium. Founded alongside the cheerleading program, they set the tempo for gameday with thundering beats that echo through the stands.</p>
+                <p>The Blue Crew performs during pregame, timeouts, and halftime, collaborating with the cheerleaders and T-Rac to keep the crowd engaged throughout the game. Their signature drum cadences have become a beloved part of the Titans gameday experience.</p>
+            </div>
+        </section>
     </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">X</button>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-content">
+                <h3 class="modal-name" id="modalName"></h3>
+                <p class="modal-role" id="modalRole">Titans Cheerleader</p>
+                <div class="modal-details">
+                    <div class="modal-detail">
+                        <span class="modal-detail-label">Squad</span>
+                        <span class="modal-detail-value">2026 Tennessee Titans Cheerleaders</span>
+                    </div>
+                    <div class="modal-detail" id="modalYears" style="display:none;">
+                        <span class="modal-detail-label">Years</span>
+                        <span class="modal-detail-value" id="modalYearsValue"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="social-links">
-            <a href="https://www.instagram.com/titanscheers/" target="_blank">📸 @titanscheers</a>
-            <a href="https://twitter.com/titanscheers" target="_blank">🐦 @titanscheers</a>
-            <a href="https://www.tiktok.com/@titanscheers" target="_blank">🎵 TikTok</a>
-            <a href="https://www.tennesseetitans.com/cheerleaders/" target="_blank">🌐 Official Site</a>
+            <a href="https://www.instagram.com/titanscheers/" target="_blank">Instagram @titanscheers</a>
+            <a href="https://www.tennesseetitans.com/cheerleaders/" target="_blank">Official Site</a>
         </div>
-        <p class="copyright">Tennessee Titans Bible • 2026 Season • ⚔️ Titan Up!</p>
+        <p class="copyright">Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
     </footer>
 
     <script>
-        const searchInput = document.getElementById('searchInput');
-        const cards = document.querySelectorAll('.card');
-        const mascotCard = document.querySelector('.mascot-card');
-        const noResults = document.getElementById('noResults');
-        const mascotSection = document.querySelector('.mascot-section');
-
-        // Add staggered animation delays
-        cards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.05}s`;
-        });
-
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase().trim();
-            let visibleCount = 0;
-            let mascotVisible = false;
-
-            // Search cheerleaders
-            cards.forEach(card => {
-                const name = card.dataset.name.toLowerCase();
-                if (name.includes(searchTerm) || searchTerm === '') {
-                    card.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-
-            // Search mascot
-            const mascotName = mascotCard.dataset.name.toLowerCase();
-            if (mascotName.includes(searchTerm) || searchTerm === '') {
-                mascotSection.classList.remove('hidden');
-                mascotVisible = true;
-            } else {
-                mascotSection.classList.add('hidden');
-            }
-
-            // Show/hide no results message
-            if (visibleCount === 0 && !mascotVisible) {
-                noResults.classList.add('show');
-            } else {
-                noResults.classList.remove('show');
-            }
-        });
-
         function toggleMobileMenu() {
             const hamburger = document.querySelector('.titans-hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -810,6 +838,77 @@
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
+
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.cheer-card');
+        const mascotSection = document.getElementById('mascotSection');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', function() {
+            const term = this.value.toLowerCase().trim();
+            let visible = 0;
+            let mascotVisible = false;
+
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                if (name.includes(term) || term === '') {
+                    card.classList.remove('hidden');
+                    visible++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            const mascotName = mascotSection.dataset.name.toLowerCase();
+            if (mascotName.includes(term) || term === '') {
+                mascotSection.classList.remove('hidden');
+                mascotVisible = true;
+            } else {
+                mascotSection.classList.add('hidden');
+            }
+
+            if (visible === 0 && !mascotVisible) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        });
+
+        function openModal(card) {
+            const name = card.querySelector('.cheer-card-name').textContent;
+            const img = card.querySelector('img').src;
+            const years = card.dataset.years;
+            const captain = card.dataset.captain;
+
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalImage').src = img;
+
+            let role = 'Titans Cheerleader';
+            if (captain) role = 'Captain - Titans Cheerleaders';
+            document.getElementById('modalRole').textContent = role;
+
+            const yearsEl = document.getElementById('modalYears');
+            if (years) {
+                yearsEl.style.display = 'flex';
+                document.getElementById('modalYearsValue').textContent = years + ' Year' + (years > 1 ? 's' : '');
+            } else {
+                yearsEl.style.display = 'none';
+            }
+
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(e) {
+            if (!e || e.target === document.getElementById('modalOverlay')) {
+                document.getElementById('modalOverlay').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
     </script>
 </body>
 </html>
