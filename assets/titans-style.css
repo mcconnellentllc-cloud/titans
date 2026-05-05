@@ -639,26 +639,29 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(5, 10, 16, 0.98);
     backdrop-filter: blur(10px);
     z-index: 999;
-    padding-top: 80px;
-    overflow-y: auto;
 }
 
 .titans-mobile-menu.active {
+    display: block;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+}
+
+.titans-mobile-menu-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     padding-top: 100px;
-    padding-bottom: 40px;
+    padding-bottom: 120px;
     gap: var(--space-xs);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    min-height: 100%;
 }
 
 .titans-mobile-menu a {
