@@ -472,7 +472,7 @@
       gap: 5px;
     }
 
-    .titans-mobile-menu.active { display: flex; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: 40px; }
+    .titans-mobile-menu.active { display: block; overflow-y: scroll; -webkit-overflow-scrolling: touch; overscroll-behavior-y: contain; touch-action: pan-y; } .titans-mobile-menu-inner { display: flex; flex-direction: column; align-items: center; padding-top: 100px; padding-bottom: 120px; gap: 5px; min-height: 100%; }
 
     .titans-mobile-menu a {
       color: var(--titans-silver);
@@ -536,6 +536,7 @@
   </nav>
 
   <div class="titans-mobile-menu" id="mobileMenu">
+        <div class="titans-mobile-menu-inner">
     <a href="index.html">Home</a>
     <a href="Titans_2026_Roster.html">Roster</a>
     <a href="schedule.html" class="active">Schedule</a>
@@ -547,6 +548,7 @@
     <a href="nfl.html">NFL</a>
     <a href="titans-bible-viewer.html">Bible</a>
         <a href="trips/">Trips</a>
+        </div>
   </div>
 
   <header class="schedule-hero">
