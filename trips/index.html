@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Trip - Tennessee Titans Game Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+            --titans-orange: #FF6B35;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1525 100%);
+            color: var(--titans-white);
+            min-height: 100vh;
+        }
+
+        .main-nav {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--titans-silver);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.2);
+        }
+
+        .nav-link.active {
+            color: var(--titans-blue);
+            background: rgba(75, 146, 219, 0.15);
+        }
+
+        .titans-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
+        .titans-hamburger span { display: block; height: 3px; width: 100%; background: var(--titans-silver); border-radius: 2px; transition: all 0.3s ease; }
+        .titans-hamburger:hover span { background: #fff; }
+        .titans-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .titans-hamburger.active span:nth-child(2) { opacity: 0; }
+        .titans-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5, 10, 16, 0.98); backdrop-filter: blur(10px); z-index: 999; padding-top: 80px; flex-direction: column; align-items: center; gap: 5px; }
+        .titans-mobile-menu.active { display: flex; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: 40px; }
+        .titans-mobile-menu a { color: var(--titans-silver); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
+        .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.1); }
+        @media (max-width: 768px) { .nav-links { display: none; } .titans-hamburger { display: flex; } }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--titans-red);
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(75, 146, 219, 0.5));
+        }
+
+        .hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1;
+            margin-bottom: 15px;
+            background: linear-gradient(180deg, var(--titans-white) 0%, var(--titans-silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--titans-blue);
+            margin-bottom: 10px;
+        }
+
+        .hero-tagline {
+            color: var(--titans-silver);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .comparison-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-blue);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .plan-card {
+            background: linear-gradient(145deg, rgba(12, 35, 64, 0.8) 0%, rgba(26, 58, 92, 0.6) 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(75, 146, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--titans-blue);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .plan-header {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .plan-card.plan-a .plan-header {
+            background: linear-gradient(135deg, var(--titans-red) 0%, #8B0000 100%);
+        }
+
+        .plan-card.plan-b .plan-header {
+            background: linear-gradient(135deg, var(--titans-orange) 0%, #CC5500 100%);
+        }
+
+        .plan-badge {
+            display: inline-block;
+            background: rgba(0,0,0,0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .plan-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .plan-season {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .plan-price {
+            padding: 25px 30px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .price-label {
+            font-size: 0.85rem;
+            color: var(--titans-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .price-amount {
+            font-family: 'Anton', sans-serif;
+            font-size: 3rem;
+            color: var(--titans-white);
+        }
+
+        .price-amount sup {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .price-per {
+            font-size: 0.9rem;
+            color: var(--titans-silver);
+        }
+
+        .plan-features {
+            padding: 25px 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-icon.check {
+            color: #4CAF50;
+        }
+
+        .feature-icon.info {
+            color: var(--titans-blue);
+        }
+
+        .feature-icon.warning {
+            color: var(--titans-orange);
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .feature-text strong {
+            color: var(--titans-white);
+        }
+
+        .plan-cta {
+            padding: 20px 30px 30px;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 16px 30px;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card.plan-a .cta-button {
+            background: var(--titans-red);
+            color: white;
+        }
+
+        .plan-card.plan-a .cta-button:hover {
+            background: #a00d24;
+            transform: scale(1.02);
+        }
+
+        .plan-card.plan-b .cta-button {
+            background: var(--titans-orange);
+            color: white;
+        }
+
+        .plan-card.plan-b .cta-button:hover {
+            background: #cc5500;
+            transform: scale(1.02);
+        }
+
+        .comparison-table {
+            margin-top: 60px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .table-header span:nth-child(2) {
+            text-align: center;
+            color: var(--titans-red);
+        }
+
+        .table-header span:nth-child(3) {
+            text-align: center;
+            color: var(--titans-orange);
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-row:nth-child(even) {
+            background: rgba(0,0,0,0.15);
+        }
+
+        .table-row span {
+            font-size: 0.95rem;
+        }
+
+        .table-row span:nth-child(2),
+        .table-row span:nth-child(3) {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .table-row.total {
+            background: rgba(75, 146, 219, 0.15);
+            font-weight: 700;
+        }
+
+        .table-row.total span {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .savings-callout {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background: linear-gradient(135deg, rgba(75, 146, 219, 0.2) 0%, rgba(200, 16, 46, 0.2) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(75, 146, 219, 0.3);
+        }
+
+        .savings-callout h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-blue);
+            margin-bottom: 10px;
+        }
+
+        .savings-callout p {
+            color: var(--titans-silver);
+            line-height: 1.6;
+        }
+
+        .savings-callout strong {
+            color: var(--titans-orange);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(75, 146, 219, 0.2);
+            color: var(--titans-silver);
+            font-size: 0.8rem;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .table-header,
+            .table-row {
+                grid-template-columns: 1.5fr 1fr 1fr;
+                font-size: 0.85rem;
+                padding: 12px 15px;
+            }
+
+            .plan-price {
+                padding: 20px;
+            }
+
+            .price-amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html"><img src="../assets/titans-sword-logo.svg" alt="Titans" style="width:40px;height:auto;"></a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../Titans_2026_Roster.html" class="nav-link">Roster</a>
+                <a href="../schedule.html" class="nav-link">Schedule</a>
+                <a href="../titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
+                <a href="../team-history.html" class="nav-link">History</a>
+                <a href="../titans-salary-cap.html" class="nav-link">Cap</a>
+                <a href="../titans-betting-odds.html" class="nav-link">Odds</a>
+                <a href="../titans-hype-videos.html" class="nav-link">Hype</a>
+                <a href="../nfl.html" class="nav-link">NFL</a>
+                <a href="../titans-bible-viewer.html" class="nav-link">Bible</a>
+            </div>
+            <div class="titans-hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="titans-mobile-menu" id="mobileMenu">
+        <a href="../index.html">Home</a>
+        <a href="../Titans_2026_Roster.html">Roster</a>
+        <a href="../schedule.html">Schedule</a>
+        <a href="../titans-cheerleaders-2026.html">Cheerleaders</a>
+        <a href="../team-history.html">History</a>
+        <a href="../titans-salary-cap.html">Salary Cap</a>
+        <a href="../titans-betting-odds.html">Odds</a>
+        <a href="../titans-hype-videos.html">Hype Videos</a>
+        <a href="../nfl.html">NFL</a>
+        <a href="../titans-bible-viewer.html">Bible</a>
+    </div>
+
+    <header class="hero">
+        <img src="../assets/titans-sword-logo.svg" alt="Titans" class="hero-logo">
+        <h1>Plan Your Trip</h1>
+        <p class="hero-subtitle">Nashville Game Day Experience</p>
+        <p class="hero-tagline">Two ways to experience Titans football at Nissan Stadium. Compare costs, itineraries, and pick your perfect game day.</p>
+    </header>
+
+    <main class="comparison-section">
+        <h2 class="section-title">Choose Your Experience</h2>
+
+        <div class="plans-grid">
+            <div class="plan-card plan-a">
+                <div class="plan-header">
+                    <span class="plan-badge">Recommended</span>
+                    <h3 class="plan-name">Plan A</h3>
+                    <p class="plan-season">Regular Season</p>
+                </div>
+                <div class="plan-price">
+                    <p class="price-label">Starting From</p>
+                    <p class="price-amount"><sup>$</sup>1,175</p>
+                    <p class="price-per">per person</p>
+                </div>
+                <div class="plan-features">
+                    <div class="feature-item">
+                        <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="feature-text"><strong>Prime weather</strong> — Sept-Nov temps in the 60s-70s</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="feature-text"><strong>Meaningful games</strong> — playoff implications, division rivals</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="feature-text"><strong>Full stadium energy</strong> — 69,000+ fans</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <span class="feature-text">3-day itinerary with Broadway, hot chicken, and tailgate</span>
+                    </div>
+                </div>
+                <div class="plan-cta">
+                    <a href="plan-a.html" class="cta-button">View Full Plan</a>
+                </div>
+            </div>
+
+            <div class="plan-card plan-b">
+                <div class="plan-header">
+                    <span class="plan-badge">Budget Pick</span>
+                    <h3 class="plan-name">Plan B</h3>
+                    <p class="plan-season">Preseason</p>
+                </div>
+                <div class="plan-price">
+                    <p class="price-label">Starting From</p>
+                    <p class="price-amount"><sup>$</sup>1,100</p>
+                    <p class="price-per">per person</p>
+                </div>
+                <div class="plan-features">
+                    <div class="feature-item">
+                        <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="feature-text"><strong>Save ~$75/person</strong> — cheaper tickets, less demand</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="feature-text"><strong>See rookie debuts</strong> — first look at draft picks</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <span class="feature-text"><strong>Heat advisory</strong> — August temps hit 95°+</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <span class="feature-text">Evening kickoffs, indoor midday activities</span>
+                    </div>
+                </div>
+                <div class="plan-cta">
+                    <a href="plan-b.html" class="cta-button">View Full Plan</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <div class="table-header">
+                <span>Cost Breakdown</span>
+                <span>Plan A</span>
+                <span>Plan B</span>
+            </div>
+            <div class="table-row">
+                <span>Flights (round-trip)</span>
+                <span>$300</span>
+                <span>$300</span>
+            </div>
+            <div class="table-row">
+                <span>Hotel (2 nights)</span>
+                <span>$325</span>
+                <span>$350</span>
+            </div>
+            <div class="table-row">
+                <span>Game Ticket</span>
+                <span>$165</span>
+                <span>$125</span>
+            </div>
+            <div class="table-row">
+                <span>Food & Drinks</span>
+                <span>$250</span>
+                <span>$250</span>
+            </div>
+            <div class="table-row">
+                <span>Transport (Uber/Lyft)</span>
+                <span>$60</span>
+                <span>$60</span>
+            </div>
+            <div class="table-row">
+                <span>Misc (gear, tips, etc.)</span>
+                <span>$75</span>
+                <span>$75</span>
+            </div>
+            <div class="table-row total">
+                <span>Total Per Person</span>
+                <span>$1,175</span>
+                <span>$1,100</span>
+            </div>
+        </div>
+
+        <div class="savings-callout">
+            <h3>Traveling as a Couple?</h3>
+            <p>Split the hotel and you're looking at <strong>$2,350 (Plan A)</strong> or <strong>$2,200 (Plan B)</strong> total. Going solo? Budget around <strong>$1,500</strong> with the full hotel cost on you.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Kyle's Personal Titans Fan Site - Not affiliated with the Tennessee Titans or NFL.</p>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.titans-hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+    </script>
+</body>
+</html>

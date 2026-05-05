@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan B — Titans Preseason Weekend in Nashville</title>
+<meta property="og:title" content="Titans Preseason Weekend in Nashville">
+<meta property="og:description" content="3 days · Live music · Hot chicken · Nissan Stadium · ~$1,100/person">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Roboto+Condensed:wght@300;400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0C2340;--blue:#4B92DB;--red:#C8102E;--silver:#8A8D8F;--cream:#F5F1E8;--gold:#D4A84B;--ink:#050a10;--summer:#E89B3C;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto Condensed',sans-serif;background:linear-gradient(180deg,#050a10 0%,var(--navy) 50%,#0a1525 100%);color:#fff;min-height:100vh;padding-bottom:40px;}
+
+/* HERO - summer variant */
+.hero{background:linear-gradient(180deg,rgba(5,10,16,0.6) 0%,rgba(12,35,64,0.95) 100%),repeating-linear-gradient(45deg,transparent 0 20px,rgba(232,155,60,0.05) 20px 40px);border-bottom:4px solid var(--summer);padding:50px 20px 40px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'PRESEASON';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,18vw,220px);color:rgba(232,155,60,0.07);letter-spacing:8px;white-space:nowrap;pointer-events:none;}
+.hero-content{position:relative;z-index:1;}
+.plan-tag{display:inline-block;background:var(--summer);color:var(--navy);padding:5px 16px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;border:1px solid rgba(255,255,255,0.2);}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,7vw,4.8rem);letter-spacing:3px;line-height:1;margin-bottom:8px;}
+h1 .accent{color:var(--summer);}
+.sub{font-family:'Caveat',cursive;font-size:clamp(1.4rem,3vw,1.8rem);color:var(--gold);margin-bottom:24px;}
+.pitch{max-width:600px;margin:0 auto 24px;font-size:1.05rem;line-height:1.6;color:rgba(255,255,255,0.85);padding:0 10px;}
+.trip-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:16px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);}
+.meta-item{text-align:center;}
+.meta-label{font-size:10px;color:var(--silver);text-transform:uppercase;letter-spacing:2px;}
+.meta-val{font-family:'Bebas Neue',sans-serif;color:var(--summer);font-size:1.4rem;letter-spacing:1px;margin-top:2px;}
+
+main{max-width:920px;margin:0 auto;padding:30px 16px;}
+
+/* PRICE HERO */
+.price-hero{background:linear-gradient(135deg,var(--cream) 0%,#fff 100%);color:var(--navy);border-radius:16px;padding:32px 24px 28px;margin-bottom:36px;border:3px solid var(--summer);box-shadow:0 20px 60px rgba(0,0,0,0.4);position:relative;}
+.price-hero::before{content:'YOUR SHARE';position:absolute;top:-12px;left:24px;background:var(--summer);color:var(--navy);font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:3px;padding:6px 14px;border-radius:4px;font-weight:700;}
+.price-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:24px;}
+@media(min-width:600px){.price-grid{grid-template-columns:repeat(3,1fr);gap:14px;}}
+.price-card{text-align:center;padding:18px 12px;border:1px solid rgba(12,35,64,0.15);border-radius:10px;background:rgba(255,255,255,0.6);}
+.price-card.featured{background:var(--navy);color:#fff;border-color:var(--summer);}
+.price-card.featured .price-num{color:var(--summer);}
+.price-card.featured .price-cat{color:var(--gold);}
+.price-cat{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.price-num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:1px;color:var(--navy);line-height:1;}
+.price-note{font-size:11px;color:var(--silver);margin-top:4px;font-style:italic;}
+.price-breakdown{border-top:2px dashed rgba(12,35,64,0.2);padding-top:18px;}
+.breakdown-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.breakdown-row{display:flex;justify-content:space-between;padding:7px 0;font-size:0.95rem;border-bottom:1px dotted rgba(12,35,64,0.1);}
+.breakdown-row:last-child{border-bottom:none;padding-top:10px;font-weight:700;font-size:1.05rem;color:var(--red);}
+.breakdown-cat{color:var(--navy);}
+.breakdown-val{font-family:'Oswald',sans-serif;font-weight:600;color:var(--navy);}
+.price-disclaimer{margin-top:16px;padding:12px 14px;background:rgba(232,155,60,0.15);border-radius:8px;font-size:0.82rem;color:var(--navy);line-height:1.5;}
+.price-disclaimer strong{color:var(--red);}
+
+/* WEATHER ALERT - Plan B specific */
+.weather-alert{background:linear-gradient(135deg,var(--summer) 0%,#c47a25 100%);color:var(--navy);border-radius:14px;padding:22px;margin-bottom:32px;}
+.weather-alert h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;margin-bottom:10px;}
+.weather-alert p{font-size:0.95rem;line-height:1.55;}
+.weather-alert strong{color:var(--red);}
+
+/* DAYS */
+.day{margin-bottom:32px;background:rgba(12,35,64,0.6);border-radius:14px;border:1px solid rgba(75,146,219,0.2);overflow:hidden;}
+.day-header{background:linear-gradient(135deg,var(--navy) 0%,#1a3a5c 100%);padding:22px;display:flex;align-items:center;gap:18px;border-bottom:3px solid var(--summer);}
+.day-num{font-family:'Bebas Neue',sans-serif;font-size:3.4rem;line-height:1;color:var(--summer);text-shadow:2px 2px 0 rgba(0,0,0,0.3);}
+.day-title{flex:1;}
+.day-name{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;}
+.day-tag{font-family:'Caveat',cursive;color:var(--gold);font-size:1.05rem;}
+.gameday{border:2px solid var(--summer);box-shadow:0 0 40px rgba(232,155,60,0.2);}
+.gameday .day-header{background:linear-gradient(135deg,var(--summer) 0%,#c47a25 100%);border-bottom-color:var(--gold);}
+.gameday .day-num{color:var(--navy);}
+.gameday .day-name{color:var(--navy);}
+.gameday .day-tag{color:var(--navy);}
+.timeline{padding:22px;}
+.block{display:grid;grid-template-columns:80px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(75,146,219,0.2);}
+.block:last-child{border-bottom:none;padding-bottom:0;}
+.time{font-family:'Bebas Neue',sans-serif;color:var(--summer);font-size:1.05rem;letter-spacing:1px;padding-top:2px;}
+.block-title{font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.block-desc{font-size:0.93rem;line-height:1.55;color:rgba(255,255,255,0.85);}
+.block-meta{margin-top:6px;font-size:0.8rem;color:var(--silver);}
+.block-meta strong{color:var(--summer);}
+
+/* TWO-COLUMN */
+.two-col{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:32px;}
+@media(min-width:700px){.two-col{grid-template-columns:1fr 1fr;}}
+.card-block{background:rgba(12,35,64,0.6);border-radius:14px;border:1px solid rgba(75,146,219,0.2);padding:24px 22px;}
+.card-block h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--gold);margin-bottom:14px;}
+.list-row{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.92rem;line-height:1.5;}
+.list-row:last-child{border-bottom:none;}
+.list-row strong{color:var(--summer);font-family:'Oswald',sans-serif;letter-spacing:1px;}
+
+/* BOOKING */
+.booking{background:linear-gradient(135deg,var(--summer) 0%,#c47a25 100%);color:var(--navy);border-radius:14px;padding:26px 22px;margin-bottom:32px;}
+.booking h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;margin-bottom:16px;}
+.book-step{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid rgba(12,35,64,0.2);}
+.book-step:last-child{border-bottom:none;}
+.book-when{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;}
+.book-do{font-size:0.92rem;line-height:1.5;}
+.book-do strong{color:var(--red);}
+
+/* TIPS */
+.tips{background:linear-gradient(135deg,var(--navy) 0%,#0a1829 100%);border-radius:14px;border:2px dashed var(--summer);padding:26px 22px;margin-bottom:32px;}
+.tips h2{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;color:var(--summer);margin-bottom:14px;}
+.tip{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:7px 0;font-size:0.92rem;line-height:1.55;}
+.tip-icon{color:var(--summer);font-weight:700;font-family:'Bebas Neue',sans-serif;}
+
+/* CTA */
+.cta-box{background:linear-gradient(135deg,var(--gold) 0%,#b8902e 100%);color:var(--navy);border-radius:14px;padding:24px 22px;margin-bottom:32px;text-align:center;}
+.cta-box h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;margin-bottom:8px;}
+.cta-box p{font-size:0.95rem;line-height:1.5;}
+.cta-box strong{color:var(--red);}
+
+/* FOOTER */
+footer{text-align:center;padding:36px 20px 20px;color:var(--silver);font-size:0.85rem;border-top:2px solid var(--summer);margin-top:30px;}
+.footer-cry{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:var(--summer);margin-bottom:6px;}
+
+/* SECTION TITLE */
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;margin:0 0 18px;padding-left:14px;border-left:4px solid var(--summer);text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <span class="plan-tag">Plan B - Summer Backup</span>
+    <h1>Titans <span class="accent">Preseason</span> Weekend</h1>
+    <p class="sub">~ Nashville in late August ~</p>
+    <p class="pitch">If the regular season schedule doesn't fit our windows, we hit a preseason game instead. Cheaper tickets, same Nissan Stadium farewell experience, evening kickoff to dodge the heat. Bonus: late August is statistically the driest stretch in Nashville.</p>
+    <div class="trip-meta">
+      <div class="meta-item"><div class="meta-label">When</div><div class="meta-val">Late Aug 2026</div></div>
+      <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-val">3 Days</div></div>
+      <div class="meta-item"><div class="meta-label">From</div><div class="meta-val">DEN - BNA</div></div>
+      <div class="meta-item"><div class="meta-label">Game</div><div class="meta-val">Preseason</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- PRICE HERO -->
+  <section class="price-hero">
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-cat">Solo</div>
+        <div class="price-num">$1,475</div>
+        <div class="price-note">own room</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-cat">Per Person</div>
+        <div class="price-num">$1,100</div>
+        <div class="price-note">sharing room</div>
+      </div>
+      <div class="price-card">
+        <div class="price-cat">Per Couple</div>
+        <div class="price-num">$2,200</div>
+        <div class="price-note">one room, two tickets</div>
+      </div>
+    </div>
+
+    <div class="price-breakdown">
+      <div class="breakdown-title">What's Included (per person, sharing)</div>
+      <div class="breakdown-row"><span class="breakdown-cat">Flight DEN - BNA roundtrip</span><span class="breakdown-val">$300</span></div>
+      <div class="breakdown-row"><span class="breakdown-cat">Hotel - 2 nights downtown - double-occupancy</span><span class="breakdown-val">$375</span></div>
+      <div class="breakdown-row"><span class="breakdown-cat">Preseason game ticket - mid-tier</span><span class="breakdown-val">$40</span></div>
+      <div class="breakdown-row"><span class="breakdown-cat">Food + drinks - 3 days</span><span class="breakdown-val">$250</span></div>
+      <div class="breakdown-row"><span class="breakdown-cat">Uber + parking</span><span class="breakdown-val">$60</span></div>
+      <div class="breakdown-row"><span class="breakdown-cat">Misc / souvenirs</span><span class="breakdown-val">$75</span></div>
+      <div class="breakdown-row"><span class="breakdown-cat">TOTAL</span><span class="breakdown-val">$1,100</span></div>
+    </div>
+
+    <div class="price-disclaimer">
+      <strong>Heads up:</strong> Hotel is slightly higher in August (peak Nashville tourism) but ticket savings ($40 vs $165) more than offset it. Flight estimate from Denver - adjust for your origin. Bring a friend to halve the room cost.
+    </div>
+  </section>
+
+  <!-- WEATHER ALERT -->
+  <section class="weather-alert">
+    <h3>Real Talk: It's Hot</h3>
+    <p>Nashville in August averages <strong>87F daytime, 68F overnight, with 73% humidity</strong>. That's a real-feel of about 100F at midday. The good news: <strong>preseason kickoffs are evening (7pm CT)</strong>, when temps drop to mid-70s, and late August is the <strong>driest 10-day window of the year</strong>. Pack lightweight clothes, sunscreen, and a portable fan. Plan indoor activities for midday.</p>
+  </section>
+
+  <!-- DAY 1 -->
+  <section class="day">
+    <div class="day-header">
+      <div class="day-num">01</div>
+      <div class="day-title">
+        <div class="day-name">Day 1 - Arrival & Broadway Night</div>
+        <div class="day-tag">first taste of Music City</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="block"><div class="time">11:00<br>AM</div><div><div class="block-title">Land at BNA</div><div class="block-desc">Uber to downtown (~$25). Mid-morning arrival to dodge the worst heat.</div></div></div>
+      <div class="block"><div class="time">12:30<br>PM</div><div><div class="block-title">Hotel check-in (downtown)</div><div class="block-desc">Same target zone - Broadway/SoBro. Walking distance to nightlife and pedestrian bridge to Nissan Stadium.</div><div class="block-meta"><strong>Picks:</strong> Hyatt Place Downtown - Hampton Inn Downtown - JW Marriott - Bobby Hotel</div></div></div>
+      <div class="block"><div class="time">1:30<br>PM</div><div><div class="block-title">Hot chicken at Hattie B's</div><div class="block-desc">Indoor AC. Order Medium. Don't be a hero with "Hot."</div></div></div>
+      <div class="block"><div class="time">3:00<br>PM</div><div><div class="block-title">Country Music Hall of Fame</div><div class="block-desc">Indoor, climate controlled, two hours. Perfect for the hottest part of the day. Add the Studio B tour combo.</div><div class="block-meta"><strong>Cost:</strong> $33 base / $46 with Studio B</div></div></div>
+      <div class="block"><div class="time">7:00<br>PM</div><div><div class="block-title">Dinner</div><div class="block-desc">Husk - The Southern Steak & Oyster - Acme Feed & Seed (rooftop with breeze).</div></div></div>
+      <div class="block"><div class="time">9:00<br>PM</div><div><div class="block-title">Broadway honky-tonk crawl</div><div class="block-desc">Cooler at night. Free music every bar. Tip the bands $5-10 cash.</div><div class="block-meta"><strong>Hit list:</strong> Robert's Western World - Tootsie's - Legends Corner - Acme rooftop</div></div></div>
+    </div>
+  </section>
+
+  <!-- DAY 2 GAMEDAY -->
+  <section class="day gameday">
+    <div class="day-header">
+      <div class="day-num">02</div>
+      <div class="day-title">
+        <div class="day-name">Day 2 - GAMEDAY (Evening Kickoff)</div>
+        <div class="day-tag">final season at the original Nissan Stadium</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="block"><div class="time">9:00<br>AM</div><div><div class="block-title">Slow morning</div><div class="block-desc">Biscuit Love or Pancake Pantry. Stay indoors. Game's at night.</div></div></div>
+      <div class="block"><div class="time">11:00<br>AM</div><div><div class="block-title">Johnny Cash Museum</div><div class="block-desc">Indoor, AC, 60-90 min. Beats the heat. Combo with Patsy Cline upstairs.</div></div></div>
+      <div class="block"><div class="time">2:00<br>PM</div><div><div class="block-title">Hotel pool / nap</div><div class="block-desc">Use the hottest hours wisely. Recharge for the night.</div></div></div>
+      <div class="block"><div class="time">5:00<br>PM</div><div><div class="block-title">Pre-game drinks + tailgate</div><div class="block-desc">Acme rooftop or walk pedestrian bridge to stadium tailgate lots. Sun's lower, breeze picks up.</div><div class="block-meta"><strong>Tip:</strong> Walk over the bridge - skip $40+ parking.</div></div></div>
+      <div class="block"><div class="time">6:30<br>PM</div><div><div class="block-title">Titans Pro Shop</div><div class="block-desc">Final season at the old building. Grab a souvenir.</div></div></div>
+      <div class="block"><div class="time">7:00<br>PM</div><div><div class="block-title">KICKOFF</div><div class="block-desc">Preseason vibe is different - starters play 1 series, then it's backups. But the traditions live: <strong>The 300 Chant, "Titan Up", T-Rac sightings, Blue Crew drumline.</strong></div><div class="block-meta"><strong>Temp at kickoff:</strong> ~78-82F - cools to mid-70s by halftime</div></div></div>
+      <div class="block"><div class="time">10:30<br>PM</div><div><div class="block-title">Walk back across the bridge</div><div class="block-desc">Cool night air, downtown lights. Late dinner or drinks at Patterson House (speakeasy) or back on Broadway.</div></div></div>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day">
+    <div class="day-header">
+      <div class="day-num">03</div>
+      <div class="day-title">
+        <div class="day-name">Day 3 - Music History & Departure</div>
+        <div class="day-tag">deeper Nashville before you fly home</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="block"><div class="time">8:30<br>AM</div><div><div class="block-title">Loveless Cafe breakfast</div><div class="block-desc">20 min from downtown. Get there early - it gets crowded and hot. Biscuits are legendary.</div></div></div>
+      <div class="block"><div class="time">10:30<br>AM</div><div><div class="block-title">Ryman Auditorium tour</div><div class="block-desc">"The Mother Church of Country Music." Indoor, AC. Self-guided ($30). Stand on the stage where Hank, Johnny, Patsy played.</div></div></div>
+      <div class="block"><div class="time">12:30<br>PM</div><div><div class="block-title">The Parthenon (drive-by)</div><div class="block-desc">Full-scale replica. <strong>This is WHY the Titans are named the Titans</strong> - Nashville is the "Athens of the South." Required stop. Inside is air-conditioned.</div><div class="block-meta"><strong>Cost:</strong> $10 to enter</div></div></div>
+      <div class="block"><div class="time">2:30<br>PM</div><div><div class="block-title">Last meal - meat-and-three</div><div class="block-desc">Arnold's (closes 2:45pm - go EARLY) or Monell's (Germantown, family-style).</div></div></div>
+      <div class="block"><div class="time">5:00<br>PM</div><div><div class="block-title">Fly home</div><div class="block-desc">Late afternoon DEN-bound flight. Direct on Southwest, United, or Frontier.</div></div></div>
+    </div>
+  </section>
+
+  <!-- LIVE MUSIC + FOOD -->
+  <div class="two-col">
+    <div class="card-block">
+      <h3>Live Music Hit List</h3>
+      <div class="list-row"><strong>Robert's Western World</strong> - Most authentic honky-tonk. Free.</div>
+      <div class="list-row"><strong>Tootsie's Orchid Lounge</strong> - Three floors, three bands. Free.</div>
+      <div class="list-row"><strong>Grand Ole Opry</strong> - Tues/Fri/Sat. Bucket-list. $50-150. Indoor AC.</div>
+      <div class="list-row"><strong>Bluebird Cafe</strong> - Where Taylor Swift was found. Reservations Mondays at 8am.</div>
+      <div class="list-row"><strong>Station Inn</strong> - Bluegrass mecca, Gulch. Sunday Night Jam free.</div>
+      <div class="list-row"><strong>The 5 Spot</strong> - East Nashville locals' joint.</div>
+    </div>
+
+    <div class="card-block">
+      <h3>Food Worth Flying For</h3>
+      <div class="list-row"><strong>Hot Chicken</strong> - Hattie B's - Prince's - Bolton's</div>
+      <div class="list-row"><strong>BBQ</strong> - Edley's - Martin's - Peg Leg Porker</div>
+      <div class="list-row"><strong>Biscuits</strong> - Loveless Cafe - Biscuit Love</div>
+      <div class="list-row"><strong>Meat-and-Three</strong> - Arnold's (weekday lunch only) - Monell's</div>
+      <div class="list-row"><strong>Splurge</strong> - Husk - Catbird Seat - Jeff Ruby's</div>
+      <div class="list-row"><strong>Drinks</strong> - Acme rooftop - L.A. Jackson - Patterson House</div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <section class="tips">
+    <h2>Hot Weather Trip Tips</h2>
+    <div class="tip"><div class="tip-icon">></div><div>Pack lightweight, breathable fabrics - cotton, linen. Skip jeans for Broadway.</div></div>
+    <div class="tip"><div class="tip-icon">></div><div>Hydrate. Then hydrate again. Heat index hits 100F midday.</div></div>
+    <div class="tip"><div class="tip-icon">></div><div>Plan indoor activities (museums, Hall of Fame) for noon-4pm. Outdoor stuff before 11am or after 6pm.</div></div>
+    <div class="tip"><div class="tip-icon">></div><div>Wear navy/light blue or red. Skip visiting team gear in Nissan Stadium.</div></div>
+    <div class="tip"><div class="tip-icon">></div><div>"Titan Up!" is the call. "Ooh! Ooh! Ooh!" three times after every Titans first down.</div></div>
+    <div class="tip"><div class="tip-icon">></div><div>Pedestrian bridge is the gameday transport hack. Skip $40+ parking.</div></div>
+    <div class="tip"><div class="tip-icon">></div><div>Final season at original Nissan Stadium. Grab a souvenir that marks it.</div></div>
+  </section>
+
+  <!-- BOOKING TIMELINE -->
+  <section class="booking">
+    <h2>Booking Timeline</h2>
+    <div class="book-step"><div class="book-when">NOW</div><div class="book-do">Set price alerts on Google Flights (DEN-BNA) and Hopper for August Nashville hotels.</div></div>
+    <div class="book-step"><div class="book-when">~MID-MAY</div><div class="book-do">2026 NFL schedule drops. Confirm preseason home dates. <strong>Buy tickets immediately</strong> - preseason is cheap but can sell out for the farewell season.</div></div>
+    <div class="book-step"><div class="book-when">JUNE</div><div class="book-do">Book hotel - downtown Nashville. August prices climb fast.</div></div>
+    <div class="book-step"><div class="book-when">~LATE MAY/JUNE</div><div class="book-do">Book flights (~82 days out). Frontier or Southwest direct DEN-BNA.</div></div>
+    <div class="book-step"><div class="book-when">JULY</div><div class="book-do">Restaurant reservations. Confirm gameday plan.</div></div>
+    <div class="book-step"><div class="book-when">WEEK OF</div><div class="book-do">Pack light. Sunscreen. Portable phone fan if you have one. Print backup tickets.</div></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-box">
+    <h2>In or Out?</h2>
+    <p>Schedule drops <strong>mid-May 2026</strong>. Preseason home dates confirmed at the same time. Hit reply if you're in - we'll book seats together.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-cry">TITAN UP!</div>
+  <div>Tennessee Titans Bible - Trip Plan B - 2026 Preseason</div>
+</footer>
+
+</body>
+</html>
