@@ -733,6 +733,131 @@
         .titans-mobile-menu a { color: #A2AAAD; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
         .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: #4B92DB; background: rgba(75, 146, 219, 0.1); }
         @media (max-width: 768px) { .nav-links { display: none; } .titans-hamburger { display: flex; } }
+
+        /* All-Time Records Table */
+        .records-table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .records-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .records-table th {
+            background: rgba(200, 16, 46, 0.8);
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            position: sticky;
+            top: 0;
+        }
+
+        .records-table th.sortable {
+            cursor: pointer;
+        }
+
+        .records-table th.sortable:hover {
+            background: rgba(200, 16, 46, 1);
+        }
+
+        .records-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+        }
+
+        .records-table tr:hover {
+            background: rgba(75, 146, 219, 0.1);
+        }
+
+        .records-table tr.titans-row {
+            background: rgba(75, 146, 219, 0.2);
+            font-weight: 600;
+        }
+
+        .records-table tr.titans-row:hover {
+            background: rgba(75, 146, 219, 0.3);
+        }
+
+        .team-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-logo-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .win-pct {
+            font-weight: 600;
+            color: var(--titans-blue);
+        }
+
+        .seed-badge {
+            background: var(--titans-red);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .seed-badge.no-playoffs {
+            background: rgba(162, 170, 173, 0.3);
+            color: var(--titans-silver);
+        }
+
+        .conference-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--titans-blue);
+            background: transparent;
+            color: var(--titans-blue);
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--titans-blue);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .records-table {
+                font-size: 0.75rem;
+            }
+            .records-table th, .records-table td {
+                padding: 8px 4px;
+            }
+            .team-logo-small {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1742,6 +1867,393 @@
                 </div>
             </div>
         </section>
+
+        <!-- All-Time NFL Records Section -->
+        <section class="bracket-section" id="all-time-records">
+            <div class="section-header">
+                <h2>All-Time NFL Records</h2>
+                <span class="section-badge">All 32 Teams</span>
+            </div>
+
+            <div class="conference-filter">
+                <button class="filter-btn active" onclick="filterTeams('all')">All Teams</button>
+                <button class="filter-btn" onclick="filterTeams('AFC')">AFC</button>
+                <button class="filter-btn" onclick="filterTeams('NFC')">NFC</button>
+            </div>
+
+            <div class="records-table-container">
+                <table class="records-table" id="recordsTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" onclick="sortTable(0)">Rank</th>
+                            <th class="sortable" onclick="sortTable(1)">Team</th>
+                            <th>Conf</th>
+                            <th class="sortable" onclick="sortTable(3)">Wins</th>
+                            <th class="sortable" onclick="sortTable(4)">Losses</th>
+                            <th>Ties</th>
+                            <th class="sortable" onclick="sortTable(6)">Win %</th>
+                            <th>2026 Record</th>
+                            <th>2026 Seed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-conf="NFC">
+                            <td>1</td>
+                            <td><div class="team-cell"><span class="team-logo-small">GB</span>Green Bay Packers</div></td>
+                            <td>NFC</td>
+                            <td>808</td>
+                            <td>591</td>
+                            <td>38</td>
+                            <td class="win-pct">.574</td>
+                            <td>11-6</td>
+                            <td><span class="seed-badge">3</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>2</td>
+                            <td><div class="team-cell"><span class="team-logo-small">CHI</span>Chicago Bears</div></td>
+                            <td>NFC</td>
+                            <td>789</td>
+                            <td>612</td>
+                            <td>42</td>
+                            <td class="win-pct">.562</td>
+                            <td>7-10</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>3</td>
+                            <td><div class="team-cell"><span class="team-logo-small">NE</span>New England Patriots</div></td>
+                            <td>AFC</td>
+                            <td>559</td>
+                            <td>420</td>
+                            <td>9</td>
+                            <td class="win-pct">.570</td>
+                            <td>13-4</td>
+                            <td><span class="seed-badge">2</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>4</td>
+                            <td><div class="team-cell"><span class="team-logo-small">NYG</span>New York Giants</div></td>
+                            <td>NFC</td>
+                            <td>720</td>
+                            <td>625</td>
+                            <td>33</td>
+                            <td class="win-pct">.535</td>
+                            <td>6-11</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>5</td>
+                            <td><div class="team-cell"><span class="team-logo-small">PIT</span>Pittsburgh Steelers</div></td>
+                            <td>AFC</td>
+                            <td>673</td>
+                            <td>582</td>
+                            <td>21</td>
+                            <td class="win-pct">.534</td>
+                            <td>10-7</td>
+                            <td><span class="seed-badge">4</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>6</td>
+                            <td><div class="team-cell"><span class="team-logo-small">SF</span>San Francisco 49ers</div></td>
+                            <td>NFC</td>
+                            <td>608</td>
+                            <td>517</td>
+                            <td>16</td>
+                            <td class="win-pct">.540</td>
+                            <td>12-5</td>
+                            <td><span class="seed-badge">2</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>7</td>
+                            <td><div class="team-cell"><span class="team-logo-small">DAL</span>Dallas Cowboys</div></td>
+                            <td>NFC</td>
+                            <td>568</td>
+                            <td>452</td>
+                            <td>6</td>
+                            <td class="win-pct">.556</td>
+                            <td>8-9</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>8</td>
+                            <td><div class="team-cell"><span class="team-logo-small">PHI</span>Philadelphia Eagles</div></td>
+                            <td>NFC</td>
+                            <td>621</td>
+                            <td>609</td>
+                            <td>26</td>
+                            <td class="win-pct">.505</td>
+                            <td>14-3</td>
+                            <td><span class="seed-badge">1</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>9</td>
+                            <td><div class="team-cell"><span class="team-logo-small">WAS</span>Washington Commanders</div></td>
+                            <td>NFC</td>
+                            <td>612</td>
+                            <td>628</td>
+                            <td>28</td>
+                            <td class="win-pct">.494</td>
+                            <td>9-8</td>
+                            <td><span class="seed-badge">7</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>10</td>
+                            <td><div class="team-cell"><span class="team-logo-small">DEN</span>Denver Broncos</div></td>
+                            <td>AFC</td>
+                            <td>531</td>
+                            <td>448</td>
+                            <td>10</td>
+                            <td class="win-pct">.542</td>
+                            <td>14-3</td>
+                            <td><span class="seed-badge">1</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>11</td>
+                            <td><div class="team-cell"><span class="team-logo-small">MIA</span>Miami Dolphins</div></td>
+                            <td>AFC</td>
+                            <td>496</td>
+                            <td>406</td>
+                            <td>4</td>
+                            <td class="win-pct">.550</td>
+                            <td>9-8</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>12</td>
+                            <td><div class="team-cell"><span class="team-logo-small">MIN</span>Minnesota Vikings</div></td>
+                            <td>NFC</td>
+                            <td>528</td>
+                            <td>441</td>
+                            <td>11</td>
+                            <td class="win-pct">.544</td>
+                            <td>10-7</td>
+                            <td><span class="seed-badge">5</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>13</td>
+                            <td><div class="team-cell"><span class="team-logo-small">BAL</span>Baltimore Ravens</div></td>
+                            <td>AFC</td>
+                            <td>260</td>
+                            <td>194</td>
+                            <td>1</td>
+                            <td class="win-pct">.573</td>
+                            <td>11-6</td>
+                            <td><span class="seed-badge">5</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>14</td>
+                            <td><div class="team-cell"><span class="team-logo-small">KC</span>Kansas City Chiefs</div></td>
+                            <td>AFC</td>
+                            <td>498</td>
+                            <td>450</td>
+                            <td>12</td>
+                            <td class="win-pct">.524</td>
+                            <td>12-5</td>
+                            <td><span class="seed-badge">3</span></td>
+                        </tr>
+                        <tr data-conf="AFC" class="titans-row">
+                            <td>15</td>
+                            <td><div class="team-cell"><span class="team-logo-small" style="background:var(--titans-blue);">TEN</span><strong>Tennessee Titans</strong></div></td>
+                            <td>AFC</td>
+                            <td>488</td>
+                            <td>485</td>
+                            <td>6</td>
+                            <td class="win-pct">.502</td>
+                            <td>9-8</td>
+                            <td><span class="seed-badge">7</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>16</td>
+                            <td><div class="team-cell"><span class="team-logo-small">IND</span>Indianapolis Colts</div></td>
+                            <td>AFC</td>
+                            <td>538</td>
+                            <td>482</td>
+                            <td>7</td>
+                            <td class="win-pct">.527</td>
+                            <td>7-10</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>17</td>
+                            <td><div class="team-cell"><span class="team-logo-small">DET</span>Detroit Lions</div></td>
+                            <td>NFC</td>
+                            <td>583</td>
+                            <td>685</td>
+                            <td>33</td>
+                            <td class="win-pct">.462</td>
+                            <td>11-6</td>
+                            <td><span class="seed-badge">4</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>18</td>
+                            <td><div class="team-cell"><span class="team-logo-small">LV</span>Las Vegas Raiders</div></td>
+                            <td>AFC</td>
+                            <td>519</td>
+                            <td>469</td>
+                            <td>11</td>
+                            <td class="win-pct">.525</td>
+                            <td>5-12</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>19</td>
+                            <td><div class="team-cell"><span class="team-logo-small">LAR</span>Los Angeles Rams</div></td>
+                            <td>NFC</td>
+                            <td>591</td>
+                            <td>580</td>
+                            <td>21</td>
+                            <td class="win-pct">.505</td>
+                            <td>8-9</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>20</td>
+                            <td><div class="team-cell"><span class="team-logo-small">LAC</span>Los Angeles Chargers</div></td>
+                            <td>AFC</td>
+                            <td>481</td>
+                            <td>491</td>
+                            <td>11</td>
+                            <td class="win-pct">.495</td>
+                            <td>10-7</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>21</td>
+                            <td><div class="team-cell"><span class="team-logo-small">SEA</span>Seattle Seahawks</div></td>
+                            <td>NFC</td>
+                            <td>398</td>
+                            <td>352</td>
+                            <td>0</td>
+                            <td class="win-pct">.531</td>
+                            <td>13-4</td>
+                            <td><span class="seed-badge">SB CHAMP</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>22</td>
+                            <td><div class="team-cell"><span class="team-logo-small">NO</span>New Orleans Saints</div></td>
+                            <td>NFC</td>
+                            <td>407</td>
+                            <td>441</td>
+                            <td>5</td>
+                            <td class="win-pct">.481</td>
+                            <td>6-11</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>23</td>
+                            <td><div class="team-cell"><span class="team-logo-small">ARI</span>Arizona Cardinals</div></td>
+                            <td>NFC</td>
+                            <td>588</td>
+                            <td>757</td>
+                            <td>40</td>
+                            <td class="win-pct">.439</td>
+                            <td>6-11</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>24</td>
+                            <td><div class="team-cell"><span class="team-logo-small">BUF</span>Buffalo Bills</div></td>
+                            <td>AFC</td>
+                            <td>451</td>
+                            <td>495</td>
+                            <td>8</td>
+                            <td class="win-pct">.477</td>
+                            <td>11-6</td>
+                            <td><span class="seed-badge">6</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>25</td>
+                            <td><div class="team-cell"><span class="team-logo-small">ATL</span>Atlanta Falcons</div></td>
+                            <td>NFC</td>
+                            <td>384</td>
+                            <td>449</td>
+                            <td>6</td>
+                            <td class="win-pct">.462</td>
+                            <td>8-9</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>26</td>
+                            <td><div class="team-cell"><span class="team-logo-small">CIN</span>Cincinnati Bengals</div></td>
+                            <td>AFC</td>
+                            <td>373</td>
+                            <td>449</td>
+                            <td>4</td>
+                            <td class="win-pct">.454</td>
+                            <td>8-9</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>27</td>
+                            <td><div class="team-cell"><span class="team-logo-small">CLE</span>Cleveland Browns</div></td>
+                            <td>AFC</td>
+                            <td>531</td>
+                            <td>521</td>
+                            <td>14</td>
+                            <td class="win-pct">.505</td>
+                            <td>4-13</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>28</td>
+                            <td><div class="team-cell"><span class="team-logo-small">NYJ</span>New York Jets</div></td>
+                            <td>AFC</td>
+                            <td>425</td>
+                            <td>512</td>
+                            <td>8</td>
+                            <td class="win-pct">.454</td>
+                            <td>7-10</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>29</td>
+                            <td><div class="team-cell"><span class="team-logo-small">TB</span>Tampa Bay Buccaneers</div></td>
+                            <td>NFC</td>
+                            <td>302</td>
+                            <td>423</td>
+                            <td>1</td>
+                            <td class="win-pct">.417</td>
+                            <td>10-7</td>
+                            <td><span class="seed-badge">6</span></td>
+                        </tr>
+                        <tr data-conf="NFC">
+                            <td>30</td>
+                            <td><div class="team-cell"><span class="team-logo-small">CAR</span>Carolina Panthers</div></td>
+                            <td>NFC</td>
+                            <td>217</td>
+                            <td>247</td>
+                            <td>1</td>
+                            <td class="win-pct">.468</td>
+                            <td>5-12</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>31</td>
+                            <td><div class="team-cell"><span class="team-logo-small">JAX</span>Jacksonville Jaguars</div></td>
+                            <td>AFC</td>
+                            <td>192</td>
+                            <td>271</td>
+                            <td>0</td>
+                            <td class="win-pct">.415</td>
+                            <td>12-5</td>
+                            <td><span class="seed-badge">3</span></td>
+                        </tr>
+                        <tr data-conf="AFC">
+                            <td>32</td>
+                            <td><div class="team-cell"><span class="team-logo-small">HOU</span>Houston Texans</div></td>
+                            <td>AFC</td>
+                            <td>152</td>
+                            <td>200</td>
+                            <td>0</td>
+                            <td class="win-pct">.432</td>
+                            <td>6-11</td>
+                            <td><span class="seed-badge no-playoffs">--</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: var(--titans-silver);">* Franchise records include all historical team names (e.g., Titans includes Oilers history). Rankings by all-time win percentage.</p>
+        </section>
     </main>
 
     <footer>
@@ -1755,6 +2267,44 @@
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function filterTeams(conf) {
+            const rows = document.querySelectorAll('#recordsTable tbody tr');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            rows.forEach(row => {
+                if (conf === 'all' || row.dataset.conf === conf) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById('recordsTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            const isNumeric = [0, 3, 4, 5, 6].includes(columnIndex);
+
+            rows.sort((a, b) => {
+                let aVal = a.cells[columnIndex].textContent.trim();
+                let bVal = b.cells[columnIndex].textContent.trim();
+
+                if (isNumeric) {
+                    aVal = parseFloat(aVal.replace(/[^0-9.-]/g, '')) || 0;
+                    bVal = parseFloat(bVal.replace(/[^0-9.-]/g, '')) || 0;
+                    return bVal - aVal;
+                }
+                return aVal.localeCompare(bVal);
+            });
+
+            rows.forEach(row => tbody.appendChild(row));
         }
     </script>
 </body>
