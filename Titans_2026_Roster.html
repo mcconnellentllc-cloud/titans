@@ -476,7 +476,128 @@
       font-size: 12px;
       font-weight: 600;
     }
-    
+
+    /* Stat Comparison Bars */
+    .stat-comparison {
+      background: rgba(0,0,0,0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid rgba(75,146,219,0.2);
+    }
+
+    .stat-comparison-title {
+      color: var(--titans-red);
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .stat-comparison-item {
+      margin-bottom: 20px;
+    }
+
+    .stat-comparison-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .stat-comparison-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .stat-comparison-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .stat-comparison-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-comparison-value .value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--titans-blue);
+    }
+
+    .stat-comparison-value .diff {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .stat-comparison-value .diff.positive {
+      background: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+    }
+
+    .stat-comparison-value .diff.negative {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+
+    .stat-bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stat-bar-label {
+      width: 70px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      text-align: right;
+    }
+
+    .stat-bar-container {
+      flex: 1;
+      height: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .stat-bar {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.5s ease;
+    }
+
+    .stat-bar.player {
+      background: linear-gradient(90deg, var(--titans-red) 0%, #e8304a 100%);
+    }
+
+    .stat-bar.division {
+      background: linear-gradient(90deg, #eab308 0%, #facc15 100%);
+    }
+
+    .stat-bar.league {
+      background: linear-gradient(90deg, #6b7280 0%, #9ca3af 100%);
+    }
+
+    .stat-bar-value {
+      width: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: right;
+    }
+
     /* Coaches Grid */
     .coaches-grid {
       display: grid;
@@ -779,7 +900,7 @@
     }
 
     .comparison-bar.player {
-      background: linear-gradient(90deg, var(--titans-blue), #6ab0ff);
+      background: linear-gradient(90deg, var(--titans-red), #e8304a);
     }
 
     .comparison-bar.division {
@@ -818,7 +939,7 @@
       border-radius: 3px;
     }
 
-    .legend-color.player { background: var(--titans-blue); }
+    .legend-color.player { background: var(--titans-red); }
     .legend-color.division { background: #f39c12; }
     .legend-color.league { background: #95a5a6; }
 
