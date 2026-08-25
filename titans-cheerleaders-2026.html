@@ -24,16 +24,16 @@
 
         body {
             font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1525 100%);
+            background: #ffffff;
             min-height: 100vh;
-            color: var(--titans-white);
+            color: var(--titans-navy);
         }
 
         /* Navigation */
         .main-nav {
-            background: rgba(0,0,0,0.5);
+            background: var(--titans-navy);
             padding: 15px 20px;
-            border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+            border-bottom: 3px solid var(--titans-red);
             position: fixed;
             top: 0;
             left: 0;
@@ -75,8 +75,8 @@
         }
 
         .nav-link.active {
-            color: var(--titans-blue);
-            background: rgba(75, 146, 219, 0.15);
+            color: var(--titans-white);
+            background: rgba(75, 146, 219, 0.25);
         }
 
         .titans-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
@@ -85,7 +85,7 @@
         .titans-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
         .titans-hamburger.active span:nth-child(2) { opacity: 0; }
         .titans-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-        .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 10, 16, 0.98); backdrop-filter: blur(10px); z-index: 999; padding-top: 80px; flex-direction: column; align-items: center; gap: 5px; }
+        .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(12, 35, 64, 0.98); backdrop-filter: blur(10px); z-index: 999; padding-top: 80px; flex-direction: column; align-items: center; gap: 5px; }
         .titans-mobile-menu.active { display: block; overflow-y: scroll; -webkit-overflow-scrolling: touch; overscroll-behavior-y: contain; touch-action: pan-y; } .titans-mobile-menu-inner { display: flex; flex-direction: column; align-items: center; padding-top: 100px; padding-bottom: 120px; gap: 5px; min-height: 100%; }
         .titans-mobile-menu a { color: var(--titans-silver); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
         .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.1); }
@@ -95,7 +95,7 @@
         .hero {
             padding: 140px 20px 60px;
             text-align: center;
-            background: linear-gradient(180deg, #050a10 0%, var(--titans-navy) 50%, #0a1525 100%);
+            background: linear-gradient(180deg, var(--titans-navy) 0%, #0f2d4f 50%, #163a5c 100%);
             position: relative;
             overflow: hidden;
             border-bottom: 4px solid var(--titans-red);
@@ -186,10 +186,10 @@
             padding: 15px 20px;
             font-size: 1rem;
             font-family: 'Open Sans', sans-serif;
-            border: 2px solid rgba(75, 146, 219, 0.4);
+            border: 2px solid #ddd;
             border-radius: 8px;
-            background: rgba(12, 35, 64, 0.6);
-            color: white;
+            background: #fff;
+            color: var(--titans-navy);
             outline: none;
             transition: all 0.3s ease;
         }
@@ -200,7 +200,7 @@
 
         .search-input:focus {
             border-color: var(--titans-blue);
-            box-shadow: 0 0 20px rgba(75, 146, 219, 0.3);
+            box-shadow: 0 0 0 3px rgba(75, 146, 219, 0.15);
         }
 
         /* Main Content */
@@ -230,7 +230,7 @@
             font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--titans-white);
+            color: var(--titans-navy);
         }
 
         .section-subtitle {
@@ -251,10 +251,10 @@
             display: grid;
             grid-template-columns: 250px 1fr;
             gap: 30px;
-            background: linear-gradient(145deg, rgba(12, 35, 64, 0.8) 0%, rgba(26, 58, 92, 0.6) 100%);
+            background: #f8f9fa;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(75, 146, 219, 0.3);
+            border: 1px solid #e0e0e0;
         }
 
         .mascot-image {
@@ -280,6 +280,7 @@
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 3px;
+            color: var(--titans-navy);
             margin-bottom: 5px;
         }
 
@@ -299,11 +300,12 @@
         }
 
         .mascot-pill {
-            background: rgba(0,0,0,0.3);
+            background: #fff;
             padding: 8px 14px;
             border-radius: 6px;
             font-size: 0.8rem;
-            border: 1px solid rgba(75, 146, 219, 0.2);
+            border: 1px solid #e0e0e0;
+            color: var(--titans-navy);
         }
 
         .mascot-pill strong {
@@ -337,12 +339,14 @@
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .cheer-card:hover {
             transform: scale(1.03);
             border-color: var(--titans-red);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
 
         .cheer-card img {
@@ -358,6 +362,7 @@
             right: 0;
             padding: 60px 15px 15px;
             background: linear-gradient(to top, rgba(12, 35, 64, 0.95) 0%, transparent 100%);
+            color: #fff;
         }
 
         .cheer-card-name {
@@ -365,6 +370,7 @@
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: #fff;
         }
 
         .cheer-badge {
@@ -377,6 +383,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: #fff;
         }
 
         .cheer-badge.captain {
@@ -396,9 +403,9 @@
         .drumline-section {
             margin-top: 60px;
             padding: 40px;
-            background: linear-gradient(145deg, rgba(12, 35, 64, 0.6) 0%, rgba(26, 58, 92, 0.4) 100%);
+            background: #f8f9fa;
             border-radius: 16px;
-            border: 1px solid rgba(75, 146, 219, 0.2);
+            border: 1px solid #e0e0e0;
         }
 
         .drumline-content {
@@ -407,7 +414,7 @@
 
         .drumline-content p {
             line-height: 1.8;
-            color: rgba(255,255,255,0.85);
+            color: #444;
             margin-top: 15px;
         }
 
@@ -416,7 +423,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(5, 10, 16, 0.9);
+            background: rgba(12, 35, 64, 0.7);
             backdrop-filter: blur(10px);
             z-index: 1000;
             align-items: center;
@@ -429,13 +436,14 @@
         }
 
         .modal {
-            background: linear-gradient(145deg, rgba(12, 35, 64, 0.98) 0%, rgba(26, 58, 92, 0.95) 100%);
+            background: #fff;
             border-radius: 16px;
             max-width: 500px;
             width: 100%;
-            border: 1px solid rgba(75, 146, 219, 0.3);
+            border: 1px solid #e0e0e0;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .modal-close {
@@ -444,7 +452,7 @@
             right: 15px;
             width: 36px;
             height: 36px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             border: none;
             border-radius: 50%;
             color: white;
@@ -477,6 +485,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 5px;
+            color: var(--titans-navy);
         }
 
         .modal-role {
@@ -508,7 +517,7 @@
         }
 
         .modal-detail-value {
-            color: rgba(255,255,255,0.9);
+            color: var(--titans-navy);
         }
 
         /* No Results */
@@ -531,8 +540,8 @@
         footer {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(0,0,0,0.3);
-            border-top: 2px solid var(--titans-red);
+            background: var(--titans-navy);
+            border-top: 3px solid var(--titans-red);
         }
 
         .social-links {
@@ -607,7 +616,7 @@
             <a href="titans-betting-odds.html">Odds</a>
             <a href="titans-hype-videos.html">Hype Videos</a>
             <a href="titans-tailgate-recipes.html">Recipes</a>
-        <a href="nfl.html">NFL</a>
+            <a href="nfl.html">NFL</a>
             <a href="nashville-vs.html">Nashville vs.</a>
             <a href="titans-bible-viewer.html">Bible</a>
             <a href="trips/">Trips</a>
@@ -621,7 +630,7 @@
             <p class="hero-subtitle">2026 Titans Cheerleaders</p>
             <p class="hero-tagline">Nashville's finest take the field.</p>
             <div class="hero-badges">
-                <span class="badge">Squad 28 Members</span>
+                <span class="badge">Squad 29 Members</span>
                 <span class="badge">Mascot T-Rac</span>
                 <span class="badge">Est 1999</span>
                 <span class="badge">Drumline Blue Crew</span>
@@ -665,175 +674,124 @@
                 <span class="section-number">01</span>
                 <h2 class="section-title">The Squad</h2>
             </div>
-            <p class="section-subtitle">2026 Roster - 37 Members Shown (28 official spots, selected from 400+ auditioners) &bull; New uniforms with 2026 rebrand</p>
-            <div style="background: linear-gradient(145deg, rgba(200,16,46,0.15), rgba(12,35,64,0.8)); border: 1px solid rgba(200,16,46,0.3); border-radius: 8px; padding: 15px; margin-bottom: 20px; font-size: 0.85rem; color: var(--titans-silver); line-height: 1.6;">
-                <strong style="color: var(--titans-red);">2026 Highlights:</strong><br>
-                <strong>Taylor</strong> (4th year, Savannah GA) — 2026 Pro Bowl Games representative. Cirque Du Soleil acrobatics background. Military tours to Singapore, Diego Garcia, Hawaii. Performed at NFL London.<br>
-                <strong>Susanna Dunn</strong> (Captain, Nashville) — 2024 Pro Bowl rep, Alabama Dance Team alum, Doctorate in Occupational Therapy. Danced since age 3.<br>
-                <strong>Kinley Propes</strong> &amp; <strong>Mark Geist</strong> — Mark proposed to Kinley on-field during the Nov 2025 Seahawks game! Captured on the Jumbotron and went viral. Wedding planned for 2027.<br>
-                <strong>Bella Cundiff</strong> — Rookie for 2026.<br>
-                <strong>New for 2026:</strong> Donivous, Bristyn (3rd year), Mari (international), Ja'Lyn (Nashville nurse), Erica (RN), Alexandria (Belmont student), Bethany (holistic fitness coach).<br>
-                <strong>New uniforms</strong> debuted with the Titans' March 2026 rebrand. Performed at CMA Fest 2026 with Russell Dickerson.<br>
-                Auditions: April 22 at The Factory at Franklin (dance), April 24 at Nissan Stadium (stunts). 28 selected from 400+ auditioners.
-            </div>
+            <p class="section-subtitle">Official 2026 Roster &mdash; 29 Members &bull; New uniforms with 2026 rebrand</p>
 
             <div class="cheer-grid" id="cheerGrid">
-                <div class="cheer-card" data-name="amy" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/l4fa1qcmon1uanoxl6uq.jpg" alt="Amy">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Amy</span></div>
-                </div>
-                <div class="cheer-card" data-name="anna" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fa4o8bmohuyxcsjcnknj.jpg" alt="Anna">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Anna</span></div>
-                </div>
-                <div class="cheer-card" data-name="ashleigh" data-years="4" onclick="openModal(this)">
-                    <span class="cheer-badge veteran">Yr 4</span>
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lofjeirzeugyvjhdau66.jpg" alt="Ashleigh">
+                <div class="cheer-card" data-name="ashleigh" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/bmmr5h7vtiwzrf5pw83d.jpg" alt="Ashleigh">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Ashleigh</span></div>
                 </div>
-                <div class="cheer-card" data-name="brenan" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/tujrlnahlsubudtetqx5.jpg" alt="Brenan">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Brenan</span></div>
+                <div class="cheer-card" data-name="bella" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/tjwlcx1azgwbox7eixlf.jpg" alt="Bella">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Bella</span></div>
+                </div>
+                <div class="cheer-card" data-name="christian" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/mzwftlbhzub0aqppinuy.png" alt="Christian">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Christian</span></div>
                 </div>
                 <div class="cheer-card" data-name="daniel" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/wix9icawwgqbegvyzmhf.jpg" alt="Daniel">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/kdqdej3xj7v9g7edacz6.png" alt="Daniel">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Daniel</span></div>
                 </div>
-                <div class="cheer-card" data-name="emily" data-captain="true" onclick="openModal(this)">
-                    <span class="cheer-badge captain">Captain</span>
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lrvlfd9yu3iqxcoleyue.jpg" alt="Emily">
+                <div class="cheer-card" data-name="emily" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/rsiwy4qdbtwoxurpf7x2.png" alt="Emily">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Emily</span></div>
                 </div>
                 <div class="cheer-card" data-name="emma" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/blqhankbgkjdydilosi3.jpg" alt="Emma">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/rt9nojxs8rfsse3xe2rk.jpg" alt="Emma">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Emma</span></div>
                 </div>
                 <div class="cheer-card" data-name="gabby" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/av8fddvqqgme5ae4pnjv.jpg" alt="Gabby">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/plju0gobot9hadobsf2a.png" alt="Gabby">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Gabby</span></div>
                 </div>
                 <div class="cheer-card" data-name="gracie" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/eewxoqrgrms2cd9xmiwp.jpg" alt="Gracie">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/fmkuph5zp0ofobyd6wh0.png" alt="Gracie">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Gracie</span></div>
                 </div>
-                <div class="cheer-card" data-name="hannah k" data-years="3" onclick="openModal(this)">
-                    <span class="cheer-badge veteran">Yr 3</span>
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fwnnesgf2x2ljr6f9yjw.jpg" alt="Hannah K">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Hannah K</span></div>
-                </div>
-                <div class="cheer-card" data-name="hannah s" data-captain="true" onclick="openModal(this)">
-                    <span class="cheer-badge captain">Captain</span>
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/xgiujoq5b38hdqt6ofp8.jpg" alt="Hannah S">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Hannah S</span></div>
+                <div class="cheer-card" data-name="hannah" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/log9keu9sxqmqmt3dwl1.jpg" alt="Hannah">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Hannah</span></div>
                 </div>
                 <div class="cheer-card" data-name="izzy" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/jv7foybuxp1w4aaxvyec.jpg" alt="Izzy">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/csj9ujvm3cnrlqj6riun.jpg" alt="Izzy">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Izzy</span></div>
                 </div>
+                <div class="cheer-card" data-name="jay" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/gn0yhqdj2xoqn5fpwijl.png" alt="Jay">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Jay</span></div>
+                </div>
                 <div class="cheer-card" data-name="johnna" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lo7hcjkfvulwsbidkctw.jpg" alt="Johnna">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/n36hqsqv8tmfzcdunajd.png" alt="Johnna">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Johnna</span></div>
                 </div>
-                <div class="cheer-card" data-name="kayley" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fegluibtmlm6z5orsgqc.jpg" alt="Kayley">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Kayley</span></div>
+                <div class="cheer-card" data-name="julia" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/wl42mny7nu59pxlgcprl.png" alt="Julia">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Julia</span></div>
                 </div>
-                <div class="cheer-card" data-name="kinley" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/b2wpdks2mnrdbpwvl1tw.jpg" alt="Kinley">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Kinley</span></div>
+                <div class="cheer-card" data-name="kloey" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/vacvf0rscvmhsgwfoowp.png" alt="Kloey">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Kloey</span></div>
                 </div>
-                <div class="cheer-card" data-name="mark" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ytwct6auslgi3li9uf5p.jpg" alt="Mark">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Mark</span></div>
+                <div class="cheer-card" data-name="mckenna" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/dgtstvx63l7npdcd38wu.png" alt="McKenna">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">McKenna</span></div>
                 </div>
-                <div class="cheer-card" data-name="mckenna b" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/lu2kk7njerwbr0batgmn.jpg" alt="McKenna B">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">McKenna B</span></div>
-                </div>
-                <div class="cheer-card" data-name="mckenna m" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/evcqrnlhc8qzoa2sj0fu.jpg" alt="McKenna M">
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">McKenna M</span></div>
+                <div class="cheer-card" data-name="mckenzie" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/oaiq4v9fm7bfdkgj5x96.png" alt="McKenzie">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">McKenzie</span></div>
                 </div>
                 <div class="cheer-card" data-name="milton" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/wbi19qtipfftljecwo2y.jpg" alt="Milton">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/z4i8kjnb2tetbsfx7v2u.png" alt="Milton">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Milton</span></div>
                 </div>
                 <div class="cheer-card" data-name="natali" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/g1v50qacuabapan2tjdm.jpg" alt="Natali">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/gsiunmfa9h8khrgzw7mi.png" alt="Natali">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Natali</span></div>
                 </div>
                 <div class="cheer-card" data-name="naudia" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/w6hlbw1pqfhek50z1sob.jpg" alt="Naudia">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/qyfcbs926bccjjaof467.png" alt="Naudia">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Naudia</span></div>
                 </div>
+                <div class="cheer-card" data-name="paris" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/wntkgpkhrlhvk3e2pgx3.png" alt="Paris">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Paris</span></div>
+                </div>
                 <div class="cheer-card" data-name="rhimya" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/vdajcrlzdypao429jq2f.jpg" alt="Rhimya">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/o1mbph1eozkohksidimz.png" alt="Rhimya">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Rhimya</span></div>
                 </div>
-                <div class="cheer-card" data-name="riley" data-years="5" onclick="openModal(this)">
-                    <span class="cheer-badge veteran">Yr 5</span>
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/unbzeoy80awo6uufl1ud.jpg" alt="Riley">
+                <div class="cheer-card" data-name="riley" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/hfyanlncfvkz2gcjzmn3.png" alt="Riley">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Riley</span></div>
                 </div>
                 <div class="cheer-card" data-name="ryan" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/kckc9z1ltnz8j3k3apjn.jpg" alt="Ryan">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/yo2elzzkvfjbbu1gbddq.png" alt="Ryan">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Ryan</span></div>
                 </div>
+                <div class="cheer-card" data-name="sarah" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/tvoilvmeqz0iaahiavvv.png" alt="Sarah">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Sarah</span></div>
+                </div>
                 <div class="cheer-card" data-name="saydi" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/eu0xu6pvyo0w4netwddq.jpg" alt="Saydi">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/n6i5qlz0yzcvjs5xwhwv.png" alt="Saydi">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Saydi</span></div>
                 </div>
-                <div class="cheer-card" data-name="susanna" data-captain="true" onclick="openModal(this)">
-                    <span class="cheer-badge captain">Captain</span>
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ppxhz4g8jn1fzebs8shb.jpg" alt="Susanna">
+                <div class="cheer-card" data-name="susanna" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/m09rnukqzh8mthdz8mtb.png" alt="Susanna">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Susanna</span></div>
                 </div>
                 <div class="cheer-card" data-name="sydnei" onclick="openModal(this)">
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/fsyravpoicxbqnhkbpua.jpg" alt="Sydnei">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/fss84lvi3boxfs4uhtei.png" alt="Sydnei">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Sydnei</span></div>
                 </div>
-                <div class="cheer-card" data-name="taylor" data-captain="true" onclick="openModal(this)">
-                    <span class="cheer-badge captain">Captain</span>
-                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_auto/titans/ubzjdeya61hqgud5ga9g.jpg" alt="Taylor">
+                <div class="cheer-card" data-name="sydnie" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/fo5zpa3yqpqvtn5ls1jo.png" alt="Sydnie">
+                    <div class="cheer-card-overlay"><span class="cheer-card-name">Sydnie</span></div>
+                </div>
+                <div class="cheer-card" data-name="taylor" onclick="openModal(this)">
+                    <img src="https://static.clubs.nfl.com/image/upload/t_portrait_mobile/f_png/titans/dzrdpldfsdddalsdqm3i.png" alt="Taylor">
                     <div class="cheer-card-overlay"><span class="cheer-card-name">Taylor</span></div>
-                </div>
-                <div class="cheer-card" data-name="bella" onclick="openModal(this)">
-                    <span class="cheer-badge" style="background: rgba(34,197,94,0.3); color: #22c55e;">Rookie</span>
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">BC</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Bella</span></div>
-                </div>
-                <div class="cheer-card" data-name="donivous" onclick="openModal(this)">
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">D</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Donivous</span></div>
-                </div>
-                <div class="cheer-card" data-name="bristyn" data-years="3" onclick="openModal(this)">
-                    <span class="cheer-badge veteran">Yr 3</span>
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">B</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Bristyn</span></div>
-                </div>
-                <div class="cheer-card" data-name="mari" onclick="openModal(this)">
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">M</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Mari</span></div>
-                </div>
-                <div class="cheer-card" data-name="ja'lyn" onclick="openModal(this)">
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">JL</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Ja'Lyn</span></div>
-                </div>
-                <div class="cheer-card" data-name="erica" onclick="openModal(this)">
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">E</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Erica</span></div>
-                </div>
-                <div class="cheer-card" data-name="alexandria" onclick="openModal(this)">
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">A</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Alexandria</span></div>
-                </div>
-                <div class="cheer-card" data-name="bethany" onclick="openModal(this)">
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(75,146,219,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-blue);">B</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Bethany</span></div>
-                </div>
-                <div class="cheer-card" data-name="chloe" onclick="openModal(this)">
-                    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--titans-navy),rgba(200,16,46,0.3));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:2rem;color:var(--titans-red);">CH</div>
-                    <div class="cheer-card-overlay"><span class="cheer-card-name">Chloe H</span></div>
                 </div>
             </div>
 
@@ -858,32 +816,32 @@
 
             <h3 style="font-family: 'Oswald', sans-serif; color: var(--titans-blue); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; margin: 30px 0 15px; text-align: center;">Blue Crew on YouTube</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 20px;">
-                <a href="https://www.youtube.com/watch?v=8ntHYFy4GRQ" target="_blank" style="display: block; background: linear-gradient(145deg, rgba(12,35,64,0.9), rgba(26,58,92,0.8)); border: 1px solid rgba(75,146,219,0.2); border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
-                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-white); font-size: 1rem; margin-bottom: 5px;">The Titans Blue Crew</div>
+                <a href="https://www.youtube.com/watch?v=8ntHYFy4GRQ" target="_blank" style="display: block; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
+                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-navy); font-size: 1rem; margin-bottom: 5px;">The Titans Blue Crew</div>
                     <div style="color: var(--titans-silver); font-size: 0.8rem;">Official overview of the Blue Crew drumline</div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=v2uXO7dEkCA" target="_blank" style="display: block; background: linear-gradient(145deg, rgba(12,35,64,0.9), rgba(26,58,92,0.8)); border: 1px solid rgba(75,146,219,0.2); border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
-                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-white); font-size: 1rem; margin-bottom: 5px;">Blue Crew "FUNKY TOWN"</div>
+                <a href="https://www.youtube.com/watch?v=v2uXO7dEkCA" target="_blank" style="display: block; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
+                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-navy); font-size: 1rem; margin-bottom: 5px;">Blue Crew "FUNKY TOWN"</div>
                     <div style="color: var(--titans-silver); font-size: 0.8rem;">Gameday performance at Nissan Stadium</div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=519g8isXnrw" target="_blank" style="display: block; background: linear-gradient(145deg, rgba(12,35,64,0.9), rgba(26,58,92,0.8)); border: 1px solid rgba(75,146,219,0.2); border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
-                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-white); font-size: 1rem; margin-bottom: 5px;">Blue Crew Drumline Performance</div>
+                <a href="https://www.youtube.com/watch?v=519g8isXnrw" target="_blank" style="display: block; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
+                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-navy); font-size: 1rem; margin-bottom: 5px;">Blue Crew Drumline Performance</div>
                     <div style="color: var(--titans-silver); font-size: 0.8rem;">Full-length drumline showcase</div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=vAjx0f9-Pv4" target="_blank" style="display: block; background: linear-gradient(145deg, rgba(12,35,64,0.9), rgba(26,58,92,0.8)); border: 1px solid rgba(75,146,219,0.2); border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
-                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-white); font-size: 1rem; margin-bottom: 5px;">Meet Chloe Holladay, Titans' 1st Majorette</div>
+                <a href="https://www.youtube.com/watch?v=vAjx0f9-Pv4" target="_blank" style="display: block; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
+                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-navy); font-size: 1rem; margin-bottom: 5px;">Meet Chloe Holladay, Titans' 1st Majorette</div>
                     <div style="color: var(--titans-silver); font-size: 0.8rem;">Beyond The Pads presented by Nissan</div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=XCS_1md7_Qo" target="_blank" style="display: block; background: linear-gradient(145deg, rgba(12,35,64,0.9), rgba(26,58,92,0.8)); border: 1px solid rgba(75,146,219,0.2); border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
-                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-white); font-size: 1rem; margin-bottom: 5px;">Blue Crew Surprise at Stratford High</div>
+                <a href="https://www.youtube.com/watch?v=XCS_1md7_Qo" target="_blank" style="display: block; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
+                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-navy); font-size: 1rem; margin-bottom: 5px;">Blue Crew Surprise at Stratford High</div>
                     <div style="color: var(--titans-silver); font-size: 0.8rem;">SeatGeek Sound — community outreach & $5K donation</div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=sCn2MPHZCYE" target="_blank" style="display: block; background: linear-gradient(145deg, rgba(12,35,64,0.9), rgba(26,58,92,0.8)); border: 1px solid rgba(75,146,219,0.2); border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
-                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-white); font-size: 1rem; margin-bottom: 5px;">Blue Crew & Stratford High School Band</div>
+                <a href="https://www.youtube.com/watch?v=sCn2MPHZCYE" target="_blank" style="display: block; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
+                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-navy); font-size: 1rem; margin-bottom: 5px;">Blue Crew & Stratford High School Band</div>
                     <div style="color: var(--titans-silver); font-size: 0.8rem;">NewsChannel 5 — community talent spotlight</div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=A5yxvtsRync" target="_blank" style="display: block; background: linear-gradient(145deg, rgba(12,35,64,0.9), rgba(26,58,92,0.8)); border: 1px solid rgba(75,146,219,0.2); border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
-                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-white); font-size: 1rem; margin-bottom: 5px;">Chloe Holladay Makes NFL History</div>
+                <a href="https://www.youtube.com/watch?v=A5yxvtsRync" target="_blank" style="display: block; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-decoration: none; transition: all 0.3s ease;">
+                    <div style="font-family: 'Oswald', sans-serif; color: var(--titans-navy); font-size: 1rem; margin-bottom: 5px;">Chloe Holladay Makes NFL History</div>
                     <div style="color: var(--titans-silver); font-size: 0.8rem;">Sports Illustrated — first NFL majorette</div>
                 </a>
             </div>
