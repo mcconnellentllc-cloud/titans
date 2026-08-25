@@ -426,8 +426,8 @@
       <select id="teamSelect" onchange="loadTeam(this.value)">
         <option value="colts" selected>Indianapolis Colts</option>
         <option value="coming-soon" disabled>--- More Coming Soon ---</option>
-        <option value="coming-soon" disabled>Kansas City Chiefs</option>
-        <option value="coming-soon" disabled>Green Bay Packers</option>
+        <option value="chiefs">Kansas City Chiefs</option>
+        <option value="packers">Green Bay Packers</option>
         <option value="coming-soon" disabled>Denver Broncos</option>
         <option value="coming-soon" disabled>Houston Texans</option>
         <option value="coming-soon" disabled>Jacksonville Jaguars</option>
@@ -684,6 +684,420 @@ const teams = {
       nashScore: 20,
       oppScore: 4,
       summary: "Nashville wins 20 out of 24 categories. Indianapolis takes cost of living (cheaper because fewer people want to live there), sports scene (more current teams... for now), the all-time series (thanks, Peyton), and a Super Bowl ring (again... Peyton). That's it. Crime stats? Nashville is 29% safer. Schools? Nashville's proficiency rates are 60-70% higher. Jobs? Nashville is #2 in America for job growth. Income? Nashville households earn $15-20k more. Growth? Nashville is growing 5x faster. Tourism? Nashville visitors spend nearly DOUBLE. And the new $2.1 billion stadium hasn't even opened yet. It's Music City vs. a city whose biggest annual event involves cars driving in circles for 3 hours.",
+      closing: "Titan Up. Nashville Forever."
+    }
+  },
+  chiefs: {
+    name: "Kansas City Chiefs",
+    city: "Kansas City",
+    abbr: "KC",
+    color: "#E31837",
+    scoreboard: {
+      categoriesWon: "19",
+      categoriesLost: "5",
+      verdict: "Nashville owns the future"
+    },
+    cityQuote: '"Nashville is where the world comes to play. Kansas City is where the world comes to eat BBQ and leave."',
+    cityCards: [
+      {
+        header: "Crime & Safety",
+        nashValue: "1,124 violent/100k",
+        nashDetail: "Nashville's crime rate has been dropping consistently — down 10% year-over-year into 2025. Property crime declined nearly 12%. The city is getting safer while growing faster.",
+        oppValue: "1,547 violent/100k",
+        oppDetail: "Kansas City's violent crime rate is 38% HIGHER than Nashville's. 147 homicides in 2024 vs Nashville's 103. KC was named the #1 city for vehicle theft in 2024. Non-fatal shootings UP 12%.",
+        nashWins: true
+      },
+      {
+        header: "Cost of Living",
+        nashValue: "COL Index: 101-108",
+        nashDetail: "Higher housing costs ($450-500k median home, $1,650/mo 1BR rent) BUT zero state income tax. On a $100k salary, you keep $4,700 more per year vs Missouri. Higher prices reflect higher demand.",
+        oppValue: "COL Index: 80-87",
+        oppDetail: "Cheaper housing ($280-305k median home, $1,142-1,241/mo 1BR rent). But Missouri charges up to 4.7% state income tax. Lower prices = lower demand. People aren't exactly racing to KC.",
+        nashWins: false
+      },
+      {
+        header: "Schools & Higher Education",
+        nashValue: "Vanderbilt (#17 National)",
+        nashDetail: "VANDERBILT UNIVERSITY — #17 nationally (US News), $10B+ endowment, SEC athletics. Plus Belmont, Fisk (historic HBCU), Tennessee State, Meharry Medical College, Lipscomb. Nashville is a world-class college town.",
+        oppValue: "UMKC (#232 National)",
+        oppDetail: "University of Missouri-Kansas City is ranked #232 nationally. Rockhurst is a solid small Jesuit school. But there's no Vanderbilt-caliber institution anywhere near Kansas City. Not even close.",
+        nashWins: true
+      },
+      {
+        header: "Population Growth",
+        nashValue: "1.6%/yr — 5th Nationally",
+        nashDetail: "+47,600 new residents in 2025-2026. Nashville ranks 5th nationally in population growth alongside Austin, Raleigh, and Phoenix. Metro population 2M+ and climbing fast.",
+        oppValue: "0.4-0.86%/yr — Not Ranked",
+        oppDetail: "KC city growing 0.4%, metro 0.86%. Nashville's growth rate is 3-4x faster. Kansas City doesn't appear on any 'fastest-growing cities' lists.",
+        nashWins: true
+      },
+      {
+        header: "Job Market & Economy",
+        nashValue: "#2 Metro for Job Growth",
+        nashDetail: "Unemployment: 2.7%. 5 Fortune 500 HQs: HCA Healthcare, Dollar General, Tractor Supply, Delek US, Community Health. ORACLE just chose Nashville for its WORLD HEADQUARTERS — $1.2B campus, 8,500 jobs at $110k avg salary. Amazon & Meta building presences.",
+        oppValue: "No Fortune 500 HQs",
+        oppDetail: "Unemployment: 3.5-3.9%. Major employers include Cerner (now Oracle Health), Hallmark, H&R Block. But no Fortune 500 headquarters actually in KC proper. Nashville has 5. Oracle chose Nashville over KC. That says everything.",
+        nashWins: true
+      },
+      {
+        header: "Tourism & Visitors",
+        nashValue: "17M visitors / $11.5B spent",
+        nashDetail: "Nashville visitors spend $11.5B — nearly 3x what KC visitors spend. #1 net city favorability in America (YouGov 2026). #5 U.S. nightlife city. #21 globally. 250+ live music venues. The destination city of America.",
+        oppValue: "28-29M visitors / $4B spent",
+        oppDetail: "More total visitors but they spend only $4 BILLION vs Nashville's $11.5B. That's less than 1/3 per visit. People pass through KC. People plan trips TO Nashville.",
+        nashWins: true
+      },
+      {
+        header: "Development & Construction",
+        nashValue: "$2.1B Stadium + Oracle HQ",
+        nashDetail: "New $2.1B enclosed Titans stadium (Feb 2027). Oracle World HQ: $1.2B, 70-acre riverfront campus. East Bank: 550 acres of mixed-use development. New Tennessee Performing Arts Center (2030). Potential MLB stadium adjacent to new Titans stadium.",
+        oppValue: "Teams Leaving for Kansas",
+        oppDetail: "The Chiefs are building a new $3B stadium... in KANSAS. Leaving Missouri entirely. The Royals are planning a new $1.9B stadium at Crown Center. KC is rebuilding what it has. Nashville is building what's next.",
+        nashWins: true
+      },
+      {
+        header: "Weather",
+        nashValue: "Avg Jan High: 48°F",
+        nashDetail: "Four real seasons. Mild winters, warm summers. Nashville averages 7°F warmer in winter than KC. You can tailgate in a t-shirt into November. 205 sunny days per year.",
+        oppValue: "Avg Jan High: 41°F",
+        oppDetail: "Colder winters with regular snowfall and larger temperature swings. Humid continental climate. 215 sunny days but you're freezing through half of them.",
+        nashWins: true
+      },
+      {
+        header: "Nightlife & Entertainment",
+        nashValue: "250+ Live Music Venues",
+        nashDetail: "Honky Tonk Highway: free live music 16 hrs/day, 365 days/yr. Kid Rock's, Eric Church's Chiefs, Miranda Lambert's Casa Rosa, Lainey Wilson's Bell Bottoms Up. Grand Ole Opry. Ryman Auditorium. CMA Fest (90k+ daily). Nashville never closes.",
+        oppValue: "BBQ & Jazz Heritage",
+        oppDetail: "KC has world-class BBQ (100+ joints) and a proud jazz heritage on 18th & Vine. Power & Light District is fine. But KC doesn't appear in any global nightlife rankings. Nashville is #21 worldwide. It's not the same universe.",
+        nashWins: true
+      },
+      {
+        header: "Sports Scene",
+        nashValue: "MLB Expansion Favorite",
+        nashDetail: "Titans (NFL), Predators (NHL), Nashville SC (MLS — largest soccer-specific stadium in North America at 30,000 seats), Sounds (AAA). Frontrunner for MLB expansion. Nashville is ADDING teams. Every league wants in.",
+        oppValue: "Chiefs Leaving for Kansas",
+        oppDetail: "Chiefs (NFL), Royals (MLB), Sporting KC (MLS), Current (NWSL). More teams currently, but the CHIEFS ARE LITERALLY MOVING TO KANSAS by 2031. Kansas City, MO is losing its most famous franchise across the state line.",
+        nashWins: false
+      }
+    ],
+    franchise: [
+      {
+        header: "All-Time Series",
+        nashValue: "26 Wins",
+        nashDetail: "Chiefs lead 31-26 overall. But the Titans/Oilers have punched above their weight in this rivalry since the AFL days. Two original AFL franchises with 60+ years of history.",
+        oppValue: "31 Wins",
+        oppDetail: "They have the edge. But 5 games isn't a dynasty-level gap. And the Titans won the most recent meeting 26-9 in December 2025.",
+        nashWins: false
+      },
+      {
+        header: "Iconic Moment",
+        nashValue: "Mariota Self-Pass TD (2017)",
+        nashDetail: "January 6, 2018. AFC Wild Card IN Kansas City. Down 21-3. Marcus Mariota threw a pass that was BATTED BACK TO HIM — he caught his own deflected pass and scored. First QB to throw a TD to himself in playoff history. Titans completed the 18-point comeback to win 22-21. IN. THEIR. HOUSE.",
+        oppValue: "...Back-to-Back SBs?",
+        oppDetail: "They won back-to-back Super Bowls. Impressive. But their most iconic moment against US is getting embarrassed in that 2017 Wild Card comeback. 21-3 lead. Gone.",
+        nashWins: true
+      },
+      {
+        header: "Super Bowl History",
+        nashValue: "One Yard Short",
+        nashDetail: "Super Bowl XXXIV. Kevin Dyson tackled at the 1-yard line as time expired. The most heartbreaking — and most MEMORABLE — final play in Super Bowl history. More people remember 'One Yard Short' than any single Chiefs Super Bowl play.",
+        oppValue: "4 Rings (I, LIV, LVII, LVIII)",
+        oppDetail: "Four championships. Three with the same QB, same coach, same window. When Mahomes and Reid retire, what's left? One ring from 1970 and memories.",
+        nashWins: false
+      },
+      {
+        header: "Franchise Legends",
+        nashValue: "McNair, Campbell, Moon, Matthews",
+        nashDetail: "Steve McNair (co-MVP 2003, warrior). Earl Campbell (3x rushing champ, MVP, HOF). Warren Moon (HOF, barrier-breaker). Bruce Matthews (14 Pro Bowls, HOF). Derrick Henry (2,027 yds, 'The King'). Eddie George (10,009 rush yds). Self-made legends who earned everything.",
+        oppValue: "Mahomes, Dawson, Thomas",
+        oppDetail: "Mahomes is generational. Dawson was great. Derrick Thomas was special. But the Titans/Oilers have THREE Hall of Famers from the Oilers era alone. The depth of history runs deep.",
+        nashWins: true
+      },
+      {
+        header: "Coaching Staff (2026)",
+        nashValue: "Saleh + Daboll",
+        nashDetail: "Robert Saleh: 9 top-10 defenses, 5 top-5 defenses in his career. Brian Daboll: AP Coach of the Year (2022), developed Josh Allen from raw prospect to MVP candidate, 5 Super Bowl rings as a coach. The most exciting staff in the NFL.",
+        oppValue: "Andy Reid (Age 67)",
+        oppDetail: "Andy Reid is a legend — 307 career wins, 4th all-time. But he's 67. How much longer? The entire Chiefs identity is built around Reid and Mahomes. When that window closes, what's the plan?",
+        nashWins: true
+      }
+    ],
+    qb: {
+      nashName: "Cam Ward",
+      nashDetails: [
+        "#1 overall pick (2025). Franchise cornerstone. Age 23.",
+        "Set every Titans rookie passing record: 3,169 yds, 17 starts",
+        "Pre-draft comp to Mahomes: 'eerily the same arm angles' — AFC coordinator",
+        "Now learning under Brian Daboll (the Josh Allen developer)",
+        "Absorbed 55 sacks behind a bad OL and STILL improved down the stretch",
+        "Year 2 leap incoming. Mahomes is 30. Ward is just getting started."
+      ],
+      oppName: "Patrick Mahomes",
+      oppDetails: [
+        "3x Super Bowl MVP. The best QB of his generation. No debate.",
+        "BUT: ESPN ranked his arm strength 7th in 2026 — not #1 anymore",
+        "Entering age-31 season. 'No Longer Gets His Own Tier' — analysts",
+        "Kelce is aging. Hill is gone. The supporting cast is thinning.",
+        "The dynasty window is mature. Every dynasty ends.",
+        "When Mahomes declines, the Chiefs become the post-Manning Colts."
+      ],
+      nashWins: true
+    },
+    brand: [
+      {
+        header: "Team Name Symbolism",
+        nashFact: "TITANS — Greek mythology. The primordial gods who ruled the cosmos. Raw, elemental power. The name was chosen to connect to Nashville's identity as the 'Athens of the South' with its full-scale Parthenon replica. The word 'titan' literally means something of immense strength.",
+        oppFact: "CHIEFS — Named after KC Mayor Harold Roe Bartle's nickname. Bartle wasn't Native American — he ran a Boy Scout honor camping society. The name and tomahawk chop face ongoing cultural controversy. Washington already dropped their controversial name. The Chiefs may be next."
+      },
+      {
+        header: "Uniforms (2026)",
+        nashFact: "Complete 2026 rebrand: new logo, new colors, new everything. The '6-String Stripe' guitar detail on helmets and sleeves. 'Music City' alternate with neon-inspired numbers debuts Nov 15. Woodblock print-inspired fonts. The most creative uniform design in the NFL.",
+        oppFact: "The same red and gold since 1963. Sixty-three years. Unchanged. Classic? Sure. Exciting? No. Nobody is buying a Chiefs jersey because they love the design. They're buying it because of Mahomes. What happens when he's gone?"
+      },
+      {
+        header: "Mascot",
+        nashFact: "T-Rac — Tennessee's state animal, the raccoon. Zip-lines from the stadium roof. Rappels off downtown buildings. Got a fresh look with the 2026 rebrand. Unique in the NFL — no other team has anything like him. Pure chaotic energy.",
+        oppFact: "KC Wolf — replaced 'Warpaint,' a live horse ridden by a man in a Native American headdress that was so culturally insensitive it had to be retired. KC Wolf is fine. First mascot in the Mascot Hall of Fame. But his origin story is... not great."
+      },
+      {
+        header: "Stadium",
+        nashFact: "$2.1 BILLION new enclosed stadium opening February 2027. 60,000 seats. Translucent ETFE roof. NFL's FIRST permanent built-in concert stage. Panoramic views of Nashville skyline and Cumberland River. Hosting Super Bowl LXIV in 2030. The most anticipated stadium in sports.",
+        oppFact: "Arrowhead Stadium opened in 1972. It's 54 years old. Loudest stadium ever (142.2 dB). But the Chiefs are LEAVING for a new $3B stadium in Kansas — not Kansas City, KANSAS — by 2031. They're abandoning their home city. Arrowhead's days are numbered."
+      }
+    ],
+    gameday: [
+      {
+        header: "Pregame",
+        nashFact: "Walk out of a honky tonk on Lower Broadway, cross the pedestrian bridge over the Cumberland River, and you're at the stadium. Live music pouring out of every door. Tennessee whiskey in hand. No NFL city offers anything close to Nashville's pregame.",
+        oppFact: "Drive to a suburban sports complex off I-70/I-435. Park in a massive lot. Walk to the stadium through a sea of concrete. The nearest bar scene is miles away. Arrowhead's location is functional, not magical."
+      },
+      {
+        header: "Tailgating",
+        nashFact: "Cumberland River tailgating with live bands, Southern BBQ, Tennessee whiskey, and craft beer. The Blue Crew Drumline. The Tennessee State Aristocrats — first HBCU band in NFL history. Nashville tailgates are a cultural event, not just a parking lot party.",
+        oppFact: "Arrowhead tailgating is a genuine, passionate tradition dating to 1972. Great BBQ. Loyal fans. But your tailgate setup is 'strictly limited to an 8-foot space directly behind your parked vehicle.' Eight feet. That's your kingdom."
+      },
+      {
+        header: "In-Stadium Atmosphere",
+        nashFact: "'Code Blue' games turn the stadium into a sea of Columbia blue. T-Rac crowd-surfs. The Blue Crew never stops. And starting in 2027, you'll be in a $2.1B dome with a built-in concert stage and views of the Nashville skyline. There's nothing like it.",
+        oppFact: "Arrowhead is LOUD — 142.2 dB, Guinness World Record. Chiefs fans are passionate and intense. But it's a 54-year-old open-air stadium with no modern amenities. And it's about to be demolished when the team moves to Kansas."
+      },
+      {
+        header: "After the Game",
+        nashFact: "Walk back across the bridge to Broadway. Every bar has live music until 3 AM. Hot chicken at midnight. The party doesn't stop because the game ended. Nashville is a 24/7 city. The game is just the warmup act.",
+        oppFact: "After a Chiefs game you... sit in traffic on I-70? Maybe drive to Power & Light District downtown? KC has great BBQ spots, but the stadium is isolated from the city's nightlife. The experience ends when the game ends."
+      }
+    ],
+    verdict: {
+      nashScore: 19,
+      oppScore: 5,
+      summary: "Nashville wins 19 out of 24 categories. Kansas City takes cost of living (cheaper because fewer people want to live there), the all-time series (barely — 31-26), three extra Super Bowl rings (all in a 4-year Mahomes window), and having more current sports teams (but the Chiefs are literally moving to Kansas). Everything else? Nashville crushes it. 38% lower crime. 3x the visitor spending. Zero state income tax. #2 city for jobs. Oracle chose Nashville for its world HQ. A $2.1B stadium that'll host Super Bowl LXIV. And Cam Ward was compared to Mahomes before the draft — except Ward is 23 and just getting started. Kansas City has great BBQ and a dynasty that's running out of time. Nashville has the future.",
+      closing: "Titan Up. Nashville Forever."
+    }
+  },
+  packers: {
+    name: "Green Bay Packers",
+    city: "Green Bay",
+    abbr: "GB",
+    color: "#203731",
+    scoreboard: {
+      categoriesWon: "21",
+      categoriesLost: "3",
+      verdict: "Nashville is a city. Green Bay is a suburb."
+    },
+    cityQuote: '"Green Bay is a great place to play football. Nashville is a great place to LIVE."',
+    cityCards: [
+      {
+        header: "Crime & Safety",
+        nashValue: "1,124 violent/100k",
+        nashDetail: "Nashville's violent crime rate has been dropping sharply — down 14% in 2025, homicides at 74 (lowest since 2014). A major metro with tourism foot traffic that drives stats up. The trend is strongly positive.",
+        oppValue: "495 violent/100k",
+        oppDetail: "Green Bay is safer by the numbers. But it's also a city of 107,000 people with almost no tourism foot traffic. Compare apples to apples — Nashville's crime rate is declining while the city booms.",
+        nashWins: false
+      },
+      {
+        header: "Cost of Living",
+        nashValue: "COL Index: 108",
+        nashDetail: "Higher costs ($485-534k median home, $1,700/mo 1BR rent) BUT zero state income tax. On a $100k salary, you keep $4,000-5,500 more per year vs Wisconsin's 7.65% top rate. Higher prices = higher demand.",
+        oppValue: "COL Index: 75-92",
+        oppDetail: "Cheap housing ($245-265k median home, $942/mo 1BR rent). But Wisconsin charges up to 7.65% state income tax — one of the HIGHEST in the Midwest. Cheap because nobody's moving there.",
+        nashWins: false
+      },
+      {
+        header: "Schools & Higher Education",
+        nashValue: "Vanderbilt (#17 National)",
+        nashDetail: "VANDERBILT UNIVERSITY — #17 nationally, top-6 acceptance rate selectivity, $10B+ endowment, AAU member, SEC athletics. Plus Belmont, Fisk (HBCU), Tennessee State, Meharry Medical College, Lipscomb, Trevecca. SEVEN four-year institutions with national reputations.",
+        oppValue: "UW-Green Bay (#74 Regional)",
+        oppDetail: "UW-Green Bay is ranked #74 among Regional Midwest universities. St. Norbert College is #111 in Liberal Arts. That's it. That's the list. Nashville has a top-17 NATIONAL university. Green Bay has a regional school.",
+        nashWins: true
+      },
+      {
+        header: "Population & Size",
+        nashValue: "727k City / 2.1M Metro",
+        nashDetail: "Nashville is 6.8x larger than Green Bay (city) and 6.2x larger (metro). Growing at 1.6%/yr, adding 47,600+ new residents annually. One of the top 5 fastest-growing metros in America. Oracle chose Nashville for its WORLD HEADQUARTERS.",
+        oppValue: "107k City / 337k Metro",
+        oppDetail: "Green Bay is the SMALLEST market in all of major North American professional sports. Population is essentially flat — growing at 0.16% annually, sometimes DECLINING. Nobody is relocating to Green Bay.",
+        nashWins: true
+      },
+      {
+        header: "Job Market & Economy",
+        nashValue: "5 Fortune 500 HQs",
+        nashDetail: "HCA Healthcare (#61), Dollar General, Tractor Supply, Delek US, Community Health Systems. Plus Oracle World HQ ($1.2B campus, 8,500 jobs). Amazon, Bridgestone, Nissan North America. Nashville is the healthcare capital of America. Median household income: $75-77k.",
+        oppValue: "1 Fortune 500 Company",
+        oppDetail: "Schneider National (trucking, ~$6.6B revenue). Major employers: paper mills, Schreiber Foods, Bellin Health, and... the Packers organization. Georgia-Pacific's plant closed after 121 years. Median household income: ~$65k.",
+        nashWins: true
+      },
+      {
+        header: "Tourism & Visitors",
+        nashValue: "17M visitors / $11.4B spent",
+        nashDetail: "Nashville visitor spending: $11.4 BILLION. That's 12.5x Green Bay's total. 252 live music venues. CMA Fest alone generates $86M in one weekend. Grand Ole Opry, Ryman Auditorium, Broadway honky tonks. Nashville is a global destination.",
+        oppValue: "6.7M visitors / $910M spent",
+        oppDetail: "Green Bay gets 6.7M trips (mostly Packers games and Lambeau tours). Visitor spending: $910 million — less than 1/12 of Nashville's. The tourism economy is basically the Packers and cheese curds.",
+        nashWins: true
+      },
+      {
+        header: "Development & Construction",
+        nashValue: "$2.1B Stadium + Oracle HQ",
+        nashDetail: "New $2.1B enclosed Titans stadium (Feb 2027). Oracle World HQ (70-acre campus). East Bank: 550 acres of riverfront development. New TPAC campus (2030). Potential MLB stadium. Tower cranes dominate the skyline.",
+        oppValue: "Titletown District",
+        oppDetail: "The Titletown District near Lambeau is Green Bay's main development. It's a nice mixed-use area. But it's one project near a football stadium in a city of 107,000. Nashville is building an entirely new riverfront district.",
+        nashWins: true
+      },
+      {
+        header: "Weather",
+        nashValue: "Avg Jan High: 47°F",
+        nashDetail: "Four real seasons. Mild winters, warm summers. About 6 inches of snow per year. You can tailgate in a t-shirt into November. Nashville's January LOW (28°F) is warmer than Green Bay's January HIGH.",
+        oppValue: "Avg Jan High: 23°F",
+        oppDetail: "The 'Frozen Tundra' isn't a nickname — it's a weather report. Average January HIGH is 23°F. 48 inches of snow annually. Sub-zero temps every single winter since records began in 1886. Green Bay is COLD.",
+        nashWins: true
+      },
+      {
+        header: "Nightlife & Entertainment",
+        nashValue: "252 Live Music Venues",
+        nashDetail: "Honky Tonk Highway: free live music 16 hrs/day, 365 days/yr. Grand Ole Opry (since 1925). Ryman Auditorium. Celebrity bars on every corner. Nashville ranked #5 U.S. nightlife city, #21 globally. The live music capital of the world.",
+        oppValue: "~30 Bars Total",
+        oppDetail: "Green Bay has approximately 30 bars. Total. In the whole city. One micro-music venue (the Lyric Room). Supper clubs and fish fry are the cultural highlights. Nashville has 252 music venues. Green Bay has 30 bars. Read that again.",
+        nashWins: true
+      },
+      {
+        header: "Sports Scene",
+        nashValue: "4 Pro Teams + MLB Coming",
+        nashDetail: "Titans (NFL), Predators (NHL), Nashville SC (MLS — 30,000-seat GEODIS Park, largest in MLS), Sounds (AAA). Frontrunner for MLB expansion. Nashville is building a sports empire. Every league wants in.",
+        oppValue: "1 Team. That's It.",
+        oppDetail: "The Packers. That's the entire list. One team. One sport. The smallest market in all of major pro sports. No NHL, no NBA, no MLS, no MLB. Nashville has 4x the professional teams in a city 7x larger.",
+        nashWins: true
+      }
+    ],
+    franchise: [
+      {
+        header: "All-Time Series",
+        nashValue: "8 Wins (Lead!)",
+        nashDetail: "The Titans/Oilers LEAD the all-time series 8-7. Including a 48-27 demolition at Lambeau in 2004 and a win during the franchise-best 10-0 start in 2008. We own this rivalry.",
+        oppValue: "7 Wins",
+        oppDetail: "The Packers TRAIL the all-time series. They've never beaten the Titans in the playoffs — because they've never played. Different conferences, and the Packers can't seem to catch up.",
+        nashWins: true
+      },
+      {
+        header: "Iconic Moment",
+        nashValue: "Music City Miracle",
+        nashDetail: "January 8, 2000. Frank Wycheck to Kevin Dyson. 75-yard lateral return as time expires. #4 on NFL 100 Greatest Plays. The most iconic single play in playoff history. If you watched it, you'll never forget it.",
+        oppValue: "The Ice Bowl (1967)",
+        oppDetail: "Bart Starr's QB sneak in -13°F weather to win the 1967 NFL Championship. Historic. But it happened 59 years ago. Most Packers fans alive today weren't born yet.",
+        nashWins: true
+      },
+      {
+        header: "Super Bowl History",
+        nashValue: "One Yard Short",
+        nashDetail: "Super Bowl XXXIV. Kevin Dyson tackled at the 1-yard line as time expired. The most heartbreaking — and most MEMORABLE — final play in Super Bowl history. One yard from immortality. We were THERE.",
+        oppValue: "4 Rings (I, II, XXXI, XLV)",
+        oppDetail: "Four championships. Two from the 1960s before most current fans were born. One from the Favre era. One from the Rodgers era. They have the rings. But two of them are older than the Super Bowl trophy itself.",
+        nashWins: false
+      },
+      {
+        header: "Franchise Legends",
+        nashValue: "McNair, Campbell, Moon, Matthews",
+        nashDetail: "Steve McNair (co-MVP 2003), Earl Campbell (3x rushing champ, MVP, HOF), Warren Moon (HOF, broke barriers), Bruce Matthews (14 Pro Bowls, HOF). Derrick Henry ('The King', 2,027 yds). Eddie George (10,009 rush yds). Self-made warriors.",
+        oppValue: "Favre, Rodgers, Starr, Lombardi",
+        oppDetail: "Legendary names. Lombardi's name is literally on the Super Bowl trophy. Favre and Rodgers are all-time greats. But Favre left for the Vikings. Rodgers left for the Jets. The Packers' biggest legends keep LEAVING.",
+        nashWins: true
+      },
+      {
+        header: "Coaching Staff (2026)",
+        nashValue: "Saleh + Daboll",
+        nashDetail: "Robert Saleh: elite defensive mind, 9 top-10 defenses. Brian Daboll: AP Coach of the Year, developed Josh Allen, 5 Super Bowl rings. The hottest coaching duo in the NFL. They CHOSE Nashville.",
+        oppValue: "Matt LaFleur",
+        oppDetail: "LaFleur has a winning record and playoff appearances. But zero Super Bowl wins. The Packers went from the Lombardi era to the Favre era to the Rodgers era. Without a generational QB, what's the identity?",
+        nashWins: true
+      }
+    ],
+    qb: {
+      nashName: "Cam Ward",
+      nashDetails: [
+        "#1 overall pick (2025). Franchise cornerstone. Age 23.",
+        "Set every Titans rookie passing record: 3,169 yds, 17 starts",
+        "Pre-draft comp to Mahomes for his arm angles and off-platform magic",
+        "Learning under Brian Daboll — the coach who developed Josh Allen",
+        "Year 2 leap with new weapons (Carnell Tate, Wan'Dale Robinson)",
+        "The arrow is UP. Nashville has its franchise QB for the next decade."
+      ],
+      oppName: "Jordan Love",
+      oppDetails: [
+        "Inherited the job when Rodgers forced his way to the Jets",
+        "Showed flashes but inconsistent — the jury is still out",
+        "The Packers' QB history: Favre → forced out. Rodgers → forced out.",
+        "Green Bay's pattern: draft a great QB, ride him, then he leaves angry",
+        "Love is talented but hasn't proven he's a franchise-altering QB yet",
+        "If Love doesn't work out, Green Bay is back to square one. Again."
+      ],
+      nashWins: true
+    },
+    brand: [
+      {
+        header: "Team Name Symbolism",
+        nashFact: "TITANS — Greek mythology. The primordial gods who ruled the cosmos before the Olympians. Raw, elemental power. Connected to Nashville's identity as the 'Athens of the South' with its full-scale Parthenon replica. The word 'titan' means something of immense strength.",
+        oppFact: "PACKERS — Named after the Indian Packing Company, a meat-packing plant that sponsored the team in 1919. Literally named after a factory that packed meat into cans. The most unsexy team name in professional sports."
+      },
+      {
+        header: "Uniforms (2026)",
+        nashFact: "Complete 2026 rebrand: new logo, new colors, new everything. The '6-String Stripe' guitar detail. 'Music City' alternate with neon-inspired numbers. Woodblock print fonts connecting to Nashville's creative identity. The most innovative uniform design in the NFL.",
+        oppFact: "Green and gold since 1959. The same look for 67 years. Packers fans call it 'classic.' Everyone else calls it 'unchanged.' The most predictable uniforms in professional sports. You could set your watch by how little they evolve."
+      },
+      {
+        header: "Mascot & Ownership",
+        nashFact: "T-Rac — Tennessee's state animal, the raccoon. Zip-lines from the stadium roof. Rappels off buildings. Fresh 2026 rebrand look. Plus the Titans have real ownership investing $2.1 BILLION in a new stadium. That's commitment.",
+        oppFact: "The Packers have NO official mascot. They're also community-owned — which sounds romantic until you realize it means 361,311 shareholders and ZERO of them have any real power. No owner means no one making the big investment decisions. The $2.1B stadium in Nashville? That takes leadership."
+      },
+      {
+        header: "Stadium",
+        nashFact: "$2.1 BILLION new enclosed stadium opening February 2027. 60,000 seats. Translucent roof. NFL's first permanent concert stage. Views of the Nashville skyline and Cumberland River. Hosting Super Bowl LXIV in 2030. Climate-controlled comfort.",
+        oppFact: "Lambeau Field opened in 1957. It's 69 years old. The 'Frozen Tundra.' Historic? Absolutely. Comfortable? Absolutely not. You're watching football in 23°F weather with 48 inches of annual snowfall. Lambeau is a museum. Nashville's stadium is the future."
+      }
+    ],
+    gameday: [
+      {
+        header: "Pregame",
+        nashFact: "Walk out of a honky tonk on Lower Broadway, cross the pedestrian bridge over the Cumberland River, and you're at the stadium. Live music, Tennessee whiskey, hot chicken. The best pregame walk in the NFL, surrounded by a world-class city.",
+        oppFact: "Drive to Lambeau Field in a city of 107,000 people. Park on someone's lawn for $40. Walk through a residential neighborhood to the stadium. The 'Lambeau Leap' is iconic, but the pregame experience is a walk past people's houses."
+      },
+      {
+        header: "Tailgating",
+        nashFact: "Cumberland River tailgating with live bands, Southern BBQ, Tennessee whiskey, and local craft beer. The Blue Crew Drumline. The Tennessee State Aristocrats — first HBCU band in NFL history. A cultural experience, not just a parking lot party.",
+        oppFact: "Packers tailgating is legendary and authentic. Brats, cheese curds, and beer in a parking lot surrounded by residential Green Bay. It's charming. It's genuine. But it's also a parking lot in a tiny city in Wisconsin in January. Bring hand warmers."
+      },
+      {
+        header: "In-Stadium Atmosphere",
+        nashFact: "'Code Blue' games turn the stadium into a sea of Columbia blue. T-Rac crowd-surfs. Avg ticket: $64 — CHEAPEST in the NFL. Starting in 2027: $2.1B dome with built-in concert stage, translucent roof, and panoramic skyline views. 60,000 fans in climate-controlled comfort.",
+        oppFact: "Lambeau is iconic. The crowd is passionate. The Lambeau Leap is legendary. But avg ticket: $253 (5th most expensive in the NFL). The waitlist is 148,000 people — MORE than Green Bay's population. Average wait: 30-60 YEARS. Your beer freezes and your wallet empties."
+      },
+      {
+        header: "After the Game",
+        nashFact: "Walk back across the bridge to Broadway. Every bar has live music until 3 AM. Hot chicken at midnight. The party doesn't stop because the game ended. Nashville is a 24/7 entertainment capital with world-class nightlife.",
+        oppFact: "After a Packers game you... go to one of Green Bay's 30 bars? Hit a supper club? The city has 107,000 people and essentially no nightlife scene. Most fans drive home to Milwaukee, Madison, or Chicago. The game IS the event because there's nothing else."
+      }
+    ],
+    verdict: {
+      nashScore: 21,
+      oppScore: 3,
+      summary: "Nashville wins 21 out of 24 categories. Green Bay takes crime stats (hard to have crime when nobody lives there), cost of living (cheap because nobody's moving there), and Super Bowl rings (4 — two from the 1960s). That's it. Nashville's visitor spending is 12.5x larger. Nashville has 252 live music venues; Green Bay has 30 bars. Nashville has Vanderbilt (#17 nationally); Green Bay has UW-Green Bay (#74 regionally). Nashville's metro is 6.2x bigger. Nashville has FIVE Fortune 500 headquarters; Green Bay has one trucking company. Nashville's January LOW is warmer than Green Bay's January HIGH. The Packers are a legendary franchise in a town that closes at 9 PM. The Titans are the future of the NFL in a city that never sleeps.",
       closing: "Titan Up. Nashville Forever."
     }
   }
