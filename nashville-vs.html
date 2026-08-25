@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nashville vs. Everybody - Tennessee Titans Bible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --titans-navy: #0C2340;
+      --titans-blue: #4B92DB;
+      --titans-red: #C8102E;
+      --titans-silver: #A2AAAD;
+      --titans-white: #FFFFFF;
+      --win-green: #22c55e;
+      --loss-red: #ef4444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--titans-navy) 0%, #061428 50%, var(--titans-navy) 100%);
+      min-height: 100vh;
+      color: var(--titans-white);
+    }
+
+    .main-nav {
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+
+    .nav-link {
+      color: var(--titans-silver);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--titans-white); background: rgba(75, 146, 219, 0.2); }
+    .nav-link.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.15); }
+
+    .titans-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
+    .titans-hamburger span { display: block; height: 3px; width: 100%; background: var(--titans-silver); border-radius: 2px; transition: all 0.3s ease; }
+    .titans-hamburger:hover span { background: #fff; }
+    .titans-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .titans-hamburger.active span:nth-child(2) { opacity: 0; }
+    .titans-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    .titans-mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 10, 16, 0.98); backdrop-filter: blur(10px); z-index: 999; }
+    .titans-mobile-menu.active { display: block; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
+    .titans-mobile-menu-inner { display: flex; flex-direction: column; align-items: center; padding-top: 100px; padding-bottom: 120px; gap: 5px; min-height: 100%; }
+    .titans-mobile-menu a { color: var(--titans-silver); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 12px 30px; transition: all 0.3s ease; border-bottom: 1px solid rgba(75, 146, 219, 0.1); width: 80%; text-align: center; }
+    .titans-mobile-menu a:hover, .titans-mobile-menu a.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.1); }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(180deg, rgba(200,16,46,0.15) 0%, transparent 100%);
+      border-bottom: 3px solid var(--titans-red);
+    }
+
+    .hero h1 {
+      font-family: 'Anton', 'Oswald', sans-serif;
+      font-size: clamp(2.5rem, 10vw, 5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 0.95;
+      background: linear-gradient(180deg, #FFFFFF 0%, #A2AAAD 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--titans-blue);
+      margin-top: 10px;
+    }
+
+    .team-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .team-selector label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--titans-silver);
+    }
+
+    .team-selector select {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      padding: 10px 40px 10px 15px;
+      background: rgba(0,0,0,0.5);
+      color: var(--titans-white);
+      border: 2px solid var(--titans-blue);
+      border-radius: 6px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B92DB' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .team-selector select:focus { outline: none; border-color: var(--titans-red); }
+    .team-selector select option { background: var(--titans-navy); color: white; }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--titans-blue);
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--titans-blue);
+    }
+
+    .vs-card {
+      background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(26, 58, 92, 0.8) 100%);
+      border: 1px solid rgba(75, 146, 219, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .vs-card-header {
+      background: rgba(0,0,0,0.4);
+      padding: 15px 20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--titans-blue);
+      border-bottom: 1px solid rgba(75, 146, 219, 0.2);
+    }
+
+    .vs-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .vs-side {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .vs-side.nashville { background: rgba(75, 146, 219, 0.05); }
+    .vs-side.opponent { background: rgba(162, 170, 173, 0.05); }
+
+    .vs-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--titans-red);
+    }
+
+    .vs-city {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--titans-silver);
+      margin-bottom: 5px;
+    }
+
+    .vs-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--titans-white);
+      line-height: 1.2;
+    }
+
+    .vs-value.winner { color: var(--win-green); }
+    .vs-value.loser { color: var(--titans-silver); opacity: 0.6; }
+
+    .vs-detail {
+      font-size: 0.8rem;
+      color: var(--titans-silver);
+      margin-top: 5px;
+    }
+
+    .verdict-bar {
+      display: flex;
+      align-items: stretch;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 30px;
+      margin: 15px 20px 20px;
+    }
+
+    .verdict-fill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: width 0.6s ease;
+    }
+
+    .verdict-fill.nash { background: var(--titans-blue); color: var(--titans-navy); }
+    .verdict-fill.opp { background: rgba(162, 170, 173, 0.4); color: var(--titans-silver); }
+
+    .quote-card {
+      background: linear-gradient(145deg, rgba(200,16,46,0.1), rgba(12,35,64,0.8));
+      border-left: 4px solid var(--titans-red);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-card .quote {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--titans-white);
+      line-height: 1.4;
+    }
+
+    .quote-card .attribution {
+      font-size: 0.8rem;
+      color: var(--titans-silver);
+      margin-top: 8px;
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .fact-card {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(75, 146, 219, 0.15);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .fact-card h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--titans-blue);
+      margin-bottom: 8px;
+    }
+
+    .fact-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    .fact-card .highlight {
+      color: var(--win-green);
+      font-weight: 700;
+    }
+
+    .fact-card .lowlight {
+      color: var(--loss-red);
+      font-weight: 700;
+    }
+
+    .scoreboard {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      padding: 25px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      border: 1px solid rgba(75, 146, 219, 0.2);
+    }
+
+    .scoreboard-item {
+      text-align: center;
+    }
+
+    .scoreboard-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--titans-silver);
+      margin-bottom: 5px;
+    }
+
+    .scoreboard-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .scoreboard-value.nash-wins { color: var(--titans-blue); }
+    .scoreboard-value.opp-wins { color: var(--titans-silver); }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      background: rgba(0,0,0,0.4);
+      border-top: 1px solid rgba(75, 146, 219, 0.2);
+      color: var(--titans-silver);
+      font-size: 0.8rem;
+    }
+
+    footer .titan-up {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--titans-blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    #comparisonContent { transition: opacity 0.3s ease; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .titans-hamburger { display: flex; }
+      .vs-row { grid-template-columns: 1fr; }
+      .vs-divider { padding: 5px 0; font-size: 1rem; }
+      .vs-value { font-size: 1.4rem; }
+      .scoreboard { gap: 15px; }
+      .scoreboard-value { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html"><img src="assets/titans-sword-logo.svg" alt="Titans" style="width:40px;height:auto;"></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="Titans_2026_Roster.html" class="nav-link">Roster</a>
+        <a href="schedule.html" class="nav-link">Schedule</a>
+        <a href="titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
+        <a href="team-history.html" class="nav-link">History</a>
+        <a href="titans-salary-cap.html" class="nav-link">Cap</a>
+        <a href="titans-betting-odds.html" class="nav-link">Odds</a>
+        <a href="titans-hype-videos.html" class="nav-link">Hype</a>
+        <a href="titans-tailgate-recipes.html" class="nav-link">Recipes</a>
+        <a href="nfl.html" class="nav-link">NFL</a>
+        <a href="nashville-vs.html" class="nav-link active">Nashville vs.</a>
+        <a href="titans-bible-viewer.html" class="nav-link">Bible</a>
+        <a href="trips/" class="nav-link">Trips</a>
+      </div>
+      <div class="titans-hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="titans-mobile-menu" id="mobileMenu">
+    <div class="titans-mobile-menu-inner">
+      <a href="index.html">Home</a>
+      <a href="Titans_2026_Roster.html">Roster</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
+      <a href="team-history.html">History</a>
+      <a href="titans-salary-cap.html">Salary Cap</a>
+      <a href="titans-betting-odds.html">Odds</a>
+      <a href="titans-hype-videos.html">Hype Videos</a>
+      <a href="titans-tailgate-recipes.html">Recipes</a>
+      <a href="nfl.html">NFL</a>
+      <a href="nashville-vs.html" class="active">Nashville vs.</a>
+      <a href="titans-bible-viewer.html">Bible</a>
+      <a href="trips/">Trips</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <h1>Nashville vs. Everybody</h1>
+    <p class="subtitle">Why the Titans Are Better. Period.</p>
+    <div class="team-selector">
+      <label for="teamSelect">Compare Against:</label>
+      <select id="teamSelect" onchange="loadTeam(this.value)">
+        <option value="colts" selected>Indianapolis Colts</option>
+        <option value="coming-soon" disabled>--- More Coming Soon ---</option>
+        <option value="coming-soon" disabled>Kansas City Chiefs</option>
+        <option value="coming-soon" disabled>Green Bay Packers</option>
+        <option value="coming-soon" disabled>Denver Broncos</option>
+        <option value="coming-soon" disabled>Houston Texans</option>
+        <option value="coming-soon" disabled>Jacksonville Jaguars</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="container" id="comparisonContent">
+
+    <div class="scoreboard" id="scoreboardSection">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- THE CITY -->
+    <h2 class="section-title" id="cityTitle">The City: Nashville vs. Indianapolis</h2>
+
+    <div class="quote-card">
+      <div class="quote" id="cityQuote">"Nashville is where people come to chase a dream. Indianapolis is where people end up when they stop."</div>
+      <div class="attribution">Every musician, songwriter, and dreamer who moved to Nashville</div>
+    </div>
+
+    <div id="cityCards"></div>
+
+    <!-- THE FRANCHISE -->
+    <h2 class="section-title" id="franchiseTitle">The Franchise</h2>
+    <div id="franchiseCards"></div>
+
+    <!-- THE QUARTERBACK -->
+    <h2 class="section-title">The Quarterback Situation</h2>
+    <div id="qbSection"></div>
+
+    <!-- THE BRAND -->
+    <h2 class="section-title">The Brand &amp; Identity</h2>
+    <div id="brandSection"></div>
+
+    <!-- THE GAMEDAY -->
+    <h2 class="section-title">The Gameday Experience</h2>
+    <div id="gamedaySection"></div>
+
+    <!-- THE VERDICT -->
+    <h2 class="section-title" style="color: var(--titans-red);">The Final Verdict</h2>
+    <div id="verdictSection"></div>
+
+  </main>
+
+  <footer>
+    <p class="titan-up">Titan Up!</p>
+    <p>Kyle's Personal Titans Fan Site - This is a fan opinion page. We're biased and we're proud of it.</p>
+  </footer>
+
+  <script>
+const teams = {
+  colts: {
+    name: "Indianapolis Colts",
+    city: "Indianapolis",
+    abbr: "IND",
+    color: "#002C5F",
+    scoreboard: {
+      categoriesWon: "20",
+      categoriesLost: "4",
+      verdict: "Nashville dominates"
+    },
+    cityQuote: '"Nashville is where people come to chase a dream. Indianapolis is where people end up when they stop."',
+    cityCards: [
+      {
+        header: "Crime & Safety",
+        nashValue: "624.8 violent/100k",
+        nashDetail: "Nashville's violent crime rate dropped 14% in 2025 — lowest homicide count since 2014 (74 homicides). Numbeo Crime Index: 49.2. The city is getting safer every year.",
+        oppValue: "878 violent/100k",
+        oppDetail: "Indianapolis violent crime rate is 40% HIGHER. ~133 homicides in 2025 — nearly double Nashville. Numbeo Crime Index: 60.3. Bottom 10% of all U.S. cities for safety.",
+        nashWins: true
+      },
+      {
+        header: "Cost of Living",
+        nashValue: "COL Index: 101-103",
+        nashDetail: "Higher housing costs ($480-549k median home, $1,650/mo 1BR rent) BUT zero state income tax. On a $100k salary, you keep $3,050 more per year. Property tax: just 0.63% — lowest among no-income-tax states.",
+        oppValue: "COL Index: ~91",
+        oppDetail: "Cheaper housing ($259-265k median home, $1,100-1,200/mo 1BR rent). But Indiana charges 3.05% state income tax. Lower prices reflect lower demand — people aren't exactly lining up.",
+        nashWins: false
+      },
+      {
+        header: "Schools & Higher Education",
+        nashValue: "B- District / Vanderbilt",
+        nashDetail: "Metro Nashville: B- (Niche), 32% math/reading proficiency, 561 schools. VANDERBILT (#18 national), Belmont, Fisk (historic HBCU), TSU, Meharry Medical, Lipscomb, Trevecca. College town with world-class institutions.",
+        oppValue: "C-D District / Butler",
+        oppDetail: "IPS: C-D range (Niche), only 19% math / 21% reading proficiency — Nashville's scores are 60-70% higher. Just Butler, Marian, U of Indy, IU Indy. No Vanderbilt-caliber anchor anywhere.",
+        nashWins: true
+      },
+      {
+        header: "Population Growth",
+        nashValue: "1.6%/yr — 5th Nationally",
+        nashDetail: "+4.6% since 2020 (727k city, 2M+ metro). Nashville ranks 5th nationally in population growth rate. Tower cranes everywhere. People and companies are choosing Nashville.",
+        oppValue: "0.33%/yr — Not Ranked",
+        oppDetail: "+1.9% since 2020 (910k city). Nashville's growth rate is nearly 5x Indianapolis's. Indy doesn't crack any national fastest-growing lists.",
+        nashWins: true
+      },
+      {
+        header: "Job Market & Economy",
+        nashValue: "#2 Metro for Job Growth",
+        nashDetail: "Unemployment: 2.9% (13th lowest of 108 metros). Median household income: $77-84k. 5 Fortune 500 HQs: HCA Healthcare (#61), Dollar General, Tractor Supply, Delek US, Community Health. Amazon & Meta building presences. 3x Indy's high-income job growth.",
+        oppValue: "Lagging Behind",
+        oppDetail: "Unemployment: 3.3%. Median household income: $63-66k (15% below U.S. median). 3 Fortune 500 HQs: Elevance Health, Eli Lilly, Corteva. Job expansion mostly in low-paying sectors. Nashville's per capita GDP passed Indy's in 2021 and keeps growing.",
+        nashWins: true
+      },
+      {
+        header: "Tourism & Visitors",
+        nashValue: "17M visitors / $11.5B spent",
+        nashDetail: "Nashville visitors spend $11.5B — nearly 2x what Indy visitors spend. #1 net city favorability in America (YouGov 2026). #12 Travel + Leisure World's Best. 250+ live music venues. 18.1M projected when new stadium opens.",
+        oppValue: "30.5M visitors / $6.4B spent",
+        oppDetail: "More total visitors but inflated by conventions, Indy 500 pass-throughs, and business travel. Visitors spend only $6.4B — half of Nashville's. Nobody's booking a weekend trip to Indy for the vibes.",
+        nashWins: true
+      },
+      {
+        header: "Development & Construction",
+        nashValue: "$2.1B Stadium + East Bank",
+        nashDetail: "New $2.1B enclosed stadium (Feb 2027). East Bank redevelopment: 550 acres on the Cumberland River. Paramount tower: 60-floor, 750-ft skyscraper. Signia by Hilton: 33-story, 817-key hotel. Nashville is building at a pace that makes most cities look sleepy.",
+        oppValue: "Maintenance Mode",
+        oppDetail: "Lucas Oil Stadium opened 2008. No major skyline-changing projects in the pipeline. Indianapolis isn't building for the future the way Nashville is. The development gap is visible from space.",
+        nashWins: true
+      },
+      {
+        header: "Weather",
+        nashValue: "Avg Jan High: 47°F",
+        nashDetail: "Four real seasons. Mild winters, warm summers. You can tailgate in a t-shirt into November. Nashville averages 11°F warmer in winter than Indy.",
+        oppValue: "Avg Jan High: 36°F",
+        oppDetail: "Gray, flat, and freezing. The wind cuts through Lucas Oil's retractable roof... if they ever opened it. Winter in Indianapolis is a survival exercise.",
+        nashWins: true
+      },
+      {
+        header: "Nightlife & Entertainment",
+        nashValue: "250+ Live Music Venues",
+        nashDetail: "Honky Tonk Highway on Lower Broadway: free live music 16 hrs/day, 365 days/yr. Kid Rock's, Eric Church's Chiefs, Miranda Lambert's Casa Rosa, Lainey Wilson's Bell Bottoms Up. Music Row, the Gulch, East Nashville. Hot chicken at midnight. Nashville never closes.",
+        oppValue: "Mass Ave District",
+        oppDetail: "Mass Ave and Broad Ripple are... fine. But you're not telling your friends 'We HAVE to go to Indianapolis this weekend.' No nightlife ranking. No cultural movement.",
+        nashWins: true
+      },
+      {
+        header: "Sports Scene",
+        nashValue: "MLB Expansion Favorite",
+        nashDetail: "Titans (NFL), Predators (NHL), Nashville SC (MLS), Sounds (AAA). 73% of fans chose Nashville for MLB expansion in national survey. Frontrunner for an Eastern expansion slot. The Nashville Stars would be the first majority minority-owned MLB team.",
+        oppValue: "Established but Static",
+        oppDetail: "Colts (NFL), Pacers (NBA), Fever (WNBA — Caitlin Clark!), Indy 500. More current teams, but Nashville is the city every league is trying to get INTO. Indianapolis hasn't added a team in decades.",
+        nashWins: false
+      }
+    ],
+    franchise: [
+      {
+        header: "All-Time Series",
+        nashValue: "33 Wins",
+        nashDetail: "Colts lead 57-33 overall. But playoffs? Dead even at 5-5. When it matters most, we show up.",
+        oppValue: "57 Wins",
+        oppDetail: "They have the historical edge. But they had Peyton Manning for 14 years. We'll catch up.",
+        nashWins: false
+      },
+      {
+        header: "Iconic Moment",
+        nashValue: "Music City Miracle",
+        nashDetail: "January 8, 2000. Frank Wycheck to Kevin Dyson. 75-yard lateral return. #4 on NFL 100 Greatest Plays. The most iconic play in playoff history.",
+        oppValue: "...Peyton's Farewell?",
+        oppDetail: "Their biggest moment was a guy leaving for Denver. The Colts' most famous play is Manning waving goodbye.",
+        nashWins: true
+      },
+      {
+        header: "Super Bowl Appearance",
+        nashValue: "Super Bowl XXXIV",
+        nashDetail: "One yard short. Kevin Dyson tackled at the 1-yard line. The most heartbreaking — and legendary — Super Bowl finish ever. We were THERE.",
+        oppValue: "Super Bowl XLI",
+        oppDetail: "They won one. With Peyton. In 2006. Then he left. And they've been wandering in the desert ever since.",
+        nashWins: false
+      },
+      {
+        header: "Franchise Legends",
+        nashValue: "McNair, George, Moon, Matthews",
+        nashDetail: "Steve McNair (co-MVP 2003), Eddie George (10,009 rush yds), Warren Moon (HOF), Bruce Matthews (14 Pro Bowls, HOF). Legends who STAYED.",
+        oppValue: "Manning, Unitas",
+        oppDetail: "Two all-time greats. One left for Denver. The other played in BALTIMORE. Johnny Unitas was a Baltimore Colt, not an Indianapolis one.",
+        nashWins: true
+      },
+      {
+        header: "Coaching Staff (2026)",
+        nashValue: "Saleh + Daboll",
+        nashDetail: "Robert Saleh (elite defensive mind) + Brian Daboll (developed Josh Allen). A coaching duo built for the future. They chose Nashville.",
+        oppValue: "Shane Steichen",
+        oppDetail: "Fine coach. But the Colts are on their 4th QB experiment since Luck retired. The coaching staff can't fix the instability.",
+        nashWins: true
+      }
+    ],
+    qb: {
+      nashName: "Cam Ward",
+      nashDetails: [
+        "#1 overall pick (2025). Franchise cornerstone.",
+        "NCAA all-time leader: 158 career TD passes",
+        "Being developed by Brian Daboll (the Josh Allen whisperer)",
+        "Year 2 leap incoming. The arrow is UP.",
+        "Broke Titans rookie passing record in Year 1",
+        "PFF All-Breakout Team selection"
+      ],
+      oppName: "Daniel Jones / Anthony Richardson",
+      oppDetails: [
+        "Daniel Jones is the starter. Yes, THAT Daniel Jones.",
+        "Anthony Richardson (#4 pick 2023) — declined 5th-year option",
+        "Richardson granted permission to seek a trade",
+        "The Colts QB graveyard: Manning LEFT. Luck RETIRED at 29.",
+        "Since Luck: Brissett → Rivers → Wentz → Ryan → Minshew → Richardson → Jones",
+        "7 starting QBs in 7 years. Nashville has its guy."
+      ],
+      nashWins: true
+    },
+    brand: [
+      {
+        header: "Team Name Symbolism",
+        nashFact: "TITANS — Greek mythology. The most powerful beings in existence. The original gods who ruled before the Olympians. Strength, power, dominance. The name commands respect.",
+        oppFact: "COLTS — Baby horses. Literally named after young, inexperienced horses. Not stallions. Not mustangs. Baby. Horses."
+      },
+      {
+        header: "Uniforms (2026)",
+        nashFact: "Brand new 2026 rebrand with updated navy, Titans blue, red, and white. Plus the just-unveiled 'Music City' alternate — baby blue helmet, neon-inspired numbers, guitar strings on the shoulders. Three seasons of the freshest unis in football.",
+        oppFact: "The same blue and white they've had since 2004. Horseshoe on the helmet. It's... fine? Nobody's buying a Colts jersey for the fashion."
+      },
+      {
+        header: "Mascot",
+        nashFact: "T-Rac — a raccoon, Tennessee's state animal. Won 'Most Awesome Mascot' (Cartoon Network). He's a trash panda and he owns it. Cultural icon.",
+        oppFact: "Blue — a blue horse. Won Mascot of the Year 4 times. We'll give them this one. Blue is admittedly elite. But he's still just a horse in a jersey."
+      },
+      {
+        header: "Stadium",
+        nashFact: "$2.1 BILLION new enclosed stadium opening February 2027. 60,000 seats. Translucent ETFE roof. East Bank of the Cumberland River. Future Super Bowl and Final Four host. The most anticipated stadium in the NFL.",
+        oppFact: "Lucas Oil Stadium opened in 2008. Retractable roof they never open. It's fine. It hosted a Super Bowl in 2012. But it's not new, and it's not on a river."
+      }
+    ],
+    gameday: [
+      {
+        header: "Pregame",
+        nashFact: "Walk out of a honky tonk on Lower Broadway, cross the pedestrian bridge over the Cumberland River, and you're at the stadium. No NFL city offers that. Pregame in Nashville IS the attraction.",
+        oppFact: "Park in a lot. Walk through a convention center district. Maybe grab a beer at one of the bars near the stadium. It's functional."
+      },
+      {
+        header: "Tailgating",
+        nashFact: "Cumberland River tailgating. Live bands in the lots. The Blue Crew Drumline warming up. The Tennessee State Aristocrats — the first HBCU band in NFL history as an official team band. Nashville tailgates are a PRODUCTION.",
+        oppFact: "Standard NFL tailgating. Grills and coolers. Nothing wrong with it. But nobody's flying in for a Colts tailgate."
+      },
+      {
+        header: "In-Stadium Atmosphere",
+        nashFact: "'Code Blue' games turn Nissan Stadium into a sea of Columbia blue. The crowd is loud, passionate, and fueled by a city that lives for entertainment. T-Rac crowd-surfs. The Blue Crew never stops.",
+        oppFact: "Lucas Oil gets loud for big games. The Colts have loyal fans. But it's an indoor stadium — it doesn't have the same raw, open-air energy."
+      },
+      {
+        header: "After the Game",
+        nashFact: "Walk back across the bridge to Broadway. Every bar has live music until 3 AM. Hot chicken at midnight. The party doesn't stop because the game ended. Nashville never closes.",
+        oppFact: "After a Colts game you... drive home? Maybe hit a bar on Mass Ave? The city doesn't transform on game days the way Nashville does."
+      }
+    ],
+    verdict: {
+      nashScore: 20,
+      oppScore: 4,
+      summary: "Nashville wins 20 out of 24 categories. Indianapolis takes cost of living (cheaper because fewer people want to live there), sports scene (more current teams... for now), the all-time series (thanks, Peyton), and a Super Bowl ring (again... Peyton). That's it. Crime stats? Nashville is 29% safer. Schools? Nashville's proficiency rates are 60-70% higher. Jobs? Nashville is #2 in America for job growth. Income? Nashville households earn $15-20k more. Growth? Nashville is growing 5x faster. Tourism? Nashville visitors spend nearly DOUBLE. And the new $2.1 billion stadium hasn't even opened yet. It's Music City vs. a city whose biggest annual event involves cars driving in circles for 3 hours.",
+      closing: "Titan Up. Nashville Forever."
+    }
+  }
+};
+
+function loadTeam(teamKey) {
+  const team = teams[teamKey];
+  if (!team) return;
+
+  const content = document.getElementById('comparisonContent');
+  content.style.opacity = '0';
+
+  setTimeout(() => {
+    // Scoreboard
+    document.getElementById('scoreboardSection').innerHTML = `
+      <div class="scoreboard-item">
+        <div class="scoreboard-label">Nashville Wins</div>
+        <div class="scoreboard-value nash-wins">${team.scoreboard.categoriesWon}</div>
+      </div>
+      <div class="scoreboard-item">
+        <div class="scoreboard-label">Categories</div>
+        <div class="scoreboard-value" style="color: var(--titans-red);">VS</div>
+      </div>
+      <div class="scoreboard-item">
+        <div class="scoreboard-label">${team.city} Wins</div>
+        <div class="scoreboard-value opp-wins">${team.scoreboard.categoriesLost}</div>
+      </div>
+    `;
+
+    // City title
+    document.getElementById('cityTitle').textContent = `The City: Nashville vs. ${team.city}`;
+    document.getElementById('cityQuote').textContent = team.cityQuote;
+
+    // City cards
+    document.getElementById('cityCards').innerHTML = team.cityCards.map(c => `
+      <div class="vs-card">
+        <div class="vs-card-header">${c.header}</div>
+        <div class="vs-row">
+          <div class="vs-side nashville">
+            <div class="vs-city">Nashville</div>
+            <div class="vs-value ${c.nashWins ? 'winner' : ''}">${c.nashValue}</div>
+            <div class="vs-detail">${c.nashDetail}</div>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="vs-side opponent">
+            <div class="vs-city">${team.city}</div>
+            <div class="vs-value ${!c.nashWins ? 'winner' : 'loser'}">${c.oppValue}</div>
+            <div class="vs-detail">${c.oppDetail}</div>
+          </div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-fill nash" style="width: ${c.nashWins ? '75%' : '35%'};">${c.nashWins ? 'Nashville' : ''}</div>
+          <div class="verdict-fill opp" style="width: ${c.nashWins ? '25%' : '65%'};">${!c.nashWins ? team.city : ''}</div>
+        </div>
+      </div>
+    `).join('');
+
+    // Franchise title
+    document.getElementById('franchiseTitle').textContent = `The Franchise: Titans vs. ${team.name}`;
+
+    // Franchise cards
+    document.getElementById('franchiseCards').innerHTML = team.franchise.map(c => `
+      <div class="vs-card">
+        <div class="vs-card-header">${c.header}</div>
+        <div class="vs-row">
+          <div class="vs-side nashville">
+            <div class="vs-city">Titans</div>
+            <div class="vs-value ${c.nashWins ? 'winner' : ''}">${c.nashValue}</div>
+            <div class="vs-detail">${c.nashDetail}</div>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="vs-side opponent">
+            <div class="vs-city">${team.name}</div>
+            <div class="vs-value ${!c.nashWins ? 'winner' : 'loser'}">${c.oppValue}</div>
+            <div class="vs-detail">${c.oppDetail}</div>
+          </div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-fill nash" style="width: ${c.nashWins ? '70%' : '35%'};">${c.nashWins ? 'Titans' : ''}</div>
+          <div class="verdict-fill opp" style="width: ${c.nashWins ? '30%' : '65%'};">${!c.nashWins ? team.abbr : ''}</div>
+        </div>
+      </div>
+    `).join('');
+
+    // QB Section
+    const qb = team.qb;
+    document.getElementById('qbSection').innerHTML = `
+      <div class="vs-card">
+        <div class="vs-card-header">Quarterback Comparison</div>
+        <div class="vs-row">
+          <div class="vs-side nashville">
+            <div class="vs-city">Titans</div>
+            <div class="vs-value winner">${qb.nashName}</div>
+            <div class="vs-detail" style="text-align:left; margin-top:10px;">
+              ${qb.nashDetails.map(d => `<div style="padding:4px 0; border-bottom:1px solid rgba(75,146,219,0.1);">&#10003; ${d}</div>`).join('')}
+            </div>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="vs-side opponent">
+            <div class="vs-city">${team.name}</div>
+            <div class="vs-value loser">${qb.oppName}</div>
+            <div class="vs-detail" style="text-align:left; margin-top:10px;">
+              ${qb.oppDetails.map(d => `<div style="padding:4px 0; border-bottom:1px solid rgba(162,170,173,0.1);">&#10007; ${d}</div>`).join('')}
+            </div>
+          </div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-fill nash" style="width: 85%;">Cam Ward</div>
+          <div class="verdict-fill opp" style="width: 15%;"></div>
+        </div>
+      </div>
+    `;
+
+    // Brand Section
+    document.getElementById('brandSection').innerHTML = team.brand.map(b => `
+      <div class="vs-card">
+        <div class="vs-card-header">${b.header}</div>
+        <div class="vs-row">
+          <div class="vs-side nashville">
+            <div class="vs-city">Titans</div>
+            <div class="vs-detail" style="font-size:0.9rem; color: rgba(255,255,255,0.9);">${b.nashFact}</div>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="vs-side opponent">
+            <div class="vs-city">${team.name}</div>
+            <div class="vs-detail" style="font-size:0.9rem;">${b.oppFact}</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Gameday Section
+    document.getElementById('gamedaySection').innerHTML = team.gameday.map(g => `
+      <div class="vs-card">
+        <div class="vs-card-header">${g.header}</div>
+        <div class="vs-row">
+          <div class="vs-side nashville">
+            <div class="vs-city">Nashville</div>
+            <div class="vs-detail" style="font-size:0.9rem; color: rgba(255,255,255,0.9);">${g.nashFact}</div>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="vs-side opponent">
+            <div class="vs-city">${team.city}</div>
+            <div class="vs-detail" style="font-size:0.9rem;">${g.oppFact}</div>
+          </div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-fill nash" style="width: 80%;">Nashville</div>
+          <div class="verdict-fill opp" style="width: 20%;"></div>
+        </div>
+      </div>
+    `).join('');
+
+    // Verdict
+    const v = team.verdict;
+    const nashPct = Math.round((v.nashScore / (v.nashScore + v.oppScore)) * 100);
+    document.getElementById('verdictSection').innerHTML = `
+      <div class="scoreboard" style="border-color: var(--titans-red);">
+        <div class="scoreboard-item">
+          <div class="scoreboard-label">Nashville</div>
+          <div class="scoreboard-value nash-wins">${v.nashScore}</div>
+        </div>
+        <div class="scoreboard-item">
+          <div class="scoreboard-label">Final Score</div>
+          <div class="scoreboard-value" style="color: var(--titans-red);">-</div>
+        </div>
+        <div class="scoreboard-item">
+          <div class="scoreboard-label">${team.city}</div>
+          <div class="scoreboard-value opp-wins">${v.oppScore}</div>
+        </div>
+      </div>
+      <div class="verdict-bar" style="height: 40px; margin: 0 0 20px;">
+        <div class="verdict-fill nash" style="width: ${nashPct}%; font-size: 0.9rem;">Nashville ${nashPct}%</div>
+        <div class="verdict-fill opp" style="width: ${100 - nashPct}%; font-size: 0.9rem;">${100 - nashPct}%</div>
+      </div>
+      <div class="quote-card" style="border-color: var(--titans-blue);">
+        <div class="quote" style="font-size: 1.1rem; font-style: normal;">${v.summary}</div>
+      </div>
+      <p style="text-align: center; font-family: 'Anton', 'Oswald', sans-serif; font-size: 2rem; color: var(--titans-blue); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 30px;">${v.closing}</p>
+    `;
+
+    content.style.opacity = '1';
+  }, 200);
+}
+
+function toggleMobileMenu() {
+  const hamburger = document.querySelector('.titans-hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+// Load default team on page load
+document.addEventListener('DOMContentLoaded', () => loadTeam('colts'));
+  </script>
+</body>
+</html>
