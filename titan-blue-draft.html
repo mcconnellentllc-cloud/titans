@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Titan Blue - Kyle's Signature Drink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --titans-navy: #0C2340;
+            --titans-navy-dark: #050A10;
+            --titans-blue: #4B92DB;
+            --titans-red: #C8102E;
+            --titans-silver: #A2AAAD;
+            --titans-white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--titans-navy-dark);
+            min-height: 100vh;
+            color: var(--titans-white);
+        }
+
+        /* Draft Banner */
+        .draft-banner {
+            background: var(--titans-red);
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background:
+                radial-gradient(ellipse at 50% 80%, rgba(75,146,219,0.15) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(12,35,64,0.6) 0%, var(--titans-navy-dark) 100%);
+            border-bottom: 3px solid var(--titans-blue);
+        }
+
+        .hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 12vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+            background: linear-gradient(180deg, #fff 0%, var(--titans-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .hero .subtitle {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--titans-silver);
+            font-style: italic;
+        }
+
+        .hero .signature {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--titans-red);
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* Description */
+        .drink-description {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--titans-silver);
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(75,146,219,0.15);
+        }
+
+        /* Ingredients Section */
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--titans-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(75,146,219,0.3), transparent);
+        }
+
+        .ingredients-card {
+            background: linear-gradient(145deg, rgba(12,35,64,0.9) 0%, rgba(5,15,30,0.95) 100%);
+            border: 1px solid rgba(75,146,219,0.25);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px 30px;
+            list-style: none;
+        }
+
+        .ingredients-grid li {
+            font-size: 0.9rem;
+            color: var(--titans-silver);
+            padding: 8px 0;
+            padding-left: 22px;
+            position: relative;
+            border-bottom: 1px solid rgba(75,146,219,0.08);
+        }
+
+        .ingredients-grid li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 10px;
+            height: 10px;
+            background: var(--titans-blue);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .ingredients-grid li strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .ingredients-note {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--titans-blue);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Mix Cards */
+        .mix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .mix-card {
+            background: linear-gradient(145deg, rgba(12,35,64,0.85) 0%, rgba(5,15,30,0.95) 100%);
+            border: 1px solid rgba(75,146,219,0.15);
+            border-radius: 14px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mix-card:hover {
+            border-color: var(--titans-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(75,146,219,0.15);
+        }
+
+        .mix-card .mix-num {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-family: 'Anton', sans-serif;
+            font-size: 3rem;
+            color: rgba(75,146,219,0.08);
+            line-height: 1;
+        }
+
+        .mix-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .mix-card .mix-vibe {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            color: var(--titans-red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .mix-card .mix-recipe {
+            font-size: 0.88rem;
+            color: var(--titans-silver);
+            line-height: 1.7;
+        }
+
+        .mix-card .mix-recipe strong {
+            color: #fff;
+        }
+
+        .mix-card .mix-tip {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--titans-blue);
+            font-style: italic;
+            border-top: 1px solid rgba(75,146,219,0.1);
+            padding-top: 12px;
+        }
+
+        .mix-card .mix-strength {
+            display: inline-block;
+            margin-top: 10px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 3px;
+            background: rgba(75,146,219,0.15);
+            color: var(--titans-blue);
+        }
+
+        /* The Rules */
+        .rules-card {
+            background: linear-gradient(145deg, rgba(200,16,46,0.08) 0%, rgba(12,35,64,0.9) 100%);
+            border: 1px solid rgba(200,16,46,0.2);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .rules-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--titans-red);
+            margin-bottom: 15px;
+        }
+
+        .rules-list {
+            list-style: none;
+        }
+
+        .rules-list li {
+            font-size: 0.88rem;
+            color: var(--titans-silver);
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid rgba(200,16,46,0.08);
+        }
+
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rules-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 12px;
+            height: 2px;
+            background: var(--titans-red);
+        }
+
+        .rules-list li strong {
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(75,146,219,0.1);
+        }
+
+        .footer p {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--titans-silver);
+        }
+
+        .footer a {
+            color: var(--titans-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 40px 15px 30px; }
+            .container { padding: 25px 15px 60px; }
+            .ingredients-card { padding: 20px; }
+            .mix-card { padding: 20px; }
+            .mix-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="draft-banner">
+        DRAFT &mdash; Not linked on the site &mdash; For Kyle's eyes only
+    </div>
+
+    <div class="hero">
+        <h1>The Titan Blue</h1>
+        <p class="subtitle">Not too sweet. Not too sour. All Titans.</p>
+        <p class="signature">Kyle's Signature Drink</p>
+    </div>
+
+    <div class="container">
+        <p class="drink-description">
+            This is our drink. Crisp, cold, and Titans blue &mdash; built for tailgates, watch parties, and fourth quarter comebacks. Not some sugary Kool-Aid blue. Not a sour punch in the face. This one hits right. Clean vodka, real citrus, just enough blue cura&ccedil;ao to get the color without turning it into candy. Club soda keeps it light and drinkable.
+        </p>
+
+        <h2 class="section-label">The Ingredients</h2>
+        <div class="ingredients-card">
+            <ul class="ingredients-grid">
+                <li><strong>Vodka</strong> &mdash; 1.5&ndash;2 oz (Tito's, Deep Eddy, or any clean vodka)</li>
+                <li><strong>Blue Cura&ccedil;ao</strong> &mdash; 1 oz (this is the Titans blue)</li>
+                <li><strong>Fresh lemon juice</strong> &mdash; 3/4 oz (real lemons, no bottled stuff)</li>
+                <li><strong>Fresh lime juice</strong> &mdash; 1/2 oz (balances the sweet)</li>
+                <li><strong>Simple syrup</strong> &mdash; 1/4 oz (light hand &mdash; cura&ccedil;ao already has sweetness)</li>
+                <li><strong>Club soda</strong> &mdash; 2&ndash;3 oz splash (the backbone)</li>
+                <li><strong>Ice</strong> &mdash; crushed for frozen, cubed for shaken</li>
+                <li><strong>Garnish</strong> &mdash; lemon wheel + fresh mint sprig</li>
+            </ul>
+            <p class="ingredients-note">Use fresh citrus. This drink lives or dies on real lemon and lime.</p>
+        </div>
+
+        <h2 class="section-label">Four Ways to Mix It</h2>
+        <div class="mix-grid">
+
+            <div class="mix-card">
+                <span class="mix-num">01</span>
+                <h3>The Classic Titan</h3>
+                <div class="mix-vibe">Clean &amp; Balanced</div>
+                <div class="mix-recipe">
+                    <strong>2 oz vodka</strong>, 1 oz blue cura&ccedil;ao, 3/4 oz fresh lemon, 1/2 oz fresh lime, 1/4 oz simple syrup. <strong>Shake hard with ice</strong> for 15 seconds. Strain into a rocks glass over fresh ice. Top with a splash of club soda. Garnish with a lemon wheel.
+                </div>
+                <div class="mix-tip">The one that started it all. Crisp, balanced, perfectly blue. This is the standard.</div>
+                <span class="mix-strength">Medium &mdash; Smooth Sipper</span>
+            </div>
+
+            <div class="mix-card">
+                <span class="mix-num">02</span>
+                <h3>Titan Cooler</h3>
+                <div class="mix-vibe">Tall &amp; Refreshing</div>
+                <div class="mix-recipe">
+                    <strong>1.5 oz vodka</strong>, 1 oz blue cura&ccedil;ao, 1/2 oz fresh lemon, 1/4 oz simple syrup. <strong>Build in a tall glass</strong> over ice. Top with <strong>4&ndash;5 oz club soda</strong>. Stir gently twice. Add a mint sprig and lemon wedge.
+                </div>
+                <div class="mix-tip">All-day sessionable. Light enough to drink through four quarters without going down.</div>
+                <span class="mix-strength">Light &mdash; All-Day Drinker</span>
+            </div>
+
+            <div class="mix-card">
+                <span class="mix-num">03</span>
+                <h3>Frozen Titan</h3>
+                <div class="mix-vibe">Blended &amp; Bold</div>
+                <div class="mix-recipe">
+                    <strong>2 oz vodka</strong>, 1.5 oz blue cura&ccedil;ao, 1 oz fresh lemon, 1/2 oz fresh lime, 1/4 oz simple syrup, <strong>2 cups ice</strong>. Blend until smooth and slushy. Pour into a chilled pint glass. Lemon wheel on the rim.
+                </div>
+                <div class="mix-tip">September heat at Nissan Stadium? This is the move. Cold, blue, dangerous.</div>
+                <span class="mix-strength">Strong &mdash; Sneaky Smooth</span>
+            </div>
+
+            <div class="mix-card">
+                <span class="mix-num">04</span>
+                <h3>Titan Blue Batch</h3>
+                <div class="mix-vibe">Party Pitcher &mdash; Serves 8</div>
+                <div class="mix-recipe">
+                    <strong>12 oz vodka</strong> (1.5 cups), 8 oz blue cura&ccedil;ao (1 cup), 6 oz fresh lemon juice, 4 oz fresh lime juice, 2 oz simple syrup. Stir together in a pitcher with ice. <strong>Add 16 oz club soda</strong> right before serving. Pour over ice in each glass, garnish each one.
+                </div>
+                <div class="mix-tip">The whole tailgate is drinking blue. Mix it up, set it out, Titan Up.</div>
+                <span class="mix-strength">Crowd Pleaser &mdash; Makes a Full Pitcher</span>
+            </div>
+
+        </div>
+
+        <div class="rules-card">
+            <h3>The Rules</h3>
+            <ul class="rules-list">
+                <li><strong>Fresh citrus only.</strong> Bottled lemon juice will make this taste like a cleaning product. Squeeze your own.</li>
+                <li><strong>Go easy on the syrup.</strong> Blue cura&ccedil;ao already has sweetness built in. The 1/4 oz is there to round it out, not make it candy.</li>
+                <li><strong>Don't skip the soda.</strong> The club soda opens it up and keeps it from being heavy. That's what makes it drinkable.</li>
+                <li><strong>Cold glass matters.</strong> Throw your glasses in the freezer 20 minutes before. The drink hits different when the glass is frosted.</li>
+                <li><strong>Shake it like you mean it.</strong> For the Classic and Frozen mixes &mdash; a lazy shake gives you a lazy drink. 15 seconds minimum.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><a href="index.html">&larr; Back to Home</a></p>
+            <p style="margin-top: 10px; font-size: 0.75rem; color: rgba(162,170,173,0.5);">Draft &mdash; Not public yet</p>
+        </div>
+    </div>
+</body>
+</html>
