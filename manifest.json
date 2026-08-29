@@ -1,0 +1,17 @@
+{
+  "name": "Tennessee Titans Bible",
+  "short_name": "Titans Bible",
+  "description": "Kyle's Personal Tennessee Titans Fan Site",
+  "start_url": "/titans/",
+  "display": "standalone",
+  "background_color": "#050A10",
+  "theme_color": "#0C2340",
+  "icons": [
+    {
+      "src": "assets/titans-sword-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

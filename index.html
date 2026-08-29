@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/titans-style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Titans Bible">
+    <link rel="apple-touch-icon" href="assets/titans-sword-logo.svg">
     <style>
         /* Page-specific overrides */
         body {
@@ -527,6 +532,149 @@
             color: var(--titans-silver);
         }
 
+        .footer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 12px 24px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-btn.share-btn {
+            background: var(--titans-blue);
+            color: #fff;
+        }
+
+        .footer-btn.share-btn:hover {
+            background: #5ca3ec;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(75,146,219,0.4);
+        }
+
+        .footer-btn.share-btn.copied {
+            background: var(--win-green, #22c55e);
+        }
+
+        .footer-btn.homescreen-btn {
+            background: var(--titans-red);
+            color: #fff;
+        }
+
+        .footer-btn.homescreen-btn:hover {
+            background: #e0122f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(200,16,46,0.4);
+        }
+
+        .homescreen-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .homescreen-modal.active {
+            display: flex;
+        }
+
+        .homescreen-modal-content {
+            background: var(--titans-navy);
+            border: 1px solid rgba(75,146,219,0.3);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .homescreen-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--titans-silver);
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .homescreen-modal h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            margin: 0 0 8px;
+        }
+
+        .homescreen-modal .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            text-align: left;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(75,146,219,0.1);
+        }
+
+        .homescreen-modal .step:last-child {
+            border-bottom: none;
+        }
+
+        .homescreen-modal .step-num {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--titans-red);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .homescreen-modal .step-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--titans-silver);
+            line-height: 1.4;
+        }
+
+        .homescreen-modal .step-text strong {
+            color: #fff;
+        }
+
         /* Mobile adjustments */
         @media (max-width: 768px) {
             .hero-section {
@@ -781,7 +929,65 @@
         <img src="assets/titans-sword-logo.svg" alt="Titans" class="footer-logo">
         <p class="footer-text">Titan Up!</p>
         <p class="footer-sub">Kyle's Personal Fan Site - Not affiliated with the Tennessee Titans or NFL</p>
+        <div class="footer-actions">
+            <button class="footer-btn share-btn" id="shareBtn" onclick="shareSite()">
+                <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                <span id="shareBtnText">Share This Site</span>
+            </button>
+            <button class="footer-btn homescreen-btn" id="homescreenBtn" onclick="showHomescreenModal()">
+                <svg viewBox="0 0 24 24"><path d="M18 1.01L6 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM18 18H6V5h12v13zm-5-1h-2v-2h2v2zm0-4h-2V8h2v5z"/><path d="M11 8h2v5h-2z" fill="none"/><path d="M12 6l-4 4h3v4h2v-4h3z" transform="translate(0,1)"/></svg>
+                <span>Save to Home Screen</span>
+            </button>
+        </div>
     </footer>
+
+    <!-- Home Screen Instructions Modal -->
+    <div class="homescreen-modal" id="homescreenModal">
+        <div class="homescreen-modal-content">
+            <button class="homescreen-modal-close" onclick="closeHomescreenModal()">&times;</button>
+            <h3>Save to Home Screen</h3>
+            <p style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; color: var(--titans-blue); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 15px;">Get instant access like an app</p>
+            <div id="iosSteps" style="display:none;">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <span class="step-text">Tap the <strong>Share</strong> button (box with arrow) at the bottom of Safari</span>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <span class="step-text">Scroll down and tap <strong>"Add to Home Screen"</strong></span>
+                </div>
+                <div class="step">
+                    <span class="step-num">3</span>
+                    <span class="step-text">Tap <strong>"Add"</strong> and the Titans Bible icon appears on your home screen</span>
+                </div>
+            </div>
+            <div id="androidSteps" style="display:none;">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <span class="step-text">Tap the <strong>three-dot menu</strong> (&#8942;) in the top right of Chrome</span>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <span class="step-text">Tap <strong>"Add to Home screen"</strong> or <strong>"Install app"</strong></span>
+                </div>
+                <div class="step">
+                    <span class="step-num">3</span>
+                    <span class="step-text">Tap <strong>"Add"</strong> and the Titans Bible icon appears on your home screen</span>
+                </div>
+            </div>
+            <div id="desktopSteps" style="display:none;">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <span class="step-text">Click the <strong>install icon</strong> in the address bar (or Menu &rarr; "Install Titans Bible")</span>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <span class="step-text">Click <strong>"Install"</strong> to add it as a desktop app</span>
+                </div>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--titans-silver); margin-top: 15px; font-family: 'Open Sans', sans-serif;">Opens full-screen like a real app &mdash; no browser bars!</p>
+        </div>
+    </div>
 
     <!-- Live Ticker -->
     <div class="ticker">
@@ -822,6 +1028,55 @@
             } else {
                 nav.classList.remove('scrolled');
             }
+        });
+
+        function shareSite() {
+            var url = window.location.href;
+            var title = 'Tennessee Titans Bible - Check out this Titans fan site!';
+            if (navigator.share) {
+                navigator.share({ title: title, url: url }).catch(function(){});
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function() {
+                    var btn = document.getElementById('shareBtn');
+                    var txt = document.getElementById('shareBtnText');
+                    btn.classList.add('copied');
+                    txt.textContent = 'Link Copied!';
+                    setTimeout(function() {
+                        btn.classList.remove('copied');
+                        txt.textContent = 'Share This Site';
+                    }, 2500);
+                });
+            } else {
+                var ta = document.createElement('textarea');
+                ta.value = url;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                var txt = document.getElementById('shareBtnText');
+                txt.textContent = 'Link Copied!';
+                setTimeout(function() { txt.textContent = 'Share This Site'; }, 2500);
+            }
+        }
+
+        function showHomescreenModal() {
+            var ua = navigator.userAgent || '';
+            var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var isAndroid = /Android/.test(ua);
+            document.getElementById('iosSteps').style.display = isIOS ? 'block' : 'none';
+            document.getElementById('androidSteps').style.display = isAndroid ? 'block' : 'none';
+            document.getElementById('desktopSteps').style.display = (!isIOS && !isAndroid) ? 'block' : 'none';
+            document.getElementById('homescreenModal').classList.add('active');
+        }
+
+        function closeHomescreenModal() {
+            document.getElementById('homescreenModal').classList.remove('active');
+        }
+
+        document.getElementById('homescreenModal').addEventListener('click', function(e) {
+            if (e.target === this) closeHomescreenModal();
         });
     </script>
 </body>
