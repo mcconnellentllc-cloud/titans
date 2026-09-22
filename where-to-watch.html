@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where to Watch - Tennessee Titans Bible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --titans-navy: #0C2340;
+      --titans-blue: #4B92DB;
+      --titans-red: #C8102E;
+      --titans-silver: #A2AAAD;
+      --titans-white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--titans-navy) 0%, #061428 50%, var(--titans-navy) 100%);
+      min-height: 100vh;
+      color: var(--titans-white);
+    }
+
+    .main-nav {
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--titans-silver);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--titans-white); background: rgba(75, 146, 219, 0.2); }
+    .nav-link.active { color: var(--titans-blue); background: rgba(75, 146, 219, 0.15); }
+
+    .page-header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(180deg, rgba(75, 146, 219, 0.2) 0%, transparent 100%);
+      border-bottom: 3px solid var(--titans-blue);
+    }
+
+    .page-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .page-header p {
+      color: var(--titans-silver);
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      color: var(--titans-blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 30px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: rgba(12, 35, 64, 0.9);
+      border: 1px solid rgba(75, 146, 219, 0.3);
+      color: var(--titans-white);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      line-height: 1.2;
+    }
+
+    .chip b {
+      color: var(--titans-blue);
+      font-size: 1.05rem;
+      margin-right: 6px;
+    }
+
+    .chip.alt {
+      background: rgba(200, 16, 46, 0.15);
+      border-color: rgba(200, 16, 46, 0.4);
+    }
+
+    .chip.alt b {
+      color: var(--titans-red);
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    .schedule-table th {
+      background: rgba(75, 146, 219, 0.2);
+      color: var(--titans-blue);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 2px solid rgba(75, 146, 219, 0.4);
+    }
+
+    .schedule-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.1);
+      vertical-align: top;
+    }
+
+    .schedule-table td b {
+      color: var(--titans-red);
+    }
+
+    .schedule-table tr:hover td {
+      background: rgba(75, 146, 219, 0.05);
+    }
+
+    .schedule-table tr.bye td {
+      color: var(--titans-silver);
+      font-style: italic;
+    }
+
+    .schedule-table tr.played td {
+      opacity: 0.5;
+    }
+
+    .note {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--titans-silver);
+      line-height: 1.5;
+      padding: 12px 16px;
+      background: rgba(12, 35, 64, 0.5);
+      border-radius: 6px;
+      border: 1px solid rgba(75, 146, 219, 0.15);
+    }
+
+    @media (max-width: 640px) {
+      .schedule-table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Titans_2026_Roster.html" class="nav-link">Roster</a>
+      <a href="schedule.html" class="nav-link">Schedule</a>
+      <a href="where-to-watch.html" class="nav-link active">Watch</a>
+      <a href="titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
+      <a href="team-history.html" class="nav-link">History</a>
+      <a href="titans-salary-cap.html" class="nav-link">Cap</a>
+      <a href="titans-betting-odds.html" class="nav-link">Odds</a>
+      <a href="titans-hype-videos.html" class="nav-link">Hype</a>
+      <a href="titans-tailgate-recipes.html" class="nav-link">Recipes</a>
+      <a href="nfl.html" class="nav-link">NFL</a>
+      <a href="nashville-vs.html" class="nav-link">Nashville vs.</a>
+      <a href="titans-bible-viewer.html" class="nav-link">Bible</a>
+      <a href="trips/" class="nav-link">Trips</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Where to Watch</h1>
+    <p>All times Mountain &bull; SuperBox channel numbers &bull; Try in order &mdash; each is a separate feed</p>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">Every Game</h2>
+    <div class="chips">
+      <span class="chip"><b>1191</b>Titans Team Channel</span>
+      <span class="chip"><b>340</b>CBS 5 Nashville (WTVF)</span>
+      <span class="chip"><b>355</b>FOX 17 Nashville (WZTV)</span>
+      <span class="chip"><b>1193</b>NFL AFC Feed</span>
+      <span class="chip"><b>1144&ndash;1159</b>NFL 01&ndash;16 (labeled by matchup on game day)</span>
+    </div>
+
+    <h2 class="section-title">Backup Tennessee Feeds</h2>
+    <div class="chips">
+      <span class="chip alt"><b>518</b>CBS Memphis</span>
+      <span class="chip alt"><b>511</b>FOX Memphis</span>
+      <span class="chip alt"><b>477</b>CBS Knoxville</span>
+      <span class="chip alt"><b>471</b>FOX Knoxville</span>
+      <span class="chip alt"><b>551</b>CBS Tri-Cities</span>
+      <span class="chip alt"><b>583</b>FOX Tri-Cities</span>
+    </div>
+
+    <h2 class="section-title">Week by Week &mdash; Opponent-Market Feeds</h2>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Wk</th>
+          <th>Date</th>
+          <th>Opponent</th>
+          <th>Kick (MT)</th>
+          <th>Net</th>
+          <th>Opponent Market</th>
+          <th>Also Likely on Map</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="played"><td>1</td><td>Sep 13</td><td>Jets</td><td>11:00</td><td>CBS</td><td><b>306</b> CBS 2 New York</td><td>325 Hartford</td></tr>
+        <tr class="played"><td>2</td><td>Sep 20</td><td>Eagles</td><td>11:00</td><td>FOX</td><td><b>359</b> FOX 29 Philadelphia</td><td>347 Washington</td></tr>
+        <tr><td>3</td><td>Sep 27</td><td>@ Giants</td><td>11:00</td><td>CBS</td><td><b>306</b> CBS 2 New York</td><td>325 Hartford &middot; 446 Albany</td></tr>
+        <tr><td>4</td><td>Oct 4</td><td>@ Ravens</td><td>11:00</td><td>CBS</td><td><b>300</b> CBS 13 Baltimore</td><td>347 Washington &middot; 307 Harrisburg</td></tr>
+        <tr><td>5</td><td>Oct 11</td><td>Texans</td><td>11:00</td><td>CBS</td><td><b>331</b> CBS 11 Houston</td><td>330 Austin &middot; 329 San Antonio &middot; 578 Lubbock</td></tr>
+        <tr><td>6</td><td>Oct 18</td><td>@ Colts</td><td>11:00</td><td>FOX</td><td><b>382</b> FOX 59 Indianapolis</td><td>511 Memphis &middot; 471 Knoxville</td></tr>
+        <tr><td>7</td><td>Oct 25</td><td>Browns</td><td>11:00</td><td>CBS</td><td><b>320</b> CBS 19 Cleveland</td><td>543 Youngstown &middot; 341 Columbus &middot; 396 Dayton</td></tr>
+        <tr><td>8</td><td>Nov 1</td><td>@ Bengals</td><td>11:00</td><td>CBS</td><td><b>346</b> CBS 12 Cincinnati</td><td>396 Dayton &middot; 341 Columbus &middot; 321 Lexington</td></tr>
+        <tr class="bye"><td>9</td><td colspan="6">Bye week</td></tr>
+        <tr><td>10</td><td>Nov 15</td><td>Jaguars</td><td>11:00</td><td>FOX</td><td><b>365</b> FOX 30 Jacksonville</td><td>368 Orlando &middot; 380 Gainesville</td></tr>
+        <tr><td>11</td><td>Nov 22</td><td>@ Cowboys</td><td>11:00</td><td>FOX</td><td><b>369</b> FOX 4 Dallas</td><td>385 Austin &middot; 408 San Antonio &middot; 603 Waco &middot; 261 Shreveport</td></tr>
+        <tr><td>12</td><td>Nov 29</td><td>@ Jaguars</td><td>2:05</td><td>CBS</td><td><b>461</b> CBS 47 Jacksonville</td><td>338 Orlando &middot; 591 Tallahassee</td></tr>
+        <tr><td>13</td><td>Dec 6</td><td>Commanders</td><td>11:00</td><td>CBS</td><td><b>347</b> CBS 9 Washington</td><td>300 Baltimore &middot; 537 Hampton Roads &middot; 307 Harrisburg</td></tr>
+        <tr><td>14</td><td>Dec 13</td><td>@ Lions</td><td>11:00</td><td>FOX</td><td><b>358</b> FOX 2 Detroit</td><td>599 Lansing</td></tr>
+        <tr><td>15</td><td>Dec 20</td><td>Colts</td><td>11:00</td><td>CBS</td><td><b>376</b> CBS 4 Indianapolis</td><td>589 Fort Wayne</td></tr>
+        <tr><td>16</td><td>Dec 27</td><td>@ Raiders</td><td>2:05</td><td>FOX</td><td>&mdash; (no Las Vegas FOX listed)</td><td>353 Salt Lake City &middot; 475 San Francisco</td></tr>
+        <tr><td>17</td><td>Jan 3</td><td>Steelers</td><td>11:00</td><td>CBS</td><td><b>303</b> CBS 2 Pittsburgh (KDKA)</td><td>543 Youngstown &middot; 584 Erie &middot; 549 Charleston WV</td></tr>
+        <tr><td>18</td><td>TBD</td><td>@ Texans</td><td>TBD</td><td>TBD</td><td><b>331</b> KHOU &middot; <b>362</b> FOX 26 Houston</td><td>330 Austin &middot; 329 San Antonio</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note">Denver locals &mdash; 311 CBS 4 / 366 FOX 31 &mdash; carry the game only when the weekly map assigns it. "Also likely" markets depend on that week's CBS/FOX coverage map; check 506sports.com Thursday. Channel numbers per SuperBox June 2026 list and may shift after updates.</p>
+  </main>
+</body>
+</html>
