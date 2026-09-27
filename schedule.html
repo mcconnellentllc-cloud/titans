@@ -488,6 +488,71 @@
       margin-top: 5px;
     }
 
+    .listen-live {
+      background: linear-gradient(145deg, rgba(200, 16, 46, 0.15) 0%, rgba(12, 35, 64, 0.9) 100%);
+      border: 2px solid var(--titans-red);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .listen-live h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--titans-red);
+      margin-bottom: 6px;
+    }
+
+    .listen-live .flagship {
+      font-size: 0.95rem;
+      color: var(--titans-silver);
+      margin-bottom: 16px;
+    }
+
+    .listen-live .flagship strong {
+      color: var(--titans-white);
+    }
+
+    .listen-live-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .listen-live-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(12, 35, 64, 0.9);
+      border: 1px solid rgba(75, 146, 219, 0.3);
+      color: var(--titans-white);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .listen-live-links a:hover {
+      background: rgba(75, 146, 219, 0.2);
+      border-color: var(--titans-blue);
+      transform: translateY(-1px);
+    }
+
+    .listen-live .booth {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--titans-silver);
+    }
+
     .section-title {
       font-family: 'Oswald', sans-serif;
       font-size: 1.5rem;
@@ -701,6 +766,18 @@
   </header>
 
   <main class="container">
+    <div class="listen-live">
+      <h2>Listen Live</h2>
+      <p class="flagship">Flagship: <strong>104.5 The Zone</strong> (WGFX Nashville) &bull; 40+ affiliates across TN, KY, AL, MS, AR</p>
+      <div class="listen-live-links">
+        <a href="https://www.tennesseetitans.com/game-day/listen-live" target="_blank">&#127925; Titans.com Audio</a>
+        <a href="https://www.nfl.com/plus/" target="_blank">&#127944; NFL+</a>
+        <a href="https://tunein.com/radio/1045-The-Zone-s30842/" target="_blank">&#128251; TuneIn</a>
+        <a href="https://www.siriusxm.com/sports/nfl" target="_blank">&#128225; SiriusXM</a>
+      </div>
+      <p class="booth">Taylor Zarzour (play-by-play) &bull; Ramon Foster (color) &bull; Will Boling (pregame/postgame)</p>
+    </div>
+
     <h2 class="section-title">Training Camp Update</h2>
     <div class="recap-grid">
       <div class="recap-card">
