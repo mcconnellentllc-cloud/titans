@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCountUpAnimations();
     initHeroEffects();
     initMobileMenu();
+    initDropdownTouch();
 });
 
 /* ===== MOBILE HAMBURGER MENU ===== */
@@ -31,6 +32,34 @@ function initMobileMenu() {
             mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
         });
+    });
+
+    mobileMenu.querySelectorAll('.mob-group-toggle').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const group = this.closest('.mob-group');
+            group.classList.toggle('open');
+        });
+    });
+}
+
+/* ===== DESKTOP DROPDOWN TOUCH SUPPORT ===== */
+function initDropdownTouch() {
+    if (!('ontouchstart' in window)) return;
+    document.querySelectorAll('.nav-dropdown').forEach(dd => {
+        const label = dd.querySelector('.nav-dd-label');
+        if (!label) return;
+        label.addEventListener('click', function(e) {
+            if (!dd.classList.contains('open')) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+                dd.classList.add('open');
+            }
+        });
+    });
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+            document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+        }
     });
 }
 

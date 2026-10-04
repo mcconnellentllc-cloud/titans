@@ -1,0 +1,130 @@
+[
+  {
+    "group": "gameday",
+    "groupLabel": "Game Day",
+    "title": "Schedule",
+    "description": "Full 2026 regular season schedule with results, win probabilities, and countdown.",
+    "url": "schedule.html",
+    "icon": "calendar"
+  },
+  {
+    "group": "gameday",
+    "groupLabel": "Game Day",
+    "title": "Where to Watch",
+    "description": "SuperBox channel numbers for every Titans game — Nashville, opponent markets, and backups.",
+    "url": "where-to-watch.html",
+    "icon": "tv"
+  },
+  {
+    "group": "gameday",
+    "groupLabel": "Game Day",
+    "title": "SuperBox Fix",
+    "description": "Step-by-step troubleshooting when your SuperBox freezes on game day.",
+    "url": "superbox-fix.html",
+    "icon": "tool"
+  },
+  {
+    "group": "gameday",
+    "groupLabel": "Game Day",
+    "title": "Betting Odds",
+    "description": "Super Bowl futures, weekly spreads, moneylines, and over/unders.",
+    "url": "titans-betting-odds.html",
+    "icon": "dice"
+  },
+  {
+    "group": "gameday",
+    "groupLabel": "Game Day",
+    "title": "Tailgate Recipes",
+    "description": "Nashville-style tailgate food — hot chicken, smoked wings, and more.",
+    "url": "titans-tailgate-recipes.html",
+    "icon": "food"
+  },
+  {
+    "group": "team",
+    "groupLabel": "Team",
+    "title": "2026 Roster",
+    "description": "Complete roster with bios, stats, and ESPN headshots for every player.",
+    "url": "Titans_2026_Roster.html",
+    "icon": "roster"
+  },
+  {
+    "group": "team",
+    "groupLabel": "Team",
+    "title": "Salary Cap",
+    "description": "Cap space, top contracts, dead money, and financial breakdowns.",
+    "url": "titans-salary-cap.html",
+    "icon": "dollar"
+  },
+  {
+    "group": "team",
+    "groupLabel": "Team",
+    "title": "Cheerleaders",
+    "description": "Meet the 2026 Tennessee Titans Cheerleaders.",
+    "url": "titans-cheerleaders-2026.html",
+    "icon": "star"
+  },
+  {
+    "group": "team",
+    "groupLabel": "Team",
+    "title": "Hype Videos",
+    "description": "The best Titans hype videos and highlight reels.",
+    "url": "titans-hype-videos.html",
+    "icon": "play"
+  },
+  {
+    "group": "league",
+    "groupLabel": "League",
+    "title": "NFL Hub",
+    "description": "League-wide news, standings, playoff bracket, and division rivals.",
+    "url": "nfl.html",
+    "icon": "football"
+  },
+  {
+    "group": "league",
+    "groupLabel": "League",
+    "title": "Nashville vs.",
+    "description": "Head-to-head rivalry comparisons — Titans vs. every opponent city.",
+    "url": "nashville-vs.html",
+    "icon": "versus"
+  },
+  {
+    "group": "history",
+    "groupLabel": "History",
+    "title": "Team History",
+    "description": "From the Houston Oilers to Tennessee — every era, every legend.",
+    "url": "team-history.html",
+    "icon": "book"
+  },
+  {
+    "group": "history",
+    "groupLabel": "History",
+    "title": "Remember the Titans",
+    "description": "The 2000 film, its real history, and the spiritual home of Titans fans.",
+    "url": "titans-remember-movie.html",
+    "icon": "film"
+  },
+  {
+    "group": "history",
+    "groupLabel": "History",
+    "title": "Bible Viewer",
+    "description": "Kyle's complete Titans reference guide — the ultimate fan resource.",
+    "url": "titans-bible-viewer.html",
+    "icon": "bible"
+  },
+  {
+    "group": "history",
+    "groupLabel": "History",
+    "title": "Archive",
+    "description": "Past rosters, cheerleader squads, and historical records.",
+    "url": "archive/",
+    "icon": "archive"
+  },
+  {
+    "group": "trips",
+    "groupLabel": "Trips",
+    "title": "Trip Planning Hub",
+    "description": "Plan your road trip to an away Titans game.",
+    "url": "trips/",
+    "icon": "map"
+  }
+]
