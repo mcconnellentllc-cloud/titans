@@ -553,6 +553,18 @@
       color: var(--titans-silver);
     }
 
+    .win-prob {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .win-prob.high { color: var(--win-green); }
+    .win-prob.mid { color: #fbbf24; }
+    .win-prob.low { color: var(--loss-red); }
+    .win-prob.played { color: var(--titans-silver); opacity: 0.5; }
+
     .section-title {
       font-family: 'Oswald', sans-serif;
       font-size: 1.5rem;
@@ -778,176 +790,6 @@
       <p class="booth">Taylor Zarzour (play-by-play) &bull; Ramon Foster (color) &bull; Will Boling (pregame/postgame)</p>
     </div>
 
-    <h2 class="section-title">Training Camp Update</h2>
-    <div class="recap-grid">
-      <div class="recap-card">
-        <div class="value" style="font-size:1.2rem; color: var(--titans-blue);">Jul 28 - Aug 27</div>
-        <div class="label">Camp Dates</div>
-      </div>
-      <div class="recap-card">
-        <div class="value">16</div>
-        <div class="label">Practices Scheduled</div>
-      </div>
-      <div class="recap-card">
-        <div class="value">3</div>
-        <div class="label">Joint Practices</div>
-      </div>
-      <div class="recap-card">
-        <div class="value">Aug 30</div>
-        <div class="label">91 → 53 Cut Day</div>
-      </div>
-    </div>
-    <div style="background: linear-gradient(145deg, rgba(12, 35, 64, 0.9) 0%, rgba(26, 58, 92, 0.8) 100%); border: 1px solid rgba(75, 146, 219, 0.2); border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-      <h3 style="font-family: 'Oswald', sans-serif; color: var(--titans-blue); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Injury &amp; Status Report — Week 4 @ Ravens (Final)</h3>
-      <div style="display: grid; gap: 8px; font-size: 0.9rem;">
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>John Franklin-Myers (DL)</span>
-          <span style="color: #22c55e;">Back — Full practice Fri, will play</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Tony Pollard (RB)</span>
-          <span style="color: #22c55e;">Foot — Full practice Thu/Fri, will play</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Tyjae Spears (RB)</span>
-          <span style="color: #fbbf24;">Ankle — Questionable (trending toward playing)</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Kevin Winston Jr. (S)</span>
-          <span style="color: #fbbf24;">Shoulder — Questionable (DNP Fri, Tony Adams would start)</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Fernando Carmona (G)</span>
-          <span style="color: #ef4444;">IR — Ankle (expected back Week 8)</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Jackson Slater (G)</span>
-          <span style="color: #ef4444;">IR — Foot (expected back Week 8)</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Jaylen Harrell (DE)</span>
-          <span style="color: #ef4444;">IR — Knee (ACL), out long-term</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Joshua Williams (CB)</span>
-          <span style="color: #fbbf24;">IR — Pectoral (expected back Week 5)</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Tanoh Kpassagnon (EDGE)</span>
-          <span style="color: #ef4444;">IR — Out for 2026 season</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(75,146,219,0.1);">
-          <span>Andre James (C)</span>
-          <span style="color: #ef4444;">IR — Out for 2026 season</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 6px 0;">
-          <span>Nazeeh Johnson (DB)</span>
-          <span style="color: #ef4444;">IR + Suspended 6 games — Out for 2026</span>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="section-title">2025 Season Recap</h2>
-    <div class="recap-grid">
-      <div class="recap-card">
-        <div class="value red">3-14</div>
-        <div class="label">Final Record</div>
-      </div>
-      <div class="recap-card">
-        <div class="value">#4</div>
-        <div class="label">2026 Draft Pick</div>
-      </div>
-      <div class="recap-card">
-        <div class="value">Cam Ward</div>
-        <div class="label">Starting QB</div>
-      </div>
-      <div class="recap-card">
-        <div class="value">4th</div>
-        <div class="label">AFC South</div>
-      </div>
-    </div>
-
-    <h2 class="section-title">2026 Preseason</h2>
-    <table class="schedule-table">
-      <thead>
-        <tr>
-          <th>Week</th>
-          <th>Date</th>
-          <th>Opponent</th>
-          <th>Location</th>
-          <th>TV</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="week-num">PS1</span></td>
-          <td><span class="game-date">Thu, Aug 13</span></td>
-          <td>
-            <div class="opponent">
-              <span class="opponent-name">San Francisco 49ers</span>
-            </div>
-          </td>
-          <td>
-            <span class="location-tag away">Away</span>
-            <span class="location">Levi's Stadium</span>
-          </td>
-          <td>
-            <div class="result">
-              <span class="result-badge win">W</span>
-              <span class="score win">19-13</span>
-            </div>
-            <a href="https://www.youtube.com/watch?v=M1f8LaJh0kg" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Full Game</a>
-          </td>
-        </tr>
-        <tr>
-          <td><span class="week-num">PS2</span></td>
-          <td><span class="game-date">Sun, Aug 23</span></td>
-          <td>
-            <div class="opponent">
-              <span class="opponent-name">Seattle Seahawks</span>
-            </div>
-          </td>
-          <td>
-            <span class="location-tag home">Home</span>
-            <span class="location">Nissan Stadium</span>
-          </td>
-          <td>
-            <div class="result">
-              <span class="result-badge win">W</span>
-              <span class="score win">19-16</span>
-            </div>
-            <a href="https://www.youtube.com/playlist?list=PLZEwWow4HHzM" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Full Game</a>
-          </td>
-        </tr>
-        <tr>
-          <td><span class="week-num">PS3</span></td>
-          <td><span class="game-date">Sat, Aug 29</span></td>
-          <td>
-            <div class="opponent">
-              <span class="opponent-name">Chicago Bears</span>
-            </div>
-          </td>
-          <td>
-            <span class="location-tag home">Home</span>
-            <span class="location">Nissan Stadium</span>
-          </td>
-          <td>
-            <div class="result">
-              <span class="result-badge loss">L</span>
-              <span class="score loss">15-24</span>
-            </div>
-            <a href="https://www.espn.com/nfl/game/_/gameId/401874394/bears-titans" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Full Game</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="text-align:center; color: var(--titans-silver); margin-top: 10px; font-size: 0.85rem;">
-      Joint practices with all three preseason opponents (all 2025 NFC playoff teams) — a first in franchise history. <strong style="color: var(--titans-silver);">Titans 2-1 in preseason.</strong><br>
-      <strong style="color: var(--win-green);">PS1 Recap:</strong> Saleh wins Titans debut. Pollard rushing TD, Joey Slye 4 FGs (58-yd bomb). Ward 5/12, 57 yds.<br>
-      <strong style="color: var(--win-green);">PS2 Recap:</strong> Titans rally from 16-3 deficit to beat defending champ Seahawks. Slye 4 FGs again (55-yd). D'Ernest Johnson game-winning 2-yd TD. Ward 8/12, 69 yds.<br>
-      <strong style="color: var(--loss-red);">PS3 Recap:</strong> Bears' Tyson Bagent torches Titans 16/17, 208 yds, 2 TDs (including a 97-yd bomb to Zavion Thomas). Will Levis 14/22, 143 yds. Bears 24, Titans 15.
-    </p>
-
     <h2 class="section-title">2026 Regular Season Schedule</h2>
     <table class="schedule-table">
       <thead>
@@ -957,6 +799,7 @@
           <th>Opponent</th>
           <th>Location</th>
           <th>Result</th>
+          <th>Win %</th>
         </tr>
       </thead>
       <tbody>
@@ -980,6 +823,7 @@
             </div>
             <a href="https://www.espn.com/nfl/game/_/gameId/401872924/jets-titans" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Recap</a>
           </td>
+          <td><span class="win-prob played">&mdash;</span></td>
         </tr>
         <!-- Week 2 -->
         <tr>
@@ -1000,6 +844,7 @@
             </div>
             <a href="https://www.espn.com/nfl/game/_/gameId/401872939/eagles-titans" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Recap</a>
           </td>
+          <td><span class="win-prob played">&mdash;</span></td>
         </tr>
         <!-- Week 3 -->
         <tr>
@@ -1020,6 +865,7 @@
             </div>
             <a href="https://www.espn.com/nfl/game/_/gameId/401872956/titans-giants" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Recap</a>
           </td>
+          <td><span class="win-prob played">&mdash;</span></td>
         </tr>
         <!-- Week 4 -->
         <tr>
@@ -1040,6 +886,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob low">16%</span></td>
         </tr>
         <!-- Week 5 -->
         <tr>
@@ -1060,6 +907,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">35%</span></td>
         </tr>
         <!-- Week 6 -->
         <tr>
@@ -1080,6 +928,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">40%</span></td>
         </tr>
         <!-- Week 7 -->
         <tr>
@@ -1100,6 +949,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob high">55%</span></td>
         </tr>
         <!-- Week 8 -->
         <tr>
@@ -1120,6 +970,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">30%</span></td>
         </tr>
         <!-- Week 9 BYE -->
         <tr style="background: rgba(162,170,173,0.1);">
@@ -1128,6 +979,7 @@
           <td colspan="3" style="text-align: center; padding: 20px;">
             <span style="font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: var(--titans-silver); text-transform: uppercase; letter-spacing: 3px;">BYE WEEK</span>
           </td>
+          <td></td>
         </tr>
         <!-- Week 10 -->
         <tr>
@@ -1148,6 +1000,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob high">55%</span></td>
         </tr>
         <!-- Week 11 -->
         <tr>
@@ -1168,6 +1021,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">40%</span></td>
         </tr>
         <!-- Week 12 -->
         <tr>
@@ -1188,6 +1042,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">45%</span></td>
         </tr>
         <!-- Week 13 -->
         <tr>
@@ -1208,6 +1063,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">35%</span></td>
         </tr>
         <!-- Week 14 -->
         <tr>
@@ -1228,6 +1084,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob low">15%</span></td>
         </tr>
         <!-- Week 15 -->
         <tr>
@@ -1248,6 +1105,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">45%</span></td>
         </tr>
         <!-- Week 16 -->
         <tr>
@@ -1268,6 +1126,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">50%</span></td>
         </tr>
         <!-- Week 17 -->
         <tr>
@@ -1288,6 +1147,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">35%</span></td>
         </tr>
         <!-- Week 18 -->
         <tr>
@@ -1308,6 +1168,7 @@
             </div>
             <a href="https://www.nfl.com/apps/" target="_blank" rel="noopener" class="watch-link"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zM10 8v6l5-3-5-3z"/></svg>Watch Live</a>
           </td>
+          <td><span class="win-prob mid">30%</span></td>
         </tr>
       </tbody>
     </table>
@@ -1327,9 +1188,9 @@
       </div>
     </div>
     <p style="text-align:center; color: var(--titans-silver); margin-top: 20px; font-size: 0.9rem;">
+      <strong style="color: var(--titans-blue);">Projected Final Record: 4-5 wins</strong> (expected wins remaining: ~5.3) &bull; Win % based on spreads, team performance, and opponent strength<br>
       HC Robert Saleh &bull; OC Brian Daboll &bull; DC Gus Bradley &bull; STC John Fassel<br>
-      Final season at Nissan Stadium. No primetime games in 2026. Back-to-back home openers for first time since 2010.<br>
-      Week 17 vs Steelers is the final regular season home game at the current stadium.
+      Final season at Nissan Stadium &bull; Week 17 vs Steelers is the last regular season home game
     </p>
 
     <!-- Titans Cheerleaders -->
