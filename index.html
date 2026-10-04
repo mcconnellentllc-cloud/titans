@@ -700,57 +700,98 @@
             }
         }
     </style>
+  <link rel="stylesheet" href="assets/titans-nav.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="main-nav" id="mainNav">
-        <div class="nav-container">
-            <a href="index.html">
-                <img src="assets/titans-sword-logo.svg" alt="Titans" class="nav-logo">
-            </a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="Titans_2026_Roster.html" class="nav-link">Roster</a>
-                <a href="schedule.html" class="nav-link">Schedule</a>
-                <a href="where-to-watch.html" class="nav-link">Watch</a>
-                <a href="titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
-                <a href="team-history.html" class="nav-link">History</a>
-                <a href="titans-salary-cap.html" class="nav-link">Cap</a>
-                <a href="titans-betting-odds.html" class="nav-link">Odds</a>
-                <a href="titans-hype-videos.html" class="nav-link">Hype</a>
-                <a href="titans-tailgate-recipes.html" class="nav-link">Recipes</a>
-                <a href="nfl.html" class="nav-link">NFL</a>
-                <a href="nashville-vs.html" class="nav-link">Nashville vs.</a>
-                <a href="titans-bible-viewer.html" class="nav-link">Bible</a>
-                <a href="trips/" class="nav-link">Trips</a>
-            </div>
-            <div class="titans-hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="nav-container">
+      <a href="index.html"><img src="assets/titans-sword-logo.svg" alt="Titans" class="nav-logo"></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <div class="nav-dropdown">
+          <a href="game-day/" class="nav-link nav-dd-label">Game Day <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="schedule.html">Schedule</a>
+          <a href="where-to-watch.html">Where to Watch</a>
+          <a href="superbox-fix.html">SuperBox Fix</a>
+          <a href="titans-betting-odds.html">Betting Odds</a>
+          <a href="titans-tailgate-recipes.html">Tailgate Recipes</a>
+          </div>
         </div>
-    </nav>
+        <div class="nav-dropdown">
+          <a href="team/" class="nav-link nav-dd-label">Team <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="Titans_2026_Roster.html">2026 Roster</a>
+          <a href="titans-salary-cap.html">Salary Cap</a>
+          <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
+          <a href="titans-hype-videos.html">Hype Videos</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="league/" class="nav-link nav-dd-label">League <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="nfl.html">NFL Hub</a>
+          <a href="nashville-vs.html">Nashville vs.</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="history/" class="nav-link nav-dd-label">History <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="team-history.html">Team History</a>
+          <a href="titans-remember-movie.html">Remember the Titans</a>
+          <a href="titans-bible-viewer.html">Bible Viewer</a>
+          <a href="archive/">Archive</a>
+          </div>
+        </div>
+        <a href="trips/" class="nav-link">Trips</a>
+      </div>
+      <div class="titans-hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
 
     <!-- Mobile Menu -->
     <div class="titans-mobile-menu">
-        <div class="titans-mobile-menu-inner">
-        <a href="index.html" class="active">Home</a>
-        <a href="Titans_2026_Roster.html">Roster</a>
-        <a href="schedule.html">Schedule</a>
-        <a href="where-to-watch.html">Watch</a>
-        <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
-        <a href="team-history.html">History</a>
-        <a href="titans-salary-cap.html">Salary Cap</a>
-        <a href="titans-betting-odds.html">Odds</a>
-        <a href="titans-hype-videos.html">Hype Videos</a>
-        <a href="titans-tailgate-recipes.html">Recipes</a>
-        <a href="nfl.html">NFL</a>
-        <a href="nashville-vs.html">Nashville vs.</a>
-        <a href="titans-bible-viewer.html">Bible</a>
-        <a href="trips/">Trips</a>
+    <div class="titans-mobile-menu-inner">
+      <a href="index.html" class="active">Home</a>
+      <div class="mob-group">
+        <button class="mob-group-toggle">Game Day <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="schedule.html">Schedule</a>
+      <a href="where-to-watch.html">Where to Watch</a>
+      <a href="superbox-fix.html">SuperBox Fix</a>
+      <a href="titans-betting-odds.html">Betting Odds</a>
+      <a href="titans-tailgate-recipes.html">Tailgate Recipes</a>
         </div>
+      </div>
+      <div class="mob-group">
+        <button class="mob-group-toggle">Team <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="Titans_2026_Roster.html">2026 Roster</a>
+      <a href="titans-salary-cap.html">Salary Cap</a>
+      <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
+      <a href="titans-hype-videos.html">Hype Videos</a>
+        </div>
+      </div>
+      <div class="mob-group">
+        <button class="mob-group-toggle">League <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="nfl.html">NFL Hub</a>
+      <a href="nashville-vs.html">Nashville vs.</a>
+        </div>
+      </div>
+      <div class="mob-group">
+        <button class="mob-group-toggle">History <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="team-history.html">Team History</a>
+      <a href="titans-remember-movie.html">Remember the Titans</a>
+      <a href="titans-bible-viewer.html">Bible Viewer</a>
+      <a href="archive/">Archive</a>
+        </div>
+      </div>
+      <a href="trips/">Trips</a>
     </div>
+  </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -779,20 +820,7 @@
         </div>
 
         <div class="cards-grid titans-stagger">
-            <a href="Titans_2026_Roster.html" class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="25" cy="25" rx="20" ry="12" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 25 Q25 20 38 25" stroke="currentColor" stroke-width="2" fill="none"/>
-                        <line x1="25" y1="13" x2="25" y2="37" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h3 class="card-title">2026 Roster</h3>
-                <p class="card-description">Complete roster with Cam Ward, Carnell Tate, and the new-look Titans squad.</p>
-                <span class="card-btn">View Roster</span>
-            </a>
-
-            <a href="schedule.html" class="card">
+            <a href="game-day/" class="card">
                 <div class="card-icon">
                     <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                         <rect x="8" y="12" width="34" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -801,35 +829,38 @@
                         <line x1="32" y1="12" x2="32" y2="6" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h3 class="card-title">2026 Schedule</h3>
-                <p class="card-description">Final season at Nissan Stadium. Every game, every opponent.</p>
-                <span class="card-btn">View Schedule</span>
+                <h3 class="card-title">Game Day</h3>
+                <p class="card-description">Schedule, channels, odds, recipes &mdash; everything for kickoff.</p>
+                <span class="card-btn">View All</span>
             </a>
 
-            <a href="titans-hype-videos.html" class="card">
+            <a href="team/" class="card">
                 <div class="card-icon">
                     <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                        <polygon points="18,12 18,38 40,25" fill="currentColor"/>
-                        <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <ellipse cx="25" cy="25" rx="20" ry="12" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 25 Q25 20 38 25" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <line x1="25" y1="13" x2="25" y2="37" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h3 class="card-title">Hype Videos</h3>
-                <p class="card-description">Get pumped with the best Titans hype videos and highlights.</p>
-                <span class="card-btn">Watch Now</span>
+                <h3 class="card-title">Team</h3>
+                <p class="card-description">Roster, salary cap, cheerleaders, and hype videos.</p>
+                <span class="card-btn">View All</span>
             </a>
 
-            <a href="titans-cheerleaders-2026.html" class="card">
+            <a href="league/" class="card">
                 <div class="card-icon">
                     <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                        <polygon points="25,5 29,18 43,18 32,27 36,42 25,33 14,42 18,27 7,18 21,18" fill="currentColor"/>
+                        <ellipse cx="25" cy="25" rx="22" ry="14" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M10 25 Q25 18 40 25" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M10 25 Q25 32 40 25" stroke="currentColor" stroke-width="2" fill="none"/>
                     </svg>
                 </div>
-                <h3 class="card-title">Cheerleaders</h3>
-                <p class="card-description">Meet the 2026 Tennessee Titans Cheerleaders.</p>
-                <span class="card-btn">View Team</span>
+                <h3 class="card-title">League</h3>
+                <p class="card-description">NFL standings, rivals, and around-the-league coverage.</p>
+                <span class="card-btn">View All</span>
             </a>
 
-            <a href="team-history.html" class="card">
+            <a href="history/" class="card">
                 <div class="card-icon">
                     <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                         <rect x="10" y="8" width="30" height="36" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -838,48 +869,22 @@
                         <line x1="16" y1="34" x2="28" y2="34" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h3 class="card-title">Team History</h3>
+                <h3 class="card-title">History &amp; Culture</h3>
                 <p class="card-description">From Houston Oilers to Tennessee Titans. Every era, every legend.</p>
                 <span class="card-btn">Explore</span>
             </a>
 
-            <a href="titans-salary-cap.html" class="card">
+            <a href="trips/" class="card">
                 <div class="card-icon">
                     <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="25" cy="25" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <text x="25" y="32" font-family="Arial" font-size="18" font-weight="bold" fill="currentColor" text-anchor="middle">$</text>
+                        <path d="M25 8 L40 40 H10 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="25" cy="22" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="25" cy="22" r="2" fill="currentColor"/>
                     </svg>
                 </div>
-                <h3 class="card-title">Salary Cap</h3>
-                <p class="card-description">Cap space, contracts, and financial breakdowns.</p>
-                <span class="card-btn">View Cap</span>
-            </a>
-
-            <a href="titans-betting-odds.html" class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="8" y="8" width="34" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="18" cy="18" r="3" fill="currentColor"/>
-                        <circle cx="32" cy="32" r="3" fill="currentColor"/>
-                        <circle cx="25" cy="25" r="3" fill="currentColor"/>
-                    </svg>
-                </div>
-                <h3 class="card-title">Betting Odds</h3>
-                <p class="card-description">Super Bowl odds, game lines, and futures.</p>
-                <span class="card-btn">View Odds</span>
-            </a>
-
-            <a href="nfl.html" class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="25" cy="25" rx="22" ry="14" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <path d="M10 25 Q25 18 40 25" stroke="currentColor" stroke-width="2" fill="none"/>
-                        <path d="M10 25 Q25 32 40 25" stroke="currentColor" stroke-width="2" fill="none"/>
-                    </svg>
-                </div>
-                <h3 class="card-title">NFL Hub</h3>
-                <p class="card-description">League news, standings, and playoff bracket.</p>
-                <span class="card-btn">View NFL</span>
+                <h3 class="card-title">Trips</h3>
+                <p class="card-description">Plan your road trip to an away Titans game.</p>
+                <span class="card-btn">Plan a Trip</span>
             </a>
 
             <a href="titans-bible-viewer.html" class="card featured">

@@ -496,55 +496,96 @@
             .titans-hamburger { display: flex; }
         }
     </style>
+  <link rel="stylesheet" href="assets/titans-nav.css">
 </head>
 <body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo-link">
-                <img src="assets/titans-sword-logo.svg" alt="Titans" style="width:40px;height:auto;">
-            </a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="Titans_2026_Roster.html" class="nav-link">Roster</a>
-                <a href="schedule.html" class="nav-link">Schedule</a>
-                <a href="where-to-watch.html" class="nav-link">Watch</a>
-                <a href="titans-cheerleaders-2026.html" class="nav-link">Cheer</a>
-                <a href="team-history.html" class="nav-link active">History</a>
-                <a href="titans-salary-cap.html" class="nav-link">Cap</a>
-                <a href="titans-betting-odds.html" class="nav-link">Odds</a>
-                <a href="titans-hype-videos.html" class="nav-link">Hype</a>
-                <a href="titans-tailgate-recipes.html" class="nav-link">Recipes</a>
-                <a href="nfl.html" class="nav-link">NFL</a>
-                <a href="nashville-vs.html" class="nav-link">Nashville vs.</a>
-                <a href="titans-bible-viewer.html" class="nav-link">Bible</a>
-                <a href="trips/" class="nav-link">Trips</a>
-            </div>
-            <div class="titans-hamburger" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <nav class="main-nav" id="mainNav">
+    <div class="nav-container">
+      <a href="index.html"><img src="assets/titans-sword-logo.svg" alt="Titans" class="nav-logo"></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="nav-dropdown">
+          <a href="game-day/" class="nav-link nav-dd-label">Game Day <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="schedule.html">Schedule</a>
+          <a href="where-to-watch.html">Where to Watch</a>
+          <a href="superbox-fix.html">SuperBox Fix</a>
+          <a href="titans-betting-odds.html">Betting Odds</a>
+          <a href="titans-tailgate-recipes.html">Tailgate Recipes</a>
+          </div>
         </div>
-    </nav>
-
-    <div class="titans-mobile-menu" id="mobileMenu">
-        <div class="titans-mobile-menu-inner">
-        <a href="index.html">Home</a>
-        <a href="Titans_2026_Roster.html">Roster</a>
-        <a href="schedule.html">Schedule</a>
-        <a href="where-to-watch.html">Watch</a>
-        <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
-        <a href="team-history.html" class="active">History</a>
-        <a href="titans-salary-cap.html">Salary Cap</a>
-        <a href="titans-betting-odds.html">Odds</a>
-        <a href="titans-hype-videos.html">Hype Videos</a>
-        <a href="titans-tailgate-recipes.html">Recipes</a>
-        <a href="nfl.html">NFL</a>
-        <a href="nashville-vs.html">Nashville vs.</a>
-        <a href="titans-bible-viewer.html">Bible</a>
-        <a href="trips/">Trips</a>
+        <div class="nav-dropdown">
+          <a href="team/" class="nav-link nav-dd-label">Team <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="Titans_2026_Roster.html">2026 Roster</a>
+          <a href="titans-salary-cap.html">Salary Cap</a>
+          <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
+          <a href="titans-hype-videos.html">Hype Videos</a>
+          </div>
         </div>
+        <div class="nav-dropdown">
+          <a href="league/" class="nav-link nav-dd-label">League <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="nfl.html">NFL Hub</a>
+          <a href="nashville-vs.html">Nashville vs.</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="history/" class="nav-link nav-dd-label active">History <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+          <a href="team-history.html" class="active">Team History</a>
+          <a href="titans-remember-movie.html">Remember the Titans</a>
+          <a href="titans-bible-viewer.html">Bible Viewer</a>
+          <a href="archive/">Archive</a>
+          </div>
+        </div>
+        <a href="trips/" class="nav-link">Trips</a>
+      </div>
+      <div class="titans-hamburger"><span></span><span></span><span></span></div>
     </div>
+  </nav>
+
+    <div class="titans-mobile-menu">
+    <div class="titans-mobile-menu-inner">
+      <a href="index.html">Home</a>
+      <div class="mob-group">
+        <button class="mob-group-toggle">Game Day <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="schedule.html">Schedule</a>
+      <a href="where-to-watch.html">Where to Watch</a>
+      <a href="superbox-fix.html">SuperBox Fix</a>
+      <a href="titans-betting-odds.html">Betting Odds</a>
+      <a href="titans-tailgate-recipes.html">Tailgate Recipes</a>
+        </div>
+      </div>
+      <div class="mob-group">
+        <button class="mob-group-toggle">Team <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="Titans_2026_Roster.html">2026 Roster</a>
+      <a href="titans-salary-cap.html">Salary Cap</a>
+      <a href="titans-cheerleaders-2026.html">Cheerleaders</a>
+      <a href="titans-hype-videos.html">Hype Videos</a>
+        </div>
+      </div>
+      <div class="mob-group">
+        <button class="mob-group-toggle">League <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="nfl.html">NFL Hub</a>
+      <a href="nashville-vs.html">Nashville vs.</a>
+        </div>
+      </div>
+      <div class="mob-group active-group open">
+        <button class="mob-group-toggle">History <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+      <a href="team-history.html" class="active">Team History</a>
+      <a href="titans-remember-movie.html">Remember the Titans</a>
+      <a href="titans-bible-viewer.html">Bible Viewer</a>
+      <a href="archive/">Archive</a>
+        </div>
+      </div>
+      <a href="trips/">Trips</a>
+    </div>
+  </div>
 
     <section class="history-hero">
         <img src="assets/titans-sword-logo.svg" alt="Titans" class="hero-logo">
@@ -875,5 +916,7 @@
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
     </script>
+
+  <script src="assets/titans-scripts.js"></script>
 </body>
 </html>
