@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team - Tennessee Titans Bible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/titans-nav.css">
+  <style>
+    :root {
+      --titans-navy: #0C2340;
+      --titans-blue: #4B92DB;
+      --titans-red: #C8102E;
+      --titans-silver: #A2AAAD;
+      --titans-white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--titans-navy) 0%, #061428 50%, var(--titans-navy) 100%);
+      min-height: 100vh;
+      color: var(--titans-white);
+    }
+
+    .main-nav {
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(75, 146, 219, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .page-header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(180deg, rgba(75, 146, 219, 0.15) 0%, transparent 100%);
+      border-bottom: 3px solid var(--titans-blue);
+    }
+
+    .page-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .page-header p {
+      color: var(--titans-silver);
+      margin-top: 10px;
+      font-size: 1rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .landing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .landing-card {
+      background: rgba(12, 35, 64, 0.6);
+      border: 1px solid rgba(75, 146, 219, 0.2);
+      border-radius: 8px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: var(--titans-white);
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .landing-card:hover {
+      border-color: var(--titans-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(75, 146, 219, 0.15);
+    }
+
+    .landing-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      color: var(--titans-blue);
+    }
+
+    .landing-card p {
+      font-size: 0.9rem;
+      color: var(--titans-silver);
+      line-height: 1.5;
+    }
+
+    .landing-card .card-arrow {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--titans-red);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(75, 146, 219, 0.15);
+      color: var(--titans-silver);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav" id="mainNav">
+    <div class="nav-container">
+      <a href="../index.html"><img src="../assets/titans-sword-logo.svg" alt="Titans" class="nav-logo"></a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <div class="nav-dropdown">
+          <a href="../game-day/" class="nav-link nav-dd-label">Game Day <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+            <a href="../schedule.html">Schedule</a>
+            <a href="../where-to-watch.html">Where to Watch</a>
+            <a href="../superbox-fix.html">SuperBox Fix</a>
+            <a href="../titans-betting-odds.html">Betting Odds</a>
+            <a href="../titans-tailgate-recipes.html">Tailgate Recipes</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="../team/" class="nav-link nav-dd-label active">Team <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+            <a href="../Titans_2026_Roster.html">2026 Roster</a>
+            <a href="../titans-salary-cap.html">Salary Cap</a>
+            <a href="../titans-cheerleaders-2026.html">Cheerleaders</a>
+            <a href="../titans-hype-videos.html">Hype Videos</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="../league/" class="nav-link nav-dd-label">League <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+            <a href="../nfl.html">NFL Hub</a>
+            <a href="../nashville-vs.html">Nashville vs.</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="../history/" class="nav-link nav-dd-label">History <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="nav-dd-menu">
+            <a href="../team-history.html">Team History</a>
+            <a href="../titans-remember-movie.html">Remember the Titans</a>
+            <a href="../titans-bible-viewer.html">Bible Viewer</a>
+            <a href="../archive/">Archive</a>
+          </div>
+        </div>
+        <a href="../trips/" class="nav-link">Trips</a>
+      </div>
+      <div class="titans-hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="titans-mobile-menu">
+    <div class="titans-mobile-menu-inner">
+      <a href="../index.html">Home</a>
+      <div class="mob-group">
+        <button class="mob-group-toggle">Game Day <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+          <a href="../schedule.html">Schedule</a>
+          <a href="../where-to-watch.html">Where to Watch</a>
+          <a href="../superbox-fix.html">SuperBox Fix</a>
+          <a href="../titans-betting-odds.html">Betting Odds</a>
+          <a href="../titans-tailgate-recipes.html">Tailgate Recipes</a>
+        </div>
+      </div>
+      <div class="mob-group active-group open">
+        <button class="mob-group-toggle">Team <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+          <a href="../Titans_2026_Roster.html">2026 Roster</a>
+          <a href="../titans-salary-cap.html">Salary Cap</a>
+          <a href="../titans-cheerleaders-2026.html">Cheerleaders</a>
+          <a href="../titans-hype-videos.html">Hype Videos</a>
+        </div>
+      </div>
+      <div class="mob-group">
+        <button class="mob-group-toggle">League <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+          <a href="../nfl.html">NFL Hub</a>
+          <a href="../nashville-vs.html">Nashville vs.</a>
+        </div>
+      </div>
+      <div class="mob-group">
+        <button class="mob-group-toggle">History <span class="mob-arrow">&#9662;</span></button>
+        <div class="mob-group-items">
+          <a href="../team-history.html">Team History</a>
+          <a href="../titans-remember-movie.html">Remember the Titans</a>
+          <a href="../titans-bible-viewer.html">Bible Viewer</a>
+          <a href="../archive/">Archive</a>
+        </div>
+      </div>
+      <a href="../trips/">Trips</a>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <h1>Team</h1>
+    <p>Roster, salary cap, cheerleaders, and hype videos</p>
+  </header>
+
+  <main class="container">
+    <div class="landing-grid">
+      <a href="../Titans_2026_Roster.html" class="landing-card">
+        <h3>2026 Roster</h3>
+        <p>Complete roster with bios, stats, and ESPN headshots for every player.</p>
+        <span class="card-arrow">View Roster &rarr;</span>
+      </a>
+      <a href="../titans-salary-cap.html" class="landing-card">
+        <h3>Salary Cap</h3>
+        <p>Cap space, top contracts, dead money, and financial breakdowns.</p>
+        <span class="card-arrow">View Cap &rarr;</span>
+      </a>
+      <a href="../titans-cheerleaders-2026.html" class="landing-card">
+        <h3>Cheerleaders</h3>
+        <p>Meet the 2026 Tennessee Titans Cheerleaders.</p>
+        <span class="card-arrow">Meet the Squad &rarr;</span>
+      </a>
+      <a href="../titans-hype-videos.html" class="landing-card">
+        <h3>Hype Videos</h3>
+        <p>The best Titans hype videos and highlight reels.</p>
+        <span class="card-arrow">Watch Now &rarr;</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">Tennessee Titans Bible &bull; Kyle's Personal Fan Site</footer>
+
+  <script src="../assets/titans-scripts.js"></script>
+</body>
+</html>
