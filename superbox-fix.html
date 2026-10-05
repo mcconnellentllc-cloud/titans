@@ -12,18 +12,24 @@
     --ink:#111827; --paper:#ffffff; --field:#f3f5f8; --line:#d9dee6;
   }
   @media (prefers-color-scheme:dark){
-    :root{--ink:#f3f4f6;--paper:#0f1623;--field:#1b2536;--line:#2f3b50;--silver:#aab2c0}
+    :root{--ink:#f3f4f6;--paper:#0f1623;--field:#1b2536;--line:#2f3b50;--silver:#aab2c0;--navy:#7ab4f0;--red:#ff6b7f}
     .hero{background:#06101f}
-    section h2,.steps h3,.steps li::before,a{color:#ffffff}
+    section h2{color:#7ab4f0}
+    .steps h3{color:#fff}
+    .steps li::before{color:#7ab4f0}
+    a{color:#7ab4f0}
     .path{background:#243147;border-color:#3b4a63;color:#fff}
     .why{background:#1b2536}
+    .why strong{color:#ff6b7f}
     .ladder li{background:#1b2536}
     th{background:#243147}
     td b{color:#ff6b7f}
     footer{color:#aab2c0}
     section .lead,p{color:var(--ink)}
-    h3[style]{color:#fff !important}
+    h3[style]{color:#7ab4f0 !important}
     p[style]{color:var(--ink) !important}
+    .share-btn{background:#1b2536;border-color:#3b4a63;color:#fff}
+    .share-btn:hover{background:#243147}
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;background:var(--paper)}
@@ -74,6 +80,10 @@
   td b{color:var(--red)}
   .scroll{overflow-x:auto}
 
+  .share-btn{display:inline-flex;align-items:center;gap:8px;background:var(--field);border:1px solid var(--line);color:var(--ink);font:600 .95rem/1 Barlow,sans-serif;padding:12px 20px;border-radius:6px;cursor:pointer;transition:all .2s;margin-top:20px}
+  .share-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .share-btn svg{width:18px;height:18px;fill:currentColor}
+  .share-btn.copied{background:#16a34a;color:#fff;border-color:#16a34a}
   footer{padding:30px 0 50px;color:#4a5160;font-size:.9rem}
   @media (max-width:560px){
     .steps li{grid-template-columns:40px 1fr;gap:12px}
@@ -91,6 +101,10 @@
     <span class="pill">SuperBox owners</span>
     <h1>Freezing during NFL games?<br>Here's what actually fixed it.</h1>
     <p>Six changes, about twenty minutes, nothing to buy. We went from freezing every quarter to a full game without a glitch.</p>
+    <button class="share-btn" onclick="sharePage()">
+      <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+      <span id="shareText">Share This Guide</span>
+    </button>
   </div>
 </header>
 
@@ -230,5 +244,37 @@
   <div class="wrap">Tested on a SuperBox over Starlink, October 2026. Steps 1 and 5 did the heavy lifting.</div>
 </footer>
 
+<script>
+function sharePage() {
+  var url = window.location.href;
+  var title = 'SuperBox freezing during NFL games? Here\'s the fix.';
+  if (navigator.share) {
+    navigator.share({ title: title, url: url }).catch(function(){});
+  } else if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() {
+      var btn = document.querySelector('.share-btn');
+      var txt = document.getElementById('shareText');
+      btn.classList.add('copied');
+      txt.textContent = 'Link Copied!';
+      setTimeout(function() {
+        btn.classList.remove('copied');
+        txt.textContent = 'Share This Guide';
+      }, 2500);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    var txt = document.getElementById('shareText');
+    txt.textContent = 'Link Copied!';
+    setTimeout(function() { txt.textContent = 'Share This Guide'; }, 2500);
+  }
+}
+</script>
 </body>
 </html>
