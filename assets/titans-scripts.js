@@ -203,31 +203,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* ===== PAGE TRANSITION EFFECT ===== */
 function initPageTransitions() {
-    // Add fade effect on page load
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
 
-    window.addEventListener('load', () => {
+    function showPage() {
         document.body.style.opacity = '1';
-    });
+    }
 
-    // Add fade effect on navigation
-    document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])').forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (this.hostname === window.location.hostname) {
-                e.preventDefault();
-                const href = this.href;
+    if (document.readyState === 'complete') {
+        showPage();
+    } else {
+        document.addEventListener('DOMContentLoaded', showPage);
+        setTimeout(showPage, 1500);
+    }
 
-                document.body.style.opacity = '0';
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 300);
-            }
-        });
+    document.addEventListener('click', function(e) {
+        var link = e.target.closest('a:not([href^="#"]):not([target="_blank"])');
+        if (!link || link.hostname !== window.location.hostname) return;
+        e.preventDefault();
+        var href = link.href;
+        document.body.style.opacity = '0';
+        setTimeout(function() { window.location.href = href; }, 300);
     });
 }
 
-// Initialize page transitions
 initPageTransitions();
 
 /* ===== TICKER AUTO-UPDATE (placeholder) ===== */
